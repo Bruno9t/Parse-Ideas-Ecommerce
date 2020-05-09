@@ -1,0 +1,334 @@
+.form-control{
+    height: calc(3.25rem + 2px);
+    font-size: 1.4rem;
+}
+
+/* search bar */
+#searchBlock.hide{
+    display: none;
+}
+
+
+#search {
+    background: #5A47CC;
+    min-height: 50px;
+    height: auto;
+    padding: 13px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 50px;
+    color:white;
+    box-shadow: 5px 5px 10px rgb(54, 53, 53);
+
+}
+
+#search img{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+
+    right: 10px;
+
+}
+
+#search img, #search input{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#modal2 button.close{
+    margin: 10px;
+}
+
+#search input{
+    position: absolute;
+    background: #5A47CC;
+    border:none;
+    width:70%;
+}
+
+#search input::placeholder{
+    color: #5A47CC;
+    font-size: 1.8rem;
+}
+
+#search.hide{
+    display: none;
+}
+
+#search.loaded{
+    position: fixed;
+    animation: frame1 ease-in-out 1.5s;
+    z-index: 2;
+}
+
+@keyframes frame1{
+    0%{
+        width: 50px;
+    }
+    25%{
+        width: 90%;
+    }
+    to{
+        width: 50px;
+    }
+}
+
+@media (max-width:767px){
+    #announcements div.col-md-8.col-sm-12{
+        margin-top: 30px;
+    }
+}
+/*  */
+
+
+.box-search{
+    background-color: #5A47CC;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    color: white;
+}
+
+.box-search .btn{ 
+    font-size: 1.6rem;
+}
+
+/* buttons of advanced search */
+button#apply-1,
+button#apply-2{
+    background-color:#5A47CC;
+    border:2px white solid;
+    color:white;
+    font-weight: bold;
+}
+
+button#apply-1:hover,
+button#apply-2:hover{
+    background-color: rgb(40, 218, 40);
+    border:2px rgb(40, 218, 40) solid;
+}
+
+button#remove-1,
+button#remove-2{
+    color:white;
+    font-weight: bold;
+}
+
+button#remove-1:hover,
+button#remove-2:hover{
+    background-color:rgb(253, 8, 8);
+}
+/* button end */
+
+#announcements{
+    background-color: #eee;
+    font-size: 1.6rem;
+}
+
+#announcements .card{
+    overflow: hidden;
+} 
+
+#announcements .card h5{
+    font-size: 1.5rem;
+}
+
+#announcements .card p {
+    color: #5A47CC;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#announcements .card .spotlight{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    background-color: #5A47CC;
+    color: white;
+    top:8px;
+    right: -40px;
+    font-weight: bold;
+    transform: rotate(32deg);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+#announcements .card .categorie{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    color: white;
+    top: calc(21.5rem - 1px);
+    left: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.tag-ecommerce{
+    background-color: rgba(185, 0, 166, 0.8);
+}
+
+.tag-solutions{
+    background-color: rgba(27, 192, 23, 0.8);
+}
+
+.tag-socialmedia{
+    background-color: rgba(25, 171, 181, 0.8);
+}
+
+#announcements .card .btn{
+    background-color: white;
+    border: 1px solid #5A47CC;
+    color:#5A47CC;
+    font-size: 1.6rem;
+}
+
+#announcements .card .btn:hover{
+    background-color: #5A47CC;
+    color: white;
+}
+
+#announcements .btn-primary{
+    background-color: #5A47CC;
+    border: 1px solid white;
+    color:#fff;
+    font-size: 1.6rem;
+}
+
+#announcements .btn-primary:hover{
+   font-weight: bold;
+}
+
+#howItWorks{
+    background-color: #fff;
+    font-size: 1.6rem;
+}
+
+#howItWorks .btn{
+    background-color: #5A47CC;
+    border: 1px solid white;
+    color:#fff;
+    font-size: 1.6rem;
+}
+
+#howItWorks .btn:hover{
+    font-weight: bold;
+}
+
+#blog{
+    font-size: 1.6rem;
+}
+
+#blog h5{
+    font-size: 1.8rem;
+    padding: 1.6rem;
+}
+
+#blog .btn{
+    background-color: #5A47CC;
+    border: 1px solid white;
+    color:#fff;
+    font-size: 1.6rem;
+}
+
+#blog .btn:hover{
+    font-weight: bold;
+}
+
+.modal{
+    border: 0;
+    font-size: 1.6rem;
+}
+
+.modal h2{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.modal .btn {
+    font-size: 1.6rem;
+}
+
+
+@media (max-width:1200px){
+    #announcements .card .categorie{
+        top: calc(17.0rem - 1px);
+    }
+}
+
+
+@media (max-width:991px){
+    #announcements .card .categorie{
+        top: calc(11.5rem - 1px);
+    }
+}
+
+@media (max-width:768px){
+    #search .col:nth-child(2){
+        display: none;
+    }
+
+    .card{
+        margin-bottom: 2em;
+    }
+
+    #howItWorks img{
+       width: 50%;
+    }
+
+    #announcements .card .categorie{
+        top: calc(32.0rem - 1px);
+    }
+
+}
+
+@media (max-width:540px){
+    #announcements .card .categorie{
+        top: calc(31.5rem - 1px);
+    }
+}
+
+@media (max-width:512px){
+    #announcements .card .categorie{
+        top: calc(29.5rem - 1px);
+    }
+}
+
+@media (max-width:480px){
+    #announcements .card .categorie{
+        top: calc(25.5rem - 1px);
+    }
+}
+
+@media (max-width:430px){
+    #announcements .card .categorie{
+        top: calc(22.5rem - 1px);
+    }
+}
+
+@media (max-width:380px){
+
+    html{
+        font-size: 50%;
+    }
+
+    #announcements .card .categorie{
+        top: calc(22.5rem - 1px);
+    }
+}
+
+@media (max-width:340px){
+    #announcements .card .categorie{
+        top: calc(18.5rem - 1px);
+    }
+}
+
+@media (max-width:270px){
+    #announcements .card .categorie{
+        top: calc(15.5rem - 1px);
+    }
+}
+
+

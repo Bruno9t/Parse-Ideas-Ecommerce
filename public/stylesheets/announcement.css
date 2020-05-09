@@ -1,0 +1,249 @@
+
+main{
+  width: 100%;
+}
+nav.navbar {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+section#announcement {
+  background-color: rgba(44, 24, 161, 0.08);
+}
+
+section#announcement h2 {
+  font-size: 3.8rem;
+  color: rgb(100, 96, 96);
+}
+
+section#announcement div.container {
+  min-height: 55em;
+}
+
+section#announcement div.container div.row{
+  margin-bottom: 20px;
+}
+
+section#announcement div.container div#announce{
+  background-color: #FFFFFF;
+  display: flex;
+}
+
+div#announce {
+  margin: 0;
+}
+
+div#fotoAnuncio {
+  background-image: url('../images/austin-distel-tLZhFRLj6nY-unsplash\ 2.png');
+  background-size: cover;
+  width: 100%;
+}
+
+div#bg-anuncio {
+  background-color: rgba(90, 71, 204, 0.75);
+  width: 100%;
+  padding: 5rem 10rem;
+}
+
+div#fotoAnuncio div.btn-primary {
+  font-size: 11px;
+  background-color: rgba(185, 0, 166, 0.8);
+  border-color: rgba(185, 0, 166, 0.8);
+}
+
+div#fotoAnuncio h3 {
+  font-size: 3.8rem;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+div#fotoAnuncio h2 {
+  font-size: 2.3rem;
+  color: #FFFFFF;
+  font-weight: lighter;
+}
+
+div#description {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+div#description div.row div.col-md-6 h3 {
+  font-weight: bold;
+  padding-bottom: 2rem;
+}
+
+div#description div.row div.col-md-6 p{
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+form{
+  width: 50%;
+  margin:20px auto 0 auto;
+}
+
+
+
+div#description div.row div.col-md-6.col-sm-12 {
+  padding: 1rem 7rem;
+}
+
+div#description div.row div.col-md-6 mark {
+  background-color: inherit;
+  color: #5A47CC;
+}
+
+div#message {
+  width: 100%;
+  background-color: rgb(211, 211, 211);
+  padding-top: 4rem;
+}
+
+div#message h3 {
+  font-size: 2.7rem;
+  color: rgb(100, 96, 96);
+}
+
+div#message form.my-4 {
+  padding: 1rem 44rem;
+}
+
+div#message form input {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.20);
+  border-radius: 10px;
+  height: 5rem;
+  color: #A8A8A8;
+  border: 0px;
+  margin-bottom: 10px;
+}
+
+div#message form textarea {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.20);
+  border-radius: 10px;
+  color: #A8A8A8;
+  border: 0px;
+  resize: none;
+}
+
+div#message form button {
+  width: 20rem;
+  margin: 2.5rem auto;
+  border-radius: 10px;
+  background-color: #9084D9;
+  border-color: #9084D9;
+}
+
+div#attention {
+  background-color: #5A47CC;
+  color: #FFFFFF;
+  padding: 8rem 5rem;
+  width: 100%;
+}
+
+div#next {
+  padding: 7rem 0;
+}
+
+div#next div.col-md-6 {
+  padding: 0 10rem;
+}
+
+@media(max-width: 1200px){
+  div#fotoHeader {
+    height: 20.6vh;
+  }
+
+  div#message form.my-4 {
+    padding: 1rem 26rem;
+  }
+}
+
+@media(max-width: 990px) {
+  div#fotoAnuncio h3 {
+    font-size: 2.8rem;
+  }
+
+  div#fotoHeader {
+    height: 15.3vh;
+  }
+
+  div#message form.my-4 {
+    padding: 1rem 20rem;
+  }
+
+  div#next {
+    padding: 5rem 0;
+  } 
+  
+  div#next div.col-md-6 {
+    padding: 0 5rem;
+  }
+}
+
+@media(max-width: 768px) {
+  div#fotoAnuncio h3 {
+    font-size: 2.3rem;
+  }
+
+  form{
+    width: 85%;
+  }
+  
+  div#fotoHeader {
+    height: 11.5vh;
+  }
+
+  div#message form.my-4 {
+    padding: 1rem 9rem;
+  }
+
+  div#next div.col-md-6 {
+    padding: 0 3rem;
+  }
+}
+
+@media(max-width: 574px) {
+  div#bg-anuncio {
+    padding: 5rem 5rem;
+  }
+
+  div#description div.row div.col-md-6.col-sm-12 {
+    padding: 0.5rem 3.5rem;
+    margin-bottom: 20px;
+  }
+  
+  div#fotoHeader {
+    height: 12.3vh;
+  }
+
+  div#message form.my-4 {
+    padding: 1rem 5rem;
+  }
+
+  div#next div.col-md-6 {
+    padding: 2rem 15rem;
+  }
+}
+
+@media(max-width: 490px) {
+  div#next div.col-md-6 {
+    padding: 2rem 10rem;
+  }
+}
+
+@media(max-width: 400px) {
+  div#message form.my-4 {
+    padding: 1rem 1rem;
+  }
+
+  div#next div.col-md-6 {
+    padding: 1rem 4rem;
+  }
+}
+
+

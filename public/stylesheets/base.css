@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
+
+*{
+    box-sizing: border-box !important;
+    font-family: 'Roboto', sans-serif;
+    outline: 0;
+}
+
+html, 
+body{
+    font-size: 62.5%;
+}
+
+header li{
+    margin:auto 5px;
+}
+
+.navbar{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* for user */
+button.navbar-toggler{
+    padding: 4px 12px;
+    height: 40px;
+    width: 56px;
+    border:none;
+}
+
+span.navbar-toggler-icon{
+    height: 30px;
+    width: 30px;
+}
+div.dropdown-menu{
+    left:-100px;
+    background: #5A47CC;
+    border:none;
+    font-size: 1.6rem;
+}
+a#dropdownMenuLink{
+    background:none;
+    border:none;
+}
+
+a.dropdown-item{
+    color:white;
+}
+
+a.dropdown-item:hover{
+    background: linear-gradient(#5A47CC,cornflowerblue);
+}
+
+span.ic img{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 5px;
+}
+
+@media (max-width:991px){
+    li#user{
+        display: none;
+    }
+}
+/*  */
+
+input[type='radio']{
+    margin-right: 10px;
+}
+
+
+body{
+    background-color: #FFFFFF;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+h2{
+    font-size: 3rem;
+}
+
+.btn-group-lg>.btn, .btn-lg{
+    line-height: 3.0;
+}
+
+.form-control{
+    height: calc(3.25rem + 2px);
+    font-size: 1.4rem;
+}
+
+#mainMenu{
+    font-size: 1.6rem;
+}
+
+#mainMenu .btn-primary{
+    color: white;
+    background-color: #5A47CC;
+    border-color:#5A47CC;
+    font-size: 1.5rem;
+}
+
+
+footer{
+    background-color: #1c1c1c;
+    color: white;
+    font-size: 1.6rem;
+    padding: 2rem;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer .list-group-item{
+    background-color: #ffffff21;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer .icons-socialmedia{
+    font-size: 3.2rem;
+}
