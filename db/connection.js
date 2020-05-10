@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize')
 
+require('dotenv').config()
+
 const config = require('../config/database')
 
 const connection = new Sequelize(config)
-
 
 
 connection
@@ -14,3 +15,5 @@ connection
   .catch(err => {
     console.error('=( Não foi possível conectar com o banco de dados: ', err);
   });
+
+  module.exports = connection
