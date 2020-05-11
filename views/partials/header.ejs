@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="/css/base.css">
     <!-- Index CSS -->
     <link rel="stylesheet" href="/css/index.css">
+    
+    <% if(typeof css !== 'undefined'){ %> 
+        <!-- Page CSS -->
+        <link rel="stylesheet" href="/css/<%= css %>">
+    <% } %>
 
 </head>
 
@@ -37,13 +42,13 @@
                         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/searchEcommerce.html">E-Commerce</a>
+                        <a class="nav-link" href="ecommerce">E-Commerce</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/searchSocialMedia.html">Redes Sociais</a>
+                        <a class="nav-link" href="socialmedia">Redes Sociais</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/searchSolutions.html">Soluções</a>
+                        <a class="nav-link" href="solutions">Soluções</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-sm btn-primary" href="./pages/viewAdPlans.html">Anuncie e venda seu negócio</a>
