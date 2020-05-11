@@ -6,8 +6,8 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const ecommerceRouter = require('./routes/ecommerce');
-// const socialmediaRouter = require('./routes/socialmedia');
-// const solutionRouter = require('./routes/solution');
+const socialmediaRouter = require('./routes/socialmedia');
+const solutionRouter = require('./routes/solution');
 
 const app = express();
 
@@ -23,8 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/ecommerce', ecommerceRouter);
-// app.use('/socialmedia', socialmediaRouter);
-// app.use('/solutions', solutionRouter);
+app.use('/socialmedia', socialmediaRouter);
+app.use('/solutions', solutionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
