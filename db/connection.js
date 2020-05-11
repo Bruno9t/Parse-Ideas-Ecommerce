@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 
 require('dotenv').config()
 
-const config = require('../config/databaseConfig')
+const config = require('../config/database')
 
 const connection = new Sequelize(config)
 
