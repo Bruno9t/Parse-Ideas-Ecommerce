@@ -9,27 +9,24 @@
 
     <!-- Import Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" -->
-        <!-- integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <!-- integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">    
 
     <!-- Base CSS -->      
     <link rel="stylesheet" href="/css/base.css">
-    <!-- Index CSS -->
-    <link rel="stylesheet" href="/css/index.css">
     
     <% if(typeof css !== 'undefined'){ %> 
         <!-- Page CSS -->
         <link rel="stylesheet" href="/css/<%= css %>">
     <% } %>
-
 </head>
 
 <body>
     <header>
         <!-- Menu Parse Ideias -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html"><img src="/images/img/ParseIdeias-logo(1).png" alt="" srcset=""
+            <a class="navbar-brand" href="/"><img src="/images/img/ParseIdeias-logo(1).png" alt="" srcset=""
                     width="200"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
                 aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,16 +36,16 @@
             <div class="collapse navbar-collapse" id="mainMenu">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ecommerce">E-Commerce</a>
+                        <a class="nav-link" href="/announcements?category=ecommerce">E-Commerce</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="socialmedia">Redes Sociais</a>
+                        <a class="nav-link" href="/announcements?category=socialmedia">Redes Sociais</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="solutions">Soluções</a>
+                        <a class="nav-link" href="/announcements?category=solutions">Soluções</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn btn-sm btn-primary" href="./pages/viewAdPlans.html">Anuncie e venda seu negócio</a>
@@ -57,7 +54,7 @@
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal">Login</a>
+                        <a class="nav-link" href="/access">Acesse</a>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,70 @@
+<%- include('../partials/header') %> 
+
+<main>
+<div class="content">
+  <div class="container">
+    <h1 class="text-center">Para anunciar registre-se ou faça login</h1>
+    <div class="box">
+      <a href="#" class="btn icon" data-toggle="modal" data-target="#modallogin"><img class="mr-sm-1 mr-md-3" src="/images/svg/login.svg" alt="open">Login</a>
+      ou
+      <a href="#" class="btn icon" data-toggle="modal" data-target="#modalcreate"><img class="mr-sm-1 mr-md-3" src="/images/svg/register.svg" alt="open">Registrar</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Login -->
+<div class="modal fade" id="modallogin" tabindex="-1" role="dialog" aria-labelledby="modallogin" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button type="button mr-auto" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <img src="/images/svg/login.svg" alt="Login">
+        <span class="ml-2 modal-title">Entrar</span>
+        <form action='./admin.html' class="mt-4">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="senha">
+          </div>
+          <button type="submit" class="btn btn-success">Entrar</button>
+          <span class="forget-password ml-2"><a href="#">Esquece a senha?</a></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Register -->
+<div class="modal fade" id="modalcreate" tabindex="-1" role="dialog" aria-labelledby="modalcreate" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button type="button mr-auto" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body">
+        <img src="/images/svg/register.svg" alt="Login">
+        <span class="ml-2 modal-title">Criar Conta</span>
+        <form action='./createAd.html' class="mt-4">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="senha">
+          </div>
+          <div class="mb-2">
+            <button type="submit" class="btn btn-success mr-2">Registra-se</button> ou
+            <img class="ml-2 mr-2" src="/images/svg/google.svg" alt="google">
+            <img src="/images/svg/facebook.svg" alt="facebook">
+          </div>
+          <span class="forget-password"><a href="#">Já possui registro?</a></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<%- include('../partials/footer') %> 

@@ -5,35 +5,13 @@ body {
   background-color: #EAE8F6;
 }
 
-/* === Navbar === */
-div.nav-bg {
-  background-color: #ffffff;
-  -webkit-box-shadow: 0px 6px 11px -7px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 6px 11px -7px rgba(0,0,0,0.75);
-  box-shadow: 0px 6px 11px -7px rgba(0,0,0,0.75);
-}
-.nav-link {
-  font-size: 14px;
-  color: #000;
-}
-
-.nav-link.button {
-  background: #5A47CC;
-  border-radius: 5px;
-  color: white!important;
-}
-
-.nav-link.button:hover {
-  opacity: 0.9;
-  transition: 200ms;
-}
-
 /* === Content === */
+
 .content {
-  height: 100vh;
+  height: 80vh;
 }
 .content h1 {
-  font-size: 38px;
+  font-size: 4rem;
   font-weight: 300;
   padding-top: 40px;
 }
@@ -58,7 +36,7 @@ div.nav-bg {
   border-radius: 5px;
   margin: 0px 10px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 2rem;
   color: #000000;
 }
 
@@ -75,7 +53,7 @@ button.close {
 }
 
 .modal-title {
-  font-size: 18px;
+  font-size: 2rem;
 }
 
 .form-control {
@@ -84,6 +62,7 @@ button.close {
 }
 
 .btn-success {
+  font-size: 2rem;
   color: #fff;
   background-color: #1BC017;
   border-color: #1BC017;
@@ -99,6 +78,14 @@ button.close {
 
 .forget-password a:hover {
   opacity: 0.8;
+}
+
+.modal-content button span{
+  font-size: 3rem;
+}
+
+.mb-2{
+  font-size: 2rem;
 }
 
 @media (max-width: 575.98px) {
@@ -122,8 +109,8 @@ button.close {
   }
 }
 
-@media (max-width: 991.98px) { 
+/* @media (max-width: 991.98px) { 
   .nav-link.button{
     max-width: 200px;
   }
-}
+} */
