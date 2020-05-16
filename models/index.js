@@ -1,7 +1,5 @@
 'use strict';
 
-require('dotenv').config()
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -17,6 +15,15 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Conexão estabilizada com sucesso ;)');
+  })
+  .catch(err => {
+    console.error('=( Não foi possível conectar com o banco de dados: ', err);
+  });
 
 fs
   .readdirSync(__dirname)

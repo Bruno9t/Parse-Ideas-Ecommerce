@@ -16,6 +16,67 @@ body {
   padding-top: 40px;
 }
 
+.box span{
+  font-size: 1.8rem;
+}
+
+/* botões google e facebook */
+  .content-reg{
+
+    text-align: center;
+  }
+  #image-reg{
+    position: absolute;
+    background: white;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px;
+    border-radius: 2px;
+    border:1px gray solid;
+  }
+  #image-box-g,#image-box-f{
+    position: relative;
+    padding: 10px 0px;
+    height: 40px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:white;
+    
+    border-radius: 2px;
+
+    cursor: pointer;
+  }
+  #access{
+    margin:10px 0;
+  }
+  img#login,img#register{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 70px;
+    width: 70px;
+  }
+  #image-box-g{
+    background-color: rgb(31, 137, 230);
+    border-right:1px white solid;
+
+  }
+
+  .modal-body{
+    margin:20px;
+  }
+  #image-box-f{
+    background: blue;
+    border-left:1px white solid;
+
+  }
+  p.par{
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+/* fim */
+
 .box {
   display: flex;
   justify-content: center;
@@ -56,6 +117,10 @@ button.close {
   font-size: 2rem;
 }
 
+input.form-control{
+  height: 45px;
+}
+
 .form-control {
   border: 0px;
   background-color: #f2f2f2;
@@ -68,6 +133,7 @@ button.close {
   border-color: #1BC017;
   padding-right: 20px;
   padding-left: 20px;
+  margin:10px 0;
 }
 
 .forget-password a {

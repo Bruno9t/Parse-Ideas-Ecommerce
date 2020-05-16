@@ -1,7 +1,7 @@
 const path = require('path')
 
 
-moduele.exports = {
+module.exports = {
 
     "config":path.resolve("config","database.js"),
     "models-path":path.resolve('models'),

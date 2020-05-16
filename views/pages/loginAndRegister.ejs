@@ -6,7 +6,7 @@
     <h1 class="text-center">Para anunciar registre-se ou faça login</h1>
     <div class="box">
       <a href="#" class="btn icon" data-toggle="modal" data-target="#modallogin"><img class="mr-sm-1 mr-md-3" src="/images/svg/login.svg" alt="open">Login</a>
-      ou
+      <span>ou</span>
       <a href="#" class="btn icon" data-toggle="modal" data-target="#modalcreate"><img class="mr-sm-1 mr-md-3" src="/images/svg/register.svg" alt="open">Registrar</a>
     </div>
   </div>
@@ -20,17 +20,45 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="modal-body">
-        <img src="/images/svg/login.svg" alt="Login">
-        <span class="ml-2 modal-title">Entrar</span>
-        <form action='./admin.html' class="mt-4">
+        <img src="/images/svg/login.svg" alt="Login" id='login'>
+        <form action='/auth/access/login' method="POST" class="mt-4">
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+            <input type="email" required
+            title='Digite seu email' name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="senha">
+            <input type="password" required 
+            title='Digite sua senha' name='senha' class="form-control" id="exampleInputPassword1" placeholder="senha">
           </div>
-          <button type="submit" class="btn btn-success">Entrar</button>
-          <span class="forget-password ml-2"><a href="#">Esquece a senha?</a></span>
+          <button type="submit" class="btn btn-success col-md-12" >Entrar</button>
+          <p class='par'>ou</p>
+
+          <div id = 'access' class='container'>
+
+            <div class='row'>
+              <a class='col-md-6 col-sm-12 mb-3' id='image-box-g' href='/auth/access/google'>
+                <img id='image-reg'  src="/images/svg/google.svg" alt="google">
+                <div class='wrap-g'>
+                  <div class='content-reg'>
+                    Google
+                  </div>
+                </div>
+              </a>
+
+              
+              <a class='col-md-6 col-sm-12 mb-3' id='image-box-f' href="/auth/access/facebook">
+                <img id='image-reg' src="/images/svg/facebook.svg" alt="facebook">
+                <div class='wrap-f'>
+                  <div class='content-reg'>
+                    Facebook
+                  </div>
+                </div>
+              </a>
+
+            </div>
+
+          </div>
+          <span class="forget-password ml-2"><a href="#">Esqueci a senha?</a></span>
         </form>
       </div>
     </div>
@@ -45,21 +73,61 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="modal-body">
-        <img src="/images/svg/register.svg" alt="Login">
-        <span class="ml-2 modal-title">Criar Conta</span>
-        <form action='./createAd.html' class="mt-4">
+        <img src="/images/svg/register.svg" alt="Login" id='register'>
+        <form action='/auth/access/register' method="POST" class="container mt-4">
+          <div class="form-row ">
+            <div class='col-md-6 col-sm-12 mb-3'>
+            <input type="text" required 
+            title='Digite seu nome' name='nome' class="form-control" id= "exampleInputEmail1" aria-describedby="nameHelp" placeholder="nome">
+          </div>
+          <div class='col-md-6 col-sm-12 mb-3'>
+            <input type="text" 
+            title='Digite seu sobrenome' name='sobrenome' class="form-control" id="exampleInputEmail1" aria-describedby="surnameHelp" placeholder="sobrenome">
+          </div>
+          </div>
+          <!-- <div class="form-group">
+            <input type="text" required 
+            title='Digite seu nome de usuário' name='usuario' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="nome de usuário">
+          </div> -->
+
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+            <input type="email" required 
+            title='Digite seu email' name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="senha">
+            <input type="password" required 
+            title="Digite sua senha" name='senha' class="form-control" id="exampleInputPassword1" placeholder="senha">
           </div>
           <div class="mb-2">
-            <button type="submit" class="btn btn-success mr-2">Registra-se</button> ou
-            <img class="ml-2 mr-2" src="/images/svg/google.svg" alt="google">
-            <img src="/images/svg/facebook.svg" alt="facebook">
+            <button type="submit" class="btn btn-success mr-2 col-md-12">Registrar-se</button> 
+            <p class='par'>ou</p>
+            
+            <div id = 'access' class='container'>
+
+              <div class='row'>
+                <a class='col-md-6 col-sm-12 mb-3' id='image-box-g' href='/auth/access/google'>
+                  <img id='image-reg'  src="/images/svg/google.svg" alt="google">
+                  <div class='wrap-g'>
+                    <div class='content-reg'>
+                      Google
+                    </div>
+                  </div>
+                </a>
+
+                
+                <a class='col-md-6 col-sm-12 mb-3' id='image-box-f' href="/auth/access/facebook">
+                  <img id='image-reg' src="/images/svg/facebook.svg" alt="facebook">
+                  <div class='wrap-f'>
+                    <div class='content-reg'>
+                      Facebook
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+
+            </div>
           </div>
-          <span class="forget-password"><a href="#">Já possui registro?</a></span>
         </form>
       </div>
     </div>
@@ -67,4 +135,27 @@
 </div>
 </main>
 
-<%- include('../partials/footer') %> 
+<!-- Import Jquery -->
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script> -->
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+<!-- Import Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+
+<!-- Import Bootstrap JS -->
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script> -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Import Font Awesome -->
+<script src="https://kit.fontawesome.com/c439770d8e.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
