@@ -124,6 +124,9 @@ button#remove-2:hover{
     background-color: #eee;
     font-size: 1.6rem;
 }
+.form-control{
+    height: 45px;
+}
 
 #announcements .card{
     overflow: hidden;

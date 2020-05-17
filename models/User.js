@@ -33,14 +33,6 @@ module.exports = (sequelize, DataTypes) => {
            thumbnail:{
              type:DataTypes.STRING(2000),
            },
-           create_at:{
-             type:DataTypes.DATE,
-             allowNull:false,
-            },
-           update_at:{
-             type:DataTypes.DATE,
-             allowNull:false,
-           }
       },
       {
         tableName:'usuario',
