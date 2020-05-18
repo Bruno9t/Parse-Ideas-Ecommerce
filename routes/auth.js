@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const passportGoogle = require('../config/passport-auth/passport-google')
+const passportFacebook = require('../config/passport-auth/passport-facebook')
 
 const AccessLoginController = require('../controllers/AccessLoginController')
 
@@ -25,6 +26,15 @@ router.get('/access/google/redirect',passportGoogle.authenticate("google",{
   })
   
 // facebook
+router.get('/access/facebook',passportFacebook.authenticate('facebook'))
+
+router.get('/access/facebook/redirect',passportFacebook.authenticate("facebook",{
+  failureRedirect:'/login'
+}),function(req,res){
+  res.json({user:req.user,session:req.session,})
+})
+
+
 
 
 
