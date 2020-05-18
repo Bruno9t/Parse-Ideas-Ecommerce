@@ -58,7 +58,7 @@ body {
     width: 70px;
   }
   #image-box-g{
-    background-color: rgb(31, 137, 230);
+    background-color: #3C79E6;
     border-right:1px white solid;
 
   }
@@ -67,7 +67,7 @@ body {
     margin:20px;
   }
   #image-box-f{
-    background: blue;
+    background: #3B5998;
     border-left:1px white solid;
 
   }

@@ -10,8 +10,6 @@ passport.use(
         callbackURL:process.env.APP_URL + '/auth/access/google/redirect',
 
     }, async (accessToken, refreshToken, profile, done) => {
-
-        // console.log(profile)
    
         const [user,created] = await User.findOrCreate({
 
