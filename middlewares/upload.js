@@ -1,13 +1,12 @@
 const multer = require('multer')
 const {extname} = require('path')
-const {rootDir} = require('../rootDir')
-const findParentDir = require('./findParent')
+
 
 function multerStorage(whereStorage){
 
       let storage = multer.diskStorage({
         destination(req,file,cb){
-            cb(null,findParentDir(rootDir),whereStorage)
+            cb(null,whereStorage)
         },
       
         filename(req,file,cb){
