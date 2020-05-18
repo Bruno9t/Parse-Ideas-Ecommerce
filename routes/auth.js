@@ -29,7 +29,7 @@ router.get('/access/google/redirect',passportGoogle.authenticate("google",{
 router.get('/access/facebook',passportFacebook.authenticate('facebook'))
 
 router.get('/access/facebook/redirect',passportFacebook.authenticate("facebook",{
-  failureRedirect:'/login'
+  failureRedirect:'/access'
 }),function(req,res){
   res.json({user:req.user,session:req.session,})
 })
