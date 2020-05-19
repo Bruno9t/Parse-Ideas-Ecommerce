@@ -1,31 +1,34 @@
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const { User } = require('../../models');
+const {F_CLIENT_ID,F_CLIENT_SECRET,APP_URL} = process.env
 
 passport.use(
     new FacebookStrategy({
 
-        clientID: process.env.F_CLIENT_ID,
-        clientSecret: process.env.F_CLIENT_SECRET,
-        callbackURL:process.env.APP_URL + '/auth/access/facebook/redirect',
+        clientID: F_CLIENT_ID,
+        clientSecret: F_CLIENT_SECRET,
+        callbackURL: APP_URL + '/auth/access/facebook/redirect',
         fields:['id', 'email','profileUrl','photos', 'gender', 
         'locale', 'name', 'timezone', 'updated_time', 'verified'],
 
     }, async (accessToken, refreshToken, profile, done) => {
+
+        const {id,provider,name,emails,photos} = profile
    
         const [user,created] = await User.findOrCreate({
 
             where:{ 
-                provider_id:profile.id ,
-                provider:profile.provider 
+                provider_id:id,
+                provider:provider 
             },
 
             defaults:{                
-                nome:profile.name.givenName,
-                sobrenome:profile.name.familyName,
-                email:profile.emails[0].value,
+                nome:name.givenName,
+                sobrenome:name.familyName,
+                email:emails[0].value,
                 senha:'',
-                thumbnail:profile.photos[0].value,
+                thumbnail:photos[0].value,
             }
         })
 
