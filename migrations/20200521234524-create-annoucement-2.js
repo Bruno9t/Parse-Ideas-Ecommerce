@@ -13,14 +13,14 @@ module.exports = {
          categoria_id:{
           type:Sequelize.INTEGER.UNSIGNED,
           allowNull:false,
-          references: {model: 'Category', key: 'id_categoria'},
+          references: {model: 'categoria', key: 'id_categoria'},
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE'
          },
          usuario_id:{
           type:Sequelize.INTEGER.UNSIGNED,
           allowNull:false,
-          references: {model: 'User', key: 'id_usuario'},
+          references: {model: 'usuario', key: 'id_usuario'},
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE'
          },
