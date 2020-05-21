@@ -1,4 +1,5 @@
 const {User} = require('../models')
+const bcrypt = require('bcrypt')
 
 const AccessLoginController = {
     index: (req, res) => {
@@ -7,6 +8,8 @@ const AccessLoginController = {
 
     store(req,res){
         let {nome,sobrenome,email,senha} = req.body
+
+        User.create
 
     },
     verify(req,res){

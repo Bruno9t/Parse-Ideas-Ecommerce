@@ -9,8 +9,6 @@ const passport= require('passport')
 const indexRouter = require('./routes/index');
 const announcementsRouter = require('./routes/announcements');
 const accessRouter = require('./routes/auth');
-// const socialmediaRouter = require('./routes/socialmedia');
-// const solutionRouter = require('./routes/solution');
 
 const app = express();
 
