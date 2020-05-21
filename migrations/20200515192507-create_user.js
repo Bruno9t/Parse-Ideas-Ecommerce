@@ -8,7 +8,7 @@ module.exports = {
       allowNull:false,
       primaryKey:true,
       autoIncrement:true,
-      unique: true
+      unique: true,
      },
      nome:{
        type:Sequelize.STRING(45),
