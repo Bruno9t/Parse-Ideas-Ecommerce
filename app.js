@@ -9,6 +9,9 @@ const passport= require('passport')
 const indexRouter = require('./routes/index');
 const announcementsRouter = require('./routes/announcements');
 const accessRouter = require('./routes/auth');
+const planRouter = require('./routes/plan');
+// const socialmediaRouter = require('./routes/socialmedia');
+// const solutionRouter = require('./routes/solution');
 
 const app = express();
 
@@ -34,6 +37,7 @@ app.use(passport.session())
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/auth', accessRouter);
+app.use('/plans', planRouter);
 
 
 // catch 404 and forward to error handler
