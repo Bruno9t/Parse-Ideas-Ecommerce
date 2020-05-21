@@ -18,7 +18,7 @@ passport.use(
 
             where:{ 
                 provider_id:id ,
-                provider:provider 
+                provider, 
             },
 
             defaults:{                

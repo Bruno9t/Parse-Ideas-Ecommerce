@@ -13,7 +13,7 @@ module.exports = {
 
             queryInterface.addColumn('usuario', 'updated_at', {
               type:Sequelize.DATE,
-              allowNull:false
+              allowNull:false,
             }, { transaction: t }),
 
             queryInterface.removeColumn('usuario', 'update_at', { transaction: t }),
