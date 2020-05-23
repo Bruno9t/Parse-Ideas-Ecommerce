@@ -40,7 +40,5 @@ down: (queryInterface, Sequelize) => {
             }, { transaction: t }),
         ])
     })
-}
-
-
+  }
 };

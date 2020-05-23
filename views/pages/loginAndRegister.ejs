@@ -21,14 +21,16 @@
       </button>
       <div class="modal-body">
         <img src="/images/svg/login.svg" alt="Login" id='login'>
-        <form action='/auth/access/login' method="POST" class="mt-4">
+        <form action='/auth/access/login' method="POST" class="mt-4 form-access" id='form-login'>
           <div class="form-group">
             <input type="email" required
             title='Digite seu email' name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+            <ul style='list-style: none;padding: 0;' id='erros1'></ul>
           </div>
           <div class="form-group">
             <input type="password" required 
             title='Digite sua senha' name='senha' class="form-control" id="exampleInputPassword1" placeholder="senha">
+            <ul style='list-style: none;padding: 0;' id='erros2'></ul>
           </div>
           <button type="submit" class="btn btn-success col-md-12" >Entrar</button>
           <p class='par'>ou</p>
@@ -73,30 +75,29 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="modal-body">
-        <img src="/images/svg/register.svg" alt="Login" id='register'>
-        <form action='/auth/access/register' method="POST" class="container mt-4">
+        <img src="/images/svg/register.svg" alt="Registro" id='register'>
+        <form action='/auth/access/register' method="POST" class="container mt-4 form-access" id='form-register'>
           <div class="form-row ">
             <div class='col-md-6 col-sm-12 mb-3'>
             <input type="text" required 
-            title='Digite seu nome' name='nome' class="form-control" id= "exampleInputEmail1" aria-describedby="nameHelp" placeholder="nome">
+            title='Digite seu nome' name='nome' class="form-control" id= "exampleInputName2" aria-describedby="nameHelp" placeholder="nome">
+            <ul style='list-style: none;padding: 0;' id='erros3'></ul>
           </div>
           <div class='col-md-6 col-sm-12 mb-3'>
             <input type="text" 
-            title='Digite seu sobrenome' name='sobrenome' class="form-control" id="exampleInputEmail1" aria-describedby="surnameHelp" placeholder="sobrenome">
+            title='Digite seu sobrenome' name='sobrenome' class="form-control" id="exampleInputSurname2" aria-describedby="surnameHelp" placeholder="sobrenome">
           </div>
           </div>
-          <!-- <div class="form-group">
-            <input type="text" required 
-            title='Digite seu nome de usuário' name='usuario' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="nome de usuário">
-          </div> -->
 
           <div class="form-group">
             <input type="email" required 
-            title='Digite seu email' name='email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="e-mail">
+            title='Digite seu email' name='email' class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="e-mail">
+            <ul style='list-style: none;padding: 0;' id='erros4'></ul>
           </div>
           <div class="form-group">
             <input type="password" required 
-            title="Digite sua senha" name='senha' class="form-control" id="exampleInputPassword1" placeholder="senha">
+            title="Digite sua senha" name='senha' class="form-control" id="exampleInputPassword2" placeholder="senha">
+            <ul style='list-style: none;padding: 0;' id='erros5'></ul>
           </div>
           <div class="mb-2">
             <button type="submit" class="btn btn-success mr-2 col-md-12">Registrar-se</button> 
@@ -134,5 +135,7 @@
   </div>
 </div>
 </main>
+
+<script src="/js/formSend.js"></script>
 
 <%- include('../partials/scripts') %>

@@ -37,6 +37,7 @@ app.use(passport.session())
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/auth', accessRouter);
+
 app.use('/plans', planRouter);
 
 

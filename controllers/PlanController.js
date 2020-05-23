@@ -63,6 +63,7 @@ const PlanController = {
     }
   })
 },
+
 list: (req, res) => {
   paypal.billingPlan.list({'status': 'ACTIVE'},(err, plans) => {
     if(err){
@@ -129,7 +130,7 @@ signPlan: (req, res) => {
     }
   })
 },
-singReturn: (req, res) => {
+signReturn: (req, res) => {
   let email = req.query.email;
   res.send(email)
   // if(pagamentoConluido){

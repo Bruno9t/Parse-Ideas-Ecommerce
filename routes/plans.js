@@ -9,7 +9,7 @@ router.get('/admin/active/:id', PlanController.active);
 
 router.get('/singForm', PlanController.sign);
 router.post('/signPlan', PlanController.signPlan);
-router.get('/singReturn', PlanController.singReturn);
+router.get('/singReturn', PlanController.signReturn);
 
 
 module.exports = router;
