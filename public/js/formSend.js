@@ -35,6 +35,7 @@ inputEmail2.addEventListener('keyup',function(){
 })
 inputSenha2.addEventListener('keyup',function(){
     validarSenha(this,erros5)
+    validarIgualdadeDeSenhas(inputConfSenha2,inputSenha2,erros6)
 })
 inputConfSenha2.addEventListener('keyup',function(){
     validarIgualdadeDeSenhas(this,inputSenha2,erros6)
