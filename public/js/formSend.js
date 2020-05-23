@@ -1,11 +1,14 @@
 let formRegister = document.getElementById('form-register')
 let formLogin = document.getElementById('form-login')
 
+let imgEeyes = document.querySelector('img.eyes')
+
 let erros1 = document.getElementById('erros1')
 let erros2 = document.getElementById('erros2')
 let erros3 = document.getElementById('erros3')
 let erros4 = document.getElementById('erros4')
 let erros5 = document.getElementById('erros5')
+let erros6 = document.getElementById('erros6')
 
 let inputEmail = document.getElementById('exampleInputEmail1')
 let inputSenha = document.getElementById('exampleInputPassword1')
@@ -14,6 +17,7 @@ let inputNome2 = document.getElementById('exampleInputName2')
 let inputSobrenome2 = document.getElementById('exampleInputSurname2')
 let inputEmail2 = document.getElementById('exampleInputEmail2') 
 let inputSenha2 = document.getElementById('exampleInputPassword2')
+let inputConfSenha2 = document.getElementById('exampleInputConfPassword2')
 
 let li;
 
@@ -32,6 +36,19 @@ inputEmail2.addEventListener('keyup',function(){
 inputSenha2.addEventListener('keyup',function(){
     validarSenha(this,erros5)
 })
+inputConfSenha2.addEventListener('keyup',function(){
+    validarIgualdadeDeSenhas(this,inputSenha2,erros6)
+})
+imgEeyes.addEventListener('click',function(){
+
+    if(inputSenha2.type =='text'){
+        inputSenha2.type = 'password'
+        inputConfSenha2.type = 'password'
+    }else{
+        inputSenha2.type = 'text'
+        inputConfSenha2.type = 'text'
+    }
+})
 
 formRegister.addEventListener('submit',function(e){
     e.preventDefault()
@@ -41,6 +58,7 @@ formRegister.addEventListener('submit',function(e){
         sobrenome:inputSobrenome2.value.trim(),
         email:inputEmail2.value.trim(),
         senha:inputSenha2.value.trim(),
+        confSenha:inputConfSenha2.value.trim(),
     },validarRegistro)
 
 })
@@ -99,10 +117,10 @@ function validarEmail(inputEmail,errorList){
 
 function validarSenha(inputSenha,errorList){
     if(inputSenha.value.length < 8){
-        inputSenha.style.backgroundColor = '#E05D54'
+        return inputSenha.style.backgroundColor = '#E05D54'
     }else{
         limparErro(errorList)
-        inputSenha.style.backgroundColor = '#6DE677'
+        return inputSenha.style.backgroundColor = '#6DE677'
     }
 }
 
@@ -115,6 +133,15 @@ function validarNome(inputNome,errorList){
     }
 
 
+}
+
+function validarIgualdadeDeSenhas(inputConfSenha,inputSenha,errorList){
+    if(inputConfSenha.value!==inputSenha.value){
+        return inputConfSenha.style.backgroundColor = '#E05D54'
+    }else{
+        limparErro(errorList)
+        return inputConfSenha.style.backgroundColor = '#6DE677'
+    }
 }
 
 function validarLogin(data){
@@ -161,6 +188,7 @@ function validarRegistro(data){
     if(!data.errors.length){
 
         window.location = window.location.origin+'/announcements'
+
     }else{
     data.errors.forEach(function(error){
         if(error.param == 'email'){
@@ -177,10 +205,8 @@ function validarRegistro(data){
                 `
                 erros4.appendChild(li)
 
-
         }else if(error.param=='senha'){
             inputSenha2.style.backgroundColor = '#E05D54'
-
 
                 li = document.createElement('p')
                 li.setAttribute('style',
@@ -191,8 +217,6 @@ function validarRegistro(data){
                 <b style='color:red'>${error.msg}</b>
                 `
                 erros5.appendChild(li)
-
-    
 
         }else if(error.param =='nome'){
             inputNome2.style.backgroundColor = '#E05D54'
@@ -207,6 +231,18 @@ function validarRegistro(data){
                 `
                 erros3.appendChild(li)
 
+        }else if(error.param =='confSenha'){
+            inputConfSenha2.style.backgroundColor = '#E05D54'
+
+                li = document.createElement('p')
+                li.setAttribute('style',
+                'font-size:13px')
+                limparErro(erros6)
+
+                li.innerHTML = `
+                <b style='color:red'>${error.msg}</b>
+                `
+                erros6.appendChild(li)
 
         }
     }) 
@@ -214,7 +250,7 @@ function validarRegistro(data){
     
 }
 
-function enviarDados(pathURL,data,validarAccess){
+function enviarDados(pathURL,data,validarAcesso){
 
     let config = {
         method:'post',
@@ -229,7 +265,7 @@ function enviarDados(pathURL,data,validarAccess){
         return response.json()
     }).then(datas => {
 
-        validarAccess(datas)
+        validarAcesso(datas)
 
     }).catch(function(err){
  
@@ -244,3 +280,4 @@ function limparErro(l){
         l.innerHTML=''
     }
 }
+

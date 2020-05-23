@@ -12,6 +12,7 @@ const AccessLoginController = {
         let listaDeErros = validationResult(req)
 
         console.log(listaDeErros)
+        console.log(req.body)
 
         if(listaDeErros.errors.length === 0){
             let {nome,sobrenome,email,senha} = req.body

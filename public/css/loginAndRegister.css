@@ -76,6 +76,21 @@ body {
   font-size: 1.8rem;
 }
 
+div.conf-pass{
+  position: relative;
+}
+
+img.eyes{
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  right: 0;
+  padding: 5px;
+  top:50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 /* fim */
 
 .box {

@@ -14,8 +14,18 @@ router.post('/access/register',[
   check('nome').isAlpha().withMessage('Seu nome só pode conter letras!'),
   check('nome').isLength({min:3}).withMessage('O nome precisa ter pelo menos 3 letras!'),
   check('email').isEmail().withMessage('Formato de e-mail inválido!'),
-  check('senha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),  
+  check('senha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),
+  body('confSenha').custom((value,{req})=>{
+      if (value !== req.body.senha) {
+          throw new Error("As senhas não são iguais!");
+      } else {
+          return value;
+      }
+  })
+  ,
+    
  ],AccessLoginController.store)
+ 
 
 router.post('/access/login',[
   check('email').isEmail().withMessage('Formato de e-mail inválido!'),
