@@ -43,9 +43,12 @@ inputConfSenha2.addEventListener('keyup',function(){
 imgEeyes.addEventListener('click',function(){
 
     if(inputSenha2.type =='text'){
+        imgEeyes.src = "/images/svg/illuminati.svg"
         inputSenha2.type = 'password'
         inputConfSenha2.type = 'password'
     }else{
+        imgEeyes.src = "/images/svg/eyes.svg"
+
         inputSenha2.type = 'text'
         inputConfSenha2.type = 'text'
     }
