@@ -103,12 +103,11 @@ function validarEmail(inputEmail,errorList){
     }
 
     point = splitEmail[1].split('.')
-    console.log(parseInt(point[1]),point[1])
     
     if(point.length<2 ||
              point[1].length < 2 ||
              point[0].length ==0 ||
-             !isNaN(parseInt(point[1]))
+             /\d/.test(point[1])
              ){
 
         return inputEmail.style.backgroundColor = '#E05D54'
@@ -130,9 +129,13 @@ function validarSenha(inputSenha,errorList){
 }
 
 function validarNome(inputNome,errorList){
-    if(inputNome.value.length < 3){
+    let pattern = /(\d|\s)/
+
+    if(inputNome.value.length < 3 || pattern.test(inputNome.value)){
+
         inputNome.style.backgroundColor = '#E05D54'
     }else{
+        
         limparErro(errorList)
         inputNome.style.backgroundColor = '#6DE677'
     }

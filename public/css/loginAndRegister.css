@@ -11,7 +11,10 @@ div.modal-body,div.modal-body form{
   padding: 0;
 }
 
-
+button.close{
+  position: absolute;
+  right: 2px;
+}
 
 div.modal-content{
   border:none;
