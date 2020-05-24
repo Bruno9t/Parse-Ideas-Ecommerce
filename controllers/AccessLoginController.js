@@ -7,41 +7,52 @@ const AccessLoginController = {
         res.render('pages/loginAndRegister', {css: 'loginAndRegister.css'})
     },
 
-    store(req,res){
+    async store(req,res){
 
         let listaDeErros = validationResult(req)
 
-        console.log(listaDeErros)
-        console.log(req.body)
-
         if(listaDeErros.errors.length === 0){
+            
             let {nome,sobrenome,email,senha} = req.body
-            //cadastrar usuário
-            console.log('sem erro')
+
+            senha = await bcrypt.hash(senha,10)
+
+            await User.create({nome,sobrenome,email,senha})
+            
             res.json(listaDeErros)
 
         }else{
-            console.log('com erro')
+
             res.json(listaDeErros)
 
         }
 
     },
-    verify(req,res){
-        let listaDeErros = validationResult(req)
+    async verify(req,res){
 
-        console.log(listaDeErros)
+    try{
+        
+        let listaDeErros = validationResult(req)
 
         if(listaDeErros.errors.length === 0){
         let {email,senha} = req.body
-            //verificar email e senha
-            console.log('sem erro')
-         res.json(listaDeErros)
+
+        let user = await User.findOne({where:{email}})
+
+        if(user && await bcrypt.compare(senha,user.senha)){
+            console.log('estive aqui')
+            res.json({errors:[]})
+        }
+
+        res.json({cod:1,msg:'Usuário ou senha inválido'})
+
         }else{
-            console.log('com erro')
             res.json(listaDeErros)
         }
 
+    }catch (error) {
+        return new Error(error)
+    }
         
     }
 }

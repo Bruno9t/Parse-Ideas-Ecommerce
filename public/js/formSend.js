@@ -1,23 +1,24 @@
-let formRegister = document.getElementById('form-register')
-let formLogin = document.getElementById('form-login')
+let formRegister = document.getElementById('form-register'),
+formLogin = document.getElementById('form-login')
 
 let imgEeyes = document.querySelector('img.eyes')
 
-let erros1 = document.getElementById('erros1')
-let erros2 = document.getElementById('erros2')
-let erros3 = document.getElementById('erros3')
-let erros4 = document.getElementById('erros4')
-let erros5 = document.getElementById('erros5')
-let erros6 = document.getElementById('erros6')
+let erros0 = document.getElementById('erros0'),
+erros1 = document.getElementById('erros1'),
+erros2 = document.getElementById('erros2'),
+erros3 = document.getElementById('erros3'),
+erros4 = document.getElementById('erros4'),
+erros5 = document.getElementById('erros5'),
+erros6 = document.getElementById('erros6')
 
-let inputEmail = document.getElementById('exampleInputEmail1')
-let inputSenha = document.getElementById('exampleInputPassword1')
+let inputEmail = document.getElementById('exampleInputEmail1'),
+inputSenha = document.getElementById('exampleInputPassword1')
 
-let inputNome2 = document.getElementById('exampleInputName2')
-let inputSobrenome2 = document.getElementById('exampleInputSurname2')
-let inputEmail2 = document.getElementById('exampleInputEmail2') 
-let inputSenha2 = document.getElementById('exampleInputPassword2')
-let inputConfSenha2 = document.getElementById('exampleInputConfPassword2')
+let inputNome2 = document.getElementById('exampleInputName2'),
+inputSobrenome2 = document.getElementById('exampleInputSurname2'),
+inputEmail2 = document.getElementById('exampleInputEmail2'),
+inputSenha2 = document.getElementById('exampleInputPassword2'),
+inputConfSenha2 = document.getElementById('exampleInputConfPassword2')
 
 let li;
 
@@ -25,6 +26,7 @@ inputEmail.addEventListener('keyup',function(){
     validarEmail(this,erros1)
  })
 inputSenha.addEventListener('keyup',function(){
+
     validarSenha(this,erros2)
 })
 inputNome2.addEventListener('keyup',function(){
@@ -53,7 +55,6 @@ imgEeyes.addEventListener('click',function(){
         inputConfSenha2.type = 'text'
     }
 })
-
 formRegister.addEventListener('submit',function(e){
     e.preventDefault()
 
@@ -61,8 +62,8 @@ formRegister.addEventListener('submit',function(e){
         nome:inputNome2.value.trim(),
         sobrenome:inputSobrenome2.value.trim(),
         email:inputEmail2.value.trim(),
-        senha:inputSenha2.value.trim(),
-        confSenha:inputConfSenha2.value.trim(),
+        senha:inputSenha2.value,
+        confSenha:inputConfSenha2.value,
     },validarRegistro)
 
 })
@@ -149,12 +150,31 @@ function validarIgualdadeDeSenhas(inputConfSenha,inputSenha,errorList){
 }
 
 function validarLogin(data){
+    if(data.cod == 1){
+        inputEmail.style.backgroundColor = '#E05D54'
+        inputSenha.style.backgroundColor = '#E05D54'
+
+        li = document.createElement('li')
+        li.setAttribute('style',
+        'font-size:13px')
+        limparErro(erros0)
+
+        li.innerHTML = `
+        <b style='color:red'>${data.msg}</b>
+        `
+        erros0.appendChild(li)
+
+    }
+
+
     if(!data.errors.length){
         window.location = window.location.origin+'/announcements'
     }else{
     data.errors.forEach(function(error){
+
         if(error.param == 'email'){
             inputEmail.style.backgroundColor = '#E05D54'
+            limparErro(erros0)
 
                 li = document.createElement('li')
                 li.setAttribute('style',
@@ -170,8 +190,7 @@ function validarLogin(data){
 
         }else if(error.param=='senha'){
             inputSenha.style.backgroundColor = '#E05D54'
-
-
+            limparErro(erros0)
 
                 li = document.createElement('li')
                 li.setAttribute('style',
