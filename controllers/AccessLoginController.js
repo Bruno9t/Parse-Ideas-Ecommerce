@@ -40,7 +40,7 @@ const AccessLoginController = {
         let user = await User.findOne({where:{email}})
 
         if(user && await bcrypt.compare(senha,user.senha)){
-            console.log('estive aqui')
+            //criar sessão para o usuário
             res.json({errors:[]})
         }
 

@@ -298,9 +298,11 @@ function enviarDados(pathURL,data,validarAcesso){
 
 }
 
-function limparErro(l){
-    if(l!=undefined){
-        l.innerHTML=''
+function limparErro(listaDeErros){
+    if(listaDeErros!=undefined){
+        return listaDeErros.innerHTML=''
     }
+
+    return true;
 }
 
