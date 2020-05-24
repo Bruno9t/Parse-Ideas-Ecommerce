@@ -11,6 +11,18 @@ div.modal-body,div.modal-body form{
   padding: 0;
 }
 
+
+
+div.modal-content{
+  border:none;
+  box-shadow: 5px 5px 10px rgb(59, 57, 57);
+}
+
+div.modal-body form input:focus{
+  box-shadow: 5px 3px 7px #d1c6c6;
+  background-color: #f2f2f2;
+}
+
 .content {
   height: 80vh;
 }
@@ -26,7 +38,6 @@ div.modal-body,div.modal-body form{
 
 /* botões google e facebook */
   .content-reg{
-
     text-align: center;
   }
   #image-reg{
