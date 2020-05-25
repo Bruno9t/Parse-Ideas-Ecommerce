@@ -11,5 +11,9 @@ router.get('/singForm', PlanController.sign);
 router.post('/signPlan', PlanController.signPlan);
 router.get('/singReturn', PlanController.signReturn);
 
+router.get('/store', PlanController.store);
+// router.post('/plans', PlanController.store);
+
 
 module.exports = router;
+

@@ -136,6 +136,10 @@ signReturn: (req, res) => {
   // if(pagamentoConluido){
   //   TabelaDeClientes.find(email).addPlano(planoBasico)
   // }
+},
+
+store: (req, res) => {
+  return res.render('pages/plans', {css: 'plans.css'})
 }
 
 }

@@ -1,7 +1,6 @@
 const AnnouceController = {
     index: async (req, res) => {
         
-
         const {category} = req.query
 
 
@@ -10,6 +9,9 @@ const AnnouceController = {
         console.log(req.session)
 
         res.render('pages/searchAnnouncements', {css: 'searchEcommerce.css'})
+    },
+    create: async (req, res) => {
+        return res.render('pages/createAnnoucement', {css: 'createAnnoucement.css'})
     }
 }
 

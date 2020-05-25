@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const announcementsRouter = require('./routes/announcements');
 const accessRouter = require('./routes/auth');
 const planRouter = require('./routes/plans');
+const adminRouter = require('./routes/admin');
 // const socialmediaRouter = require('./routes/socialmedia');
 // const solutionRouter = require('./routes/solution');
 
@@ -36,8 +37,8 @@ app.use(passport.session())
 
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
+app.use('/admin', adminRouter);
 app.use('/auth', accessRouter);
-
 app.use('/plans', planRouter);
 
 

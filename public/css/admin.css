@@ -3,11 +3,6 @@ main>h2{
     margin:30px;
 }
 
-button.btn.btn-primary{
-    background: #0054AD;
-}
-
-
 .card{
     border:none;
     background: transparent;
@@ -79,6 +74,7 @@ button.btn.btn-primary{
 
 #accordion>.container-fluid{
     text-align: center;
+    scroll-snap-type: x mandatory
 }
 
 
@@ -105,12 +101,11 @@ div#headingFive.btn[aria-expanded="true"],
 div#headingSix.btn[aria-expanded="true"]{
     box-shadow: 5px 5px 10px gray;
     color:white;
-    font-weight: bold;
     border:none;
 }
 
 div#headingOne.btn[aria-expanded="true"]{
-    background-color: #4040DD;
+    background-color: rgb(104, 104, 228);
 }
 
 div#headingTwo.btn[aria-expanded="true"]{
@@ -162,11 +157,11 @@ input{
 
 
 
-#button1,#button2{
+#butt{
     margin:30px auto;
 }
 
-#button1 button, #button2 button{
+#butt button{
     width: 230px;
     margin:10px;
 }
@@ -314,7 +309,7 @@ div#headingOne.btn[aria-expanded="true"] img#heart {
     }
 }
 
-/* @media (max-width:500px){
+@media (max-width:500px){
 
     #accordion>.container-fluid div.item{
         display: inline-block;
@@ -330,4 +325,4 @@ div#headingOne.btn[aria-expanded="true"] img#heart {
         scroll-snap-type: x mandatory
     }
     
-} */
+}
