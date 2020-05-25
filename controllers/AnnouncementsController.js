@@ -4,7 +4,7 @@ const AnnouceController = {
 
         const {category} = req.query
 
-
+        
         // Fazer query no banco de dados conforme o parametro enviado
 
         console.log(req.session)
