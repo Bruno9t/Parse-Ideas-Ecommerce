@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/img/icon-lamp.png" type="image/x-icon">
-    <title>Planos de anúncio</title>
+<%- include('../partials/header') %> 
 
-
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../css/viewAdPlans.css">
-
-        <!-- Base CSS -->      
-    <link rel="stylesheet" href="../css/base.css">
-
-</head>
-<body>
-    <header>
-        <a href="/"><img src="/images/img/ParseIdeias-logo(1).png" alt=""></a>
-    </header>
     <main>
         <section id='info'>
             <div class='container'>
@@ -94,7 +72,7 @@
             </article>
 
             <div class='redirect'>
-                <a href='./announce.html'>
+                <a href='/plans/store.html'>
                     <button class='btn btn-md btn-primary'>Quero vender meu negócio</button>
                 </a>
                 <p>Primeiro anúncio grátis por 7 dias</p>
@@ -267,69 +245,6 @@
         </section>
     </main>
 
-    <!-- Inicio Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <img src="../images/ParseIdeias-logo-white.png" alt="" width="100%">
-                    <!-- <hr> -->
-                    <p class="m-0">Siga-nos nas redes sociais</p>
-                    <div class="icons-socialmedia">
-                        <a href="#" class="mr-2"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="mr-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="mr-2"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2 class="mt-5">Sobre Nós</h2>
-
-                    <nav>
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#">Quem Somos</a></li>
-                            <li class="list-group-item"><a href="#">Fale Conosco</a></li>
-                            <li class="list-group-item"><a href="#">Ajuda</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2 class="mt-5">Comprar um Negócio</h2>
-                    <nav>
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#">E-Commerce</a></li>
-                            <li class="list-group-item"><a href="#">Redes Sociais</a></li>
-                            <li class="list-group-item"><a href="#">Soluções</a></li>
-                            <li class="list-group-item"><a href="#">Páginas Web à Venda</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        
-        <p class="text-center py-3 m-0">&copy; Copyright 2020, Parse Ideias, All rights reserved</p>
-    </footer>
-    <!-- Fim Footer -->
-
-    <!-- Import Jquery -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script> -->
-
-    <script src="../js/jquery-3.4.1.min.js"></script>
-
-    <!-- Import Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-
-    <!-- Import Bootstrap JS
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script> -->
-
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Import Font Awesome -->
-    <script src="https://kit.fontawesome.com/c439770d8e.js" crossorigin="anonymous"></script>
-</body>
-</html>
+    <%- include('../partials/footer') %> 
+    <script src="/js/searchBar.js"></script>
+    <%- include('../partials/scripts') %> 
