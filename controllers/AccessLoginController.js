@@ -19,7 +19,8 @@ const AccessLoginController = {
 
             await User.create({nome,sobrenome,email,senha})
             
-            res.json(listaDeErros)
+            //res.json(listaDeErros)
+            return res.render('admin', {css: 'admin.css'})
 
         }else{
 
