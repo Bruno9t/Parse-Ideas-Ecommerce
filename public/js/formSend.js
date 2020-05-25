@@ -80,10 +80,12 @@ formLogin.addEventListener('submit',function(e){
 function validarEmail(inputEmail,errorList){
     let emailValid = inputEmail.value
     let splitEmail = inputEmail.value.split('@')
-    let pattern = /[#$%*&()!/\<>,;+'"{}]/
+    let pattern = /[#$%*&()!/\<>, ;+'"{}]/
     let point;
 
-    if(!emailValid.includes('@') || emailValid.includes(' ') ){ 
+    if(!emailValid.includes('@') ||
+     pattern.test(emailValid)
+     ){ 
 
         return inputEmail.style.backgroundColor = '#E05D54'
 
@@ -91,13 +93,12 @@ function validarEmail(inputEmail,errorList){
              splitEmail[0].length<1 || 
              splitEmail[1].length<3 ||
              splitEmail[0][0]=='.' ||
-             !isNaN(parseInt(splitEmail[0]))||
-             pattern.test(splitEmail[0])
+             !isNaN(parseInt(splitEmail[0]))
              ){
  
             return inputEmail.style.backgroundColor = '#E05D54'
 
-    }else if(!emailValid.includes('.') || emailValid.includes(' ') ){
+    }else if(!emailValid.includes('.')){
 
         return inputEmail.style.backgroundColor = '#E05D54'
 
