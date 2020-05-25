@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING(45),
             allowNull:false,
           },
-          create_at:{
+          created_at:{
             type:DataTypes.DATE,
             allowNull:false
            },
-          update_at:{
+          updated_at:{
             type:DataTypes.DATE,
             allowNull:false,
           }
@@ -27,6 +27,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
   
+    Category.associate = models => {
+      Category.hasMany(models.Announcement, {
+        foreignKey: 'categoria_id',
+        as: 'anuncios'
+      })
+    }
+
     // User.associate = (models) => {
     //   
     // };

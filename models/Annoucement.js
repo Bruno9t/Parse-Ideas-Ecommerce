@@ -54,6 +54,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
   
+    Announcement.associate = models => {
+      Announcement.belongsTo(models.Category, {
+        foreignKey: 'categoria_id',
+        as: 'categoria'
+      })
+    }
+
     // User.associate = (models) => {
     //   
     // };

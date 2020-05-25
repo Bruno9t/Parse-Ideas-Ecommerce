@@ -73,9 +73,9 @@
                 </div>
                 </div>
                 <div class="col-md-8 col-sm-12">
-                    <h2 class="mt-5 text-left"><strong><%= category %> à Venda</strong></h2>
+                    <h2 class="mt-5 text-left"><strong><%= category.nome %> à Venda</strong></h2>
                     <p>Excelentes oportunidades de negócios em todo o Brasil.</p>
-                   <div class="row">
+                   <div class="row" id="#cardParent">
                     <div class="col-md-6 col-sm-12 my-4">
                         <!-- Card -->
                         <div class="card">
@@ -83,87 +83,7 @@
                             <!-- Adiciona Tag de Destaque -->
                             <span class="spotlight p-2">Destaque</span>
                             <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-<%= category %> p-2"><%= category %></span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
-                            </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-ecommerce p-2">E-commerce</span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
-                            </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-ecommerce p-2">E-commerce</span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
-                            </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-ecommerce p-2">E-commerce</span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
-                            </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-ecommerce p-2">E-commerce</span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
-                            </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-ecommerce p-2">E-commerce</span>
+                            <span class="categorie tag-<%= category.id_categoria %> p-2"><%= category.nome %></span>
                             <div class="card-body">
                                 <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
                                 <p class="card-text">R$ 50.000,00</p>
@@ -174,6 +94,7 @@
                     </div>
                     
                    </div>
+                   
                 </div>
             </div>
             <!-- Fim da Primeira Linha -->
@@ -258,7 +179,8 @@
     <!-- Fim da Section Recent Announcements -->
 
     
-
+    <script> announces = <%- JSON.stringify(announces) %></script>
+    <script src="/public/js/announceSearch.js"></script>
     <%- include('../partials/footer') %> 
     <script src="/js/searchBar.js"></script>
     <%- include('../partials/scripts') %> 
