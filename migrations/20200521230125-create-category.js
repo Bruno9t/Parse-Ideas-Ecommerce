@@ -2,7 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-   
       return queryInterface.createTable('categoria', { 
         id_categoria: {
           type:Sequelize.INTEGER.UNSIGNED,
@@ -24,7 +23,6 @@ module.exports = {
           allowNull:false,
         }
       });
-
   },
 
   down: (queryInterface, Sequelize) => {
