@@ -80,7 +80,7 @@ formLogin.addEventListener('submit',function(e){
 function validarEmail(inputEmail,errorList){
     let emailValid = inputEmail.value
     let splitEmail = inputEmail.value.split('@')
-    let pattern = /[#$%*&()!/\<>, ;+'"{}]/
+    let pattern = /[#$%*&()=!/\<>, ;+'"{}]/
     let point;
 
     if(!emailValid.includes('@') ||
