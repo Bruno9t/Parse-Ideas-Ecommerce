@@ -79,8 +79,8 @@ formLogin.addEventListener('submit',function(e){
 
 function validarEmail(inputEmail,errorList){
     let emailValid = inputEmail.value
-
     let splitEmail = inputEmail.value.split('@')
+    let pattern = /[#$%*&()!/\<>,;+'"{}]/
     let point;
 
     if(!emailValid.includes('@') || emailValid.includes(' ') ){ 
@@ -91,7 +91,8 @@ function validarEmail(inputEmail,errorList){
              splitEmail[0].length<1 || 
              splitEmail[1].length<3 ||
              splitEmail[0][0]=='.' ||
-             !isNaN(parseInt(splitEmail[0]))
+             !isNaN(parseInt(splitEmail[0]))||
+             pattern.test(splitEmail[0])
              ){
  
             return inputEmail.style.backgroundColor = '#E05D54'
@@ -135,7 +136,7 @@ function validarNome(inputNome,errorList){
 
         inputNome.style.backgroundColor = '#E05D54'
     }else{
-        
+
         limparErro(errorList)
         inputNome.style.backgroundColor = '#6DE677'
     }
@@ -168,7 +169,6 @@ function validarLogin(data){
         erros0.appendChild(li)
 
     }
-
 
     if(!data.errors.length){
         window.location = window.location.origin+'/announcements'
