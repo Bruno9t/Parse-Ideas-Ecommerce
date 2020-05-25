@@ -3,15 +3,13 @@ const AnnouceController = {
         
         const {category} = req.query
 
-
+        
         // Fazer query no banco de dados conforme o parametro enviado
 
         console.log(req.session)
 
-        res.render('pages/searchAnnouncements', {css: 'searchEcommerce.css'})
-    },
-    create: async (req, res) => {
-        return res.render('pages/createAnnoucement', {css: 'createAnnoucement.css'})
+        res.render('pages/searchAnnouncements', 
+        {css: 'searchEcommerce.css',category: category})
     }
 }
 
