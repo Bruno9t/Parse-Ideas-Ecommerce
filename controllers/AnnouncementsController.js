@@ -9,7 +9,8 @@ const AnnouceController = {
 
         console.log(req.session)
 
-        res.render('pages/searchAnnouncements', {css: 'searchEcommerce.css'})
+        res.render('pages/searchAnnouncements', 
+        {css: 'searchEcommerce.css',category: category})
     }
 }
 
