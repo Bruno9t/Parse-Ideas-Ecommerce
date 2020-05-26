@@ -2,8 +2,8 @@ const { Announcement, Category } = require('../models')
 
 const AnnouceController = {
     index: async (req, res) => {
-    
-        const {id_category} = req.query
+        //esse valor 1 é pra caso o usuário não passe nenhum id(valor padrão)
+        const {id_category = 1} = req.query
 
         let category = await Category.findByPk(id_category)
         let announces = await Announcement.findAll({

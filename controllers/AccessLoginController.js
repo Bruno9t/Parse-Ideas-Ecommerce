@@ -42,8 +42,7 @@ const AccessLoginController = {
 
         if(user && await bcrypt.compare(senha,user.senha)){
             //criar sessão para o usuário
-            //res.json({errors:[]})
-            return res.render('admin', {css: 'admin.css'})
+            res.json({errors:[]})
         }
 
         res.json({cod:1,msg:'Usuário ou senha inválido'})

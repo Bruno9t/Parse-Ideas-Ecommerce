@@ -107,9 +107,9 @@ function validarEmail(inputEmail,errorList){
     point = splitEmail[1].split('.')
     
     if(point.length<2 ||
-             point[1].length < 2 ||
-             point[0].length ==0 ||
-             /\d/.test(point[1])
+       point[1].length < 2 ||
+       point[0].length ==0 ||
+       /\d/.test(point[1])
              ){
 
         return inputEmail.style.backgroundColor = '#E05D54'
