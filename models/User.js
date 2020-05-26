@@ -39,9 +39,9 @@ module.exports = (sequelize, DataTypes) => {
       }
     );
   
-    // User.associate = (models) => {
-    //   
-    // };
+    User.associate = (models) => {
+      User.belongsToMany(models.Plan, { foreignKey: 'usuario_id', through: 'usuario_plano', as: 'user_plan'})
+    };
   
     return User;
   };
