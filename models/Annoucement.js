@@ -57,12 +57,17 @@ module.exports = (sequelize, DataTypes) => {
     Announcement.associate = models => {
       Announcement.belongsTo(models.Category, {
         foreignKey: 'categoria_id',
-        as: 'categoria'
+        as: 'categoria',
       })
 
       Announcement.hasMany(models.Message,{
         foreignKey:'anuncio_id',
-        as:'mensagens'
+        as:'mensagens',
+      })
+
+      Announcement.hasMany(models.File,{
+        foreignKey:'anuncio_id',
+        as:'arquivos',
       })
     }
   
