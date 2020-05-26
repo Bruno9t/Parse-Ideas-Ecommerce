@@ -59,11 +59,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'categoria_id',
         as: 'categoria'
       })
-    }
 
-    // User.associate = (models) => {
-    //   
-    // };
+      Announcement.hasMany(models.Message,{
+        foreignKey:'anuncio_id',
+        as:'mensagens'
+      })
+    }
   
     return Announcement;
   };
