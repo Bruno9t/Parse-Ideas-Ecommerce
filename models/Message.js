@@ -10,29 +10,29 @@ module.exports = (sequelize, DataTypes) => {
             unique: true
            },
         usuario_id:{
-            type:Sequelize.INTEGER.UNSIGNED,
+            type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false,
            },
         anuncio_id:{
-            type:Sequelize.INTEGER.UNSIGNED,
+            type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false,
            },
         nome:{
-            type:Sequelize.STRING(45),
+            type:DataTypes.STRING(45),
             allowNull:false,
         },
         email:{
-            type:Sequelize.STRING(45),
+            type:DataTypes.STRING(45),
             allowNull:false,
         },
         celular:{
-            type:Sequelize.STRING(30),
+            type:DataTypes.STRING(30),
         },
         telefone:{
-            type:Sequelize.STRING(30),
+            type:DataTypes.STRING(30),
         },
         mensagem:{
-            type:Sequelize.TEXT,
+            type:DataTypes.TEXT,
             allowNull:false
         }
         },
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     );
 
     Message.associate = models =>{
-        
+
         Message.belongsTo(models.User,{
             foreignKey:'usuario_id',
             as:'usuario'
