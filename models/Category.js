@@ -34,10 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    // User.associate = (models) => {
-    //   
-    // };
-  
     return Category;
   };
 

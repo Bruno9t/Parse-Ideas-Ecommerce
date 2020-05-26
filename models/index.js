@@ -19,7 +19,25 @@ if (config.use_env_variable) {
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Conexão estabilizada com sucesso ;)');
+    let hours = new Date().getHours()
+    let message;
+
+    if(hours >=5 && hours < 12) {
+      message = 'Tenha um bom dia ;)'
+  }else if(hours >= 12 && hours < 18){
+      message = 'Tenha uma boa tarde ;)'
+  }else if(hours >= 18 && hours < 0){
+      message = 'Tenha uma boa noite ;)'
+  }else if(hours >= 0 && hours < 5){
+      message = 'Tenha uma boa madrugada ;)'
+  }
+
+    console.log(`
++----------------------------------------------------------------+
+Parabéns! Conexão com o banco de dados estabilizada com sucesso!!!
+${message}
++----------------------------------------------------------------+
+`);
   })
   .catch(err => {
     console.error('=( Não foi possível conectar com o banco de dados: ', err);
