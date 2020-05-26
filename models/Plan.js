@@ -30,5 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         tableName:'plano',
       }
     );
+
+    Plan.associate = models => {
+      Plan.belongsToMany(models.User, { foreignKey: 'plano_id', through: 'usuario_plano', as: 'plan_user'})
+    }
     return Plan;
   };
