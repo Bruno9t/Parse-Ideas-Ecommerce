@@ -5,4 +5,6 @@ const HomeController = require('../controllers/HomeController')
 /* GET home page. */
 router.get('/', HomeController.index);
 
+router.post('/recents',HomeController.list)
+
 module.exports = router;

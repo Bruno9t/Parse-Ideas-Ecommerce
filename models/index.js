@@ -22,13 +22,18 @@ sequelize
     let hours = new Date().getHours()
     let message;
 
+
     if(hours >=5 && hours < 12) {
+
       message = 'Tenha um bom dia ;)'
     }else if(hours >= 12 && hours < 18){
+
       message = 'Tenha uma boa tarde ;)'
-    }else if(hours >= 18 && hours < 0){
+    }else if(hours >= 18){
+
       message = 'Tenha uma boa noite ;)'
     }else if(hours >= 0 && hours < 5){
+
       message = 'Tenha uma boa madrugada ;)'
     }
 
