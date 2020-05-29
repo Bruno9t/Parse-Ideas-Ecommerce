@@ -12,7 +12,6 @@ function verMais(){
     enviarDados('/recents',{
         count,
     },modelarDados)
-
 }
 
 function modelarDados(dados,columns){
@@ -33,18 +32,19 @@ function modelarDados(dados,columns){
             if(anuncios[j] == undefined){
                 break
             }    
+
             row.innerHTML+=`
             <div class="col-md-${12/columns} col-sm-12">
-            <div class="card">
-                <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                <span class="categorie tag-socialmedia p-2">${anuncios[j].categoria.nome}</span>
-                <div class="card-body">
-                    <h5 class="card-title">${anuncios[j].descricao}</h5>
-                    <p class="card-text">${anuncios[j].preco}</p>
-                    <a href="#" class="btn btn-primary">+ Detalhes</a>
+                <div class="card">
+                    <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
+                    <span class="categorie tag-socialmedia p-2">${anuncios[j].categoria.nome}</span>
+                    <div class="card-body">
+                        <h5 class="card-title">${anuncios[j].descricao}</h5>
+                        <p class="card-text">${anuncios[j].preco}</p>
+                        <a href="#" class="btn btn-primary">+ Detalhes</a>
+                    </div>
                 </div>
             </div>
-        </div>
             ` 
             container.appendChild(row)
 
@@ -61,7 +61,6 @@ function enviarDados(pathURL,data,modelarDados){
         headers:{
             'Content-type':'application/json'
         }
-
     }).then(response=>{
         return response.json()
     }).then(dados=>{

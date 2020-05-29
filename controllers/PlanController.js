@@ -11,7 +11,7 @@ paypal.configure({
 
 const PlanController = {
   index: (_req, res) => {
-    res.render('pages/viewAdPlans', {css:'viewAdPlans'});
+    res.render('pages/viewAdPlans', {css:'viewAdPlans.css'});
   }, 
   create: (req, res) => {
     let plan = {
