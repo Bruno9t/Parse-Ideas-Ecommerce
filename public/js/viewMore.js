@@ -37,10 +37,10 @@ function modelarDados(dados,columns){
             <div class="col-md-${12/columns} col-sm-12">
                 <div class="card">
                     <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                    <span class="categorie tag-socialmedia p-2">${anuncios[j].categoria.nome}</span>
+                <span class="categorie tag-${formatarCategoria(anuncios[j].categoria.nome)} p-2">${anuncios[j].categoria.nome}</span>
                     <div class="card-body">
                         <h5 class="card-title">${anuncios[j].descricao}</h5>
-                        <p class="card-text">${anuncios[j].preco}</p>
+                        <p class="card-text">R$ ${formatarPreco(anuncios[j].preco)}</p>
                         <a href="#" class="btn btn-primary">+ Detalhes</a>
                     </div>
                 </div>
@@ -65,7 +65,18 @@ function enviarDados(pathURL,data,modelarDados){
         return response.json()
     }).then(dados=>{
 
-        modelarDados(dados,2)
+        modelarDados(dados,3)
 
     })
+}
+
+
+//formatar dados
+
+function formatarCategoria(category){
+    return category.toLowerCase().replace(/\s/g,'')
+}
+
+function formatarPreco(price){
+    return Number(price).toFixed(2).replace('.',',')
 }

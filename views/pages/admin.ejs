@@ -87,52 +87,63 @@
               <div class="container">
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
-                    <form class="form-row">
+                    <div class="row">
                           <div class="col-md-4 col-sm-12">
+                            <form action="/" method="get">
 
                               <h2>Dados pessoais</h2>
                               <input type="text"  name="name" id="name" aria-label="nome" placeholder="nome">
                               <input type="text"  name="surname" id="surname" aria-label="sobrenome" placeholder="sobrenome">
                               <input type="text"  name="email" id="email" aria-label="e-mail" placeholder="e-mail">
-                              
+                              <div class='button text-center'>
+                                <button type='submit' class='btn btn-primary'>
+                                    Alterar dados
+                                </button>
+                            </div>
+                          </form>
                           </div>
-
                           <div class="col-md-4 col-sm-12">
+                            <form action="" method="get">
 
                               <h2>Alteração de senha</h2>
                               <input type="text" name="pass" id="pass" aria-label="senha atual" placeholder="senha atual">
                               <input type="text" name="new-pass" id="new-pass" aria-label="nova senha" placeholder="nova senha">
                               <input type="text" name="conf-new-pass" id="conf-new-pass" aria-label="confirmar senha" placeholder="confirmar nova senha">
-                              
+                              <div class='button text-center'>
+                                <button type='submit' class='btn btn-primary'>
+                                    Alterar senha
+                                </button>
+                            </div>
+                          </form>
                           </div>
 
-                          <div class="col-md-4 col-sm-12">
+
+                          <div class="col-md-4 col-sm-12" id='avatar'>
                               <div id='user-img'>
-                              <h2>Avatar</h2>
+                                <h2>Avatar</h2>
 
-                              <figure>
-                                  <img src="/images/svg/profile-user.svg" alt="imagem do perfil do usuário">
-                              </figure>
-
-                              <div>
-
-                                  <input type="file" class='form-control' name="foto" id="input-image">
-                                  <div id='label-1'>
-                                      <label for="input-image">Anexar Foto</label>
-                                  </div>
+                                <figure>
+                                    <img src="/images/svg/profile-user.svg" alt="imagem do perfil do usuário">
+                                </figure>
                               </div>
+                            
+                                  <form action="/" method="get">
+                                    <input type="file" class='form-control' name="foto" id="input-image">
+                                    <div id='label-1'>
+                                        <label for="input-image">Anexar Foto</label>
+                                    </div>
+                                    <div class='button text-center'>
+                                      <button type='submit' class='btn btn-primary'>
+                                          Alterar foto de perfil
+                                      </button>
+                                    </div>
+                                  </form>                            
                           </div>
                               
                           </div>
-
-                          <div id='button1' class='text-center'>
-                              <button type='submit' class='btn btn-primary'>
-                                  salvar alterações
-                              </button>
-                          </div>
-                  </form>
+                        </div>
                   </div>
-                </div>
+
   
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
@@ -216,7 +227,7 @@
                       <div class="card-body text-center">
                        <h2>Deseja realmente sair?</h2>
 
-                       <div id='button2' class='text-center'>
+                       <div class='button text-center'>
                           <button class="btn btn-primary" id="headingClose" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                               Cancelar
                           </button>

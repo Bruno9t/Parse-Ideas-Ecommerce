@@ -3,6 +3,12 @@ main>h2{
     margin:30px;
 }
 
+div#avatar div{
+    text-align: center;
+}
+
+
+
 button.btn.btn-primary{
     background: #0054AD;
 }
@@ -27,7 +33,6 @@ button.btn.btn-primary{
     padding: 6px 20px;
     z-index:1;
     text-align: center;
-    margin: 50px 50px 50px auto;
 
   }
 
@@ -40,6 +45,7 @@ button.btn.btn-primary{
   #user-img figure{
       height: 100px;
       width: 100px;
+      margin: 30px auto;
   }
 
   #user-img figure img{
@@ -151,7 +157,7 @@ input{
     border-radius:5px;
 }
 
-.form-row div.col-md-4{
+section#content div.row div.col-md-4{
     padding: 10px;
 }
 
@@ -162,11 +168,11 @@ input{
 
 
 
-#button1,#button2{
+div.button{
     margin:30px auto;
 }
 
-#button1 button, #button2 button{
+div.button button{
     width: 230px;
     margin:10px;
 }

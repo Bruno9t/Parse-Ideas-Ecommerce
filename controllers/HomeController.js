@@ -8,19 +8,20 @@ const HomeController = {
 
     async list(req,res){
         let {count} = req.body
-        let limit = 2
+        let limit = 3
 
         let {count:total,rows:anuncios} = await Announcement.findAndCountAll({
             limit,
             offset:(count-1)*limit,
             include:{
                 model:Category,
-                as:'categoria'
+                as:'categoria',
+                required:true,
             }
         })
 
 
-        res.json({anuncios,total,limit})
+        return res.json({anuncios,total,limit})
 
 
     }
