@@ -40,7 +40,7 @@ function modelarDados(dados,columns){
                 <span class="categorie tag-${formatarCategoria(anuncios[j].categoria.nome)} p-2">${anuncios[j].categoria.nome}</span>
                     <div class="card-body">
                         <h5 class="card-title">${anuncios[j].descricao}</h5>
-                        <p class="card-text">R$ ${formatarPreco(anuncios[j].preco)}</p>
+                        <p class="card-text">${formatarPreco(anuncios[j].preco)}</p>
                         <a href="#" class="btn btn-primary">+ Detalhes</a>
                     </div>
                 </div>
@@ -78,5 +78,13 @@ function formatarCategoria(category){
 }
 
 function formatarPreco(price){
-    return Number(price).toFixed(2).replace('.',',')
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        maximumFractionDigits: 2,
+        style: 'currency',
+        currency: 'BRL' 
+      });
+      
+    const formatted = formatter.format(price);
+      
+    return formatted;
 }
