@@ -33,11 +33,11 @@ function validarNome(inputNome,errorList){
 
     if(inputNome.value.length < 3 || pattern.test(inputNome.value)){
 
-        inputNome.style.backgroundColor = '#E05D54'
+        inputNome.style.borderBottom = '2px #E05D54 solid'
     }else{
 
         limparErro(errorList)
-        inputNome.style.backgroundColor = '#6DE677'
+        inputNome.style.borderBottom = '2px #6DE677 solid' 
     }
 }
 
@@ -66,7 +66,7 @@ function validarDados(data){
         data.errors.forEach(error=>{
 
             if(error.param==='nome'){
-                nome.style.backgroundColor = '#E05D54'
+                nome.style.borderBottom = '2px #E05D54 solid'
 
             li = document.createElement('li')
             li.setAttribute('style',
@@ -78,7 +78,7 @@ function validarDados(data){
             `
             erros0.appendChild(li)
             }else{
-                sobrenome.style.backgroundColor = '#E05D54'
+                sobrenome.style.borderBottom = '2px #E05D54 solid'
 
             li = document.createElement('li')
             li.setAttribute('style',

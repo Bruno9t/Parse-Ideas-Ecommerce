@@ -163,27 +163,65 @@ div#exampleModal{
 
 div#exampleModal h5{
     font-size: 2.5rem;
+    color: gray;
 }
 
 div#exampleModal input{
     height: 45px;
-    background:#f2f2f2 ;
+    border:none;
+    border-bottom: 1px rgb(187, 175, 175) solid;
 }
 
 div#exampleModal input:focus{
-    box-shadow: 5px 5px 5px rgb(163, 157, 157);
-    background: #f2f2f2;
+box-shadow: 0 0 0 0;
+outline: 0;
+} 
+
+div#exampleModal div.form-group{
+    margin-bottom: 30px;
+}
+
+
+div#exampleModal h5{
+    margin: 10px auto;
 }
 
 #alter{
-    background-color: rgb(61, 211, 61);
-    border:none;
-    width: 100px;
+    border:1px  rgb(61, 211, 61) solid;
+    background-color:transparent;
+    color: rgb(61, 211, 61);
+    width:100%;
 }
 #fechar{
-    background: red;
-    border:none;
-    width: 100px;
+    border:1px red solid;
+    background: transparent;
+
+    color: red;
+    width: 100%;
+}
+
+#alter:hover{
+    background-color: rgb(61, 211, 61);
+
+    color: white;
+
+}
+
+#fechar:hover{
+    background-color: red;
+    color: white;
+}
+
+
+div.modal-footer {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+div.modal-footer div{
+    justify-content: center;
+    width: 50%;
+
 }
 
 

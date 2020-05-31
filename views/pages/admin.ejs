@@ -243,10 +243,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Alterar dados pessoais</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h5 class="modal-title text-center" id="exampleModalLabel">Alterar dados pessoais</h5>
             </div>
             <div class="modal-body">
               <form action="/panel/user/update?_method=PUT" method="POST"  id='alter-user'>
@@ -262,8 +259,12 @@
                   <ul style='list-style: none;padding: 0;' id="erros1"></ul>
                 </div>
                 <div class="modal-footer">
+                  <div>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" id='fechar'>Fechar</button>
+                </div>
+                <div>
                   <button type="submit" class="btn btn-primary" id='alter'>Alterar</button>
+                </div>
                 </div>
               </form>
             </div>

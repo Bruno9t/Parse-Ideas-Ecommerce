@@ -40,6 +40,7 @@ sequelize
     console.log(`
 +----------------------------------------------------------------+
 Parabéns! Conexão com o banco de dados estabilizada com sucesso!!!
+
 ${message}
 +----------------------------------------------------------------+
 `);
