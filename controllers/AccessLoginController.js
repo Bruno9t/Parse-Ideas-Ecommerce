@@ -19,9 +19,7 @@ const AccessLoginController = {
 
             await User.create({nome,sobrenome,email,senha})
             
-            //res.json(listaDeErros)
-            return res.render('admin', {css: 'admin.css'})
-
+            res.json(listaDeErros)
         }else{
 
             res.json(listaDeErros)
@@ -41,8 +39,15 @@ const AccessLoginController = {
         let user = await User.findOne({where:{email}})
 
         if(user && await bcrypt.compare(senha,user.senha)){
-            //criar sessão para o usuário
-            res.json({errors:[]})
+
+            req.session.user = {
+                id_usuario:user.id_usuario,
+                nome:user.nome,
+                sobrenome:user.sobrenome,
+                email:user.email
+            }
+
+            res.json(listaDeErros)
         }
 
         res.json({cod:1,msg:'Usuário ou senha inválido'})

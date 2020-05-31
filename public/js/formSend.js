@@ -172,7 +172,7 @@ function validarLogin(data){
     }
 
     if(!data.errors.length){
-        window.location = window.location.origin+'/announcements'
+        window.location = window.location.origin+'/panel'
     }else{
     data.errors.forEach(function(error){
 
@@ -287,7 +287,7 @@ function enviarDados(pathURL,data,validarAcesso){
         }
     }
 
-    fetch(window.location+pathURL,config)
+    fetch(window.location.href+pathURL,config)
     .then(response => {
         return response.json()
     }).then(datas => {

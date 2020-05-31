@@ -89,18 +89,16 @@
                   <div class="card-body">
                     <div class="row">
                           <div class="col-md-4 col-sm-12">
-                            <form action="/" method="get">
 
                               <h2>Dados pessoais</h2>
-                              <input type="text"  name="name" id="name" aria-label="nome" placeholder="nome">
-                              <input type="text"  name="surname" id="surname" aria-label="sobrenome" placeholder="sobrenome">
-                              <input type="text"  name="email" id="email" aria-label="e-mail" placeholder="e-mail">
+                              <input type="text"  name="name" readonly id="name" aria-label="nome" placeholder="<%= user.nome %>">
+                              <input type="text"  name="surname" readonly id="surname" aria-label="sobrenome" placeholder="<%= user.sobrenome %>">
+                              <input type="text"  name="email" readonly id="email" aria-label="e-mail" placeholder="<%= user.email %>">
                               <div class='button text-center'>
-                                <button type='submit' class='btn btn-primary'>
+                                <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModal" >
                                     Alterar dados
                                 </button>
                             </div>
-                          </form>
                           </div>
                           <div class="col-md-4 col-sm-12">
                             <form action="" method="get">
@@ -240,7 +238,41 @@
                   </div>
                   </section>
           </div>
-      </main>
+          <!-- Modal para alterar dados -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Alterar dados pessoais</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/panel/user/update?_method=PUT" method="POST"  id='alter-user'>
+                <div class="form-group">
+                  <ul style='list-style: none;padding: 0;' id="erros2"></ul>
+                  <label for="recipient-name" class="col-form-label">Nome</label>
+                  <input type="text" name='nome' class="form-control" id="recipient-name" value="<%= user.nome %>">
+                  <ul style='list-style: none;padding: 0;' id="erros0"></ul>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-surname" class="col-form-label">Sobrenome</label>
+                  <input type="text" name='sobrenome' class="form-control" id="recipient-surname" value="<%= user.sobrenome %>">
+                  <ul style='list-style: none;padding: 0;' id="erros1"></ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id='fechar'>Fechar</button>
+                  <button type="submit" class="btn btn-primary" id='alter'>Alterar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<%- include('../partials/footer') %> 
+      </main>
+      
+<%- include('../partials/footer') %>
+<script src="/js/formAlter.js"></script> 
 <%- include('../partials/scripts') %> 

@@ -157,6 +157,36 @@ input{
     border-radius:5px;
 }
 
+div#exampleModal{
+    font-size:1.6rem
+}
+
+div#exampleModal h5{
+    font-size: 2.5rem;
+}
+
+div#exampleModal input{
+    height: 45px;
+    background:#f2f2f2 ;
+}
+
+div#exampleModal input:focus{
+    box-shadow: 5px 5px 5px rgb(163, 157, 157);
+    background: #f2f2f2;
+}
+
+#alter{
+    background-color: rgb(61, 211, 61);
+    border:none;
+    width: 100px;
+}
+#fechar{
+    background: red;
+    border:none;
+    width: 100px;
+}
+
+
 section#content div.row div.col-md-4{
     padding: 10px;
 }

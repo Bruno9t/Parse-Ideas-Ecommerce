@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session')
+const methodOverride = require('method-override')
 const passport= require('passport')
 
 const indexRouter = require('./routes/index');
@@ -11,6 +12,7 @@ const announcementsRouter = require('./routes/announcements');
 const accessRouter = require('./routes/auth');
 const planRouter = require('./routes/plans');
 const adminRouter = require('./routes/admin');
+const userRouter = require('./routes/user')
 // const socialmediaRouter = require('./routes/socialmedia');
 // const solutionRouter = require('./routes/solution');
 
@@ -25,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'))
 
 app.use(session({
   secret:'Wonderland',
@@ -40,6 +43,7 @@ app.use('/announcements', announcementsRouter);
 app.use('/panel', adminRouter);
 app.use('/auth', accessRouter);
 app.use('/plans', planRouter);
+app.use('/panel',userRouter)
 
 
 // catch 404 and forward to error handler
