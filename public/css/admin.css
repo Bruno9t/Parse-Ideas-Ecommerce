@@ -233,7 +233,15 @@ section#content div.row div.col-md-4{
     overflow: hidden;
 } */
 
+.info-user p:first-child{
+    font-size: 3rem;
+    color: #4040DD;
+}
 
+.info-user p{
+    font-size: 1.7rem;
+    color: #4040DD;
+}
 
 
 div.button{

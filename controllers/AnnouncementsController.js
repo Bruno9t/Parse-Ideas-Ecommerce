@@ -19,6 +19,10 @@ const AnnouceController = {
 
         res.render('pages/searchAnnouncements', 
         {css: 'searchEcommerce.css', category: category, announces: announces})
+    },
+    create: (req, res) => {
+        // return res.send('teste')
+        return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
     }
 }
 

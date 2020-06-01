@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middlewares/auth')
 const AnnouncementsController = require('../controllers/AnnouncementsController')
 
 
@@ -7,7 +8,7 @@ const AnnouncementsController = require('../controllers/AnnouncementsController'
 router.get('/', AnnouncementsController.index);
 
 /* Tela para cadastro do anúncio */
-//router.get('/create', AnnouncementsController.create);
+router.get('/create', auth, AnnouncementsController.create);
 
 /* Gravar anúncio */
 // router.post('/create', AnnouncementsController.store);

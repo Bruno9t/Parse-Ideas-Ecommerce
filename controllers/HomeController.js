@@ -15,17 +15,17 @@ const HomeController = {
         let {count:total,rows:anuncios} = await Announcement.findAndCountAll({
             limit,
             offset:(count-1)*limit,
+            order:[
+                ['prioridade', 'DESC'],
+                ['id_anuncio', 'DESC'],
+            ],
             include:{
                 model:Category,
                 as:'categoria',
                 required:true,
             }
         })
-
-
         return res.json({anuncios,total,limit})
-
-
     }
 
 

@@ -47,7 +47,7 @@ main .container form label{
 main .container form input, .container form select{
     height: 5rem;
     border:none;
-    box-shadow: 5px 5px 10px gray;
+    /* box-shadow: 5px 5px 10px gray; */
     border-radius: 5px;
 }
 
@@ -63,7 +63,7 @@ main .container form input::placeholder{
     resize: none;
     height: 232px;
     border:none;
-    box-shadow: 5px 5px 10px gray;
+    /* box-shadow: 5px 5px 10px gray; */
     border-radius: 5px;
 
 }
