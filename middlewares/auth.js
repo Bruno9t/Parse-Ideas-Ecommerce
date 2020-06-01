@@ -1,11 +1,9 @@
 module.exports = (req,res,next)=>{
     let {user} = req.session
 
-    if(!user){
-        return res.redirect('/auth/access')
+    if(user || req.user ){
+        return next()
+
     }
-
-    res.locals.user = user;
-
-    return next()
+    return res.redirect('/auth/access')
 }

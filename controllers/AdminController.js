@@ -2,12 +2,16 @@ const {User} = require('../models')
 
 const AdminController = {
     async index(req, res){
-        
+        try{
+            const {id_usuario} = req.session.user || req.user
 
-        const {nome,sobrenome,email} = await User.findByPk(req.session.user.id_usuario)
+            const {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
 
-
-        return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email}}) 
+            return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail}})
+         
+        }catch(err){
+            return new Error(err)
+        }
     }
 }
 

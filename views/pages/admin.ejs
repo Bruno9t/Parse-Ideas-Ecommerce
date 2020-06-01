@@ -121,7 +121,11 @@
                                 <h2>Avatar</h2>
 
                                 <figure>
-                                    <img src="/images/svg/profile-user.svg" alt="imagem do perfil do usuário">
+                                  <% if (locals.user.thumbnail == undefined){ %>
+                                    <img class ='us' src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
+                                <%}else{%>
+                                    <img class ='us' src="<%= locals.user.thumbnail %>" alt="imagem de perfil do usuário">
+                                <%}%>
                                 </figure>
                               </div>
                             
@@ -226,12 +230,15 @@
                        <h2>Deseja realmente sair?</h2>
 
                        <div class='button text-center'>
+
                           <button class="btn btn-primary" id="headingClose" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                               Cancelar
                           </button>
+                          <a href="/logout">
                           <button class='btn btn-danger'> 
                               Sair
                           </button>
+                        </a>
                       </div>
                       </div>
                     </div>

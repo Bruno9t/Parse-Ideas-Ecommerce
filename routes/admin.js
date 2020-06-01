@@ -4,7 +4,7 @@ const AdminController = require('../controllers/AdminController')
 
 
 /* Listagem de anúncios */
-router.get('/', AdminController.index);
+router.get('/panel', AdminController.index);
 
 module.exports = router;
 

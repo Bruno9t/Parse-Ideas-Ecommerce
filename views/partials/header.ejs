@@ -53,9 +53,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/access">Acesse</a>
+                    <% if ( locals.user !== undefined){%>
+                        <li id='user' class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <% if (locals.user.thumbnail == undefined){ %>
+                                    <img class ='us' src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
+                                <%}else{%>
+                                    <img class ='us' src="<%= locals.user.thumbnail %>" alt="imagem de perfil do usuário">
+                                <%}%>
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a role='button' class="dropdown-item" href="/panel" ><span class='ic' ><img src="/images/svg/email.svg" alt="imagem de carta que simboliza um email"></span> Minhas mensagens</a>
+                                <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/notification.svg" alt="sino de notificação"></span>Meus alertas</a>
+                                <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/plus.svg" alt="sinal de soma"></span>Criar anúncio</a>
+                                <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/user.svg" alt="imagem de um usuário"></span>Meu perfil</a>
+                                <a role='button' class="dropdown-item" href="/logout"><span class='ic'><img src="/images/svg/logout.svg" alt="imagem de uma porta de saída"></span>Sair</a>
+                            </div>
                     </li>
+                    <%} else {%>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/auth/access">Acesse</a>
+                        </li>
+                    <%}%>
                 </ul>
             </div>
         </nav>

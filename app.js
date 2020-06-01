@@ -13,8 +13,8 @@ const accessRouter = require('./routes/auth');
 const planRouter = require('./routes/plans');
 const adminRouter = require('./routes/admin');
 const userRouter = require('./routes/user')
-// const socialmediaRouter = require('./routes/socialmedia');
-// const solutionRouter = require('./routes/solution');
+
+const auth = require('./middlewares/auth')
 
 const app = express();
 
@@ -38,12 +38,32 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use('/',function(req,res,next){
+
+  const user = req.user || req.session.user
+
+  if(user){
+
+    const {id_usuario,thumbnail} = user
+
+    res.locals.user = {
+      id_usuario,
+      thumbnail
+    }
+    return next()
+  }
+
+  return next()
+})
+
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
-app.use('/panel', adminRouter);
 app.use('/auth', accessRouter);
 app.use('/plans', planRouter);
-app.use('/panel',userRouter)
+
+app.use(auth)
+app.use(adminRouter);
+app.use(userRouter)
 
 
 // catch 404 and forward to error handler
@@ -52,6 +72,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
+
   res.status(404).res.render('error')
 });
 

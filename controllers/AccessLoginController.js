@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 
 const AccessLoginController = {
     index: (req, res) => {
+
         res.render('pages/loginAndRegister', {css: 'loginAndRegister.css'})
     },
 
@@ -42,9 +43,7 @@ const AccessLoginController = {
 
             req.session.user = {
                 id_usuario:user.id_usuario,
-                nome:user.nome,
-                sobrenome:user.sobrenome,
-                email:user.email
+                thumbnail:user.thumbnail
             }
 
             res.json(listaDeErros)

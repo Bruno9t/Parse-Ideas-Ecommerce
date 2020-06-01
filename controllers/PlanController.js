@@ -10,7 +10,8 @@ paypal.configure({
 
 
 const PlanController = {
-  index: (_req, res) => {
+  index: (req, res) => {
+
     res.render('pages/viewAdPlans');
   }, 
   create: (req, res) => {

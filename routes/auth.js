@@ -39,10 +39,11 @@ router.get('/access/google',passportGoogle.authenticate("google",{
   }))
 
 router.get('/access/google/redirect',passportGoogle.authenticate("google",{
-    failureRedirect:'/access'
+    failureRedirect:'/access',
   }),function (req,res){
-    return res.json({user:req.user,session:req.session})
-    // res.redirect('/announce/create')
+
+    return res.send(`<html><body><script>window.location = window.location.origin +'/panel'</script></body></html>`)
+
   })
   
 // facebook
@@ -51,7 +52,7 @@ router.get('/access/facebook',passportFacebook.authenticate('facebook'))
 router.get('/access/facebook/redirect',passportFacebook.authenticate("facebook",{
   failureRedirect:'/access'
 }),function(req,res){
-  res.json({user:req.user,session:req.session})
+  return res.send(`<html><body><script>window.location = window.location.origin +'/panel'</script></body></html>`)
 })
 
 

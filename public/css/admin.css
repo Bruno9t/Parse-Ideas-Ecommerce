@@ -169,7 +169,7 @@ div#exampleModal h5{
 div#exampleModal input{
     height: 45px;
     border:none;
-    border-bottom: 1px rgb(187, 175, 175) solid;
+    border-bottom: 2px rgb(187, 175, 175) solid;
 }
 
 div#exampleModal input:focus{
