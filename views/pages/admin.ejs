@@ -356,7 +356,7 @@
                       <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
                     <%}%>                    
                   </figure>
-                  <form action="/panel/user/update?_method=PUT" method="POST"  id='alter-user'>
+                  <form action="/panel/photo/update?_method=PUT" method="POST"  id='form-photo'>
                     <div class="form-group">
                       <input type="file" class='form-control' name="foto" id="input-image">
                       <div id='label-1' class='button'>
@@ -381,4 +381,5 @@
 
 <%- include('../partials/footer') %>
 <script src="/js/formAlter.js"></script>
+<script src='/js/photoUpload.js'></script>
 <%- include('../partials/scripts') %>
