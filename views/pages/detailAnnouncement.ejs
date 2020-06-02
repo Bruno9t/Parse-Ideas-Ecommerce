@@ -51,15 +51,17 @@
 
               <form action="" class="my-4" id="formMessage">
                 <div class="form-row my-4">
+                  <input type="hidden" name="<%=announce.usuario_id%>" id="user">
+                  <input type="hidden" name="<%=announce.id_anuncio%>" id="announce">
                   <div class="col">
-                    <input class="form-control px-5" type="text" placeholder="Nome">
+                    <input id="viewerName" class="form-control px-5" type="text" placeholder="Nome">
                   </div>
                   <div class="col">
-                    <input class="form-control px-5" type="text" placeholder="Telefone">
+                    <input id="viewerTell" class="form-control px-5" type="text" placeholder="Telefone">
                   </div>
                 </div>
                 <div class="form-row my-4">
-                  <textarea class="form-control px-5 py-3" name="" id="" cols="30" rows="6" placeholder="Mensagem"></textarea>
+                  <textarea class="form-control px-5 py-3" name="message" id="txtMessage" cols="30" rows="6" placeholder="Mensagem"></textarea>
                 </div>
                 <div class="form-row my-4">
                   <button type="submit" class="btn btn-lg btn-primary">Enviar Mensagem</button>
@@ -77,7 +79,6 @@
 
       </section>
     </main>
-
 
     <script src="/js/sendMessage.js"></script>
     <%- include('../partials/footer') %> 
