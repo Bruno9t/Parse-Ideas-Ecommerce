@@ -7,6 +7,9 @@ const AnnouncementsController = require('../controllers/AnnouncementsController'
 /* Listagem de anúncios */
 router.get('/', AnnouncementsController.index);
 
+/* Search dos anuncios */
+router.post('/search', AnnouncementsController.search);
+
 /* Tela para cadastro do anúncio */
 router.get('/create', auth, AnnouncementsController.create);
 
