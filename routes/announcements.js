@@ -6,6 +6,7 @@ const AnnouncementsController = require('../controllers/AnnouncementsController'
 
 /* Listagem de anúncios */
 router.get('/', AnnouncementsController.index);
+router.get('/:id', AnnouncementsController.detail)
 
 /* Search dos anuncios */
 router.post('/search', AnnouncementsController.search);
