@@ -2,6 +2,7 @@ let cardList = document.querySelector("#cardList")
 let btnApply = document.querySelector("#apply-1")
 let btnRemove = document.querySelector("#remove-1")
 let frmSearch = document.querySelector("#searchBlock")
+let lblPageTitle = document.querySelector("#pageTitle")
 
 let cmbType = document.getElementById('type')
 let edtKeyword = document.querySelector("#keyword")
@@ -36,8 +37,10 @@ edtMonthlyAmount2.addEventListener('keyup', function(){
 frmSearch.addEventListener('submit', function(e){
   e.preventDefault()
 
+  id_category = cmbType.selectedIndex
+
   bringData( {
-    id_category: cmbType.selectedIndex,
+    id_category: id_category,
     descricao: edtKeyword.value.trim(),
     preco1: edtSaleValue1.value,
     preco2: edtSaleValue2.value,
@@ -66,6 +69,8 @@ function numberValidate(num) {
 
 function buildCards(data, totalRows) {
   let announces = data;
+
+  lblPageTitle.innerHTML = `<strong>${cmbType.item(id_category).innerText}  à Venda</strong>`
 
   cardList.innerHTML = ''
 

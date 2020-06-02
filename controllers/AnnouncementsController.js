@@ -42,9 +42,16 @@ const AnnouceController = {
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || 0,faturamento_mm2 || 400000]
+                    },
+                    preco: {
+                        [Op.between]:[preco1 || 0, preco2 || 99999999]
                     }
                 },
                 limit: 30,
+                order:[
+                    ['prioridade','DESC'],
+                    ['created_at', 'DESC']
+                ],
                 include: [{model: Category, as: 'categoria', require: true}]
             })
         } else {
@@ -56,6 +63,9 @@ const AnnouceController = {
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || 0,faturamento_mm2 || 400000]
+                    },
+                    preco: {
+                        [Op.between]:[preco1 || 0, preco2 || 99999999]
                     }
                 },
                 limit: 30,
