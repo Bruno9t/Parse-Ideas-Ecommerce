@@ -156,6 +156,7 @@ inputSenha2.addEventListener('keyup',function(){
 })
 
 inputConfSenha2.addEventListener('keyup',function(){
+    validarSenha(this,erros5)
     validarIgualdadeDeSenhas(this,inputSenha2,erros5)
 })
 
@@ -229,8 +230,8 @@ data.errors.forEach(function(error){
             `
             return erros3.appendChild(li)
 
-    }else if(error.param=='novaSenha'){
-        inputSenha2.style.borderBottom = '#E05D54'
+    }else if(error.param == 'novaSenha'){
+        inputSenha2.style.borderBottom = '2px #E05D54 solid'
 
             li = document.createElement('p')
             li.setAttribute('style',
@@ -242,10 +243,10 @@ data.errors.forEach(function(error){
             `
             erros4.appendChild(li)
 
-    }else{
+    }else if(error.param == 'confSenha'){
         inputConfSenha2.style.borderBottom = '2px #E05D54 solid'
 
-            li = document.createElement('p')
+            li = document.createElement('li')
             li.setAttribute('style',
             'font-size:13px')
             limparErro(erros5)

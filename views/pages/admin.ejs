@@ -107,6 +107,7 @@
                   <%}else{%>
                     <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
                   <%}%>
+                  <span data-toggle="modal" data-target="#exampleModal3" id ='alter-photo'><img src="/images/svg/photo-edit.svg"></span>
                 </figure>
                 <div class="card-body">
                   <h2 class="card-title"><%= user.nome+' ' %><%= user.sobrenome %></h2>
@@ -167,33 +168,6 @@
           </div>
           </div>
 
-
-                <!-- <div id='user-img'>
-                  <h2>Avatar</h2>
-
-                  <figure>
-                    <% if (locals.user.thumbnail == undefined){ %>
-                    <img class='us' src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
-                    <%}else{%>
-                    <img class='us' src="<%= locals.user.thumbnail %>" alt="imagem de perfil do usuário">
-                    <%}%>
-                  </figure>
-                              </div>
-                              <div>
-                                  <form action="/" method="get">
-                                    <input type="file" class='form-control' name="foto" id="input-image">
-                                    <div id='label-1'>
-                                        <label for="input-image">Anexar Foto</label>
-                                    </div>
-                                    <div class='button text-center'>
-                                      <button type='submit' class='btn btn-primary'>
-                                          Alterar foto de perfil
-                                      </button>
-                                    </div>
-                                  </form>                            
-                          </div> -->
-
-  
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
                       <h2>Você tem <span>(0)</span> novas mensagens</h2>
@@ -350,7 +324,7 @@
                   </div>
                   <div class="form-group">
                     <label for="recipient-surname" class="col-form-label">Confirme sua nova senha</label>
-                    <input type="password" name='sobrenome' class="form-control" id="recipient-confSenha"
+                    <input type="password" name='confSenha' class="form-control" id="recipient-confSenha"
                       value="">
                     <ul style='list-style: none;padding: 0;' id="erros5"></ul>
                   </div>
@@ -367,6 +341,41 @@
               </div>
             </div>
           </div>
+          <!-- alterar fotos -->
+          <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center" id="exampleModalLabel">Alterar foto</h5>
+                </div>
+                <div class="modal-body">
+                  <figure>
+                    <% if (user.thumbnail == undefined){ %>
+                    <img class='card-img-top' style="padding: 10px;" src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
+                    <%}else{%>
+                      <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
+                    <%}%>                    
+                  </figure>
+                  <form action="/panel/user/update?_method=PUT" method="POST"  id='alter-user'>
+                    <div class="form-group">
+                      <input type="file" class='form-control' name="foto" id="input-image">
+                      <div id='label-1' class='button'>
+                          <label for="input-image">Anexar Foto</label>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id='fechar-photo'>Fechar</button>
+                      </div>
+                      <div>
+                        <button type="submit" class="btn btn-primary" id='alter-user-photo'>Alterar</button>
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 </main>
 

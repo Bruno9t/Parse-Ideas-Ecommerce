@@ -25,16 +25,22 @@ button.btn.btn-primary{
 
 #label-1 label{
     position: relative;
-    background-color: #5A47CC;
+    border:1px #5A47CC solid;
     border-radius: 5px;
-    color: #fff;
+    color: #5A47CC;
     cursor: pointer;
     margin: 10px;
     padding: 6px 20px;
     z-index:1;
     text-align: center;
-
+    width: 400px;
+    font-size: 1.6rem;
   }
+  #label-1 label:hover{
+    background:#5A47CC;
+    color:white;
+  }
+
 
   main {
     min-height:100%;
@@ -56,6 +62,35 @@ div.card#user-data img.card-img-top{
 div#user-data{
     background-color: white;
     box-shadow: 5px 5px 5px gray;
+    
+}
+
+#alter-photo {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    right:5px;
+    top:49%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+
+}
+#user-data{
+    position: relative;
+}
+
+span#alter-photo img{
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    top:50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    left: 9px;
+
     
 }
 
@@ -180,7 +215,8 @@ div#exampleModal2{
 }
 
 div#exampleModal h5,
-div#exampleModal2 h5{
+div#exampleModal2 h5,
+div#exampleModal3 h5{
     font-size: 2.5rem;
     color: gray;
 }
@@ -205,17 +241,33 @@ div#exampleModal2 div.form-group{
 
 
 div#exampleModal h5,
-div#exampleModal2 h5{
+div#exampleModal2 h5,
+div#exampleModal3 h5{
     margin: 10px auto;
 }
 
-#alter,#alter-pass{
+div#exampleModal3 figure{
+    margin: 20px auto;
+    text-align: center;
+}
+
+div#exampleModal3 figure img.card-img-top{
+    height: 250px;
+    width: 250px;
+    margin:auto;
+    border-radius: 50%;
+    
+}
+
+#alter,#alter-pass,#alter-user-photo{
     border:1px  rgb(61, 211, 61) solid;
     background-color:transparent;
     color: rgb(61, 211, 61);
     width:100%;
 }
-#fechar,#fechar-pass{
+#fechar,
+#fechar-pass,
+#fechar-photo{
     border:1px red solid;
     background: transparent;
 
@@ -223,14 +275,16 @@ div#exampleModal2 h5{
     width: 100%;
 }
 
-#alter:hover,#alter-pass:hover{
+#alter:hover,
+#alter-pass:hover,
+#alter-user-photo:hover{
     background-color: rgb(61, 211, 61);
-
     color: white;
-
 }
 
-#fechar:hover,#fechar-pass:hover{
+#fechar:hover,
+#fechar-pass:hover,
+#fechar-photo:hover{
     background-color: red;
     color: white;
 }

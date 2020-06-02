@@ -15,7 +15,7 @@ router.put('/panel/password/update',[
     check('senha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),
     check('novaSenha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),
     body('confSenha').custom((value,{req})=>{
-        if (value !== req.body.novaSenha) {throw new Error("As senhas não são iguais!");} else {return value;}}),
+        if (value !== req.body.novaSenha) {throw new Error("As senhas não são iguais!");} else {return value}}),
 ],UserController.updatePass)
 
 router.put('/panel/photo/update',UserController.updatePhoto)

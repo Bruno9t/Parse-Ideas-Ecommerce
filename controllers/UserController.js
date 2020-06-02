@@ -68,6 +68,8 @@ module.exports = {
                 }
     
             }else{
+
+                console.log(listaDeErros)
     
                 return res.json(listaDeErros)
     
