@@ -13,8 +13,6 @@ module.exports = {
 
             const user = req.session.user || req.user
 
-            console.log(req.session.user,req.user)
-
             await User.update({nome,sobrenome},
                 {
                 where:{
@@ -50,10 +48,8 @@ module.exports = {
 
                 const realUser = await User.findByPk(user.id_usuario)
 
-                console.log(await bcrypt.compare(senha,realUser.senha))
-
                 if(await bcrypt.compare(senha,realUser.senha)){
-                    
+
                     let novaSenhaC = await bcrypt.hash(novaSenha,10)
 
                     await User.update({senha:novaSenhaC},{
