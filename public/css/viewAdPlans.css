@@ -124,7 +124,7 @@ section#plans .card:hover{
 section#plans h5{
     font-weight: bold;
     text-transform: uppercase;
-    color: rgb(97, 94, 94);
+    color: white;
     font-size:1.8rem;
 }
 

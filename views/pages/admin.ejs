@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
 <main>
   <div class="info-user container">
-    <p class="mt-5 mb-0">Olá, <%= locals.user.nome %>!</p>
-    <p class="mt-0">Bem vindo ao painel administrativo da <strong>Parse Ideas.</strong></p>
+    <p class="mt-5 mb-0">Olá, <%= user.nome %>!</p>
+    <p class="mt-0">Bem vindo ao painel administrativo</p>
   </div>
   <div id="accordion">
     <section class='container-fluid'>
@@ -98,38 +98,77 @@
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body">
             <div class="row">
-              <div class="col-md-4 col-sm-12">
+              <div class="col-md-4 col-sm-12" id='user-data-col'>
 
-                <h2>Dados pessoais</h2>
-                <input type="text" name="name" readonly id="name" aria-label="nome" placeholder="<%= user.nome %>">
-                <input type="text" name="surname" readonly id="surname" aria-label="sobrenome"
-                  placeholder="<%= user.sobrenome %>">
-                <input type="text" name="email" readonly id="email" aria-label="e-mail" placeholder="<%= user.email %>">
-                <div class='button text-center'>
-                  <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModal">
-                    Alterar dados
-                  </button>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <form action="" method="get">
-
-                  <h2>Alteração de senha</h2>
-                  <input type="text" name="pass" id="pass" aria-label="senha atual" placeholder="senha atual">
-                  <input type="text" name="new-pass" id="new-pass" aria-label="nova senha" placeholder="nova senha">
-                  <input type="text" name="conf-new-pass" id="conf-new-pass" aria-label="confirmar senha"
-                    placeholder="confirmar nova senha">
-                  <div class='button text-center'>
-                    <button type='submit' class='btn btn-primary'>
-                      Alterar senha
+              <div class="card" id='user-data'>
+                <figure>
+                  <% if (user.thumbnail == undefined){ %>
+                  <img class='card-img-top' style="padding: 10px;" src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
+                  <%}else{%>
+                    <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
+                  <%}%>
+                </figure>
+                <div class="card-body">
+                  <h2 class="card-title"><%= user.nome+' ' %><%= user.sobrenome %></h2>
+                  <p class="card-text"><%= user.email %></p>
+                  <div id='button-alter'>
+                    <div>
+                    <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModal" id='alter-data' >
+                      Alterar dados
                     </button>
                   </div>
-                </form>
+                  <div>
+                    <a data-toggle="modal" data-target="#exampleModal2">
+                      Alterar senha
+                    </a>
+                  </div>
+                  </div>
+                </div>
               </div>
+            </div>
 
 
-              <div class="col-md-4 col-sm-12" id='avatar'>
-                <div id='user-img'>
+              <div class="col-md-8 col-sm-12">
+                <div class="card" id='ann-plan'>
+                   
+                  <div class="container">
+                    <div class='row'>
+                      <div class='col-md-6 col-sm-12'>
+                        <h2>Plano</h2>
+                        <h5 class="card-title">Basic</h5>
+                        <h4 class='card-title'>R$ 49,00</h4>
+                        <div class='card-text'>
+                          <ul style='text-align: start;'>
+                              <li>Único anúncio</li>
+                              <li>3 meses de anúncio</li>
+                              <li>2 fotos</li> 
+                              <li>Sem prioridade na exibição</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class='col-md-6 col-sm-12'>
+                        <h2>Detalhes</h2>
+                        <h5 class="card-title">Assinatura</h5>
+                        <h4 class='card-title'><span style='color:rgb(116, 221, 116)'> Ativa</span></h4>
+                        <div class='card-text'>
+                          <ul style='text-align: start;'>
+                              <li>Único anúncio</li>
+                              <li>3 meses de anúncio</li>
+                              <li>2 fotos</li> 
+                              <li>Sem prioridade na exibição</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+                <!-- <div id='user-img'>
                   <h2>Avatar</h2>
 
                   <figure>
@@ -138,9 +177,9 @@
                     <%}else{%>
                     <img class='us' src="<%= locals.user.thumbnail %>" alt="imagem de perfil do usuário">
                     <%}%>
-                                </figure>
+                  </figure>
                               </div>
-                            
+                              <div>
                                   <form action="/" method="get">
                                     <input type="file" class='form-control' name="foto" id="input-image">
                                     <div id='label-1'>
@@ -152,11 +191,7 @@
                                       </button>
                                     </div>
                                   </form>                            
-                          </div>
-                              
-                          </div>
-      
-                  </div>
+                          </div> -->
 
   
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -241,16 +276,17 @@
                       <div class="card-body text-center">
                        <h2>Deseja realmente sair?</h2>
 
-                       <div class='button text-center'>
+                       <div class='button'>
 
                           <button class="btn btn-primary" id="headingClose" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                               Cancelar
                           </button>
                           <a href="/logout">
-                          <button class='btn btn-danger'> 
-                              Sair
-                          </button>
-                        </a>
+                            <button class='btn btn-danger'> 
+                                Sair
+                            </button>
+                          </a>
+
                       </div>
                       </div>
                     </div>

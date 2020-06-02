@@ -18,7 +18,11 @@ const AccessLoginController = {
 
             senha = await bcrypt.hash(senha,10)
 
-            await User.create({nome,sobrenome,email,senha})
+            let {id_usuario} = await User.create({nome,sobrenome,email,senha})
+
+            req.session.user = {
+                id_usuario,
+            }
             
             res.json(listaDeErros)
         }else{

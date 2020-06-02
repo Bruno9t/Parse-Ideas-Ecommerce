@@ -72,7 +72,7 @@ formLogin.addEventListener('submit',function(e){
 
     enviarDados('/login',{
         email:inputEmail.value.trim(),
-        senha:inputSenha.value.trim(),
+        senha:inputSenha.value,
     },validarLogin)
 
 })
@@ -214,7 +214,7 @@ function validarLogin(data){
 function validarRegistro(data){
     if(!data.errors.length){
 
-        window.location = window.location.origin+'/announcements'
+        window.location = window.location.origin+'/panel'
 
     }else{
     data.errors.forEach(function(error){

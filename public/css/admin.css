@@ -41,6 +41,23 @@ button.btn.btn-primary{
     position:relative;
   }
 
+/* img.card-img-top{
+    height: 315px;
+} */
+div#user-data{
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+div.card#user-data img.card-img-top{
+    border-radius: 5px 5px 0 0;
+}
+
+div#user-data{
+    background-color: white;
+    box-shadow: 5px 5px 5px gray;
+    
+}
 
   #user-img figure{
       height: 100px;
@@ -212,8 +229,78 @@ div#exampleModal h5{
     color: white;
 }
 
+div.button {
+    display: flex;
+    flex-flow: row wrap;    
+}
 
-div.modal-footer {
+div.card#ann-plan{
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(rgb(130, 130, 212),#5A47CC);
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px gray;
+    
+        transition: all 400ms;
+}
+
+/* div#user-data,div.card#ann-plan{
+    margin-top: 20px;
+} */
+
+div.card#ann-plan h5, h4{
+    border-bottom:1px rgb(218, 212, 212) solid;
+    padding: 15px;
+}
+
+div.card#ann-plan div.col-md-6:nth-child(1){
+
+    border-right:1px gray solid;
+
+}
+
+
+
+div.card#ann-plan h5{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    font-size:1.8rem;
+}
+div.card#ann-plan h4{
+    color: rgb(170, 163, 163);
+    font-size:3.5rem;
+}
+
+div.card#ann-plan li{
+    margin:2rem;
+    font-size:1.8rem;
+    color:white;
+}
+
+
+div#button-alter div a{
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+div#button-alter button#alter-data{
+    background: transparent;
+    color: rgb(34, 34, 211);
+}
+
+div#button-alter button#alter-data:hover{
+    background:rgb(34, 34, 211) ;
+    color:white;
+}
+
+div#button-alter div{
+    margin:30px auto;
+}
+
+div.modal-footer{
     display: flex;
     flex-flow: row nowrap;
 }
@@ -225,9 +312,9 @@ div.modal-footer div{
 }
 
 
-section#content div.row div.col-md-4{
+/* section#content div.row div.col-md-4{
     padding: 10px;
-}
+} */
 
 /* #content{
     overflow: hidden;
@@ -246,7 +333,9 @@ section#content div.row div.col-md-4{
 
 div.button{
     margin:30px auto;
+    justify-content: center;
 }
+
 
 div.button button{
     width: 230px;
