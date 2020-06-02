@@ -1,7 +1,7 @@
-
 main{
   width: 100%;
 }
+
 nav.navbar {
   background: #FFFFFF;
   border: 1px solid #FFFFFF;
@@ -47,10 +47,31 @@ div#bg-anuncio {
   padding: 5rem 10rem;
 }
 
-div#fotoAnuncio div.btn-primary {
+div#bg-anuncio div.btn a{
+  color: #FFFFFF;
+}
+
+div#bg-anuncio div.btn a:hover{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+div#fotoAnuncio div.category-1 {
   font-size: 11px;
   background-color: rgba(185, 0, 166, 0.8);
   border-color: rgba(185, 0, 166, 0.8);
+}
+
+div#fotoAnuncio div.category-2 {
+  font-size: 11px;
+  background-color: rgba(25, 171, 181, 0.8);
+  border-color: rgba(25, 171, 181, 0.8);
+}
+
+div#fotoAnuncio div.category-3 {
+  font-size: 11px;
+  background-color: rgba(27, 192, 23, 0.8);
+  border-color: rgba(27, 192, 23, 0.8);
 }
 
 div#fotoAnuncio h3 {
@@ -110,7 +131,7 @@ div#message h3 {
 }
 
 div#message form.my-4 {
-  padding: 1rem 44rem;
+  padding: 1rem 10rem;
 }
 
 div#message form input {
@@ -159,7 +180,7 @@ div#next div.col-md-6 {
   }
 
   div#message form.my-4 {
-    padding: 1rem 26rem;
+    padding: 1rem;
   }
 }
 
@@ -173,7 +194,7 @@ div#next div.col-md-6 {
   }
 
   div#message form.my-4 {
-    padding: 1rem 20rem;
+    padding: 1rem;
   }
 
   div#next {

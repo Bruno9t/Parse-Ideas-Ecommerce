@@ -77,9 +77,19 @@ const AnnouceController = {
             })
         }
 
-        
-
         return res.json(announces)
+    },
+    detail: async (req, res) => {
+        const {id} = req.params
+
+        let announce = await Announcement.findByPk(id,{
+            include:[{model: Category, as: 'categoria', required: true}]
+        })
+
+        console.log(announce.dataValues)
+
+        return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
+        
     }
 }
 
