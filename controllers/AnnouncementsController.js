@@ -86,10 +86,7 @@ const AnnouceController = {
             include:[{model: Category, as: 'categoria', required: true}]
         })
 
-        console.log(announce.dataValues)
-
         return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
-        
     }
 }
 
