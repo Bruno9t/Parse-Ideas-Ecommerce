@@ -8,7 +8,7 @@
             <% categories.forEach(category => { %>
                 <div class="item">
                     <!-- Card -->
-                    <div class="card business-card" id="e-commerce">
+                    <div class="card business-card category-<%= category.id_categoria%>">
                         <div class="card-body business-card-body">
                             <h5 class="card-title text-center"><%= category.nome %></h5>
                             <p class="card-text text-center">Venda da marca, carteira de clientes.</p>
