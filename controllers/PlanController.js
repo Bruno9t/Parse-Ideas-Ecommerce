@@ -1,4 +1,5 @@
 const paypal = require('paypal-rest-sdk');
+const {Category} = require('../models')
 // const config = require('../config/plans/paypal-configure');
 // paypal.configure(config)
 
