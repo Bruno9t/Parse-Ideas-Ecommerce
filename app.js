@@ -12,7 +12,8 @@ const announcementsRouter = require('./routes/announcements');
 const accessRouter = require('./routes/auth');
 const planRouter = require('./routes/plans');
 const adminRouter = require('./routes/admin');
-const userRouter = require('./routes/user')
+const userRouter = require('./routes/user');
+const messageRouter = require('./routes/message');
 
 const auth = require('./middlewares/auth')
 
@@ -60,6 +61,7 @@ app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/auth', accessRouter);
 app.use('/plans', planRouter);
+app.use('/message', messageRouter);
 
 app.use(auth)
 app.use(adminRouter);

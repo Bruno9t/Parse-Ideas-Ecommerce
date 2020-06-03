@@ -20,6 +20,10 @@ let upload = multer({ storage: storage })
 
 /* Listagem de anúncios */
 router.get('/', AnnouncementsController.index);
+router.get('/:id', AnnouncementsController.detail)
+
+/* Search dos anuncios */
+router.post('/search', AnnouncementsController.search);
 
 /* Tela para cadastro do anúncio */
 router.get('/create', /*auth,*/ AnnouncementsController.create);

@@ -25,22 +25,74 @@ button.btn.btn-primary{
 
 #label-1 label{
     position: relative;
-    background-color: #5A47CC;
+    border:1px #5A47CC solid;
     border-radius: 5px;
-    color: #fff;
+    color: #5A47CC;
     cursor: pointer;
     margin: 10px;
     padding: 6px 20px;
     z-index:1;
     text-align: center;
-
+    width: 400px;
+    font-size: 1.6rem;
   }
+  #label-1 label:hover{
+    background:#5A47CC;
+    color:white;
+  }
+
 
   main {
     min-height:100%;
     position:relative;
   }
 
+/* img.card-img-top{
+    height: 315px;
+} */
+div#user-data{
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+div.card#user-data img.card-img-top{
+    border-radius: 5px 5px 0 0;
+}
+
+div#user-data{
+    background-color: white;
+    box-shadow: 5px 5px 5px gray;
+    
+}
+
+#alter-photo {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+    z-index: 5;
+    right:5px;
+    top:49%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+
+}
+#user-data{
+    position: relative;
+}
+
+span#alter-photo img{
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    top:50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    left: 9px;
+
+    
+}
 
   #user-img figure{
       height: 100px;
@@ -157,42 +209,65 @@ input{
     border-radius:5px;
 }
 
-div#exampleModal{
+div#exampleModal,
+div#exampleModal2{
     font-size:1.6rem
 }
 
-div#exampleModal h5{
+div#exampleModal h5,
+div#exampleModal2 h5,
+div#exampleModal3 h5{
     font-size: 2.5rem;
     color: gray;
 }
 
-div#exampleModal input{
+div#exampleModal input,
+div#exampleModal2 input{
     height: 45px;
     border:none;
     border-bottom: 2px rgb(187, 175, 175) solid;
 }
 
-div#exampleModal input:focus{
+div#exampleModal input:focus,
+div#exampleModal2 input:focus{
 box-shadow: 0 0 0 0;
 outline: 0;
 } 
 
-div#exampleModal div.form-group{
+div#exampleModal div.form-group,
+div#exampleModal2 div.form-group{
     margin-bottom: 30px;
 }
 
 
-div#exampleModal h5{
+div#exampleModal h5,
+div#exampleModal2 h5,
+div#exampleModal3 h5{
     margin: 10px auto;
 }
 
-#alter{
+div#exampleModal3 figure{
+    margin: 20px auto;
+    text-align: center;
+}
+
+div#exampleModal3 figure img.card-img-top{
+    height: 250px;
+    width: 250px;
+    margin:auto;
+    border-radius: 50%;
+    
+}
+
+#alter,#alter-pass,#alter-user-photo{
     border:1px  rgb(61, 211, 61) solid;
     background-color:transparent;
     color: rgb(61, 211, 61);
     width:100%;
 }
-#fechar{
+#fechar,
+#fechar-pass,
+#fechar-photo{
     border:1px red solid;
     background: transparent;
 
@@ -200,20 +275,92 @@ div#exampleModal h5{
     width: 100%;
 }
 
-#alter:hover{
+#alter:hover,
+#alter-pass:hover,
+#alter-user-photo:hover{
     background-color: rgb(61, 211, 61);
-
     color: white;
-
 }
 
-#fechar:hover{
+#fechar:hover,
+#fechar-pass:hover,
+#fechar-photo:hover{
     background-color: red;
     color: white;
 }
 
+div.button {
+    display: flex;
+    flex-flow: row wrap;    
+}
 
-div.modal-footer {
+div.card#ann-plan{
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(rgb(130, 130, 212),#5A47CC);
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px gray;
+    
+        transition: all 400ms;
+}
+
+/* div#user-data,div.card#ann-plan{
+    margin-top: 20px;
+} */
+
+div.card#ann-plan h5, h4{
+    border-bottom:1px rgb(218, 212, 212) solid;
+    padding: 15px;
+}
+
+div.card#ann-plan div.col-md-6:nth-child(1){
+
+    border-right:1px gray solid;
+
+}
+
+
+
+div.card#ann-plan h5{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    font-size:1.8rem;
+}
+div.card#ann-plan h4{
+    color: rgb(170, 163, 163);
+    font-size:3.5rem;
+}
+
+div.card#ann-plan li{
+    margin:2rem;
+    font-size:1.8rem;
+    color:white;
+}
+
+
+div#button-alter div a{
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+div#button-alter button#alter-data{
+    background: transparent;
+    color: rgb(34, 34, 211);
+}
+
+div#button-alter button#alter-data:hover{
+    background:rgb(34, 34, 211) ;
+    color:white;
+}
+
+div#button-alter div{
+    margin:30px auto;
+}
+
+div.modal-footer{
     display: flex;
     flex-flow: row nowrap;
 }
@@ -225,9 +372,9 @@ div.modal-footer div{
 }
 
 
-section#content div.row div.col-md-4{
+/* section#content div.row div.col-md-4{
     padding: 10px;
-}
+} */
 
 /* #content{
     overflow: hidden;
@@ -246,7 +393,9 @@ section#content div.row div.col-md-4{
 
 div.button{
     margin:30px auto;
+    justify-content: center;
 }
+
 
 div.button button{
     width: 230px;

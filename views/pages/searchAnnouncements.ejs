@@ -17,7 +17,7 @@
                             <option value="">Soluções</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="segment">Segmento:</label>
                         <select name="segment" class="form-control" id="segment">
                             <option value="">Todos</option>
@@ -25,10 +25,10 @@
                             <option value="">Redes Sociais</option>
                             <option value="">Soluções</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="">Palavra-chave:</label>
-                        <input type="text" name="keyword" class="form-control" placeholder="ex: e-commerce de roupas">
+                        <input id="keyword" type="text" name="keyword" class="form-control" placeholder="ex: e-commerce de roupas">
                     </div>
                     <div class="form-group">
                         <label for="">Valor de Venda:</label>
@@ -36,14 +36,14 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text">De:</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="saleValue-1" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             <span class="input-group-text">Até:</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input id="saleValue-2" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             
                         </div>
                     </div>
@@ -53,13 +53,13 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text">De:</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">  
+                            <input id="monthlyAmount-1" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">  
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                             <span class="input-group-text">Até:</span>
                             </div>
-                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"> 
+                            <input id="monthlyAmount-2" type="text" class="form-control" aria-label="Amount (to the nearest dollar)"> 
                         </div>
                     </div>
                     <div class="form-group mt-5">
@@ -68,33 +68,35 @@
                     </div>
                    </form>
                 <!-- End Search Form -->
+
                 <div class="hide" id='search' data-toggle="modal" data-target="#modal2">
                     <img src="/images/svg/search.svg" alt="">
                 </div>
                 </div>
                 <div class="col-md-8 col-sm-12">
-                    <h2 class="mt-5 text-left"><strong><%= category.nome %> à Venda</strong></h2>
+                    <h2 class="mt-5 text-left" id="pageTitle"><strong><%= category.nome %> à Venda</strong></h2>
                     <p>Excelentes oportunidades de negócios em todo o Brasil.</p>
-                   <div class="row" id="#cardParent">
-                    <div class="col-md-6 col-sm-12 my-4">
-                        <!-- Card -->
-                        <div class="card">
-                            <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
-                            <!-- Adiciona Tag de Destaque -->
-                            <span class="spotlight p-2">Destaque</span>
-                            <!-- Adiciona Tag de Categoria -->
-                            <span class="categorie tag-<%= category.id_categoria %> p-2"><%= category.nome %></span>
-                            <div class="card-body">
-                                <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
-                                <p class="card-text">R$ 50.000,00</p>
-                                <a href="#" class="btn btn-primary">+ Detalhes</a>
+                    <div id="cardList">
+                    <!-- 
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 my-4">
+                        
+                                <div class="card">
+                                    <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
+                            
+                                    <span class="spotlight p-2">Destaque</span>
+                            
+                                    <span class="categorie tag-<%= category.id_categoria %> p-2"><%= category.nome %></span>
+                                    <div class="card-body">
+                                        <h5 class="card-title">E-Commerce de roupas com painel administrativo</h5>
+                                        <p class="card-text">R$ 50.000,00</p>
+                                        <a href="#" class="btn btn-primary">+ Detalhes</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Fim do Card  -->
-                    </div>
                     
-                   </div>
-                   
+                        </div> -->
+                    </div>
                 </div>
             </div>
             <!-- Fim da Primeira Linha -->
@@ -180,7 +182,7 @@
 
     
 
-    <script src="/public/js/announceSearch.js"></script>
+    <script src="/js/announceSearch.js"></script>
     <%- include('../partials/footer') %> 
     <script src="/js/searchBar.js"></script>
     <%- include('../partials/scripts') %> 

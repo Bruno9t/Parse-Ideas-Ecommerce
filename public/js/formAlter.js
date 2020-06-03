@@ -1,11 +1,20 @@
 const form1 = document.getElementById('alter-user')
+const form2 = document.getElementById('form-pass')
 
 const nome = document.getElementById('recipient-name')
 const sobrenome = document.getElementById('recipient-surname')
 
+let inputSenha = document.getElementById('recipient-senha')
+let inputSenha2 = document.getElementById('recipient-novaSenha')
+let inputConfSenha2 = document.getElementById('recipient-confSenha')
+
 const erros0 = document.getElementById('erros0')
 const erros1 = document.getElementById('erros1')
 const erros2 = document.getElementById('erros2')
+const erros3 = document.getElementById('erros3')
+const erros4 = document.getElementById('erros4')
+const erros5 = document.getElementById('erros5')
+const erros6 = document.getElementById('erros6')
 let li;
 
 nome.addEventListener('keyup',function(){
@@ -24,7 +33,7 @@ form1.addEventListener('submit',function(e){
     enviarDados('/user/update?_method=PUT',{
         nome:nome.value.trim(),
         sobrenome:sobrenome.value.trim()
-    })
+    },validarDados)
 
 })
 
@@ -99,7 +108,7 @@ function validarDados(data){
 }
 
 
-function enviarDados(pathURL,data){
+function enviarDados(pathURL,data,validarMudancas){
 
     let config = {
         method:'post',
@@ -114,7 +123,7 @@ function enviarDados(pathURL,data){
         return response.json()
     }).then(datas => {
 
-        validarDados(datas)
+        validarMudancas(datas)
 
     }).catch(function(err){
  
@@ -132,4 +141,123 @@ function limparErro(listaDeErros){
     }
 
     return true;
+}
+
+
+//validação de senha
+
+inputSenha.addEventListener('keyup',function(){
+    validarSenha(this,erros3)
+})
+
+inputSenha2.addEventListener('keyup',function(){
+    validarSenha(this,erros4)
+    validarIgualdadeDeSenhas(inputConfSenha2,inputSenha2,erros5)
+})
+
+inputConfSenha2.addEventListener('keyup',function(){
+    validarSenha(this,erros5)
+    validarIgualdadeDeSenhas(this,inputSenha2,erros5)
+})
+
+form2.addEventListener('submit',function(e){
+    e.preventDefault()
+
+    enviarDados('/password/update?_method=PUT',{
+        senha:inputSenha.value,
+        novaSenha:inputSenha2.value,
+        confSenha:inputConfSenha2.value,
+    },validarNovaSenha)
+
+})
+
+
+function validarSenha(inputSenha,errorList){
+    if(inputSenha.value.length < 8){
+        return inputSenha.style.borderBottom = '2px #E05D54 solid'
+    }else{
+        limparErro(errorList)
+        return inputSenha.style.borderBottom = '2px #6DE677 solid'
+    }
+}
+
+function validarIgualdadeDeSenhas(inputConfSenha,inputSenha,errorList){
+    if(inputConfSenha.value!==inputSenha.value){
+        return inputConfSenha.style.borderBottom = '2px #E05D54 solid'
+    }else{
+        limparErro(errorList)
+        return inputConfSenha.style.borderBottom = '2px #6DE677 solid'
+    }
+}
+function validarNovaSenha(data){
+    if(data.cod == 2){
+
+        li = document.createElement('li')
+        li.setAttribute('style',
+        'font-size:13px')
+        limparErro(erros6)
+
+        li.innerHTML = `
+        <b style='color:green'>${data.msg}</b>
+        `
+        erros6.appendChild(li)
+
+        setTimeout(()=>{
+            window.location.reload()
+        },1000)
+        
+
+    }
+
+
+if(!data.errors.length){
+
+    window.location = window.location.origin+'/panel'
+
+}else{
+data.errors.forEach(function(error){
+    if(error.param == 'senha'){
+        inputSenha.style.borderBottom = '2px #E05D54 solid'
+
+        
+            li = document.createElement('p')
+            li.setAttribute('style',
+            'font-size:13px')
+            limparErro(erros3)
+
+            li.innerHTML = `
+            <b style='color:red'>${error.msg}</b>
+            `
+            return erros3.appendChild(li)
+
+    }else if(error.param == 'novaSenha'){
+        inputSenha2.style.borderBottom = '2px #E05D54 solid'
+
+            li = document.createElement('p')
+            li.setAttribute('style',
+            'font-size:13px')
+            limparErro(erros4)
+
+            li.innerHTML = `
+            <b style='color:red'>${error.msg}</b>
+            `
+            erros4.appendChild(li)
+
+    }else if(error.param == 'confSenha'){
+        inputConfSenha2.style.borderBottom = '2px #E05D54 solid'
+
+            li = document.createElement('li')
+            li.setAttribute('style',
+            'font-size:13px')
+            limparErro(erros5)
+
+            li.innerHTML = `
+            <b style='color:red'>${error.msg}</b>
+            `
+            erros5.appendChild(li)
+
+    }
+}) 
+}
+    
 }
