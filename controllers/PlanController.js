@@ -143,7 +143,11 @@ store: (req, res) => {
   return res.render('pages/plans', {css: 'plans.css'})
 },
 
+listPlan: async (req, res) => {
+  let categories = await Category.findAll()
 
+  return res.render('pages/selectionAnnounce', {css: 'announce.css', categories});
+}
 
 }
 
