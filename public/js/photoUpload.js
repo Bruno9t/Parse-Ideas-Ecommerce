@@ -1,5 +1,5 @@
-// let formPhoto = document.querySelector('#form-photo')
-// var formPhoto = document.forms.namedItem("form-photo");
+let formPhoto = document.querySelector('#form-photo')
+
 
 let fileInput = document.querySelector('#input-image')
 
@@ -18,42 +18,43 @@ fileInput.addEventListener('change',function(e){
 })
 
 
-// formPhoto.addEventListener('submit',function(e){
-//     e.preventDefault()
+formPhoto.addEventListener('submit',function(e){
+    e.preventDefault()
 
-//     let formData = new FormData()
+    let formData = new FormData()
 
-//     formData.append('file',fileInput.files[0])
+    formData.append('file',fileInput.files[0])
 
-//     console.log(formData.entries())
-
-
-//     enviarDados('/photo/update?_method=PUT',formData)
-
-// })
+    console.log(formData.entries())
 
 
+    enviarDados('/photo/update?_method=PUT',formData)
+
+})
 
 
 
-// function enviarDados(pathURL,data){
 
-//     let config = {
-//         method:'POST',
-//         body:data
-//     }
 
-//     fetch(window.location.href+pathURL,config)
-//     .then(response => {
-//         return response.json()
-//     }).then(datas => {
+function enviarDados(pathURL,data){
 
-//         console.log(datas)
+    let config = {
+        method:'POST',
+        body:data,
 
-//     }).catch(function(err){
+    }
+
+    fetch(window.location.href+pathURL,config)
+    .then(response => {
+        return response.json()
+    }).then(datas => {
+
+        console.log(datas)
+
+    }).catch(function(err){
  
-//         console.log(err)
+        return new Error(err)
 
-//     })
+    })
 
-// }
+}
