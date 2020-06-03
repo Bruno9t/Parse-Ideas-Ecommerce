@@ -141,7 +141,9 @@ signReturn: (req, res) => {
 
 store: (req, res) => {
   return res.render('pages/plans', {css: 'plans.css'})
-}
+},
+
+
 
 }
 
