@@ -25,9 +25,6 @@ formPhoto.addEventListener('submit',function(e){
 
     formData.append('file',fileInput.files[0])
 
-    console.log(formData.entries())
-
-
     enviarDados('/photo/update?_method=PUT',formData)
 
 })
@@ -41,7 +38,6 @@ function enviarDados(pathURL,data){
     let config = {
         method:'POST',
         body:data,
-
     }
 
     fetch(window.location.href+pathURL,config)
@@ -49,7 +45,7 @@ function enviarDados(pathURL,data){
         return response.json()
     }).then(datas => {
 
-        console.log(datas)
+            window.location.reload()
 
     }).catch(function(err){
  

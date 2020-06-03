@@ -94,7 +94,7 @@ function buildCards(data, totalRows) {
               <div class="card-body">
                   <h5 class="card-title">${announces[i+(j*2)].descricao}</h5>
                   <p class="card-text">R$ ${announces[i+(j*2)].preco}</p>
-                  <a href="/announcements/${announces[i+(j*2)].id_anuncio}" class="btn btn-primary">+ Detalhes</a>
+                  <a href="/announcements/detail/${announces[i+(j*2)].id_anuncio}" class="btn btn-primary">+ Detalhes</a>
               </div>
           </div>
         </div>

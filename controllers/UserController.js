@@ -85,6 +85,7 @@ module.exports = {
     },
 
     async updatePhoto(req,res){
+        console.log(req.files)
 
         try{
             let {filename} = req.files[0]
@@ -97,7 +98,7 @@ module.exports = {
             }
         })
 
-        res.redirect('/panel')
+        res.json({msg:'ok'})
 
         }catch(err){
             console.log(err)

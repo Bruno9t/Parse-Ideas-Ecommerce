@@ -4,7 +4,7 @@ const {check,body} = require('express-validator')
 const UserController = require('../controllers/UserController')
 const multerStorage = require('../middlewares/upload')
 
-let upload = multerStorage('public/images/uploads')
+let upload = multerStorage()
 
 router.put('/panel/user/update',[
     check('nome').isAlpha().withMessage('Seu nome só pode conter letras!'),
@@ -17,7 +17,7 @@ router.put('/panel/password/update',[
     check('senha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),
     check('novaSenha').isLength({min:8}).withMessage('A senha deve conter pelo menos 8 dígitos!'),
     body('confSenha').custom((value,{req})=>{
-        if (value !== req.body.novaSenha) {throw new Error("As senhas não são iguais!");} else {return value}}),
+        if (value !== req.body.novaSenha || req.body.novaSenha=='' ) {throw new Error("As senhas não são iguais!");} else {return value}}),
 ],UserController.updatePass)
 
 router.put('/panel/photo/update',upload.any(),UserController.updatePhoto)

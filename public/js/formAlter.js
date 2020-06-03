@@ -30,7 +30,7 @@ sobrenome.addEventListener('keyup',function(){
 form1.addEventListener('submit',function(e){
     e.preventDefault()
 
-    enviarDados('/user/update?_method=PUT',{
+    enviarDado('/user/update?_method=PUT',{
         nome:nome.value.trim(),
         sobrenome:sobrenome.value.trim()
     },validarDados)
@@ -67,9 +67,7 @@ function validarDados(data){
             window.location.reload()
         },1000)
         
-
     }
-
 
     if(data.errors.length !== 0){
         data.errors.forEach(error=>{
@@ -108,7 +106,7 @@ function validarDados(data){
 }
 
 
-function enviarDados(pathURL,data,validarMudancas){
+function enviarDado(pathURL,data,validarMudancas){
 
     let config = {
         method:'post',
@@ -163,7 +161,7 @@ inputConfSenha2.addEventListener('keyup',function(){
 form2.addEventListener('submit',function(e){
     e.preventDefault()
 
-    enviarDados('/password/update?_method=PUT',{
+    enviarDado('/password/update?_method=PUT',{
         senha:inputSenha.value,
         novaSenha:inputSenha2.value,
         confSenha:inputConfSenha2.value,

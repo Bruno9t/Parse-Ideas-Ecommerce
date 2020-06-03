@@ -148,6 +148,11 @@ input[ type='file' ] {
     left: 0.29em !important;
 }
 
+#form p{
+    font-size: 1.6rem;
+    color: red;
+}
+
 
 
 
