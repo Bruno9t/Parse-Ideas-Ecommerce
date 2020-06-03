@@ -74,6 +74,16 @@ div#fotoAnuncio div.category-3 {
   border-color: rgba(27, 192, 23, 0.8);
 }
 
+div#respError {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+div#respSuccess {
+  font-size: 11px;
+  font-weight: bold;
+}
+
 div#fotoAnuncio h3 {
   font-size: 3.8rem;
   font-weight: bold;
