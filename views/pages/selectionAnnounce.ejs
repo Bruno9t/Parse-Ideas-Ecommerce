@@ -5,52 +5,19 @@
             <h2 class="py-5 text-center">Escolha o tipo de negócio você deseja anunciar</h2>
             <!-- Primeira Linha  -->
             <div class="text-center" id="row">
+            <% categories.forEach(category => { %>
                 <div class="item">
-
                     <!-- Card -->
                     <div class="card business-card" id="e-commerce">
                         <div class="card-body business-card-body">
-                            <h5 class="card-title text-center">Vender um E-commerce</h5>
+                            <h5 class="card-title text-center"><%= category.nome %></h5>
                             <p class="card-text text-center">Venda da marca, carteira de clientes.</p>
                             <input type="checkbox" class="checkmark" checked>
                         </div>
                     </div>
                     <!-- Fim do Card  -->
                 </div>
-                <div class="item">
-                    <!-- Card -->
-                    <div class="card business-card" id="site">
-                        <div class="card-body business-card-body">
-                            <h5 class="card-title text-center">Vender um Site</h5>
-                            <p class="card-text text-center">Venda seu site, página web, carteiras de cliente.</p>
-                            <input type="checkbox" class="checkmark">
-                        </div>
-                    </div>
-                    <!-- Fim do Card  -->
-                </div>
-                <div class="item">
-                    <!-- Card -->
-                    <div class="card business-card" id="social-network">
-                        <div class="card-body business-card-body">
-                            <h5 class="card-title text-center">Vender uma Rede Social
-                            </h5>
-                            <p class="card-text text-center">Venda sua rede social com, carteira de clientes.</p>
-                            <input type="checkbox" class="checkmark">
-                        </div>
-                    </div>
-                    <!-- Fim do Card  -->
-                </div>
-                <div class="item">
-                    <!-- Card -->
-                    <div class="card business-card" id="solution">
-                        <div class="card-body business-card-body">
-                            <h5 class="card-title text-center">Vender uma Solução</h5>
-                            <p class="card-text text-center">Encontre clientes para comprar suas soluções.</p>
-                            <input type="checkbox" class="checkmark">
-                        </div>
-                    </div>
-                    <!-- Fim do Card  -->
-                </div>
+            <% }); %>
             </div>
             <!-- Fim -->
         </div>
