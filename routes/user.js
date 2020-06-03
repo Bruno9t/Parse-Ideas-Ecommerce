@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const {check,body} = require('express-validator')
 const UserController = require('../controllers/UserController')
+const multerStorage = require('../middlewares/upload')
 
+let upload = multerStorage('public/images/uploads')
 
 router.put('/panel/user/update',[
     check('nome').isAlpha().withMessage('Seu nome só pode conter letras!'),
@@ -18,7 +20,7 @@ router.put('/panel/password/update',[
         if (value !== req.body.novaSenha) {throw new Error("As senhas não são iguais!");} else {return value}}),
 ],UserController.updatePass)
 
-router.put('/panel/photo/update',UserController.updatePhoto)
+router.put('/panel/photo/update',upload.any(),UserController.updatePhoto)
 
 
 router.get('/logout',(req,res)=>{

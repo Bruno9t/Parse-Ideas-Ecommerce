@@ -1,4 +1,5 @@
 const paypal = require('paypal-rest-sdk');
+const {Category} = require('../models')
 // const config = require('../config/plans/paypal-configure');
 // paypal.configure(config)
 
@@ -141,6 +142,12 @@ signReturn: (req, res) => {
 
 store: (req, res) => {
   return res.render('pages/plans', {css: 'plans.css'})
+},
+
+listPlan: async (req, res) => {
+  let categories = await Category.findAll()
+
+  return res.render('pages/selectionAnnounce', {css: 'announce.css', categories});
 }
 
 }

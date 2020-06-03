@@ -57,6 +57,7 @@ div#user-data{
 
 div.card#user-data img.card-img-top{
     border-radius: 5px 5px 0 0;
+    height: 305px;
 }
 
 div#user-data{
