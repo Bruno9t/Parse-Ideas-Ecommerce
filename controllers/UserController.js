@@ -2,6 +2,8 @@ const {validationResult} = require('express-validator')
 const {User} = require('../models')
 const bcrypt = require('bcrypt')
 
+const multerStorage = require('../middlewares/upload') 
+
 module.exports = {
      async update(req,res){
         try{
@@ -82,7 +84,24 @@ module.exports = {
 
     },
 
-    updatePhoto(req,res){
+    async updatePhoto(req,res){
+
+        try{
+            let {filename} = req.files[0]
+
+            const {id_usuario} = req.session.user || req.user
         
+        await User.update({thumbnail:`/images/uploads/${filename}`},{
+            where:{
+                id_usuario,
+            }
+        })
+
+        res.redirect('/panel')
+
+        }catch(err){
+            console.log(err)
+        }
+
     }
 }
