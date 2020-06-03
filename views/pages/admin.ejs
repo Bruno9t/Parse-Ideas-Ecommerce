@@ -172,7 +172,7 @@
                   <div class="card-body">
                       <h2>Você tem <span>(0)</span> novas mensagens</h2>
 
-                      <button class='btn btn-primary'>Ver mensagens</button>
+                      <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModal4">Ver mensagens</button>
                   </div>
                 </div>
   
@@ -376,10 +376,27 @@
                 </div>
               </div>
             </div>
-
+              <!-- Modal para mostrar Imagens -->
+      <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLabel">Editar dados pessoais</h5>
+            </div>
+              <div class="modal-body">
+                <div class="container">
+                  <ul id="ulMessages">
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 </main>
 
 <%- include('../partials/footer') %>
+<script src="/js/listUserMessages.js"></script>
 <script src="/js/formAlter.js"></script>
 <script src='/js/photoUpload.js'></script>
 <%- include('../partials/scripts') %>
