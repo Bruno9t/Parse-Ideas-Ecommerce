@@ -140,6 +140,14 @@ input[ type='file' ] {
 
 }
 
+.swal2-popup{
+    font-size: 2rem !important;
+}
+
+.swal2-success-line-tip{
+    left: 0.29em !important;
+}
+
 
 
 

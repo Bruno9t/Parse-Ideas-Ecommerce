@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     const Message = sequelize.define(
       "Message",
       {
-        id_anuncio:{
+        id_mensagem:{
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false,
             primaryKey:true,

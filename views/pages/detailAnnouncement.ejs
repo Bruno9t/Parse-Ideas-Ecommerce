@@ -46,15 +46,23 @@
             </div>
 
             <div id="message" class="text-center">
-
+              
               <h3>Envie uma mensagem para o anúnciante</h3>
 
-              <form action="" class="my-4" id="formMessage">
-                <div class="form-row my-4">
-                  <input type="hidden" name="<%=announce.usuario_id%>" id="user">
-                  <input type="hidden" name="<%=announce.id_anuncio%>" id="announce">
+              <form action="/message/create/<%=announce.usuario_id%>/<%=announce.id_anuncio%>" class="my-4" id="formMessage" method="POST">
+                <div class="form-row">
                   <div class="col">
-                    <input id="viewerName" class="form-control px-5" type="text" placeholder="Nome">
+                    <input id="viewerName" type="text" class="form-control px-5" name="name" aria-label="Nome" placeholder="Nome">
+                  </div>
+                  <div class="col">
+                    <input id="viewerEmail" type="email" class="form-control px-5 py-3" name="email" aria-label="Email" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-row my-4">
+                  <input type="hidden" value="<%=announce.usuario_id%>" id="viewerUser">
+                  <input type="hidden" value="<%=announce.id_anuncio%>" id="viewAnnounce">
+                  <div class="col">
+                    <input id="viewerCell" class="form-control px-5" type="text" placeholder="Celular">
                   </div>
                   <div class="col">
                     <input id="viewerTell" class="form-control px-5" type="text" placeholder="Telefone">
@@ -64,7 +72,7 @@
                   <textarea class="form-control px-5 py-3" name="message" id="txtMessage" cols="30" rows="6" placeholder="Mensagem"></textarea>
                 </div>
                 <div class="form-row my-4">
-                  <button type="submit" class="btn btn-lg btn-primary">Enviar Mensagem</button>
+                  <button id="btnSend" type="submit" class="btn btn-lg btn-primary">Enviar Mensagem</button>
                 </div>
               </form>
 
