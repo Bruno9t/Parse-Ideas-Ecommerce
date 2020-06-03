@@ -89,14 +89,17 @@ module.exports = {
 
         try{
             let {filename} = req.files[0]
+            let path = `/images/uploads/${filename}`
 
-            const {id_usuario} = req.session.user || req.user
+            const user = req.session.user || req.user
         
-        await User.update({thumbnail:`/images/uploads/${filename}`},{
+        await User.update({thumbnail:path},{
             where:{
-                id_usuario,
+                id_usuario:user.id_usuario,
             }
         })
+
+        user.thumbnail = path
 
         res.json({msg:'ok'})
 

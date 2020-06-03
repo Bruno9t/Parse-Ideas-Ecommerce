@@ -29,10 +29,6 @@ formPhoto.addEventListener('submit',function(e){
 
 })
 
-
-
-
-
 function enviarDados(pathURL,data){
 
     let config = {
