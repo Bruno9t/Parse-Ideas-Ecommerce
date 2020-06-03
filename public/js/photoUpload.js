@@ -18,19 +18,19 @@ fileInput.addEventListener('change',function(e){
 })
 
 
-// formPhoto.addEventListener('submit',function(e){
-//     e.preventDefault()
+formPhoto.addEventListener('submit',function(e){
+    e.preventDefault()
 
-//     let formData = new FormData()
+    let formData = new FormData()
 
-//     formData.append('file',fileInput.files[0])
+    formData.append('file',fileInput.files[0])
 
-//     console.log(formData.entries())
+    console.log(formData.entries())
 
 
-//     enviarDados('/photo/update?_method=PUT',formData)
+    enviarDados('/photo/update?_method=PUT',formData)
 
-// })
+})
 
 
 

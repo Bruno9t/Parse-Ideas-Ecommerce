@@ -18,15 +18,14 @@ const AnnouceController = {
         res.render('pages/searchAnnouncements', 
         {css: 'searchEcommerce.css', category: category})
     },
-    create: (req, res) => {
+    create: async (req, res) => {
         // return res.send('teste')
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
     },
-    
     store: async (req, res) => {
         const obj = req.body;
-        console.log(obj)
-        // return res.send(description)
+    
+        // return res.send(obj)
         return res.status(200).json({'msg': 'success'})
     },
     search: async (req, res) => {

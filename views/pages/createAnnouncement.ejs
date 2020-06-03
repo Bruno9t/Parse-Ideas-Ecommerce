@@ -8,24 +8,22 @@
             <figure>
                 <img src="/images/svg/info.svg" alt="imagem para informações">
             </figure>
-
             <h2>Informações</h2>
         </div>
-
         <section id="form">
-
+            <p>Campos com (*) são obrigatórios.</p>
             <form action="/announcements/create" enctype="multipart/form-data" method="POST">  
                 <section>
                 <div class="row">
 
                     <div class="col-md-6 col-sm-12">
-                        <label for="title">Título do anúncio</label>
+                        <label for="title">Título do anúncio(*)</label>
                         <input type="text" class="form-control" name='title' id='title'>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         
-                        <label for="type">Tipo do negocio</label>
+                        <label for="type">Tipo do negocio(*)</label>
                         <select name="type" class="form-control" id="type">
                             <option value="">Todos</option>
                             <option value="">E-Commerce</option>
@@ -39,22 +37,22 @@
                 <div class="row">
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="price">Preço de venda*</label>
+                        <label for="price">Preço de venda(*)</label>
                         <input type="text" class="form-control" name='price' id='price'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="stock">Valor estimado do estoque*</label>
+                        <label for="stock">Valor estimado do estoque(*)</label>
                         <input type="text" class="form-control" name='stock' id='stock'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="revenues">Faturamento médio mensal*</label>
+                        <label for="revenues">Faturamento médio mensal(*)</label>
                         <input type="text" class="form-control" name='revenues' id='revenues'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="profit">Lucro mensal*</label>
+                        <label for="profit">Lucro mensal(*)</label>
                         <input type="text" class="form-control" name='profit' id='profit'>
                     </div>
 
@@ -63,17 +61,17 @@
                 <div class="row">
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="age">Idade da empresa*</label>
+                        <label for="age">Idade da empresa(*)</label>
                         <input type="number" class="form-control" name='age' id='age'>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
-                        <label for="reason">Motivo da venda*</label>
+                        <label for="reason">Motivo da venda(*)</label>
                         <input type="text" class="form-control" name='reason' id='reason'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="employees">Funcionários*</label>
+                        <label for="employees">Funcionários(*)</label>
                         <input type="number" class="form-control" name='employees' id='employees'>
                     </div>
                 </div>
@@ -82,7 +80,7 @@
                 <div class="row">
 
                     <div class="col">
-                        <label for="description">Descrição do anúncio*</label>
+                        <label for="description">Descrição do anúncio(*)</label>
                         <textarea class="form-control" id="description" name ="description" rows="3"></textarea>
                       </div>
 

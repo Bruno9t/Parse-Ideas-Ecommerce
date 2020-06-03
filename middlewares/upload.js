@@ -1,16 +1,20 @@
 const multer = require('multer')
-const {extname} = require('path')
+const {extname, join} = require('path')
 
 
-function multerStorage(whereStorage){
+function multerStorage(){
 
       let storage = multer.diskStorage({
         destination(req,file,cb){
-            cb(null,whereStorage)
+          if(extname(file.originalname) == '.pdf'){
+            cb(null, join('public','uploads','pdf'))
+          }else{
+            cb(null, join('public','images','uploads'))
+          }
         },
       
         filename(req,file,cb){
-            cb(null,file.fieldname+'-'+Date.now()+extname(file.originalname))
+              cb(null,file.fieldname+'-'+Date.now()+extname(file.originalname))
         }
       })
 
