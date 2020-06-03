@@ -23,6 +23,13 @@ const AnnouceController = {
     create: (req, res) => {
         // return res.send('teste')
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
+    },
+    
+    store: async (req, res) => {
+        const obj = req.body;
+        console.log(obj)
+        // return res.send(description)
+        return res.status(200).json({'msg': 'success'})
     }
 }
 

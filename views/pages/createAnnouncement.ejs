@@ -14,8 +14,8 @@
 
         <section id="form">
 
-            <form action="./previewAnnounce.html">
-                <article>
+            <form action="/announcements/create" enctype="multipart/form-data" method="POST">  
+                <section>
                 <div class="row">
 
                     <div class="col-md-6 col-sm-12">
@@ -40,22 +40,22 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="price">Preço de venda*</label>
-                        <input type="number" class="form-control" name='price' id='price'>
+                        <input type="text" class="form-control" name='price' id='price'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="stock">Valor estimado do estoque*</label>
-                        <input type="number" class="form-control" name='stock' id='stock'>
+                        <input type="text" class="form-control" name='stock' id='stock'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="revenues">Faturamento médio mensal*</label>
-                        <input type="number" class="form-control" name='revenues' id='revenues'>
+                        <input type="text" class="form-control" name='revenues' id='revenues'>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="profit">Lucro mensal*</label>
-                        <input type="number" class="form-control" name='profit' id='profit'>
+                        <input type="text" class="form-control" name='profit' id='profit'>
                     </div>
 
                 </div>
@@ -64,7 +64,7 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="age">Idade da empresa*</label>
-                        <input type="text" class="form-control" name='age' id='age'>
+                        <input type="number" class="form-control" name='age' id='age'>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -74,7 +74,7 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="employees">Funcionários*</label>
-                        <input type="text" class="form-control" name='employees' id='employees'>
+                        <input type="number" class="form-control" name='employees' id='employees'>
                     </div>
                 </div>
 
@@ -82,14 +82,14 @@
                 <div class="row">
 
                     <div class="col">
-                        <label for="exampleFormControlTextarea1">Descrição do anúncio*</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="description">Descrição do anúncio*</label>
+                        <textarea class="form-control" id="description" name ="description" rows="3"></textarea>
                       </div>
 
                 </div>
-            </article>
+            </section>
 
-            <article id='ad-files'>
+            <section id='ad-files'>
 
                 <div id='icon2'>
                     <figure>
@@ -119,9 +119,9 @@
                     </div>
                 </div>
 
-            </article>
+            </section>
 
-            <!-- <article>
+            <!-- <section>
                 <div id='icon3'>
                     <figure>
                         <img src='/images/svg/contact.svg' alt="imagem para informações">
@@ -147,12 +147,10 @@
                         <input type="tel" class="form-control" name='tel' id='tel'>
                     </div>
                 </div>
-            </article> -->
+            </section> -->
 
             <div class='redirect'>
-                <a>
-                    <button class='btn btn-md btn-primary'>Avançar</button>
-                </a>
+                    <button class='btn btn-md btn-primary next'>Avançar</button>
             </div>
 
             </form>
@@ -163,5 +161,9 @@
 
 </main>
 
-    <%- include('../partials/footer') %>
+<%- include('../partials/footer') %> 
+<script src="/js/vanilla-masker.min.js"></script>
+<script src="/js/announcement.js"></script>
+<%- include('../partials/scripts') %> 
+
 
