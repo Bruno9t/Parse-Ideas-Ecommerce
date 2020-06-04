@@ -356,9 +356,9 @@
                       <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
                     <%}%>                    
                   </figure>
-                  <form action="/panel/photo/update?_method=PUT" method="POST" enctype="multipart/form-data" id='form-photo'>
+                  <form action="/panel/photo/update?_method=PUT" method="POST" enctype="multipart/form-data" accept="image/png" id='form-photo'>
                     <div class="form-group">
-                      <input type="file" class='form-control' name="foto" id="input-image">
+                      <input type="file" class='form-control' name="foto" id="input-image"> 
                       <div id='label-1' class='button'> 
                           <label for="input-image">Anexar Foto</label>
                       </div>

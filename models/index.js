@@ -22,7 +22,6 @@ sequelize
     let hours = new Date().getHours()
     let message;
 
-
     if(hours >=5 && hours < 12) {
 
       message = 'Tenha um bom dia ;)'

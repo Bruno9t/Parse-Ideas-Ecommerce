@@ -177,34 +177,10 @@ function validarLogin(data){
     data.errors.forEach(function(error){
 
         if(error.param == 'email'){
-            inputEmail.style.backgroundColor = '#E05D54'
-            limparErro(erros0)
-
-                li = document.createElement('li')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros1)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros1.appendChild(li)
-
-
+                criarErro(inputEmail,erros1,error)
 
         }else if(error.param=='senha'){
-            inputSenha.style.backgroundColor = '#E05D54'
-            limparErro(erros0)
-
-                li = document.createElement('li')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros2)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros2.appendChild(li)
+                criarErro(inputSenha,erros2,error)
 
         }
     }) 
@@ -219,57 +195,16 @@ function validarRegistro(data){
     }else{
     data.errors.forEach(function(error){
         if(error.param == 'email'){
-            inputEmail2.style.backgroundColor = '#E05D54'
-
-            
-                li = document.createElement('p')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros4)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros4.appendChild(li)
+                criarErro(inputEmail2,erros4,error)
 
         }else if(error.param=='senha'){
-            inputSenha2.style.backgroundColor = '#E05D54'
-
-                li = document.createElement('p')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros5)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros5.appendChild(li)
+                criarErro(inputSenha2,erros5,error)
 
         }else if(error.param =='nome'){
-            inputNome2.style.backgroundColor = '#E05D54'
-
-                li = document.createElement('p')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros3)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros3.appendChild(li)
+                criarErro(inputNome2,erros3,error)
 
         }else if(error.param =='confSenha'){
-            inputConfSenha2.style.backgroundColor = '#E05D54'
-
-                li = document.createElement('p')
-                li.setAttribute('style',
-                'font-size:13px')
-                limparErro(erros6)
-
-                li.innerHTML = `
-                <b style='color:red'>${error.msg}</b>
-                `
-                erros6.appendChild(li)
+                criarErro(inputConfSenha2,erros6,error)
 
         }
     }) 
@@ -308,5 +243,22 @@ function limparErro(listaDeErros){
     }
 
     return true;
+}
+
+
+function criarErro(input,errorList,error){
+
+    input.style.backgroundColor = '#E05D54'
+
+    li = document.createElement('p')
+    li.setAttribute('style',
+    'font-size:13px')
+    limparErro(errorList)
+
+    li.innerHTML = `
+    <b style='color:red'>${error.msg}</b>
+    `
+    errorList.appendChild(li)
+
 }
 
