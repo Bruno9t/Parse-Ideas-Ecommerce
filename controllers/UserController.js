@@ -1,8 +1,8 @@
 const {validationResult} = require('express-validator')
 const {User} = require('../models')
 const bcrypt = require('bcrypt')
-
-const multerStorage = require('../middlewares/upload') 
+const {unlinkSync,existsSync} = require('fs')
+const {resolve} = require('path')
 
 module.exports = {
      async update(req,res){
@@ -92,16 +92,22 @@ module.exports = {
             let path = `/images/uploads/${filename}`
 
             const user = req.session.user || req.user
+
+            const uploadPath = resolve(`public/${user.thumbnail}`)
         
-        await User.update({thumbnail:path},{
-            where:{
-                id_usuario:user.id_usuario,
+            await User.update({thumbnail:path},{
+                where:{
+                    id_usuario:user.id_usuario,
+                },
+            })
+
+            if(existsSync(uploadPath)){
+                unlinkSync(uploadPath)
             }
-        })
 
-        user.thumbnail = path
+            user.thumbnail = path
 
-        res.json({msg:'ok'})
+            res.json({msg:'ok'})
 
         }catch(err){
             console.log(err)
