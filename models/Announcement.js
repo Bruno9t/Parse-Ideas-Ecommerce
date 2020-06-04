@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false
            },
+           titulo:{
+            type:DataTypes.STRING,
+          },
            preco:{
              type:DataTypes.DECIMAL,
              allowNull:false

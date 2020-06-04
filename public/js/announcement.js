@@ -12,8 +12,8 @@ let idade = form.age;
 let motivoVenda = form.reason;
 let qtdFuncionarios = form.employees;
 let descricao = form.querySelector('textarea');
-let fileFoto = form.pdf
-let filePdf = form.foto;
+let fileFoto = form.foto;
+let filePdf = form.pdf;
 
 
 // Masking input element to money.
@@ -109,6 +109,7 @@ form.addEventListener('submit', async function(e){
                 showConfirmButton: false,
                 timer: 3000
             })
+            
         }else{
             Swal.fire({
                 position: 'center',
@@ -119,17 +120,26 @@ form.addEventListener('submit', async function(e){
             })
         }
 
-
-    // then(data => {
-    //     console.log(data.teste);
-    //     Swal.fire({
-    //     position: 'center',
-    //     icon: 'success',
-    //     title: 'Your work has been saved',
-    //     showConfirmButton: false,
-    //     timer: 3000
-    //   })
-    // }).catch(erro => {
-    //     console.log('Não deu certo ' + erro)
-    // })
 })
+
+document.querySelector('#input-foto').addEventListener('change',function(e){
+  let span = document.querySelector('.desc-file-foto');
+  span.innerHTML = '';
+  let inputText = this.files[0].name;
+  span.innerHTML += `<p>Imagem: ${inputText}</p>`; 
+
+  let image = document.querySelector('#label-1 img');
+  let reader = new FileReader()
+    reader.onload = function(e){
+        image.src = e.target.result
+    }
+    reader.readAsDataURL(e.target.files[0]);
+})
+
+document.querySelector('#input-pdf').addEventListener('change',function(e){
+  let span = document.querySelector('.desc-file-pdf');
+  span.innerHTML = '';
+  let inputText = this.files[0].name;
+  span.innerHTML += `<p>PDF: ${inputText}</p>`; 
+})
+

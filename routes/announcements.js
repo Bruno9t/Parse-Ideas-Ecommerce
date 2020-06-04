@@ -29,7 +29,6 @@ router.get('/create', /*auth,*/ AnnouncementsController.create);
 
 router.get('/detail/:id', AnnouncementsController.detail)
 
-
 /* Search dos anuncios */
 router.post('/search', AnnouncementsController.search);
 

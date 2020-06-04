@@ -2,16 +2,12 @@ module.exports = (sequelize, DataTypes) => {
     const File = sequelize.define(
       "File",
       {
-        id_anuncio:{
+        id_arquivo:{
             type:DataTypes.INTEGER.UNSIGNED,
             allowNull:false,
             primaryKey:true,
             autoIncrement:true,
             unique: true
-           },
-        usuario_id:{
-            type:DataTypes.INTEGER.UNSIGNED,
-            allowNull:false,
            },
         anuncio_id:{
             type:DataTypes.INTEGER.UNSIGNED,
@@ -21,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING(50),
            },
         },
-        
         {
             tableName:'arquivo_anuncio',
         }
