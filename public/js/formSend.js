@@ -245,7 +245,6 @@ function limparErro(listaDeErros){
     return true;
 }
 
-
 function criarErro(input,errorList,error){
 
     input.style.backgroundColor = '#E05D54'
