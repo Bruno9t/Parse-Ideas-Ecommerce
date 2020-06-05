@@ -25,10 +25,10 @@
                         
                         <label for="type">Tipo do negocio(*)</label>
                         <select name="type" class="form-control" id="type">
-                            <option value="">Todos</option>
-                            <option value="">E-Commerce</option>
-                            <option value="">Redes Sociais</option>
-                            <option value="">Soluções</option>
+                            <option value="0">Todos</option>
+                            <option value="1">E-Commerce</option>
+                            <option value="2">Redes Sociais</option>
+                            <option value="3">Soluções</option>
                         </select>
                     </div>
 
@@ -100,23 +100,22 @@
                 <div id='files'>
                    <div>
                         <input type="file" class='form-control' name="foto" id="input-foto">
-
                         <div id='label-1'>
                             <label for="input-foto">
                                 <img src="/images/svg/photo2.svg" alt="">
                             </label>
                         </div>
                     </div>
-
                     <div>
-
                         <input type="file" class='form-control' name="pdf" id="input-pdf">
                         <div id='label-2'>
                             <label for="input-pdf">Anexar PDF</label>
                         </div>
+                        
                     </div>
+                    <span class='desc-file-foto'></span>
+                    <span class='desc-file-pdf'></span>
                 </div>
-
             </section>
 
             <!-- <section>

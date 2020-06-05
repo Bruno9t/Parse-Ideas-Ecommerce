@@ -98,6 +98,7 @@ input[ type='file' ] {
     height: 110px;
     margin: 50px 50px 50px auto;
     text-align: center;
+    overflow: hidden;
   }
 
   #files #label-1 img{
@@ -151,6 +152,16 @@ input[ type='file' ] {
 #form p{
     font-size: 1.6rem;
     color: red;
+}
+
+#files .desc-file-foto,
+#files .desc-file-pdf{
+    flex: 1 0 100%;
+}
+
+#files p{
+    font-size: 1.6rem;
+    color: black;
 }
 
 
