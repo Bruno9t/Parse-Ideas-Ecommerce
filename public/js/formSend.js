@@ -190,7 +190,7 @@ function validarLogin(data){
 function validarRegistro(data){
     if(!data.errors.length){
 
-        window.location = window.location.origin+'/panel'
+        window.location = window.location.origin+'/announcements/create'
 
     }else{
     data.errors.forEach(function(error){

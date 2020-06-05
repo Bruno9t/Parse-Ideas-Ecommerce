@@ -111,10 +111,10 @@ module.exports = {
 
             user.thumbnail = path
 
-            res.json({code:1,msg:'Upload realizado!'})
+            res.json({code:1,msg:'Foto alterada com sucesso!'})
 
         }catch(err){
-            console.log(err)
+            return new Error(err)
         }
     }
 }

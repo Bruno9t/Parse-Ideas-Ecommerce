@@ -50,7 +50,7 @@ function enviarDados(pathURL,data){
 
             list = document.createElement('p')
             list.setAttribute('style',
-            'font-size:13px')
+            'font-size:13px;background:rgb(158, 235, 44);')
             limparErro(photoErros)
 
             list.innerHTML = `
@@ -79,7 +79,7 @@ function enviarDados(pathURL,data){
 function criarErro(errorList,msg){
     list = document.createElement('p')
     list.setAttribute('style',
-    'font-size:13px')
+    'font-size:13px;')
     limparErro(errorList)
 
     list.innerHTML = `

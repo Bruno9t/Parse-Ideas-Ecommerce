@@ -25,9 +25,10 @@ button.btn.btn-primary{
 
 #label-1 label{
     position: relative;
-    border:1px #5A47CC solid;
+    background:#5A47CC;
+    border:1px transparent solid;
     border-radius: 5px;
-    color: #5A47CC;
+    color:white;
     cursor: pointer;
     margin: 10px;
     padding: 6px 20px;
@@ -35,10 +36,13 @@ button.btn.btn-primary{
     text-align: center;
     width: 400px;
     font-size: 1.6rem;
+
+    transition: all 400ms;
   }
+
   #label-1 label:hover{
-    background:#5A47CC;
-    color:white;
+    border:1px #5A47CC solid;
+    background: rgb(118, 99, 228);
   }
 
 

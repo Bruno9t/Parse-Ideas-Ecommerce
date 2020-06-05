@@ -37,6 +37,7 @@ function modelarDados(dados,columns){
             <div class="col-md-${12/columns} col-sm-12">
                 <div class="card">
                     <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
+                    ${anuncios[j].prioridade ? `<span class="spotlight p-2">Destaque</span>` : ''}
                 <span class="categorie tag-${formatarCategoria(anuncios[j].categoria.nome)} p-2">${anuncios[j].categoria.nome}</span>
                     <div class="card-body">
                         <h5 class="card-title">${anuncios[j].descricao}</h5>
@@ -50,7 +51,6 @@ function modelarDados(dados,columns){
 
         }
     }
-
 }
 
 

@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const {check,body} = require('express-validator')
 const UserController = require('../controllers/UserController')
-const multer = require('multer')
 const multerStorage = require('../middlewares/upload')
 const {extname} = require('path')
 
@@ -12,7 +11,7 @@ let upload = multerStorage({
     },
     fileFilter(req,file,cb){
         console.log(req.files)
-        let acceptImages = ['.svg','.png','.jpg']
+        let acceptImages = ['.svg','.png','.jpg','.jpeg']
         if(acceptImages.includes(extname(file.originalname))){
             cb(null,true)
         }else{

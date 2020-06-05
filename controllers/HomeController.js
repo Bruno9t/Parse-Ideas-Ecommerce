@@ -10,7 +10,7 @@ const HomeController = {
 
     async list(req,res){
         let {count} = req.body
-        let limit = 3
+        let limit = 6
 
         let {count:total,rows:anuncios} = await Announcement.findAndCountAll({
             limit,
