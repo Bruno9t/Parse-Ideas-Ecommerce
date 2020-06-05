@@ -2,7 +2,7 @@ const multer = require('multer')
 const {extname, join} = require('path')
 
 
-function multerStorage(){
+function multerStorage(config){
 
       let storage = multer.diskStorage({
         destination(req,file,cb){
@@ -20,6 +20,7 @@ function multerStorage(){
 
       return multer({
           storage,
+          ...config,
         })
 }
 

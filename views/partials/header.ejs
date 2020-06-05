@@ -57,6 +57,11 @@
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                     <% if ( locals.user !== undefined){%>
+                    <li class="nav-item" id='admin-panel'>
+                        <a class="nav-link" href="/panel">Painel</a>
+                    </li>
+                    <%}%>
+                    <% if ( locals.user !== undefined){%>
                         <li id='user' class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if (locals.user.thumbnail == undefined){ %>
@@ -79,6 +84,7 @@
                             <a class="nav-link" href="/auth/access">Acesse</a>
                         </li>
                     <%}%>
+
                 </ul>
             </div>
         </nav>

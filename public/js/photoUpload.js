@@ -4,6 +4,9 @@ let formPhoto = document.querySelector('#form-photo')
 let fileInput = document.querySelector('#input-image')
 
 let image = document.querySelector('div#exampleModal3 figure img.card-img-top')
+let photoErros = document.querySelector('#photoErros')
+
+let list;
 
 
 fileInput.addEventListener('change',function(e){
@@ -41,7 +44,29 @@ function enviarDados(pathURL,data){
         return response.json()
     }).then(datas => {
 
-            window.location.reload()
+        console.log(datas)
+
+        if(datas.code==1){
+
+            list = document.createElement('p')
+            list.setAttribute('style',
+            'font-size:13px')
+            limparErro(photoErros)
+
+            list.innerHTML = `
+            <b style='color:green'>${datas.msg}</b>
+            `
+            photoErros.appendChild(list)
+
+            setTimeout(()=>{
+                window.location.reload()
+            },1000)
+
+        }else if(datas.code==2){
+            criarErro(photoErros,datas.msg)
+        }else{
+            criarErro(photoErros,'A foto não pode ter mais de 500kB')
+        }           
 
     }).catch(function(err){
  
@@ -49,4 +74,25 @@ function enviarDados(pathURL,data){
 
     })
 
+}
+
+function criarErro(errorList,msg){
+    list = document.createElement('p')
+    list.setAttribute('style',
+    'font-size:13px')
+    limparErro(errorList)
+
+    list.innerHTML = `
+    <b style='color:red'>${msg}</b>
+    `
+    errorList.appendChild(list)
+
+}
+
+function limparErros(listaDeErros){
+    if(listaDeErros!=undefined){
+        return listaDeErros.innerHTML=''
+    }
+
+    return true;
 }

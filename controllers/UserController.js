@@ -85,10 +85,14 @@ module.exports = {
     },
 
     async updatePhoto(req,res){
-        console.log(req.files)
+        
 
         try{
-            let {filename} = req.files[0]
+            if(!req.file){
+                return res.json({code:2,msg:'Arquivo não selecionado!'})
+            }
+
+            let {filename} = req.file
             let path = `/images/uploads/${filename}`
 
             const user = req.session.user || req.user
@@ -107,11 +111,10 @@ module.exports = {
 
             user.thumbnail = path
 
-            res.json({msg:'ok'})
+            res.json({code:1,msg:'Upload realizado!'})
 
         }catch(err){
             console.log(err)
         }
-
     }
 }
