@@ -1,5 +1,6 @@
 const buttonNext = document.querySelector('.next');
 const form  = document.querySelector('form');
+const divErros = document.querySelector('#erros');
 
 // Campos do form
 let tituloAnuncio = form.title;
@@ -101,7 +102,7 @@ form.addEventListener('submit', async function(e){
         result = await result.json();
 
         if(result.msg == 'success'){
-            console.log(result);
+          divErros.style.display = 'none';
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -110,7 +111,19 @@ form.addEventListener('submit', async function(e){
                 timer: 3000
             })
             
-        }else{
+        }else if(result.msg == 'errors'){
+            divErros.style.display = 'block';
+            divErros.innerHTML = ''
+            let erros = result.erros;
+
+            erros.forEach(erro => {
+
+              divErros.innerHTML += `<p><strong>${erro.msg}</strong></p>`
+                
+            })
+        }
+        else{
+            divErros.style.display = 'none';
             Swal.fire({
                 position: 'center',
                 icon: 'error',

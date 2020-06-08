@@ -1,5 +1,6 @@
-const { Announcement, Category, File } = require('../models')
-const { Op } = require('sequelize')
+const { Announcement, Category, File } = require('../models');
+const { Op } = require('sequelize');
+const {check, validationResult, body} = require('express-validator');
 
 const AnnouceController = {
     index: async (req, res) => {
@@ -23,23 +24,18 @@ const AnnouceController = {
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
     },
     store: async (req, res) => {
-        const id_usuario = 17
+        const {errors} = validationResult(req);
+        // const {id_usuario} = req.user || req.session.user
+        const id_usuario = 8;
         const obj = req.body;      
         const foto = req.files[0];
         const pdf = req.files[1];
 
-        //title
-        //type
-        //price
-        //stock
-        //revenues
-        //profit
-        //age
-        //reason
-        //employees
-        //description
-        //foto
-        //pdf
+        // console.log(errors.length);
+        // return;
+        if(errors.length > 0){
+            return res.json({msg: 'errors', erros: errors})
+        }
 
         try {
             const createdAnnouncements = await Announcement.create({

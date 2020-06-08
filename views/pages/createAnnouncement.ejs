@@ -12,6 +12,11 @@
         </div>
         <section id="form">
             <p>Campos com (*) são obrigatórios.</p>
+
+            <div id="erros" class="alert alert-danger">
+                
+            </div>
+
             <form action="/announcements/create" enctype="multipart/form-data" method="POST">  
                 <section>
                 <div class="row">
@@ -94,8 +99,10 @@
                         <img src="/images/svg/photo.svg" alt="imagem para informações">
                     </figure>
     
-                    <h2>Fotos e PDF</h2>
+                    <h2>Foto e PDF</h2>
                 </div>
+
+                <p class="text-upload">Clique abaixo para fazer o upload de uma foto que represente seu anúncio e um documento no formato PDF.</p>
 
                 <div id='files'>
                    <div>
