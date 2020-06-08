@@ -43,7 +43,8 @@ function modelarDados(dados,columns){
   let {messages,total,limit} = dados
   let finish = Math.ceil(total/limit)
 
-  if(count == finish){
+
+  if(count == finish || total == 0){
        viewMoreButton.remove()
   }
 
