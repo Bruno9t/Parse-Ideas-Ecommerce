@@ -23,10 +23,9 @@ const AnnouceController = {
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
     },
     store: async (req, res) => {
-        const id_usuario = 17
+        const {id_usuario} = req.session.user || req.user
         const obj = req.body;      
-        const foto = req.files[0];
-        const pdf = req.files[1];
+        const [foto,pdf] = req.files;
 
         //title
         //type
@@ -56,25 +55,26 @@ const AnnouceController = {
                 'prioridade': 0,
                 'titulo': obj.title
             })
+
+            if(foto){
+                await File.create({
+                    'anuncio_id': createdAnnouncements.id_anuncio,
+                    'arquivo': foto.path
+                })
+            }
+    
+            if(pdf){
+                await File.create({
+                    'anuncio_id': createdAnnouncements.id_anuncio,
+                    'arquivo': pdf.path
+                })
+            }
+                return res.status(200).json({msg: 'success'});
         } catch (error) {
             return res.status(400).json({msg: 'error'});
         }
         
 
-        if(foto){
-            await File.create({
-                'anuncio_id': createdAnnouncements.id_anuncio,
-                'arquivo': foto.path
-            })
-        }
-
-        if(pdf){
-            await File.create({
-                'anuncio_id': createdAnnouncements.id_anuncio,
-                'arquivo': pdf.path
-            })
-        }
-            return res.status(200).json({msg: 'success'});
         
     },
     search: async (req, res) => {

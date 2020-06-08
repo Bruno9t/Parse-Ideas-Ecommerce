@@ -51,30 +51,31 @@
 
               <form action="/message/create/<%=announce.usuario_id%>/<%=announce.id_anuncio%>" class="my-4" id="formMessage" method="POST">
                 <div class="form-row">
-                  <div class="col">
+                  <div class="col-md-6 col-sm-12">
                     <input id="viewerName" type="text" class="form-control px-5" name="name" aria-label="Nome" placeholder="Nome">
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 col-sm-12">
                     <input id="viewerEmail" type="email" class="form-control px-5 py-3" name="email" aria-label="Email" placeholder="Email">
                   </div>
                 </div>
-                <div class="form-row my-4">
+                <div class="form-row">
                   <input type="hidden" value="<%=announce.usuario_id%>" id="viewerUser">
                   <input type="hidden" value="<%=announce.id_anuncio%>" id="viewAnnounce">
-                  <div class="col">
+                  <div class="col-md-6 col-sm-12">
                     <input id="viewerCell" class="form-control px-5" type="text" placeholder="Celular">
                   </div>
-                  <div class="col">
+                  <div class="col-md-6 col-sm-12">
                     <input id="viewerTell" class="form-control px-5" type="text" placeholder="Telefone">
                   </div>
                 </div>
-                <div class="form-row my-4">
+                <div class="form-row">
                   <textarea class="form-control px-5 py-3" name="message" id="txtMessage" cols="30" rows="6" placeholder="Mensagem"></textarea>
                 </div>
-                <div class="form-row my-4">
+                <div class="form-row ">
                   <button id="btnSend" type="submit" class="btn btn-lg btn-primary">Enviar Mensagem</button>
                 </div>
               </form>
+              <div id='result-message'></div>
 
             </div>
 
@@ -88,7 +89,7 @@
       </section>
     </main>
 
-    <script src="/js/sendMessage.js"></script>
     <%- include('../partials/footer') %> 
+    <script src="/js/sendMessage.js"></script>
     <%- include('../partials/scripts') %> 
     

@@ -264,6 +264,68 @@ div#exampleModal3 figure img.card-img-top{
     
 }
 
+div#exampleModalLong .modal-body{
+    padding: 0;
+}
+
+div#exampleModalLong .messageDiv .cont{
+    display: flex;
+    justify-content: space-between;
+}
+
+div#exampleModalLong div.messageDate span{
+    font-size: 1.5rem;
+    color: rgb(182, 137, 53);
+}
+
+
+div#exampleModalLong div.messageDiv{
+    border-bottom:1px rgb(160, 155, 155) solid;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    transition: 400ms;
+}
+
+div#exampleModalLong div.messageDiv:hover{
+    box-shadow: 5px 5px 5px gray;
+
+}
+
+div#exampleModalLong div.container-fluid{
+    padding: 0;
+
+}
+
+div#exampleModalLong .viewMore button{
+    font-size: 1.7rem;
+    width: 100%;
+    border:none;
+    height: 50px;
+    border-top:1px rgb(118, 99, 228) solid;
+    border-bottom:1px rgb(118, 99, 228) solid;
+    background: transparent;
+    color: rgb(118, 99, 228);
+    outline: none;
+
+    transition: 400ms;
+
+}
+
+div#exampleModalLong .viewMore button:hover{
+    background: rgb(118, 99, 228);
+    color:white;
+}
+
+div.messageDiv div.messageDescription{
+    font-size: 1.7rem;
+    justify-content: center;
+}
+
+div.messageDiv div.messageDescription p{
+    text-justify: distribute;
+}
+
 #alter,#alter-pass,#alter-user-photo{
     border:1px  rgb(61, 211, 61) solid;
     background-color:transparent;
@@ -272,7 +334,8 @@ div#exampleModal3 figure img.card-img-top{
 }
 #fechar,
 #fechar-pass,
-#fechar-photo{
+#fechar-photo,
+#fechar-messages{
     border:1px red solid;
     background: transparent;
 
@@ -289,7 +352,8 @@ div#exampleModal3 figure img.card-img-top{
 
 #fechar:hover,
 #fechar-pass:hover,
-#fechar-photo:hover{
+#fechar-photo:hover,
+#fechar-messages:hover{
     background-color: red;
     color: white;
 }

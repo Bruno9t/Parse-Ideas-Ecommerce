@@ -5,28 +5,30 @@ let txtMessage = document.querySelector("#txtMessage");
 let edtEmail = document.querySelector("#viewerEmail");
 let edtCell = document.querySelector("#viewerCell");
 let btnSend = document.querySelector("#btnSend")
+let result = document.getElementById('result-message')
 
 let resp 
-let user_id = document.querySelector("#viewerUser").value
-let announce = document.querySelector("#viewAnnounce").value
+let usuario_id = document.querySelector("#viewerUser")
+let anuncio_id = document.querySelector("#viewAnnounce")
 let divMessage = document.querySelector("#message")
 
 frmMessage.addEventListener('submit', function(e){
   e.preventDefault()
 
-  // if(document.querySelector("#respSuccess")){
-  //   let divSuccess = document.querySelector("#respSuccess");
-  //   divSuccess.remove()
-  // }
+  if(document.querySelector("#respSuccess")){
+    let divSuccess = document.querySelector("#respSuccess");
+    divSuccess.remove()
+  }
 
-  // if (document.querySelector("#respError")) {
-  //   let divError = document.querySelector("#respError")
-  //   divError.remove()
-  // }
+  if (document.querySelector("#respError")) {
+    let divError = document.querySelector("#respError")
+    divError.remove()
+  }
+
 
   sendMessage({
-    usuario_id: user_id,
-    anuncio_id: announce,
+    usuario_id:Number(usuario_id.value),
+    anuncio_id:Number(anuncio_id.value),
     nome: edtName.value.trim(),
     email: edtEmail.value.trim(),
     telefone: edtTell.value.trim(),
@@ -36,25 +38,26 @@ frmMessage.addEventListener('submit', function(e){
 })
 
 function showResp(data){
-  clearPage();
   
   if(data.resp == 'ok'){
-    divMessage.innerHTML += `
+    clearForm()
+
+    result.innerHTML += `
     <div id="respSuccess" class="alert alert-success" role="alert">
       Mensagem enviada com Sucesso!
     </div>
     `
   } else {
-    divMessage.innerHTML += `
+    result.innerHTML += `
     <div id="respError" class="alert alert-danger" role="alert">
       Algo deu errado :(
     </div>
     `
-    console.log("error")
   }
+
 }
 
-function clearPage(){
+function clearForm(){
   edtName.value = "";
   edtEmail.value = "";
   edtCell.value = "";
@@ -62,8 +65,9 @@ function clearPage(){
   txtMessage.value = "";
 }
 
+
 function sendMessage(message) {
-  fetch(window.location.origin+'/message/create',{ 
+  fetch(window.location.origin+`/message/create`,{ 
     method:'POST',
     body:JSON.stringify(message),
     headers: {'Content-Type':'application/json'}

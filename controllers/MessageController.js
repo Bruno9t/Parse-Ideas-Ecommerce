@@ -1,37 +1,62 @@
 const {Message} = require('../models');
 
 const MessageController = {
-  create: (req,res)=>{
-    let {usuario_id, anuncio_id, nome, email, celular, telefone, mensagem} = req.body
+  async create(req,res){
+    try{
+
+    let {usuario_id,anuncio_id,nome, email, celular, telefone, mensagem} = req.body
     
-    return Message.create({
-      usuario_id:usuario_id,
-      anuncio_id:anuncio_id,
-      nome:nome,
-      email:email,
-      celular:celular,
-      telefone:telefone,
-      mensagem:mensagem
-    }).then(ok => {
+    await Message.create({
+      usuario_id,
+      anuncio_id,
+      nome,
+      email,
+      celular,
+      telefone,
+      mensagem,
+    })
+
       return res.json({resp:'ok'})
-    }).catch(err => {
+  }catch(err){
       console.log(err)
       return res.json({resp:'error'})
-    })
+    }
   },
-  list: async (req, res) => {
+  listNumber: async (req, res) => {
     const {id_usuario} = req.session.user || req.user
 
-    console.log(id_usuario)
-
-    let messages = await Message.findAll({
+    let totalRows = await Message.count({
       where:{
         usuario_id:id_usuario
       }
     })
 
-    res.json(messages)
+    
+    res.json(totalRows)
+
+  },
+  async listMessages(req,res){
+
+    const {id_usuario} = req.session.user || req.user
+    let {count} = req.body
+    let limit = 8
+
+    let {count:total,rows:messages} = await Message.findAndCountAll({
+      where:{
+        usuario_id:id_usuario
+      },
+      limit,
+      offset:(count-1)*limit,
+
+      order:[
+        ['id_mensagem','DESC']
+      ],
+    })
+
+  res.json({messages,total,limit})
+
   }
-}
+  }
+
 
 module.exports = MessageController

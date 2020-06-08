@@ -170,9 +170,9 @@
 
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                   <div class="card-body">
-                      <h2>Você tem <span>(0)</span> novas mensagens</h2>
+                      <h2>Você tem (<span id='messageNumber'></span>) novas mensagens</h2>
 
-                      <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModal4">Ver mensagens</button>
+                      <button class='btn btn-primary' data-toggle="modal" data-target="#exampleModalLong" id='viewMessages'>Ver mensagens</button>
                   </div>
                 </div>
   
@@ -378,22 +378,29 @@
               </div>
             </div>
               <!-- Modal para mostrar Imagens -->
-      <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-center" id="exampleModalLabel">Editar dados pessoais</h5>
-            </div>
-              <div class="modal-body">
-                <div class="container">
-                  <ul id="ulMessages">
-                    
-                  </ul>
+              <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Mensagens</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class='container-fluid'>
+                        <div id='listMessages'></div>
+                        <div class='viewMore'>
+                          <button>Ver mais</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" id='fechar-messages'>Fechar</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 </main>
 
 <%- include('../partials/footer') %>

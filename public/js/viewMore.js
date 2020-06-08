@@ -42,7 +42,7 @@ function modelarDados(dados,columns){
                     <div class="card-body">
                         <h5 class="card-title">${anuncios[j].descricao}</h5>
                         <p class="card-text">${formatarPreco(anuncios[j].preco)}</p>
-                        <a href="#" class="btn btn-primary">+ Detalhes</a>
+                        <a href="/announcements/detail/${anuncios[j].id_anuncio}" class="btn btn-primary">+ Detalhes</a>
                     </div>
                 </div>
             </div>
