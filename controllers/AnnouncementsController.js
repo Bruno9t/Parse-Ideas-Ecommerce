@@ -21,7 +21,10 @@ const AnnouceController = {
     },
     create: async (req, res) => {
         // return res.send('teste')
-        return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css'})
+
+        const categories = await Category.findAll();
+
+        return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css', categories})
     },
     store: async (req, res) => {
         const {errors} = validationResult(req);
