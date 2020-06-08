@@ -25,8 +25,8 @@ const AnnouceController = {
     },
     store: async (req, res) => {
         const {errors} = validationResult(req);
-        // const {id_usuario} = req.user || req.session.user
-        const id_usuario = 8;
+        const {id_usuario} = req.user || req.session.user
+        // const id_usuario = 8;
         const obj = req.body;      
         const foto = req.files[0];
         const pdf = req.files[1];
