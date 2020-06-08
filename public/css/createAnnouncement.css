@@ -164,6 +164,14 @@ input[ type='file' ] {
     color: black;
 }
 
+#erros{
+    display: none;
+}
+
+.text-upload{
+    color: black !important;
+}
+
 
 
 
