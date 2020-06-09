@@ -1,13 +1,4 @@
-const path = require('path')
+let num = '12'
 
-let str = {
-    nome:'Bruno',
-    idade:19
-}
-
-
-console.log({
-    status:'online',
-    ...str
-})
+console.log(num.length)
 

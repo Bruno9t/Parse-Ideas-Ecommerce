@@ -3,6 +3,29 @@ main>h2{
     margin:30px;
 }
 
+
+div#message-content{
+    position: absolute;
+    width: 100%;
+
+    /* width: 500px;
+    right: 0; */
+}
+div#message-content div.card-body{
+    background: rgb(176, 176, 206);
+    min-height: 200px;
+    color: white;
+}
+
+div#message-content div.card-body p{
+    font-size: 1.6rem;
+}
+
+div#message-preview div.card-header{
+    padding: 0;
+}
+
+
 div#avatar div{
     text-align: center;
 }
@@ -280,11 +303,13 @@ div#exampleModalLong div.messageDate span{
 }
 
 
+
 div#exampleModalLong div.messageDiv{
     border-bottom:1px rgb(160, 155, 155) solid;
     cursor: pointer;
     padding: 10px;
     transition: 400ms;
+    width: 100%;
 }
 
 div#exampleModalLong div.messageDiv:hover{

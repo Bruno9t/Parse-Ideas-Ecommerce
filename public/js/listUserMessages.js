@@ -1,9 +1,36 @@
-let listMessages = document.getElementById("listMessages")
+let messagePreview = document.getElementById("message-preview")
 let buttonList = document.getElementById('viewMessages')
 let messageNumber = document.getElementById('messageNumber')
 let divButton = document.querySelector('div.viewMore')
 let viewMoreButton = document.querySelector('div.viewMore button')
+let accord2 = document.getElementById('accordion2')
+let messageContent= document.getElementById('message-content')
+
+let modallong = document.getElementById('exampleModalLong')
 let count=0;
+
+
+//scroll
+
+messagePreview.addEventListener("click",function(){
+  if((window.innerHeight-messageContent.getBoundingClientRect().bottom)>0 ){
+    messageContent.style.top = `${modallong.scrollTop-60}px`
+
+}else{
+  messageContent.style.top = `0px`
+}
+})
+
+
+modallong.addEventListener('scroll',function(){
+
+  if((messageContent.offsetHeight<window.innerHeight) ){
+      messageContent.style.top = `${modallong.scrollTop-60}px`
+  }
+
+})
+
+//
 
 window.onload = function() {
   bringMessages(currentCountMessages);
@@ -15,7 +42,8 @@ window.onload = function() {
 
 
 buttonList.addEventListener('click',function(){
-  listMessages.innerHTML=''
+ messagePreview.innerHTML=''
+  messageContent.innerHTML=''
   count=0
   if(!document.querySelector('div.viewMore button')){
     divButton.innerHTML=`
@@ -48,9 +76,31 @@ function modelarDados(dados,columns){
        viewMoreButton.remove()
   }
 
-  for(let i = 0,round = Math.ceil((messages.length/columns)); i < round ;i++){  
+  for(let i = 0,round = Math.ceil((messages.length)); i < round ;i++){
 
-          listMessages.innerHTML+=`
+    console.log(i+((count-1)*limit))
+
+    messageContent.innerHTML += `
+    <div id="collapse-${i+((count-1)*limit)}" class="collapse" aria-labelledby="heading-${i+((count-1)*limit)}" data-parent="#accordion2">
+          <div class="card-body">
+          <h3>${messages[i].nome}</h3>
+          <h4>${messages[i].telefone}</h4>
+          <h4>${messages[i].celular}</h4>
+          <h4>${messages[i].email}</h4>
+              <p>${i}-${messages[i].mensagem}</p>
+              <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">Fechar</button>
+            </div>
+                    
+    </div>
+    `
+    
+  }
+
+  for(let i = 0,round = Math.ceil((messages.length)); i < round ;i++){  
+
+         messagePreview.innerHTML+=`
+          <div class="card">
+          <div class="card-header" id="heading-${i+((count-1)*limit)}" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">
           <div class='col-12 messageDiv'>
             <div class='cont'>
               <div><h3><b>${messages[i].nome}</b></h3></div>
@@ -59,7 +109,21 @@ function modelarDados(dados,columns){
               <div class='messageDescription'>
               <p>${messages[i].mensagem.length>50?messages[i].mensagem.slice(0,50)+'...':messages[i].mensagem}</p>
             </div>
-          <div>`
+          <div>
+          </div>
+          `
+          
+          
+          // `
+          // <div class='col-12 messageDiv'>
+          //   <div class='cont'>
+          //     <div><h3><b>${messages[i].nome}</b></h3></div>
+          //     <div class='messageDate'><span>${decideDate(messages[i].createdAt)}</span></div>
+          //     </div>
+          //     <div class='messageDescription'>
+          //     <p>${messages[i].mensagem.length>50?messages[i].mensagem.slice(0,50)+'...':messages[i].mensagem}</p>
+          //   </div>
+          // <div>`
   }
 }
 
@@ -154,7 +218,7 @@ function decideDate(createDate){
         return '1h atrás'
       }
 
-      return `Há ${diffHour} horas`
+      return `${sendDate.hour<10?'0'+sendDate.hour:sendDate.hour}:${sendDate.minutes<10?'0'+sendDate.minutes:sendDate.minutes}`
 
     }else if(sendDate.month==currentDate.month
       &&sendDate.year==currentDate.year){
