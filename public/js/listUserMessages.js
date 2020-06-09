@@ -25,7 +25,9 @@ messagePreview.addEventListener("click",function(){
 modallong.addEventListener('scroll',function(){
 
   if((messageContent.offsetHeight<window.innerHeight) ){
-      messageContent.style.top = `${modallong.scrollTop-60}px`
+      return messageContent.style.top = `${modallong.scrollTop-60}px`
+  }else if((messageContent.getBoundingClientRect().top > 0)){
+    return messageContent.style.top = `${modallong.scrollTop-60}px`
   }
 
 })
