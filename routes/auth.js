@@ -47,7 +47,7 @@ router.get('/access/google/redirect',passportGoogle.authenticate("google",{
   })
   
 // facebook
-router.get('/access/facebook',passportFacebook.authenticate('facebook'))
+router.get('/access/facebook',passportFacebook.authenticate('facebook',{ scope : ['email'] }))
 
 router.get('/access/facebook/redirect',passportFacebook.authenticate("facebook",{
   failureRedirect:'/access'

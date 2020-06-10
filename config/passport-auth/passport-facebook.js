@@ -9,10 +9,11 @@ passport.use(
         clientID: F_CLIENT_ID,
         clientSecret: F_CLIENT_SECRET,
         callbackURL: APP_URL + '/auth/access/facebook/redirect',
-        fields:['id', 'email','profileUrl','photos', 'gender', 
-        'locale', 'name', 'timezone', 'updated_time', 'verified'],
+        profileFields:['id','emails','photos','name'],
 
     }, async (accessToken, refreshToken, profile, done) => {
+
+        console.log(profile)
 
         const {id,provider,name,emails,photos} = profile
    

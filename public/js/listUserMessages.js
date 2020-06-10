@@ -14,7 +14,7 @@ let count=0;
 
 messagePreview.addEventListener("click",function(){
   if((window.innerHeight-messageContent.getBoundingClientRect().bottom)>0 ){
-    messageContent.style.top = `${modallong.scrollTop-60}px`
+    messageContent.style.top = `${modallong.scrollTop-58}px`
 
 }else{
   messageContent.style.top = `0px`
@@ -25,7 +25,7 @@ messagePreview.addEventListener("click",function(){
 modallong.addEventListener('scroll',function(){
 
   if((messageContent.offsetHeight<window.innerHeight) ){
-      return messageContent.style.top = `${modallong.scrollTop-60}px`
+      return messageContent.style.top = `${modallong.scrollTop-58}px`
   }else if((messageContent.getBoundingClientRect().top > 0)){
     return messageContent.style.top = `${modallong.scrollTop-60}px`
   }
@@ -89,7 +89,7 @@ function modelarDados(dados,columns){
           <h4>${messages[i].telefone}</h4>
           <h4>${messages[i].celular}</h4>
           <h4>${messages[i].email}</h4>
-              <p>${i}-${messages[i].mensagem}</p>
+              <p>${i+((count-1)*limit)}-${messages[i].mensagem}</p>
               <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">Fechar</button>
             </div>
                     
@@ -114,18 +114,6 @@ function modelarDados(dados,columns){
           <div>
           </div>
           `
-          
-          
-          // `
-          // <div class='col-12 messageDiv'>
-          //   <div class='cont'>
-          //     <div><h3><b>${messages[i].nome}</b></h3></div>
-          //     <div class='messageDate'><span>${decideDate(messages[i].createdAt)}</span></div>
-          //     </div>
-          //     <div class='messageDescription'>
-          //     <p>${messages[i].mensagem.length>50?messages[i].mensagem.slice(0,50)+'...':messages[i].mensagem}</p>
-          //   </div>
-          // <div>`
   }
 }
 
@@ -186,7 +174,6 @@ function decideDate(createDate){
     day:create.getDate(),
     month:create.getMonth(),
     year:create.getFullYear()
-
   }
   let diffMinutes = currentDate.minutes-sendDate.minutes
   let diffHour = currentDate.hour-sendDate.hour
