@@ -1,6 +1,7 @@
-const { Announcement, Category, File } = require('../models');
+const { Announcement, Category, File, User } = require('../models');
 const { Op } = require('sequelize');
 const {check, validationResult, body} = require('express-validator');
+const Email = require('../config/email');
 
 const AnnouceController = {
     index: async (req, res) => {
@@ -31,7 +32,9 @@ const AnnouceController = {
         const obj = req.body;      
         const [foto,pdf] = req.files;
 
-        // console.log(errors.length);
+        const {errors} = validationResult(req);
+
+        console.log(obj, foto, pdf);
         // return;
         if(errors.length > 0){
             return res.json({msg: 'errors', erros: errors})
@@ -53,6 +56,7 @@ const AnnouceController = {
                 'titulo': obj.title
             })
 
+
             if(foto){
                 await File.create({
                     'anuncio_id': createdAnnouncements.id_anuncio,
@@ -66,8 +70,54 @@ const AnnouceController = {
                     'arquivo': pdf.path
                 })
             }
+
+            const user = await User.findByPk(id_usuario);
+            const category = await Category.findByPk(Number(obj.type));
+
+
+            let emailSend = {
+                from: 'site@parseideias.tecnologia.ws',
+                to: user.email,
+                subject: 'Parse Ideas - Criação de Anúncio',
+                text: 'Criação de Anúncio',
+                html: `
+                <h1>Novo anúncio criado no sistema</h1>
+                <p>Olá ${user.nome} ${user.sobrenome}, <br>
+                Seguem abaixo, dados do anúncio criado no sistema:
+                </p>
+                <hr>
+                <br>
+                <strong>Titulo:</strong> ${obj.title} <br>
+                <strong>Tipo:</strong> ${category.nome} <br>
+                <strong>Preco:</strong> ${obj.price} <br>
+                <strong>Valor do Estoque:</strong> ${obj.stock}<br>
+                <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
+                <strong>Lucro:</strong> ${obj.profit}<br>
+                <strong>Data de Fundação:</strong> ${obj.age} <br>
+                <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
+                <strong>Descrição:</strong> ${obj.descricao} <br><br>
+
+                <p>Cordialmente,<br>
+                <strong>Equipe Parse Ideas®</strong>
+                </p>
+                
+                `,
+            }
+
+            // Send email 
+                Email.sendMail(emailSend, (error) => {
+                    if(error){
+                        console.log('Deu Ruim')
+                        console.log(error.message)
+                    }else{
+                        console.log('Email disparado com sucesso!');
+                    }
+                })
+
+
                 return res.status(200).json({msg: 'success'});
         } catch (error) {
+            console.log(error);
             return res.status(400).json({msg: 'error'});
         }
         

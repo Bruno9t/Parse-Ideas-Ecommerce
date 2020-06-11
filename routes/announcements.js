@@ -27,7 +27,7 @@ router.post('/create', upload.any(),[
     check('revenues').isLength({min: 1}).withMessage('Preencha o campo faturamento médido mensal'),
     check('profit').isLength({min: 1}).withMessage('Preencha o campo lucro mensal'),
     check('age').isLength({min: 1}).withMessage('Informe e idade da empresa'),
-    check('description').isLength({ min: 10}).withMessage('Escreva a descrição do anúncio'),
+    check('description').isLength({ min: 5}).withMessage('Escreva a descrição do anúncio'),
     check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
     check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
 ] ,AnnouncementsController.store);

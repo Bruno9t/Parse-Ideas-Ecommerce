@@ -112,6 +112,13 @@ form.addEventListener('submit', async function(e){
             })
             
         }else if(result.msg == 'errors'){
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Que pena, não foi possível criar o anúncio!',
+                showConfirmButton: false,
+                timer: 300000
+            })
             divErros.style.display = 'block';
             divErros.innerHTML = ''
             let erros = result.erros;

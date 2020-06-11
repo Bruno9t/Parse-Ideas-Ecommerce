@@ -1,0 +1,17 @@
+const nodemailer = require('nodemailer');
+
+const Email = nodemailer.createTransport({
+    host: "smtp.parseideias.tecnologia.ws",
+    port: 465,  
+    secure: true,
+    auth:{
+        user: 'site@parseideias.tecnologia.ws',
+        pass: 'Digitalhouse@2020'
+    },
+    tls: {
+        // do not fail on invalid certs
+        rejectUnauthorized: false
+      }
+})
+
+module.exports = Email
