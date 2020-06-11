@@ -156,7 +156,7 @@ section#monthly-plan li{
 }
 
 section#monthly-plan div.card 
-div.card-body a.btn{
+div.card-body button.btn{
   background: #FFFFFF;
   border: 1px solid #5A47CC;
   box-sizing: border-box;
@@ -166,13 +166,22 @@ div.card-body a.btn{
 }
 
 section#monthly-plan div.card 
-div.card-body a.btn:hover{
+div.card-body button.btn:hover{
   background: #5A47CC;
   color:white;
   border: 1px solid #5A47CC;
 }
 
-section#monthly-plan a.btn-success {
+section#monthly-plan div.card div.card-body button.btn:active {
+  border-color: red!important;
+  background-color: #5A47CC!important;
+}
+
+#message-error {
+  font-size: 16px;
+}
+
+section#monthly-plan button.btn-success {
   max-width: 180px;
   paddin: 0;
   margin: auto;
