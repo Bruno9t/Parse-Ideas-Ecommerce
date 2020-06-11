@@ -1,4 +1,4 @@
-let num = '12'
+const crypto = require('crypto')
 
-console.log(num.length)
+console.log(crypto.randomBytes(10).toString('hex'))
 
