@@ -1,5 +1,7 @@
+const {Category, Plan} = require('../models')
 const paypal = require('paypal-rest-sdk');
-const {Category} = require('../models')
+
+
 // const config = require('../config/plans/paypal-configure');
 // paypal.configure(config)
 
@@ -146,8 +148,9 @@ store: (req, res) => {
 
 listPlan: async (req, res) => {
   let categories = await Category.findAll()
-
-  return res.render('pages/selectionAnnounce', {css: 'announce.css', categories});
+  let plans = await Plan.findAll()
+  
+  return res.render('pages/selectionAnnounce', {css: 'announce.css', categories, plans});
 }
 
 }
