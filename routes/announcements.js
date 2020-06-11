@@ -5,7 +5,9 @@ const AnnouncementsController = require('../controllers/AnnouncementsController'
 const multerStorage = require('../middlewares/upload');
 const { check, validationResult, body } = require('express-validator');
 
-let upload = multerStorage();
+
+
+let upload = multerStorage('public/uploads/foto',null,'public/uploads/pdf');
 
 /* Listagem de anúncios */
 router.get('/', AnnouncementsController.index);

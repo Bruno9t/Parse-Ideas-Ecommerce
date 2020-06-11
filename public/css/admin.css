@@ -515,6 +515,10 @@ input[type='file']{
     font-size: 1.6rem;
 }
 
+#user-data .card-img-top, .us{
+    object-fit: cover;
+}
+
 
 div#headingThree.btn[aria-expanded="true"] img{
     position: relative;

@@ -16,7 +16,6 @@ let descricao = form.querySelector('textarea');
 let fileFoto = form.foto;
 let filePdf = form.pdf;
 
-
 // Masking input element to money.
 VMasker(preco).maskMoney({
     // Decimal precision -> "90"
@@ -117,7 +116,7 @@ form.addEventListener('submit', async function(e){
                 icon: 'error',
                 title: 'Que pena, não foi possível criar o anúncio!',
                 showConfirmButton: false,
-                timer: 300000
+                timer: 3000
             })
             divErros.style.display = 'block';
             divErros.innerHTML = ''
