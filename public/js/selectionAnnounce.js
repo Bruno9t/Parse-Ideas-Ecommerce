@@ -25,7 +25,9 @@
 
     document.querySelectorAll('#teste').forEach((item)=>{
         item.addEventListener('click', (event)=>{
-           item.classList.toggle('bg_button')
+          item.style.backgroundColor = "#5A47CC";
+          item.style.color = "#fff";
+          //  item.classList.toggle('bg_button')
            var id_plan = event.target.getAttribute('data-key')
         //    console.log(`Plano Selecionado ${id_plan}`)
         sessionStorage.setItem('id_plan', id_plan)
