@@ -12,7 +12,9 @@
                         <div class="card-body business-card-body">
                             <h5 class="card-title text-center"><%= category.nome %></h5>
                             <p class="card-text text-center">Venda da marca, carteira de clientes.</p>
-                            <input type="checkbox" class="checkmark" checked>
+                            
+
+                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<%= category.id_categoria %>">
                         </div>
                     </div>
                     <!-- Fim do Card  -->
@@ -30,74 +32,37 @@
             <h2 class="mb-5 text-center">Agora, escolha um plano</h2>
             <!-- Primeira Linha  -->
             <article class='row'>
+            <% plans.forEach(plan => { %>
                 <div class="col-md-4 col-sm-12">
-
                     <!-- Card -->
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Basic</h5>
-                            <h4 class='card-title'>R$ 49,00</h4>
+                            <h5 class="card-title"><%= plan.nome %></h5>
+                            <h4 class='card-title'><%= `R$ ${plan.valor}` %></h4>
                             <div class='card-text'>
                                 <ul style='text-align: start;'>
-                                    <li>Único anúncio</li>
-                                    <li>3 meses de anúncio</li>
-                                    <li>2 fotos</li> 
-                                    <li>Sem prioridade na exibição</li>
+                                    <li><%= `Quantidade de anuncios ${plan.numero_de_anuncios}` %></li>
+                                    <li><%= `Fotos ${plan.numero_de_fotos}` %></li> 
+                                    <li>Prioridade na exibição</li>
                                 </ul>
                             </div>
-                            <a href="#" class="btn btn-primary">Selecionar Planos</a>
+                            <button class="btn btn-primary" id="teste" data-key="<%= plan.id_plano %>">Selecionar Plano</button>
                         </div>
                     <!-- Fim do Card  -->
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-12">
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Premium</h5>
-                            <h4 class='card-title'>R$ 69,00</h4>
-                            <div class='card-text'>
-                                <ul style='text-align: start;'>
-                                    <li>Único anúncio</li>
-                                    <li>3 meses de anúncio</li>
-                                    <li>2 fotos</li> 
-                                    <li>Sem prioridade na exibição</li>
-                                </ul>
-                            </div>
-                            <a href="#" class="btn btn-primary">Selecionar Planos</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12">
-                    <!-- Card -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Master</h5>
-                            <h4 class='card-title'>R$ 99,00</h4>
-                            <div class='card-text'>
-                                <ul style='text-align: start;'>
-                                    <li>Único anúncio</li>
-                                    <li>3 meses de anúncio</li>
-                                    <li>2 fotos</li> 
-                                    <li>Sem prioridade na exibição</li>
-                                </ul>
-                            </div>    
-                            <a href="#" class="btn btn-primary">Selecionar Planos</a>
-                        </div>
-                    </div>
-                </div>
-
+                <% }) %>
             </article>
             <!-- Fim da Primeira Linha -->
             <div class="text-center">
-                <a href="./loginAndRegister.html" class="btn btn-success btn-lg btn-block">Avançar</a>
+            <div id="message-error" class="text-danger mb-2"></div>
+                <a href="" class="btn btn-success btn-lg btn-block" id="btn-submit">Avançar</a>
             </div>
         </div>
     </section>
     <!-- Fim Plano Mensal -->
 
     <!-- Fim Modal  -->
-
+<script src="/js/selectionAnnounce.js"></script>
 <%- include('../partials/footer') %> 
 <%- include('../partials/scripts') %>   
