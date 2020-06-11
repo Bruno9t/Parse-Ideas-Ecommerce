@@ -1,17 +1,13 @@
 const nodemailer = require('nodemailer');
 
+const {EM_HOST,EM_PORT,EM_USER,EM_PASS} = process.env
+
 const Email = nodemailer.createTransport({
-    host: "smtp.parseideias.tecnologia.ws",
-    port: 465,  
+    host: EM_HOST,
+    port: EM_PORT,  
     secure: true,
-    auth:{
-        user: 'site@parseideias.tecnologia.ws',
-        pass: process.env.EM_PASS
-    },
-    tls: {
-        // do not fail on invalid certs
-        rejectUnauthorized: false
-      }
+    auth:{user:EM_USER,pass: EM_PASS},
+    tls: {rejectUnauthorized: false}
 })
 
 module.exports = Email
