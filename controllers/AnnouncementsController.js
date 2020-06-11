@@ -1,7 +1,7 @@
 const { Announcement, Category, File, User } = require('../models');
 const { Op } = require('sequelize');
 const {check, validationResult, body} = require('express-validator');
-const Email = require('../config/email');
+const Email = require('../services/email');
 
 const AnnouceController = {
     index: async (req, res) => {

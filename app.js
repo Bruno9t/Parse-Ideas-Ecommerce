@@ -15,6 +15,7 @@ const adminRouter = require('./routes/admin');
 const userRouter = require('./routes/user');
 const messageRouter = require('./routes/message');
 const forgotPassword = require('./routes/forgotPassword')
+const resetPassword = require('./routes/resetPassword')
 
 const auth = require('./middlewares/auth')
 
@@ -58,12 +59,14 @@ app.use('/',function(req,res,next){
   return next()
 })
 
+
+app.use(forgotPassword)
+app.use(resetPassword)
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/auth', accessRouter);
 app.use('/plans', planRouter);
 app.use('/message', messageRouter);
-app.use(forgotPassword)
 
 app.use(auth)
 app.use(adminRouter);

@@ -33,6 +33,12 @@ module.exports = (sequelize, DataTypes) => {
            thumbnail:{
              type:DataTypes.STRING(2000),
            },
+           password_reset_token:{
+             type: DataTypes.STRING(50),
+           },
+           expires_token:{
+             type: DataTypes.DATE,
+           } 
       },
       {
         tableName:'usuario',

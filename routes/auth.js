@@ -4,8 +4,8 @@ const {User} = require('../models')
 const bcrypt = require('bcrypt')
 const router = express.Router();
 
-const passportGoogle = require('../config/passport-auth/passport-google')
-const passportFacebook = require('../config/passport-auth/passport-facebook')
+const passportGoogle = require('../services/passport-auth/passport-google')
+const passportFacebook = require('../services/passport-auth/passport-facebook')
 
 const AccessLoginController = require('../controllers/AccessLoginController')
 

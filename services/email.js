@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-require('dotenv').config()
 
 const Email = nodemailer.createTransport({
     host: "smtp.parseideias.tecnologia.ws",
