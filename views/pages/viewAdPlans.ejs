@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../images/icon-lamp.png" type="image/x-icon">
-    <title>Planos de anúncio</title>
-
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/viewAdPlans.css">
-
-        <!-- Base CSS -->      
-    <link rel="stylesheet" href="/css/base.css">
-
-</head>
-<body>
-    <header>
-        <a href="../"><img src="/images/img/ParseIdeias-logo(1).png" alt=""></a>
-    </header>
-
+<%- include('../partials/header') %> 
     <main>
         <section id='info'>
             <div class='container'>
@@ -93,9 +71,7 @@
             </article>
 
             <div class='redirect'>
-                <a href='/plans/store.html'>
-                    <button class='btn btn-md btn-primary'>Quero vender meu negócio</button>
-                </a>
+              <a href="" class="btn btn-success btn-lg btn-block" id="button">Quero vender meu negócio</a>
                 <p>Primeiro anúncio grátis por 7 dias</p>
             </div>
 
@@ -256,15 +232,17 @@
                     Pronto para vender seu negócio?
                 </h2>
                 <p class='text-center'>Clique no botão abaixo e crie seu anúncio</p>
-                <div class='redirect'>
-                    <a href="./announce.html">
-                        <button class='btn btn-md btn-primary'>Quero vender meu negócio</button>
-                    </a>
-                    <p>Primeiro anúncio grátis por 7 dias</p>
-                </div>
+                 <a href="" class="btn btn-success btn-lg btn-block" id="btn-submit">Quero vender meu negócio</a>
+                <!-- <div class='redirect'>
+                <a href='/plans/store.html'>
+                    <button class='btn btn-md btn-primary'>Quero vender meu negócio</button>
+                </a>
+                <p>Primeiro anúncio grátis por 7 dias</p>
+            </div>   -->
             </div>
         </section>
     </main>
 
-    <%- include('../partials/footer') %> 
-    <%- include('../partials/scripts') %> 
+<script src="/js/viewAdPlans.js"></script>
+<%- include('../partials/footer') %> 
+<%- include('../partials/scripts') %>  
