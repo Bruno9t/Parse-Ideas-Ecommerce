@@ -85,19 +85,20 @@
                 <h2 class='text-center'>Planos</h2>
     
                 <article class='row'>
+                <% plans.forEach(plan => { %>
+                    
                     <div class="col-md-4 col-sm-12">
     
                         <!-- Card -->
                         <div class="card">
                              
                             <div class="card-body">
-                                <h5 class="card-title">Basic</h5>
-                                <h4 class='card-title'>R$ 49,00</h4>
+                                <h5 class="card-title"><%= plan.nome %></h5>
+                                <h4 class='card-title'><%= `R$ ${plan.valor}` %></h4>
                                 <div class='card-text'>
                                 <ul style='text-align: start;'>
-                                    <li>Único anúncio</li>
-                                    <li>3 meses de anúncio</li>
-                                    <li>2 fotos</li> 
+                                    <li><%= `Quantidade de Anúncios: ${plan.numero_de_anuncios}` %></li>
+                                    <li>Fotos: <%= plan.numero_de_fotos %></li> 
                                     <li>Sem prioridade na exibição</li>
                                 </ul>
                             </div>
@@ -105,43 +106,7 @@
                         <!-- Fim do Card  -->
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-12">
-                        <!-- Card -->
-                        <div class="card">
-                            
-                            <div class="card-body">
-                                <h5 class="card-title">Premium</h5>
-                                <h4 class='card-title'>R$ 69,00</h4>
-                                <div class='card-text'>
-                                    <ul style='text-align: start;'>
-                                        <li>Único anúncio</li>
-                                        <li>3 meses de anúncio</li>
-                                        <li>2 fotos</li> 
-                                        <li>Sem prioridade na exibição</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-12">
-                        <!-- Card -->
-                        <div class="card">
-                            
-                            <div class="card-body">
-                                <h5 class="card-title">Master</h5>
-                                <h4 class='card-title'>R$ 99,00</h4>
-                                <div class='card-text'>
-                                <ul style='text-align: start;'>
-                                    <li>Único anúncio</li>
-                                    <li>3 meses de anúncio</li>
-                                    <li>2 fotos</li> 
-                                    <li>Sem prioridade na exibição</li>
-                                </ul>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+                    <% }); %>
 
                 </article>
             </div>

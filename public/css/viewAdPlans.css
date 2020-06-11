@@ -114,9 +114,10 @@ section#plans .card{
 }
 
 section#plans .card:hover{
-    box-shadow: 5px 5px 30px black;
-    background: linear-gradient(rgb(130, 130, 212),#5A47CC);
-    color:white;
+    -webkit-box-shadow: -2px 11px 12px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 11px 12px -8px rgba(0,0,0,0.75);
+    box-shadow: -2px 11px 12px -8px rgba(0,0,0,0.75);
+    
 }
 
 section#plans h5{
