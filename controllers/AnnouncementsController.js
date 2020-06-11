@@ -95,7 +95,8 @@ const AnnouceController = {
                 <strong>Lucro:</strong> ${obj.profit}<br>
                 <strong>Data de Fundação:</strong> ${obj.age} <br>
                 <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
-                <strong>Descrição:</strong> ${obj.descricao} <br><br>
+                <strong>Motivo:</strong> ${obj.reason} <br>
+                <strong>Descrição:</strong> ${obj.description} <br><br>
 
                 <p>Cordialmente,<br>
                 <strong>Equipe Parse Ideas®</strong>
