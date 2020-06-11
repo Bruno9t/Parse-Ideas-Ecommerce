@@ -16,3 +16,4 @@ const Email = nodemailer.createTransport({
 })
 
 module.exports = Email
+

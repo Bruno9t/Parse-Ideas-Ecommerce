@@ -87,7 +87,7 @@ VMasker(preco).maskMoney({
   });
 
 
-const url = 'http://' + window.location.host + '/announcements/create';
+const url = window.location.origin + '/announcements/create';
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
