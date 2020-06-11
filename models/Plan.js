@@ -24,7 +24,15 @@ module.exports = (sequelize, DataTypes) => {
         numero_de_fotos: {
           type:DataTypes.INTEGER,
           allowNull:false
-        } 
+        },
+        created_at:{
+          type:DataTypes.DATE,
+          allowNull:false
+        },
+        updated_at:{
+          type:DataTypes.DATE,
+          allowNull:false,
+        }
       },
       {
         tableName:'plano',
