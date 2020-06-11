@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config()
 
 const Email = nodemailer.createTransport({
     host: "smtp.parseideias.tecnologia.ws",
@@ -6,7 +7,7 @@ const Email = nodemailer.createTransport({
     secure: true,
     auth:{
         user: 'site@parseideias.tecnologia.ws',
-        pass: 'Digitalhouse@2020'
+        pass: process.env.EM_PASS
     },
     tls: {
         // do not fail on invalid certs
