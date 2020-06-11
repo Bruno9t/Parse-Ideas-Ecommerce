@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.STRING(45),
             allowNull:false,
           },
+          descricao:DataTypes.STRING,
           created_at:{
             type:DataTypes.DATE,
             allowNull:false
