@@ -74,7 +74,7 @@ footer h2{
     font-size: 1.4rem;
 }
 
-.redirect button{
+/* .redirect button{
     background: rgb(82, 231, 82);
     border:none;
     margin:20px auto;
@@ -86,11 +86,32 @@ footer h2{
 
 .redirect button:hover{
     background-color:rgb(61, 240, 61);
+} */
+
+.btn-green{
+    background: rgb(82, 231, 82);
+    border:none;
+    font-size: 1.6rem;
+    display: flex;
+    max-width: 300px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.btn-green:hover {
+    background-color:rgb(61, 240, 61);
+}
+
+section#buy .container>p.anunciar{
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
 }
 /* Planos */
 
 section#plans{
     background: #E5E5E5;
+    margin-top: 30px;
     padding: 20px;
 }
 
