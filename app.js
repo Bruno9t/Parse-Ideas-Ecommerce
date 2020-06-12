@@ -67,13 +67,8 @@ app.use('/announcements', announcementsRouter);
 app.use('/auth', accessRouter);
 app.use('/plans', planRouter);
 app.use('/message', messageRouter);
-
-app.use(auth)
 app.use(adminRouter);
 app.use(userRouter)
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -81,7 +76,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  res.status(404).res.render('error')
+  res.status(404).res.render('error',{msg:'Página não encontrada!',code:1})
 });
 
 // error handler
@@ -92,7 +87,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error',{msg:'Página não encontrada!',code:1});
 });
+
 
 module.exports = app;

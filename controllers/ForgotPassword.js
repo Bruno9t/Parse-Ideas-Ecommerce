@@ -1,6 +1,7 @@
 const Email = require('../services/email.js')
 const {User} = require('../models') 
 const crypto = require('crypto')
+const {EM_USER,APP_URL} = process.env
 
 module.exports = {
     index(req,res){
@@ -16,6 +17,7 @@ module.exports = {
                 email,
             }
         })
+
 
         if(!user){
             return res.send('User not found')
@@ -39,9 +41,10 @@ module.exports = {
         console.log(token,expiresIn)
 
         let configMail = {
-            from:process.env.USER_MAIL,
+            from:EM_USER,
             to:email,
-            subject:`Clique neste link para alterar a senha:${process.env.APP_URL}/reset/${user.id_usuario}/${token}`,
+            subject:`Alteração de senha`,
+            text:`Clique neste link para alterar a senha:${APP_URL}/reset/${user.id_usuario}/${token}`
         }
 
         Email.sendMail(configMail,(err)=>{

@@ -6,7 +6,7 @@ const ForgotPassword = require('../controllers/ForgotPassword')
 
 
 router.get('/forgot',ForgotPassword.index)
-router.put('/forgot',ForgotPassword.send)
+router.patch('/forgot',ForgotPassword.send)
 
 
 

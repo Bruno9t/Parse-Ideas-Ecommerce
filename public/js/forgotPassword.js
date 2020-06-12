@@ -1,11 +1,12 @@
+let formForgot = document.querySelector('#form-forgot')
 let email = document.querySelector('#exampleInputEmail')
 
 
 formForgot.addEventListener('submit',function(e){
     e.preventDefault()
 
-    sendData('/forgot?_method=PUT',{
-        email,
+    sendData('/forgot?_method=PATCH',{
+        email:email.value,
     })
 
 })
