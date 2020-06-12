@@ -22,6 +22,8 @@
                 <div class="row">
 
                     <input type="hidden" name="id" value="<%= announcements.id_anuncio %>">
+                    <input type="hidden" name="idFoto" value="<%= foto.id %>">
+                    <input type="hidden" name="idPdf" value="<%= pdf.id %>">
 
                     <div class="col-md-6 col-sm-12">
                         <label for="title">Título do anúncio(*)</label>
@@ -111,7 +113,7 @@
                         <input type="file" class='form-control' name="foto" id="input-foto">
                         <div id='label-1'>
                             <label for="input-foto">
-                                <img src="/images/svg/photo2.svg" alt="">
+                                <img src="<%= foto.arquivo || '/images/svg/photo2.svg' %>" alt="">
                             </label>
                         </div>
                     </div>
