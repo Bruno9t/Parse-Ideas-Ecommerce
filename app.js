@@ -76,7 +76,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  res.status(404).res.render('error',{msg:'Página não encontrada!',code:1})
+  res.status(404).res.render('error',{msg:'Página não encontrada!', image: '/images/svg/erro404.svg'})
 });
 
 // error handler
@@ -87,7 +87,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error',{msg:'Página não encontrada!',code:1});
+  res.render('error',{msg:'Página não encontrada!',image: '/images/svg/erro404.svg'});
 });
 
 

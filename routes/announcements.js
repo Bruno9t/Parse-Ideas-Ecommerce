@@ -5,8 +5,6 @@ const AnnouncementsController = require('../controllers/AnnouncementsController'
 const multerStorage = require('../middlewares/upload');
 const { check, validationResult, body } = require('express-validator');
 
-
-
 let upload = multerStorage('public/uploads/foto',null,'public/uploads/pdf');
 
 /* Listagem de anúncios */
@@ -16,6 +14,9 @@ router.get('/', AnnouncementsController.index);
 router.get('/create',auth, AnnouncementsController.create);
 
 router.get('/detail/:id', AnnouncementsController.detail)
+
+/* Rota para atualizar anúncio */
+router.get('/update/:anuncio_id', AnnouncementsController.show);
 
 /* Search dos anuncios */
 router.post('/search', AnnouncementsController.search);
@@ -33,5 +34,7 @@ router.post('/create', upload.any(),[
     check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
     check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
 ] ,AnnouncementsController.store);
+
+
 
 module.exports = router;

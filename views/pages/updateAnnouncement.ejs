@@ -8,7 +8,7 @@
             <figure>
                 <img src="/images/svg/info.svg" alt="imagem para informações">
             </figure>
-            <h2>Novo Anúncio</h2>
+            <h2>Atualizar Anúncio</h2>
         </div>
         <section id="form">
             <p>Campos com (*) são obrigatórios.</p>
@@ -17,13 +17,15 @@
                 
             </div>
 
-            <form action="/announcements/create" enctype="multipart/form-data" method="POST">  
+            <form action="" enctype="multipart/form-data" method="POST">  
                 <section>
                 <div class="row">
 
+                    <input type="hidden" name="id" value="<%= announcements.id_anuncio %>">
+
                     <div class="col-md-6 col-sm-12">
                         <label for="title">Título do anúncio(*)</label>
-                        <input type="text" class="form-control" name='title' id='title'>
+                        <input type="text" class="form-control" name='title' id='title' value="<%= announcements.titulo%>">
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -31,9 +33,8 @@
                         <label for="type">Tipo do negocio(*)</label>
                         <select name="type" class="form-control" id="type">
                             <option value="0">Selecione um tipo de negócio</option>
-
                             <% categories.forEach(cat => { %>
-                                <option value=<%= cat.id_categoria %>><%= cat.nome %></option>
+                                    <option value="<%= cat.id_categoria %>" <% if(announcements.categoria_id == cat.id_categoria){%> selected <%}%> > <%= cat.nome %></option>
                             <% }) %>
                         </select>
                     </div>
@@ -44,22 +45,22 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="price">Preço de venda(*)</label>
-                        <input type="text" class="form-control" name='price' id='price'>
+                        <input type="text" class="form-control" name='price' id='price' value="<%= announcements.preco %>">
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="stock">Valor estimado do estoque(*)</label>
-                        <input type="text" class="form-control" name='stock' id='stock'>
+                        <input type="text" class="form-control" name='stock' id='stock' value="<%= announcements.valor_estimado_estoque %>">
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="revenues">Faturamento médio mensal(*)</label>
-                        <input type="text" class="form-control" name='revenues' id='revenues'>
+                        <input type="text" class="form-control" name='revenues' id='revenues' value="<%= announcements.faturamento_mm %>" >
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="profit">Lucro mensal(*)</label>
-                        <input type="text" class="form-control" name='profit' id='profit'>
+                        <input type="text" class="form-control" name='profit' id='profit' value="<%= announcements.lucro_mensal %>">
                     </div>
 
                 </div>
@@ -67,18 +68,18 @@
                 <div class="row">
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="date">Data de fundação(*)</label>
-                        <input type="date" class="form-control" name='date' id='date'>
+                        <label for="date">Data de Fundação(*)</label>
+                        <input type="date" class="form-control" name='date' id='date' value="<%= announcements.data_fundacao %>">
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <label for="reason">Motivo da venda(*)</label>
-                        <input type="text" class="form-control" name='reason' id='reason'>
+                        <input type="text" class="form-control" name='reason' id='reason' value="<%= announcements.motivo_venda %>">
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="employees">Funcionários(*)</label>
-                        <input type="number" class="form-control" name='employees' id='employees'>
+                        <input type="number" class="form-control" name='employees' id='employees' value="<%= announcements.qtd_funcionarios %>">
                     </div>
                 </div>
 
@@ -87,7 +88,7 @@
 
                     <div class="col">
                         <label for="description">Descrição do anúncio(*)</label>
-                        <textarea class="form-control" id="description" name ="description" rows="3"></textarea>
+                        <textarea class="form-control" id="description" name ="description" rows="3"><%= announcements.descricao %> </textarea>
                       </div>
 
                 </div>
@@ -155,7 +156,7 @@
             </section> -->
 
             <div class='redirect'>
-                    <button class='btn btn-md btn-primary next'>Avançar</button>
+                    <button class='btn btn-md btn-primary next'>Salvar</button>
             </div>
 
             </form>
@@ -166,12 +167,13 @@
 
 </main>
 
+
 <%- include('../partials/footer') %> 
 <!-- <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/jquery.mask.min.js"></script> -->
 <%- include('../partials/scripts') %> 
 
-<script src="/js/announcement.js"></script>
+<script src="/js/announcementUpdate.js"></script>
 
 </body>
 </html>

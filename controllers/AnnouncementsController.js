@@ -23,6 +23,8 @@ const AnnouceController = {
     create: async (req, res) => {
         // return res.send('teste')
 
+
+
         const categories = await Category.findAll();
 
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css', categories})
@@ -41,14 +43,29 @@ const AnnouceController = {
         }
 
         try {
+            // const createdAnnouncements = await Announcement.create({
+            //     'categoria_id': Number(obj.type),
+            //     'usuario_id': id_usuario,
+            //     'preco': obj.price.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'valor_estimado_estoque': obj.stock.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'faturamento_mm': obj.revenues.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'data_fundacao': obj.date,
+            //     'descricao': obj.description,
+            //     'motivo_venda': obj.reason,
+            //     'qtd_funcionarios': Number(obj.employees),
+            //     'prioridade': 0,
+            //     'titulo': obj.title
+            // })
+
             const createdAnnouncements = await Announcement.create({
                 'categoria_id': Number(obj.type),
                 'usuario_id': id_usuario,
-                'preco': obj.price.replace('R$ ', '').replace('.','').replace(',','.'),
-                'valor_estimado_estoque': obj.stock.replace('R$ ', '').replace('.','').replace(',','.'),
-                'faturamento_mm': obj.revenues.replace('R$ ', '').replace('.','').replace(',','.'),
+                'preco': obj.price.replace('.','').replace(',','.'),
+                'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
+                'faturamento_mm': obj.revenues.replace.replace('.','').replace(',','.'),
                 'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
-                'data_fundacao': Number(obj.age),
+                'data_fundacao': new Date(obj.date),
                 'descricao': obj.description,
                 'motivo_venda': obj.reason,
                 'qtd_funcionarios': Number(obj.employees),
@@ -190,6 +207,42 @@ const AnnouceController = {
         })
 
         return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
+    },
+    show: async(req, res) => {
+
+        const {id_usuario} = req.session.user || req.user
+        const {anuncio_id} = req.params;
+
+        try{
+            const categories = await Category.findAll();
+            const announcements = await Announcement.findOne({
+            where: {
+                'id_anuncio': anuncio_id,
+                'usuario_id': id_usuario,
+            }
+        });
+
+            let dataFundation = new Date(announcements.dataValues.data_fundacao);
+            let day = dataFundation.getUTCDate() < 10 ? '0' + dataFundation.getUTCDate() : ''
+            let month = dataFundation.getUTCMonth() + 1 < 10 ? '0' + (dataFundation.getUTCMonth() + 1) : ''
+            // dataFundation = `${dataFundation.getUTCDate()}/${dataFundation.getUTCMonth() + 1}/${dataFundation.getFullYear()}`
+            dataFundation = `${dataFundation.getFullYear()}-${month}-${day}`
+
+            announcements.dataValues.data_fundacao = dataFundation
+
+            console.log(announcements);
+        
+            
+            // res.send(announcements)
+            return res.render('pages/updateAnnouncement',{css: 'createAnnouncement.css' , categories, announcements})
+            }catch(e){
+                return res.status(404).render('error',{msg:'Página não encontrada!',image: '/images/svg/erro404.svg'})
+            }
+        
+    },
+
+    update: (req, res) => {
+
     }
 }
 

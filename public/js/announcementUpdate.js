@@ -3,6 +3,7 @@ const form  = document.querySelector('form');
 const divErros = document.querySelector('#erros');
 
 // Campos do form
+let idAnuncio = form.id;
 let tituloAnuncio = form.title;
 let tipoDoNegocio = form.type;
 let preco = form.price;
@@ -17,14 +18,14 @@ let fileFoto = form.foto;
 let filePdf = form.pdf;
 
 $(document).ready(function($){
-  $(preco).mask('000.000.000.000,00', {reverse: true});
+  $(preco).mask('000.000.000.000.000,00', {reverse: true});
   $(estoque).mask('000.000.000.000.000,00', {reverse: true});
   $(faturamentoMedio).mask('000.000.000.000.000,00', {reverse: true});
   $(lucroMedio).mask('000.000.000.000.000,00', {reverse: true});
 });
 
 
-const url = window.location.origin + '/announcements/create';
+const url = window.location.origin + '/announcements/update';
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
