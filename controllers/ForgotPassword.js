@@ -1,6 +1,7 @@
 const Email = require('../services/email.js')
 const {User} = require('../models') 
 const crypto = require('crypto')
+const renderFile = require('../services/ejsRenderFile')
 const {EM_USER,APP_URL} = process.env
 
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
     },
 
     async send(req,res){
+
     try{
         const {email} = req.body
 
@@ -38,25 +40,36 @@ module.exports = {
             }
         })
 
-        console.log(token,expiresIn)
+        renderFile('emailViews/resetPasswordView.ejs',
+        {
+            nome:user.nome,
+            sobrenome:user.sobrenome,
+            id:user.id_usuario,
+            token,
+            app:APP_URL
 
-        let configMail = {
-            from:EM_USER,
-            to:email,
-            subject:`Alteração de senha`,
-            text:`Clique neste link para alterar a senha:${APP_URL}/reset/${user.id_usuario}/${token}`
-        }
+        }).then(data=>{
 
-        Email.sendMail(configMail,(err)=>{
-
-            console.log(err)
-
-            if(err){
-                res.send(err)
+            let configMail = {
+                from:EM_USER,
+                to:email,
+                subject:`Alteração de senha`,
+                html:data
             }
 
-            res.send('Email enviado!')
+            Email.sendMail(configMail,(err)=>{
+
+                console.log(err)
+    
+                if(err){
+                    res.send(err)
+                }
+    
+                res.send('Email enviado!')
+            })
+
         })
+
     }catch(err){
         res.send('Deu erro!')
     }
