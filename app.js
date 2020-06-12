@@ -1,14 +1,13 @@
 const createError = require('http-errors');
 const express = require('express');
-const path = require('path');
+const {resolve} = require('path')
+const {readdirSync} = require('fs')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session')
 const methodOverride = require('method-override')
 const passport= require('passport')
 
-const fs = require('fs')
-const {resolve} = require('path')
 const routesPath = resolve('routes')
 let useFiles = {}
 
@@ -22,7 +21,7 @@ let useFiles = {}
 // const forgotPassword = require('./routes/forgotPassword')
 // const resetPassword = require('./routes/resetPassword')
 
-fs.readdirSync(routesPath)
+readdirSync(routesPath)
     .forEach(file=>{
         useFiles[file.split('.')[0]] = require(resolve(routesPath,file))
 })
@@ -30,14 +29,14 @@ fs.readdirSync(routesPath)
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', resolve('views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(resolve('public')));
 app.use(methodOverride('_method'))
 
 app.use(session({
