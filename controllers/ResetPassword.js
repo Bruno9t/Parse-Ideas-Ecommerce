@@ -25,5 +25,10 @@ module.exports = {
         return res.render('error',{msg:'Usuário não encontrado!',image:'/images/svg/erro.svg'})
 
     }
+    },
+    async update(req,res){
+        const {id_usuario, newPass, confNewPass} = req.body
+
+        console.log(req.body)
     }
 }
