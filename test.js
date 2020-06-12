@@ -1,7 +1,16 @@
-let now = new Date()
-console.log(now)
-let expiresIn = now.setHours(now.getHours() + 1)
-console.log(now)
-console.log(new Date())
-console.log(new Date() < now)
+const fs = require('fs')
+const {resolve} = require('path')
+
+const routesPath = resolve('routes')
+
+let useFiles = {}
+
+console.log(fs.readdirSync(routesPath))
+fs
+.readdirSync(routesPath)
+    .forEach(file=>{
+        useFiles[file.split('.')[0]] = require(resolve(routesPath,file))
+})
+
+console.log(useFiles)
 
