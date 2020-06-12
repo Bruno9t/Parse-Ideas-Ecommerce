@@ -1,15 +1,14 @@
 const fs = require('fs')
 const {resolve} = require('path')
 
-const routesPath = resolve('routes')
-
 let useFiles = {}
 
 console.log(fs.readdirSync(routesPath))
 fs
 .readdirSync(routesPath)
     .forEach(file=>{
-        useFiles[file.split('.')[0]] = require(resolve(routesPath,file))
+        // useFiles[file.split('.')[0]] = require(resolve(file))
+        console.log(resolve('routes',file))
 })
 
 console.log(useFiles)

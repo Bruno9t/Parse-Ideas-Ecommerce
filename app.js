@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret:'Wonderland',
+  secret:process.env.SESSION_SECRET,
   resave:true,
   saveUninitialized:false,
 }))
