@@ -87,7 +87,7 @@ function validarEmail(inputEmail,errorList){
      pattern.test(emailValid)
      ){ 
 
-
+        inputEmail.style.backgroundColor = '#f2f2f2'
         return false
     }else if(splitEmail.length!==2 ||
              splitEmail[0].length<1 || 
@@ -100,7 +100,7 @@ function validarEmail(inputEmail,errorList){
             return false
     }else if(!emailValid.includes('.')){
 
-
+        inputEmail.style.backgroundColor = '#f2f2f2'
         return false
     }
 
@@ -112,7 +112,7 @@ function validarEmail(inputEmail,errorList){
        /\d/.test(point[1])
              ){
 
-
+        inputEmail.style.backgroundColor = '#f2f2f2'
         return false
     }else{
         limparErro(errorList)

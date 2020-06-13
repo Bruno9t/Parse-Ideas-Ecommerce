@@ -2,6 +2,8 @@ let formReset = document.getElementById('form-reset')
 
 let sendMailButton = document.getElementById('sendMail')
 
+let passDivs = document.querySelectorAll('div.pass-info')
+
 let newPass = document.getElementById('exampleInputNewPass')
 let confNewPass = document.getElementById('exampleInputConfNewPass')
 let title = document.getElementById('title')
@@ -46,7 +48,7 @@ function sendData(pathURL,data){
         if(decodedData.cod == 1){
             setTimeout(function(){
                 window.location = window.location.origin+'/auth/access'
-            },3000)
+            },2500)
 
             return criarResultado('Tudo Ok!','green',erros0,decodedData)
     
@@ -106,8 +108,9 @@ function criarResultado(textTitle,textColor,errorList,message){
             `
             title.innerHTML = textTitle
 
-            newPass.remove()
-            confNewPass.remove()
+            passDivs.forEach(passDiv=>{
+                passDiv.remove()
+            })
             sendMailButton.remove()
 
             return errorList.appendChild(li)

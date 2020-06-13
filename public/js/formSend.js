@@ -86,8 +86,8 @@ function validarEmail(inputEmail,errorList){
     if(!emailValid.includes('@') ||
      pattern.test(emailValid)
      ){ 
-
-        return inputEmail.style.backgroundColor = '#E05D54'
+        inputEmail.style.backgroundColor = '#f2f2f2'
+        return false
 
     }else if(splitEmail.length!==2 ||
              splitEmail[0].length<1 || 
@@ -96,11 +96,12 @@ function validarEmail(inputEmail,errorList){
              !isNaN(parseInt(splitEmail[0]))
              ){
  
-            return inputEmail.style.backgroundColor = '#E05D54'
+            return false
 
     }else if(!emailValid.includes('.')){
 
-        return inputEmail.style.backgroundColor = '#E05D54'
+        inputEmail.style.backgroundColor = '#f2f2f2'
+        return false
 
     }
 
@@ -111,22 +112,24 @@ function validarEmail(inputEmail,errorList){
        point[0].length ==0 ||
        /\d/.test(point[1])
              ){
-
-        return inputEmail.style.backgroundColor = '#E05D54'
+                inputEmail.style.backgroundColor = '#f2f2f2'
+                return false
     }else{
         limparErro(errorList)
-        return inputEmail.style.backgroundColor = '#6DE677'
-
+        inputEmail.style.backgroundColor = '#6DE677'
+        return true
     }
 
 }
 
 function validarSenha(inputSenha,errorList){
     if(inputSenha.value.length < 8){
-        return inputSenha.style.backgroundColor = '#E05D54'
+        inputSenha.style.backgroundColor = '#f2f2f2'
+        return false
     }else{
         limparErro(errorList)
-        return inputSenha.style.backgroundColor = '#6DE677'
+        inputSenha.style.backgroundColor = '#6DE677'
+        return true
     }
 }
 
@@ -135,11 +138,13 @@ function validarNome(inputNome,errorList){
 
     if(inputNome.value.length < 3 || pattern.test(inputNome.value)){
 
-        inputNome.style.backgroundColor = '#E05D54'
+        inputNome.style.backgroundColor = '#f2f2f2'
+        return false
     }else{
 
         limparErro(errorList)
         inputNome.style.backgroundColor = '#6DE677'
+        return true
     }
 
 
@@ -147,10 +152,12 @@ function validarNome(inputNome,errorList){
 
 function validarIgualdadeDeSenhas(inputConfSenha,inputSenha,errorList){
     if(inputConfSenha.value!==inputSenha.value){
-        return inputConfSenha.style.backgroundColor = '#E05D54'
+        inputConfSenha.style.backgroundColor = '#f2f2f2'
+        return false
     }else{
         limparErro(errorList)
-        return inputConfSenha.style.backgroundColor = '#6DE677'
+        inputConfSenha.style.backgroundColor = '#6DE677'
+        return true
     }
 }
 
