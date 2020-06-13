@@ -2,6 +2,8 @@ const { Announcement, Category, File, User } = require('../models');
 const { Op } = require('sequelize');
 const {check, validationResult, body} = require('express-validator');
 const Email = require('../services/email');
+const  path  = require('path');
+
 
 const AnnouceController = {
     index: async (req, res) => {
@@ -21,10 +23,7 @@ const AnnouceController = {
         {css: 'searchEcommerce.css', category: category})
     },
     create: async (req, res) => {
-        // return res.send('teste')
-
         const categories = await Category.findAll();
-
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css', categories})
     },
     store: async (req, res) => {
@@ -41,14 +40,29 @@ const AnnouceController = {
         }
 
         try {
+            // const createdAnnouncements = await Announcement.create({
+            //     'categoria_id': Number(obj.type),
+            //     'usuario_id': id_usuario,
+            //     'preco': obj.price.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'valor_estimado_estoque': obj.stock.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'faturamento_mm': obj.revenues.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
+            //     'data_fundacao': obj.date,
+            //     'descricao': obj.description,
+            //     'motivo_venda': obj.reason,
+            //     'qtd_funcionarios': Number(obj.employees),
+            //     'prioridade': 0,
+            //     'titulo': obj.title
+            // })
+
             const createdAnnouncements = await Announcement.create({
                 'categoria_id': Number(obj.type),
                 'usuario_id': id_usuario,
-                'preco': obj.price.replace('R$ ', '').replace('.','').replace(',','.'),
-                'valor_estimado_estoque': obj.stock.replace('R$ ', '').replace('.','').replace(',','.'),
-                'faturamento_mm': obj.revenues.replace('R$ ', '').replace('.','').replace(',','.'),
+                'preco': obj.price.replace('.','').replace(',','.'),
+                'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
+                'faturamento_mm': obj.revenues.replace.replace('.','').replace(',','.'),
                 'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
-                'data_fundacao': Number(obj.age),
+                'data_fundacao': new Date(obj.date),
                 'descricao': obj.description,
                 'motivo_venda': obj.reason,
                 'qtd_funcionarios': Number(obj.employees),
@@ -60,20 +74,19 @@ const AnnouceController = {
             if(foto){
                 await File.create({
                     'anuncio_id': createdAnnouncements.id_anuncio,
-                    'arquivo': foto.path
+                    'arquivo': `/uploads/foto/${foto.filename}`
                 })
             }
     
             if(pdf){
                 await File.create({
                     'anuncio_id': createdAnnouncements.id_anuncio,
-                    'arquivo': pdf.path
+                    'arquivo': `/uploads/pdf/${pdf.filename}`
                 })
             }
 
             const user = await User.findByPk(id_usuario);
             const category = await Category.findByPk(Number(obj.type));
-
 
             let emailSend = {
                 from: 'site@parseideias.tecnologia.ws',
@@ -104,7 +117,6 @@ const AnnouceController = {
                 
                 `,
             }
-
             // Send email 
                 Email.sendMail(emailSend, (error) => {
                     if(error){
@@ -114,16 +126,11 @@ const AnnouceController = {
                         console.log('Email disparado com sucesso!');
                     }
                 })
-
-
                 return res.status(200).json({msg: 'success'});
         } catch (error) {
             console.log(error);
             return res.status(400).json({msg: 'error'});
         }
-        
-
-        
     },
     search: async (req, res) => {
         const {
@@ -190,6 +197,58 @@ const AnnouceController = {
         })
 
         return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
+    },
+    show: async(req, res) => {
+
+        const {id_usuario} = req.session.user || req.user
+        // const {id_usuario} = 17
+        const {anuncio_id} = req.params;
+
+
+        try{
+            const categories = await Category.findAll(); 
+            const announcements = await Announcement.findOne({
+            where: {
+                'id_anuncio': anuncio_id,
+                'usuario_id': id_usuario,
+            }
+        });
+
+            const files = await File.findAll({
+                where: {
+                    'anuncio_id': anuncio_id,
+                }
+            })
+
+            if(!files){
+                files = ''
+            }
+
+            let dataFundation = new Date(announcements.dataValues.data_fundacao);
+            let day = dataFundation.getUTCDate() < 10 ? '0' + dataFundation.getUTCDate() : ''
+            let month = dataFundation.getUTCMonth() + 1 < 10 ? '0' + (dataFundation.getUTCMonth() + 1) : ''
+            // dataFundation = `${dataFundation.getUTCDate()}/${dataFundation.getUTCMonth() + 1}/${dataFundation.getFullYear()}`
+            dataFundation = `${dataFundation.getFullYear()}-${month}-${day}`
+
+            announcements.dataValues.data_fundacao = dataFundation;
+            
+            let foto = '';
+            let pdf = '';
+
+            const f = files.map(e => {
+                path.extname(e.arquivo) == '.jpg' ||  path.extname(e.arquivo) == '.png' ? foto = {arquivo: e.arquivo.toString().split('\\').join('/').replace('public',''), id: e.id_arquivo } : '';
+                path.extname(e.arquivo) == '.pdf' ? pdf = {arquivo: e.arquivo, id: e.id_arquivo} : '';
+                return e.arquivo
+            })
+
+            return res.render('pages/updateAnnouncement',{css: 'createAnnouncement.css' , categories, announcements, foto, pdf})
+            }catch(e){
+                return res.status(404).render('error',{msg:'Página não encontrada!',image: '/images/svg/erro404.svg'})
+            }
+    },
+
+    update: (req, res) => {
+
     }
 }
 
