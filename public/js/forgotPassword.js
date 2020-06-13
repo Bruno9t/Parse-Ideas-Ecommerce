@@ -1,5 +1,6 @@
 let formForgot = document.querySelector('#form-forgot')
 let email = document.querySelector('#exampleInputEmail')
+let emailWrap = document.querySelector('div.input-user-email')
 let sendMailButton = document.getElementById('sendMail')
 let title = document.getElementById('title')
 let animationLoadingDiv = document.getElementById('loading')
@@ -86,7 +87,7 @@ function validarEmail(inputEmail,errorList){
      pattern.test(emailValid)
      ){ 
 
-        inputEmail.style.backgroundColor = '#E05D54'
+
         return false
     }else if(splitEmail.length!==2 ||
              splitEmail[0].length<1 || 
@@ -95,11 +96,11 @@ function validarEmail(inputEmail,errorList){
              !isNaN(parseInt(splitEmail[0]))
              ){
  
-            inputEmail.style.backgroundColor = '#E05D54'
+
             return false
     }else if(!emailValid.includes('.')){
 
-        inputEmail.style.backgroundColor = '#E05D54'
+
         return false
     }
 
@@ -111,7 +112,7 @@ function validarEmail(inputEmail,errorList){
        /\d/.test(point[1])
              ){
 
-        inputEmail.style.backgroundColor = '#E05D54'
+
         return false
     }else{
         limparErro(errorList)
@@ -139,7 +140,7 @@ function criarErro(input,errorList,error){
     limparErro(errorList)
 
     li.innerHTML = `
-    <b style='color:red'>${error.msg}</b>
+    <b style='color:rgb(247, 75, 75)'>${error.msg}</b>
     `
     errorList.appendChild(li)
 
@@ -159,7 +160,7 @@ function criarResultado(textTitle,textColor,errorList,message){
             `
             title.innerHTML = textTitle
 
-            email.remove()
+            emailWrap.remove()
 
             return errorList.appendChild(li)
 
