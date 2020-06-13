@@ -220,7 +220,7 @@ function decideDate(createDate){
           return `Há ${diffDay} dias`
         }
 
-      return `Dia ${sendDate.day} às ${sendDate.hour<10?'0'+sendDate.hour:sendDate.hour}:${sendDate.minutes<10?'0'+sendDate.minutes:sendDate.minutes}`
+      return `${sendDate.day} de ${months[sendDate.month]}(${sendDate.hour<10?'0'+sendDate.hour:sendDate.hour}:${sendDate.minutes<10?'0'+sendDate.minutes:sendDate.minutes})`
 
     }else if(sendDate.year == currentDate.year){
 

@@ -27,7 +27,8 @@ module.exports = {
 
         if(!user){
             return res.json({errors:[{
-                msg:'Usuário não existe!'
+                msg:'Usuário não existe!',
+                cod:5
             }]})
         }
 
@@ -64,9 +65,11 @@ module.exports = {
             }
 
             Email.sendMail(configMail,(err)=>{
+                console.log('esse á o erro:',err)
 
     
                 if(err){
+
                     res.json({cod:2,
                         msg:`Desculpe, tivemos um problema durante o envio do e-mail.
                              Tente novamente mais tarde :(

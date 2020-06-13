@@ -2,6 +2,9 @@ let formForgot = document.querySelector('#form-forgot')
 let email = document.querySelector('#exampleInputEmail')
 let sendMailButton = document.getElementById('sendMail')
 let title = document.getElementById('title')
+let animationLoadingDiv = document.getElementById('loading')
+let animationLoading = document.querySelector('div.loading')
+
 
 let erros0 = document.getElementById('erros0')
 let erros1 = document.getElementById('erros1')
@@ -9,6 +12,13 @@ let erros1 = document.getElementById('erros1')
 
 formForgot.addEventListener('submit',function(e){
     e.preventDefault()
+
+    if(validarEmail(email,erros1)){
+        sendMailButton.remove()
+        title.remove()
+
+        animationLoading.classList.add('true')
+    }
 
     sendData('/forgot?_method=PATCH',{
         email:email.value.trim(),
@@ -37,17 +47,28 @@ function sendData(pathURL,data){
         console.log(decodedData)
 
         if(decodedData.cod == 1){
-    
+            animationLoading.classList.remove('true')
+            animationLoadingDiv.appendChild(title)
             return criarResultado('Tudo Ok!','green',erros0,decodedData)
     
         }
 
         if(decodedData.cod == 2){
+            animationLoading.classList.remove('true')
+            animationLoadingDiv.appendChild(title)
             return criarResultado('Opss!','red',erros0,decodedData)
     
         }
 
         if(decodedData.errors.length){
+            if(decodedData.errors[0].cod==5){
+                animationLoading.classList.remove('true')
+
+                formForgot.appendChild(sendMailButton)
+
+                animationLoadingDiv.appendChild(title)
+            }
+
             return criarErro(email,erros1,decodedData.errors[0])
         }
         
@@ -65,8 +86,8 @@ function validarEmail(inputEmail,errorList){
      pattern.test(emailValid)
      ){ 
 
-        return inputEmail.style.backgroundColor = '#E05D54'
-
+        inputEmail.style.backgroundColor = '#E05D54'
+        return false
     }else if(splitEmail.length!==2 ||
              splitEmail[0].length<1 || 
              splitEmail[1].length<3 ||
@@ -74,12 +95,12 @@ function validarEmail(inputEmail,errorList){
              !isNaN(parseInt(splitEmail[0]))
              ){
  
-            return inputEmail.style.backgroundColor = '#E05D54'
-
+            inputEmail.style.backgroundColor = '#E05D54'
+            return false
     }else if(!emailValid.includes('.')){
 
-        return inputEmail.style.backgroundColor = '#E05D54'
-
+        inputEmail.style.backgroundColor = '#E05D54'
+        return false
     }
 
     point = splitEmail[1].split('.')
@@ -90,11 +111,12 @@ function validarEmail(inputEmail,errorList){
        /\d/.test(point[1])
              ){
 
-        return inputEmail.style.backgroundColor = '#E05D54'
+        inputEmail.style.backgroundColor = '#E05D54'
+        return false
     }else{
         limparErro(errorList)
-        return inputEmail.style.backgroundColor = '#6DE677'
-
+        inputEmail.style.backgroundColor = '#6DE677'
+        return true
     }
 
 }
@@ -138,7 +160,6 @@ function criarResultado(textTitle,textColor,errorList,message){
             title.innerHTML = textTitle
 
             email.remove()
-            sendMailButton.remove()
 
             return errorList.appendChild(li)
 

@@ -46,7 +46,7 @@ function sendData(pathURL,data){
         if(decodedData.cod == 1){
             setTimeout(function(){
                 window.location = window.location.origin+'/auth/access'
-            },2000)
+            },3000)
 
             return criarResultado('Tudo Ok!','green',erros0,decodedData)
     
