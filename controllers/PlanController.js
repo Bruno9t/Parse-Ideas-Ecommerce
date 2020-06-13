@@ -1,7 +1,6 @@
 const {Category, Plan} = require('../models')
 const paypal = require('paypal-rest-sdk');
 
-
 // const config = require('../config/plans/paypal-configure');
 // paypal.configure(config)
 
@@ -153,7 +152,12 @@ listPlan: async (req, res) => {
   let plans = await Plan.findAll()
   
   return res.render('pages/selectionAnnounce', {css: 'announce.css', categories, plans});
-}
+},
+postPlan: (req, res) => {
+  let {id_categoria, id_plano} = req.body
+  console.log(` Deu certo  id_categaria: ${id_categoria}, id_plano: ${id_plano}`)
+},
+
 
 }
 

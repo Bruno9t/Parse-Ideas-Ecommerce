@@ -15,6 +15,7 @@ router.get('/store', PlanController.store);
 // router.post('/plans', PlanController.store);
 
 router.get('/list', PlanController.listPlan);
+router.post('/list', PlanController.postPlan);
 
 module.exports = router;
 
