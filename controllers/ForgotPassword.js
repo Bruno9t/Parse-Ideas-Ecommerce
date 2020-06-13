@@ -34,7 +34,8 @@ module.exports = {
 
         let token = crypto.randomBytes(20).toString('hex')
         let expiresIn = new Date()
-        expiresIn.setHours(expiresIn.getHours() + 1)
+        let timeMinutes = 20
+        expiresIn.setMinutes(expiresIn.getMinutes() + timeMinutes)
 
         await User.update(
             {
@@ -54,6 +55,7 @@ module.exports = {
             id:user.id_usuario,
             token,
             app:APP_URL,
+            expires:timeMinutes
 
         }).then(data => {
 

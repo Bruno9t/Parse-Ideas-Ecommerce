@@ -1,10 +1,12 @@
 let now = new Date()
+let nowNow = new Date() 
+
+now.setMinutes(now.getMinutes() + 30)
+
 console.log(now)
+console.log(nowNow)
 
-now.setHours(now.getHours() + 1)
-
-
-console.log(now - now)
+console.log(nowNow - now)
 
 
 

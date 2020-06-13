@@ -15,7 +15,7 @@ module.exports = {
 
             if(now < user.expires_token){
 
-                return res.render('pages/resetPassword',{css:'resetPassword.css'})
+                return res.render('pages/resetPassword',{css:'resetPassword.css',app:process.env.APP_URL})
             }else{
 
                 return res.render('error',{msg:'Seu tempo acabou!',image:'/images/svg/relogio.svg'})
