@@ -183,6 +183,20 @@
         </div>
     </section>
 
+     <section class="py-5" id="newsletter">
+      <div class="col text-center pb-5">
+        <h2>Assine nossa newsletter</h2>
+      </div>
+      <div class="container">
+          <form class="form-inline" method="POST" action="/newsletter">
+            <div class="form-group mx-sm-3 mb-2">
+              <input type="email" name="emailNew" class="form-control" placeholder="E-mail" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-newsletter mb-2">Assinar</button>
+          </form>
+      </div>
+    </section>
+
     <%- include('partials/footer') %> 
     
     <script src="/js/viewMore.js"></script>
