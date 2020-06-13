@@ -78,6 +78,24 @@ function modelarDados(dados,columns){
        viewMoreButton.remove()
   }
 
+  for(let i = 0,round = Math.ceil((messages.length)); i < round ;i++){  
+
+    messagePreview.innerHTML+=`
+     <div class="card">
+     <div class="card-header" id="heading-${i+((count-1)*limit)}" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">
+     <div class='col-12 messageDiv'>
+       <div class='cont'>
+         <div><h3><b>${messages[i].nome}</b></h3></div>
+         <div class='messageDate'><span>${decideDate(messages[i].createdAt)}</span></div>
+         </div>
+         <div class='messageDescription'>
+         <p>${messages[i].mensagem.length>50?messages[i].mensagem.slice(0,50)+'...':messages[i].mensagem}</p>
+       </div>
+     <div>
+     </div>
+     `
+}
+
   for(let i = 0,round = Math.ceil((messages.length)); i < round ;i++){
 
     console.log(i+((count-1)*limit))
@@ -98,23 +116,7 @@ function modelarDados(dados,columns){
     
   }
 
-  for(let i = 0,round = Math.ceil((messages.length)); i < round ;i++){  
-
-         messagePreview.innerHTML+=`
-          <div class="card">
-          <div class="card-header" id="heading-${i+((count-1)*limit)}" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">
-          <div class='col-12 messageDiv'>
-            <div class='cont'>
-              <div><h3><b>${messages[i].nome}</b></h3></div>
-              <div class='messageDate'><span>${decideDate(messages[i].createdAt)}</span></div>
-              </div>
-              <div class='messageDescription'>
-              <p>${messages[i].mensagem.length>50?messages[i].mensagem.slice(0,50)+'...':messages[i].mensagem}</p>
-            </div>
-          <div>
-          </div>
-          `
-  }
+  
 }
 
 function sendData(pathURL,data,modelarDados){
@@ -213,10 +215,12 @@ function decideDate(createDate){
       &&sendDate.year==currentDate.year){
 
         if(diffDay==1){
-          return 'Ontem'
+          return `Ontem às ${sendDate.hour<10?'0'+sendDate.hour:sendDate.hour}:${sendDate.minutes<10?'0'+sendDate.minutes:sendDate.minutes}` 
+        }else if(diffDay ==2 || diffDay ==3){
+          return `Há ${diffDay} dias`
         }
 
-      return `Há ${diffDay} dias`
+      return `Dia ${sendDate.day} às ${sendDate.hour<10?'0'+sendDate.hour:sendDate.hour}:${sendDate.minutes<10?'0'+sendDate.minutes:sendDate.minutes}`
 
     }else if(sendDate.year == currentDate.year){
 

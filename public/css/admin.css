@@ -14,6 +14,7 @@ div#message-content{
 div#message-content div.card-body{
     background: rgb(176, 176, 206);
     min-height: 200px;
+    padding-top: 40px;
     color: white;
 }
 

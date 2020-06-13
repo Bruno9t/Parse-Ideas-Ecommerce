@@ -7,7 +7,7 @@ const Email = nodemailer.createTransport({
     port: EM_PORT,  
     secure: true,
     auth:{user:EM_USER,pass: EM_PASS},
-    tls: {rejectUnauthorized: false}
+    tls: {rejectUnauthorized: false},
 })
 
 module.exports = Email

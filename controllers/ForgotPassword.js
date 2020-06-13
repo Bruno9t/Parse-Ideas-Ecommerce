@@ -2,6 +2,7 @@ const Email = require('../services/email.js')
 const {User} = require('../models') 
 const crypto = require('crypto')
 const renderFile = require('../services/ejsRenderFile')
+const {validationResult} = require('express-validator')
 const {EM_USER,APP_URL} = process.env
 
 module.exports = {
@@ -12,6 +13,10 @@ module.exports = {
     async send(req,res){
 
     try{
+        let errorList = validationResult(req)
+
+        if(errorList.errors.length==0){
+
         const {email} = req.body
 
         const user = await User.findOne({
@@ -20,9 +25,10 @@ module.exports = {
             }
         })
 
-
         if(!user){
-            return res.send('User not found')
+            return res.json({errors:[{
+                msg:'Usuário não existe!'
+            }]})
         }
 
         let token = crypto.randomBytes(20).toString('hex')
@@ -46,9 +52,9 @@ module.exports = {
             sobrenome:user.sobrenome,
             id:user.id_usuario,
             token,
-            app:APP_URL
+            app:APP_URL,
 
-        }).then(data=>{
+        }).then(data => {
 
             let configMail = {
                 from:EM_USER,
@@ -59,19 +65,24 @@ module.exports = {
 
             Email.sendMail(configMail,(err)=>{
 
-                console.log(err)
     
                 if(err){
-                    res.send(err)
+                    res.json({cod:2,
+                        msg:`Desculpe, tivemos um problema durante o envio do e-mail.
+                             Tente novamente mais tarde :(
+                        `})
                 }
     
-                res.send('Email enviado!')
+                res.json({cod:1,msg:'Um e-mail foi enviado para você, verifique seu e-mail!'})
             })
 
         })
+    }else{
+        return res.json(errorList)
+    }
 
     }catch(err){
-        res.send('Deu erro!')
+        res.json({cod:2,msg:'Ocorreu um erro, tente novamente mais tarde.'})
     }
-    }
+}
 }
