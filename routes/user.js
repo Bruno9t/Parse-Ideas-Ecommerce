@@ -5,7 +5,7 @@ const UserController = require('../controllers/UserController')
 const multerStorage = require('../middlewares/upload')
 const {extname} = require('path')
 
-let upload = multerStorage({
+let upload = multerStorage('public/images/uploads',{
     limits:{
         fileSize:500000,
     },

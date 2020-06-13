@@ -14,6 +14,7 @@ div#message-content{
 div#message-content div.card-body{
     background: rgb(176, 176, 206);
     min-height: 200px;
+    padding-top: 40px;
     color: white;
 }
 
@@ -284,7 +285,7 @@ div#exampleModal3 figure img.card-img-top{
     width: 250px;
     margin:auto;
     border-radius: 50%;
-    
+    object-fit: cover;
 }
 
 div#exampleModalLong .modal-body{
@@ -513,6 +514,10 @@ main section#content{
 
 input[type='file']{
     font-size: 1.6rem;
+}
+
+#user-data .card-img-top{
+    object-fit: cover;
 }
 
 

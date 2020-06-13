@@ -40,8 +40,10 @@ function modelarDados(dados,columns){
                     ${anuncios[j].prioridade ? `<span class="spotlight p-2">Destaque</span>` : ''}
                 <span class="categorie tag-${formatarCategoria(anuncios[j].categoria.nome)} p-2">${anuncios[j].categoria.nome}</span>
                     <div class="card-body">
+                    <div class="card-body-container">
                         <h5 class="card-title">${anuncios[j].descricao}</h5>
                         <p class="card-text">${formatarPreco(anuncios[j].preco)}</p>
+                    </div>    
                         <a href="/announcements/detail/${anuncios[j].id_anuncio}" class="btn btn-primary">+ Detalhes</a>
                     </div>
                 </div>

@@ -1,2 +1,8 @@
 /node_modules
+public/images/uploads/*
+public/uploads/foto/*
+public/uploads/pdf/*
+!public/uploads/foto/.gitkeep
+!public/uploads/pdf/.gitkeep
+!public/images/uploads/.gitkeep
 .env

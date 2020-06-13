@@ -26,6 +26,7 @@
 </head>
 
 <body>
+ 
     <header>
         <!-- Menu Parse Ideias -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -56,12 +57,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
+
                     <% if ( locals.user !== undefined){%>
-                    <li class="nav-item" id='admin-panel'>
-                        <a class="nav-link" href="/panel">Painel</a>
-                    </li>
-                    <%}%>
-                    <% if ( locals.user !== undefined){%>
+                        <li class="nav-item" id='admin-panel'>
+                            <a class="nav-link" href="/panel">Painel</a>
+                        </li>
                         <li id='user' class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if (locals.user.thumbnail == undefined){ %>
@@ -74,7 +74,7 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a role='button' class="dropdown-item" href="/panel" ><span class='ic' ><img src="/images/svg/email.svg" alt="imagem de carta que simboliza um email"></span> Minhas mensagens</a>
                                 <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/notification.svg" alt="sino de notificação"></span>Meus alertas</a>
-                                <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/plus.svg" alt="sinal de soma"></span>Criar anúncio</a>
+                                <a role='button' class="dropdown-item" href="/announcements/create"><span class='ic'><img src="/images/svg/plus.svg" alt="sinal de soma"></span>Criar anúncio</a>
                                 <a role='button' class="dropdown-item" href="/panel"><span class='ic'><img src="/images/svg/user.svg" alt="imagem de um usuário"></span>Meu perfil</a>
                                 <a role='button' class="dropdown-item" href="/logout"><span class='ic'><img src="/images/svg/logout.svg" alt="imagem de uma porta de saída"></span>Sair</a>
                             </div>
@@ -89,3 +89,4 @@
             </div>
         </nav>
     </header>
+  

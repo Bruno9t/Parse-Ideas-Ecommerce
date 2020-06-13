@@ -1,0 +1,183 @@
+<%- include('../partials/header') %>
+
+<main>
+
+    <div class="container">
+
+        <div id='icon1'>
+            <figure>
+                <img src="/images/svg/info.svg" alt="imagem para informações">
+            </figure>
+            <h2>Atualizar Anúncio</h2>
+        </div>
+        <section id="form">
+            <p>Campos com (*) são obrigatórios.</p>
+
+            <div id="erros" class="alert alert-danger">
+                
+            </div>
+
+            <form action="" enctype="multipart/form-data" method="POST">  
+                <section>
+                <div class="row">
+
+                    <input type="hidden" name="id" value="<%= announcements.id_anuncio %>">
+                    <input type="hidden" name="idFoto" value="<%= foto.id %>">
+                    <input type="hidden" name="idPdf" value="<%= pdf.id %>">
+
+                    <div class="col-md-6 col-sm-12">
+                        <label for="title">Título do anúncio(*)</label>
+                        <input type="text" class="form-control" name='title' id='title' value="<%= announcements.titulo%>">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        
+                        <label for="type">Tipo do negocio(*)</label>
+                        <select name="type" class="form-control" id="type">
+                            <option value="0">Selecione um tipo de negócio</option>
+                            <% categories.forEach(cat => { %>
+                                    <option value="<%= cat.id_categoria %>" <% if(announcements.categoria_id == cat.id_categoria){%> selected <%}%> > <%= cat.nome %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="price">Preço de venda(*)</label>
+                        <input type="text" class="form-control" name='price' id='price' value="<%= announcements.preco %>">
+                    </div>
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="stock">Valor estimado do estoque(*)</label>
+                        <input type="text" class="form-control" name='stock' id='stock' value="<%= announcements.valor_estimado_estoque %>">
+                    </div>
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="revenues">Faturamento médio mensal(*)</label>
+                        <input type="text" class="form-control" name='revenues' id='revenues' value="<%= announcements.faturamento_mm %>" >
+                    </div>
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="profit">Lucro mensal(*)</label>
+                        <input type="text" class="form-control" name='profit' id='profit' value="<%= announcements.lucro_mensal %>">
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="date">Data de Fundação(*)</label>
+                        <input type="date" class="form-control" name='date' id='date' value="<%= announcements.data_fundacao %>">
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <label for="reason">Motivo da venda(*)</label>
+                        <input type="text" class="form-control" name='reason' id='reason' value="<%= announcements.motivo_venda %>">
+                    </div>
+
+                    <div class="col-md-3 col-sm-12">
+                        <label for="employees">Funcionários(*)</label>
+                        <input type="number" class="form-control" name='employees' id='employees' value="<%= announcements.qtd_funcionarios %>">
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col">
+                        <label for="description">Descrição do anúncio(*)</label>
+                        <textarea class="form-control" id="description" name ="description" rows="3"><%= announcements.descricao %> </textarea>
+                      </div>
+
+                </div>
+            </section>
+
+            <section id='ad-files'>
+
+                <div id='icon2'>
+                    <figure>
+                        <img src="/images/svg/photo.svg" alt="imagem para informações">
+                    </figure>
+    
+                    <h2>Foto e PDF</h2>
+                </div>
+
+                <p class="text-upload">Clique abaixo para fazer o upload de uma foto que represente seu anúncio e um documento no formato PDF.</p>
+
+                <div id='files'>
+                   <div>
+                        <input type="file" class='form-control' name="foto" id="input-foto">
+                        <div id='label-1'>
+                            <label for="input-foto">
+                                <img src="<%= foto.arquivo || '/images/svg/photo2.svg' %>" alt="">
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="file" class='form-control' name="pdf" id="input-pdf">
+                        <div id='label-2'>
+                            <label for="input-pdf">Anexar PDF</label>
+                        </div>
+                        
+                    </div>
+                    <span class='desc-file-foto'></span>
+                    <span class='desc-file-pdf'></span>
+                </div>
+            </section>
+
+            <!-- <section>
+                <div id='icon3'>
+                    <figure>
+                        <img src='/images/svg/contact.svg' alt="imagem para informações">
+                    </figure>
+    
+                    <h2>Dados de contato</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <label for="name">Nome*</label>
+                        <input type="text" class="form-control" name='name' id='name'>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <label for="email">E-mail*</label>
+                        <input type="email" class="form-control" name='email' id='email'>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <label for="cel">Celular*</label>
+                        <input type="tel" class="form-control" name='cel' id='cel'>
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        <label for="tel">Telefone*</label>
+                        <input type="tel" class="form-control" name='tel' id='tel'>
+                    </div>
+                </div>
+            </section> -->
+
+            <div class='redirect'>
+                    <button class='btn btn-md btn-primary next'>Salvar</button>
+            </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<%- include('../partials/footer') %> 
+<!-- <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script> -->
+<%- include('../partials/scripts') %> 
+
+<script src="/js/announcementUpdate.js"></script>
+
+</body>
+</html>
+
+

@@ -192,6 +192,10 @@ button.btn-newsletter:hover {
     font-size: 1.6rem;
 }
 
+.card-body-container{
+    height: 100px;
+}
+
 
 @media (max-width:1200px){
     #recentAnnouncements .card .categorie{

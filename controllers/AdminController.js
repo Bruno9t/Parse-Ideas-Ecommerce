@@ -7,7 +7,7 @@ const AdminController = {
 
             const {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
 
-            return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail}})
+            return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},app:process.env.APP_URL})
          
         }catch(err){
             return new Error(err)

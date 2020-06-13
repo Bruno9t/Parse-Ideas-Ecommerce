@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
 
+
 <main>
 
     <div class="container">
@@ -8,7 +9,7 @@
             <figure>
                 <img src="/images/svg/info.svg" alt="imagem para informações">
             </figure>
-            <h2>Informações</h2>
+            <h2>Novo Anúncio</h2>
         </div>
         <section id="form">
             <p>Campos com (*) são obrigatórios.</p>
@@ -67,8 +68,8 @@
                 <div class="row">
 
                     <div class="col-md-3 col-sm-12">
-                        <label for="age">Idade da empresa(*)</label>
-                        <input type="number" class="form-control" name='age' id='age'>
+                        <label for="date">Data de fundação(*)</label>
+                        <input type="date" class="form-control" name='date' id='date'>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -167,8 +168,13 @@
 </main>
 
 <%- include('../partials/footer') %> 
-<script src="/js/vanilla-masker.min.js"></script>
-<script src="/js/announcement.js"></script>
+<!-- <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script> -->
 <%- include('../partials/scripts') %> 
+
+<script src="/js/announcement.js"></script>
+
+</body>
+</html>
 
 

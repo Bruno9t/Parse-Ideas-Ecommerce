@@ -1,4 +1,19 @@
-let num = '12'
+let now = new Date()
+console.log(now)
 
-console.log(num.length)
+now.setHours(now.getHours() + 1)
+
+
+console.log(now - now)
+
+
+
+
+
+
+
+
+
+
+
 

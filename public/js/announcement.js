@@ -16,78 +16,15 @@ let descricao = form.querySelector('textarea');
 let fileFoto = form.foto;
 let filePdf = form.pdf;
 
-
-// Masking input element to money.
-VMasker(preco).maskMoney({
-    // Decimal precision -> "90"
-    precision: 2,
-    // Decimal separator -> ",90"
-    separator: ',',
-    // Number delimiter -> "12.345.678"
-    delimiter: '.',
-    // Money unit -> "R$ 12.345.678,90"
-    unit: 'R$',
-    // Money unit -> "12.345.678,90 R$"
-    //suffixUnit: 'R$',
-    // Force type only number instead decimal,
-    // masking decimals with ",00"
-    // Zero cents -> "R$ 1.234.567.890,00"
-    zeroCents: true
-  });
-
-  VMasker(estoque).maskMoney({
-    // Decimal precision -> "90"
-    precision: 2,
-    // Decimal separator -> ",90"
-    separator: ',',
-    // Number delimiter -> "12.345.678"
-    delimiter: '.',
-    // Money unit -> "R$ 12.345.678,90"
-    unit: 'R$',
-    // Money unit -> "12.345.678,90 R$"
-    //suffixUnit: 'R$',
-    // Force type only number instead decimal,
-    // masking decimals with ",00"
-    // Zero cents -> "R$ 1.234.567.890,00"
-    zeroCents: true
-  });
-
-  VMasker(faturamentoMedio).maskMoney({
-    // Decimal precision -> "90"
-    precision: 2,
-    // Decimal separator -> ",90"
-    separator: ',',
-    // Number delimiter -> "12.345.678"
-    delimiter: '.',
-    // Money unit -> "R$ 12.345.678,90"
-    unit: 'R$',
-    // Money unit -> "12.345.678,90 R$"
-    //suffixUnit: 'R$',
-    // Force type only number instead decimal,
-    // masking decimals with ",00"
-    // Zero cents -> "R$ 1.234.567.890,00"
-    zeroCents: true
-  });
-
-  VMasker(lucroMedio).maskMoney({
-    // Decimal precision -> "90"
-    precision: 2,
-    // Decimal separator -> ",90"
-    separator: ',',
-    // Number delimiter -> "12.345.678"
-    delimiter: '.',
-    // Money unit -> "R$ 12.345.678,90"
-    unit: 'R$',
-    // Money unit -> "12.345.678,90 R$"
-    //suffixUnit: 'R$',
-    // Force type only number instead decimal,
-    // masking decimals with ",00"
-    // Zero cents -> "R$ 1.234.567.890,00"
-    zeroCents: true
-  });
+$(document).ready(function($){
+  $(preco).mask('000.000.000.000,00', {reverse: true});
+  $(estoque).mask('000.000.000.000.000,00', {reverse: true});
+  $(faturamentoMedio).mask('000.000.000.000.000,00', {reverse: true});
+  $(lucroMedio).mask('000.000.000.000.000,00', {reverse: true});
+});
 
 
-const url = 'http://' + window.location.host + '/announcements/create';
+const url = window.location.origin + '/announcements/create';
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -112,6 +49,13 @@ form.addEventListener('submit', async function(e){
             })
             
         }else if(result.msg == 'errors'){
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Que pena, não foi possível criar o anúncio!',
+                showConfirmButton: false,
+                timer: 3000
+            })
             divErros.style.display = 'block';
             divErros.innerHTML = ''
             let erros = result.erros;
