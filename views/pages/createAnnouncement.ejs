@@ -24,7 +24,8 @@
 
                     <div class="col-md-6 col-sm-12">
                         <label for="title">Título do anúncio(*)</label>
-                        <input type="text" class="form-control" name='title' id='title'>
+                        <input type="text" class="form-control" name='title' id='title' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -45,22 +46,26 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="price">Preço de venda(*)</label>
-                        <input type="text" class="form-control" name='price' id='price'>
+                        <input type="text" class="form-control" name='price' id='price' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="stock">Valor estimado do estoque(*)</label>
-                        <input type="text" class="form-control" name='stock' id='stock'>
+                        <input type="text" class="form-control" name='stock' id='stock' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="revenues">Faturamento médio mensal(*)</label>
-                        <input type="text" class="form-control" name='revenues' id='revenues'>
+                        <input type="text" class="form-control" name='revenues' id='revenues' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="profit">Lucro mensal(*)</label>
-                        <input type="text" class="form-control" name='profit' id='profit'>
+                        <input type="text" class="form-control" name='profit' id='profit' required>
+                        <span class="error"></span>
                     </div>
 
                 </div>
@@ -69,17 +74,20 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="date">Data de fundação(*)</label>
-                        <input type="date" class="form-control" name='date' id='date'>
+                        <input type="date" class="form-control" name='date' id='date' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <label for="reason">Motivo da venda(*)</label>
-                        <input type="text" class="form-control" name='reason' id='reason'>
+                        <input type="text" class="form-control" name='reason' id='reason' required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="employees">Funcionários(*)</label>
-                        <input type="number" class="form-control" name='employees' id='employees'>
+                        <input type="number" class="form-control" name='employees' id='employees' required>
+                        <span class="error"></span>
                     </div>
                 </div>
 
@@ -88,7 +96,9 @@
 
                     <div class="col">
                         <label for="description">Descrição do anúncio(*)</label>
-                        <textarea class="form-control" id="description" name ="description" rows="3"></textarea>
+                        <textarea class="form-control" id="description" name ="description" rows="3" required></textarea>
+                        <!-- <input type="text" class="form-control description" id="description" name ="description" required>> -->
+                        <span class="error"></span>
                       </div>
 
                 </div>

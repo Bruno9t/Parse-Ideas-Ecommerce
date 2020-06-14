@@ -60,8 +60,8 @@ const AnnouceController = {
                 'usuario_id': id_usuario,
                 'preco': obj.price.replace('.','').replace(',','.'),
                 'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
-                'faturamento_mm': obj.revenues.replace.replace('.','').replace(',','.'),
-                'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
+                'faturamento_mm': obj.revenues.replace('.','').replace(',','.'),
+                'lucro_mensal': obj.profit.replace('.','').replace(',','.'),
                 'data_fundacao': new Date(obj.date),
                 'descricao': obj.description,
                 'motivo_venda': obj.reason,
@@ -106,7 +106,7 @@ const AnnouceController = {
                 <strong>Valor do Estoque:</strong> ${obj.stock}<br>
                 <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
                 <strong>Lucro:</strong> ${obj.profit}<br>
-                <strong>Data de Fundação:</strong> ${obj.age} <br>
+                <strong>Data de Fundação:</strong> ${obj.date} <br>
                 <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
                 <strong>Motivo:</strong> ${obj.reason} <br>
                 <strong>Descrição:</strong> ${obj.description} <br><br>
@@ -225,10 +225,13 @@ const AnnouceController = {
             }
 
             let dataFundation = new Date(announcements.dataValues.data_fundacao);
-            let day = dataFundation.getUTCDate() < 10 ? '0' + dataFundation.getUTCDate() : ''
-            let month = dataFundation.getUTCMonth() + 1 < 10 ? '0' + (dataFundation.getUTCMonth() + 1) : ''
+            let day = dataFundation.getUTCDate() < 10 ? '0' + dataFundation.getUTCDate() : dataFundation.getUTCDate()
+            let month = dataFundation.getUTCMonth() + 1 < 10 ? '0' + (dataFundation.getUTCMonth() + 1) : dataFundation.getUTCMonth() + 1
             // dataFundation = `${dataFundation.getUTCDate()}/${dataFundation.getUTCMonth() + 1}/${dataFundation.getFullYear()}`
             dataFundation = `${dataFundation.getFullYear()}-${month}-${day}`
+
+            console.log(dataFundation);
+            
 
             announcements.dataValues.data_fundacao = dataFundation;
             
