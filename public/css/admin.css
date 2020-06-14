@@ -157,7 +157,7 @@ span#alter-photo img{
     margin: auto;
 }
 
-#accordion>.container-fluid,#contain{
+#accordion>.container-fluid{
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -167,7 +167,109 @@ span#alter-photo img{
 #accordion>.container-fluid{
     text-align: center;
 }
+/* annoucements on admin */
 
+/* div#contain div.announcements-navigation ul li{
+    cursor: pointer;
+}
+
+div#contain div.announcements-navigation ul li.active{
+    background-color: blue;
+    color:white;
+} */
+
+div#contain div.announcements{
+    min-height: 400px;
+    height: auto;
+
+}
+div#contain div.announcements .card .btn:hover{
+    background-color: #5A47CC;
+    color: white;
+}
+
+div#contain div.announcements .card{
+    overflow: hidden;
+} 
+
+div#contain div.announcements .card h5{
+    font-size: 1.5rem;
+}
+
+div#contain div.announcements .card-body-container{
+    height: 100px;
+}
+
+div#contain div.announcements .card p {
+    color: #5A47CC;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+div#contain div.announcements .card .spotlight{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    background-color: #5A47CC;
+    color: white;
+    top:8px;
+    right: -40px;
+    font-weight: bold;
+    transform: rotate(32deg);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+div#contain div.announcements .card .categorie{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    color: white;
+    top: calc(21.5rem - 1px);
+    left: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.tag-e-commerce{
+    background-color: rgba(185, 0, 166, 0.8);
+}
+
+.tag-soluções{
+    background-color: rgba(27, 192, 23, 0.8);
+}
+
+.tag-redessociais{
+    background-color: rgba(25, 171, 181, 0.8);
+}
+
+div#contain div.announcements .card .btn{
+    background-color: white;
+    border: 1px solid #5A47CC;
+    color:#5A47CC;
+    font-size: 1.6rem;
+}
+
+@media (max-width:1200px){
+    div#contain div.announcements .card .categorie{
+        top: calc(17.0rem - 1px);
+    }
+}
+
+
+@media (max-width:991px){
+    div#contain div.announcements .card .categorie{
+        top: calc(11.5rem - 1px);
+    }
+}
+
+@media (max-width:540px){
+    div#contain div.announcements .card .categorie{
+        top: calc(31.5rem - 1px);
+    }
+}
+/* end */
 
 div#headingOne.btn,
 div#headingTwo.btn,

@@ -37,9 +37,9 @@ modallong.addEventListener('scroll',function(){
 window.onload = function() {
   bringMessages(currentCountMessages);
 
-  setInterval(()=>{
-  bringMessages(currentCountMessages);
-},6000)
+//   setInterval(()=>{
+//   bringMessages(currentCountMessages);
+// },6000)
 }
 
 
