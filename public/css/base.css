@@ -46,9 +46,12 @@ span.navbar-toggler-icon{
 }
 li#user div.dropdown-menu{
     left:-100px;
-    background: #5A47CC;
-    border:none;
-    font-size: 1.6rem;
+    /* background: #5A47CC; */
+    background: #fff;
+    border:1px solid #eee;
+    font-size: 1.4rem;
+    padding: .8rem;
+    box-shadow: 3px 3px 3px #999;
 }
 a#dropdownMenuLink{
     background:none;
@@ -56,11 +59,12 @@ a#dropdownMenuLink{
 }
 
 a.dropdown-item{
-    color:white;
+    color:#5A47CC;
 }
 
 a.dropdown-item:hover{
-    background: linear-gradient(#5A47CC,cornflowerblue);
+    background: linear-gradient(#fff,#eee);
+    color: #5A47CC;
 }
 
 span.ic img{
