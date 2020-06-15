@@ -27,7 +27,8 @@
 
                     <div class="col-md-6 col-sm-12">
                         <label for="title">Título do anúncio(*)</label>
-                        <input type="text" class="form-control" name='title' id='title' value="<%= announcements.titulo%>">
+                        <input type="text" class="form-control" name='title' id='title' value="<%= announcements.titulo%>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -47,22 +48,26 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="price">Preço de venda(*)</label>
-                        <input type="text" class="form-control" name='price' id='price' value="<%= announcements.preco %>">
+                        <input type="text" class="form-control" name='price' id='price' value="<%= announcements.preco %>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="stock">Valor estimado do estoque(*)</label>
-                        <input type="text" class="form-control" name='stock' id='stock' value="<%= announcements.valor_estimado_estoque %>">
+                        <input type="text" class="form-control" name='stock' id='stock' value="<%= announcements.valor_estimado_estoque %>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="revenues">Faturamento médio mensal(*)</label>
-                        <input type="text" class="form-control" name='revenues' id='revenues' value="<%= announcements.faturamento_mm %>" >
+                        <input type="text" class="form-control" name='revenues' id='revenues' value="<%= announcements.faturamento_mm %>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="profit">Lucro mensal(*)</label>
-                        <input type="text" class="form-control" name='profit' id='profit' value="<%= announcements.lucro_mensal %>">
+                        <input type="text" class="form-control" name='profit' id='profit' value="<%= announcements.lucro_mensal %>" required>
+                        <span class="error"></span>
                     </div>
 
                 </div>
@@ -71,17 +76,20 @@
 
                     <div class="col-md-3 col-sm-12">
                         <label for="date">Data de Fundação(*)</label>
-                        <input type="date" class="form-control" name='date' id='date' value="<%= announcements.data_fundacao %>">
+                        <input type="date" class="form-control" name='date' id='date' value="<%= announcements.data_fundacao %>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-6 col-sm-12">
                         <label for="reason">Motivo da venda(*)</label>
-                        <input type="text" class="form-control" name='reason' id='reason' value="<%= announcements.motivo_venda %>">
+                        <input type="text" class="form-control" name='reason' id='reason' value="<%= announcements.motivo_venda %>" required>
+                        <span class="error"></span>
                     </div>
 
                     <div class="col-md-3 col-sm-12">
                         <label for="employees">Funcionários(*)</label>
-                        <input type="number" class="form-control" name='employees' id='employees' value="<%= announcements.qtd_funcionarios %>">
+                        <input type="number" class="form-control" name='employees' id='employees' value="<%= announcements.qtd_funcionarios %>" required>
+                        <span class="error"></span>
                     </div>
                 </div>
 
@@ -90,7 +98,8 @@
 
                     <div class="col">
                         <label for="description">Descrição do anúncio(*)</label>
-                        <textarea class="form-control" id="description" name ="description" rows="3"><%= announcements.descricao %> </textarea>
+                        <textarea class="form-control" id="description" name ="description" rows="3" required><%= announcements.descricao %> </textarea>
+                        <span class="error"></span>
                       </div>
 
                 </div>
