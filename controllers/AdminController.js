@@ -21,6 +21,8 @@ const AdminController = {
         const {id_usuario:usuario_id} = req.session.user || req.user
         const limit = 6
 
+        console.log(previousClickLI)
+
         const {count:total,rows:announcements} = await Announcement.findAndCountAll({
             where:{usuario_id},
             limit,
