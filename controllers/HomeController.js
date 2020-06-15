@@ -11,8 +11,7 @@ const HomeController = {
     },
 
     newslatter(req, res) {
-        let {email} = req.body
-
+        let {name, email} = req.body
         let transporter = nodemailer.createTransport({
             host: process.env.EM_HOST,
             port: process.env.EM_PORT,
@@ -28,15 +27,16 @@ const HomeController = {
 
         transporter.sendMail({
             from: '"Parse Ideias 👻" <site@parseideias.tecnologia.ws>',
-            to: email, // list of receivers
-            subject: "Newsletter ✔", // Subject line
-            text: "Olá obrigada por se cadastrar na nossa newsletter",
+            to: email,
+            subject: "Newsletter ✔",
+            text: `Olá ${name}, obrigada por se cadastrar na nossa newsletter, agora você tem acesso nosso conteúdo exclusivo.`,
         }).then(message => {
             console.log(message)
+            res.json({"nome": name, "email": email})
         }).catch(err => {
             console.log(err)
         })
-
+  
     },
     async list(req,res){
         let {count} = req.body
