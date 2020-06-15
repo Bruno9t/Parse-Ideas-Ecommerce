@@ -14,8 +14,8 @@ router.get('/plans/singReturn', PlanController.signReturn);
 router.get('/plans/store', PlanController.store);
 // router.post('/plans', PlanController.store);
 
-router.get('/list', PlanController.listPlan);
-router.post('/list', PlanController.postPlan);
+router.get('/plans/list', PlanController.listPlan);
+router.post('/plans/list', PlanController.postPlan);
 
 module.exports = router;
 

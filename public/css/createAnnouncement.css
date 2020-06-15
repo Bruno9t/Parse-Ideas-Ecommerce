@@ -46,7 +46,7 @@ main .container form label{
 
 main .container form input, .container form select{
     height: 5rem;
-    border:none;
+    /* border:none; */
     /* box-shadow: 5px 5px 10px gray; */
     border-radius: 5px;
 }
@@ -62,7 +62,7 @@ main .container form input::placeholder{
 .container textarea{
     resize: none;
     height: 232px;
-    border:none;
+    /* border:none; */
     /* box-shadow: 5px 5px 10px gray; */
     border-radius: 5px;
 
@@ -178,6 +178,26 @@ input[ type='file' ] {
 
 .text-upload{
     color: black !important;
+}
+
+input.description{
+    height: 200px !important;
+    padding: .8rem;
+}
+
+
+span.error{
+    display: flex;
+    padding: 0;
+    background-color: rgba(255, 0, 0, 0.2);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    
+}
+
+span.error.active{
+    border: 1px solid red;
+    padding: 0.4em;
 }
 
 

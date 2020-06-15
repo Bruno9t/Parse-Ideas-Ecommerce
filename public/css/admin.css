@@ -157,7 +157,7 @@ span#alter-photo img{
     margin: auto;
 }
 
-#accordion>.container-fluid,#contain{
+#accordion>.container-fluid{
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -167,7 +167,214 @@ span#alter-photo img{
 #accordion>.container-fluid{
     text-align: center;
 }
+/* annoucements on admin */
+div#contain div.announcements-navigation ul li{
+    cursor: pointer;
+    transition: 400ms;
+}
 
+
+
+div#contain div.announcements-navigation ul li:hover{
+    border: 1px blue solid;
+}
+
+
+div#contain div.announcements-navigation ul li.active{
+    background-color: blue;
+    color:white;
+}
+
+div#contain div.announcements{
+    min-height: 400px;
+    height: auto;
+}
+
+div#contain div.announcements .button-link{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+div.link-1,div.link-2{
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+    transition-duration: 400ms;
+}
+
+div.link-1 a,div.link-2 a{
+    text-decoration: none;
+    width: 100%;
+}
+
+.link-1 a{
+    color:blue;
+    padding: 10px 33px;
+    width: 100%;
+}
+
+.link-2 a{
+    color:red;
+    padding: 10px 33px;
+}
+
+.link-1{
+    border:1px blue solid;
+    border-right: none;
+
+}
+
+.link-2{
+    border:1px red solid;
+    border-left: none;
+}
+
+.link-1:hover{
+    background: blue;
+
+}
+
+.link-2:hover{
+    background: red;
+ 
+}
+
+.button-link a:hover{
+    color:white
+}
+
+
+
+div#contain div.announcements .card{
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 30px;
+    height: 400px;
+} 
+
+div#contain div.announcements .card h5{
+    font-size: 1.5rem;
+}
+
+div#contain div.announcements .card-body-container{
+    height: 100px;
+}
+
+div#contain div.announcements .card p {
+    color: #5A47CC;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+div#contain div.announcements .card .spotlight{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    background-color: #5A47CC;
+    color: white;
+    top:8px;
+    right: -40px;
+    font-weight: bold;
+    transform: rotate(32deg);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+div#contain div.announcements .card .categorie{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    color: white;
+    top: calc(21.5rem - 1px);
+    left: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.tag-e-commerce{
+    background-color: rgba(185, 0, 166, 0.8);
+}
+
+.tag-soluções{
+    background-color: rgba(27, 192, 23, 0.8);
+}
+
+.tag-redessociais{
+    background-color: rgba(25, 171, 181, 0.8);
+}
+
+div#contain div.announcements .card .btn{
+    background-color: white;
+    border: 1px solid #5A47CC;
+    color:#5A47CC;
+    font-size: 1.6rem;
+}
+
+div#contain div.announcements .card-body-container{
+    height: 100px;
+}
+
+@media (max-width:1200px){
+    div#contain div.announcements .card .categorie{
+        top: calc(17.0rem - 1px);
+    }
+}
+
+
+@media (max-width:991px){
+    div#contain div.announcements .card .categorie{
+        top: calc(11.5rem - 1px);
+    }
+}
+
+@media (max-width:540px){
+    div#contain div.announcements .card .categorie{
+        top: calc(31.5rem - 1px);
+    }
+}
+
+@media (max-width:512px){
+    div#contain div.announcements .card .categorie{
+        top: calc(29.5rem - 1px);
+    }
+}
+
+@media (max-width:480px){
+    div#contain div.announcements .card .categorie{
+        top: calc(25.5rem - 1px);
+    }
+}
+
+@media (max-width:430px){
+    div#contain div.announcements .card .categorie{
+        top: calc(22.5rem - 1px);
+    }
+}
+
+@media (max-width:380px){
+
+    html{
+        font-size: 50%;
+    }
+
+    div#contain div.announcements .card .categorie{
+        top: calc(22.5rem - 1px);
+    }
+}
+
+@media (max-width:340px){
+    div#contain div.announcements .card .categorie{
+        top: calc(18.5rem - 1px);
+    }
+}
+
+@media (max-width:270px){
+    div#contain div.announcements .card .categorie{
+        top: calc(15.5rem - 1px);
+    }
+}
+/* end */
 
 div#headingOne.btn,
 div#headingTwo.btn,

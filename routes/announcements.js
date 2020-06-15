@@ -29,7 +29,7 @@ router.post('/announcements/create', upload.any(),[
     check('stock').isLength({min: 1}).withMessage('Preencha o campo valor estimado do estoque'),
     check('revenues').isLength({min: 1}).withMessage('Preencha o campo faturamento médido mensal'),
     check('profit').isLength({min: 1}).withMessage('Preencha o campo lucro mensal'),
-    check('age').isLength({min: 1}).withMessage('Informe e idade da empresa'),
+    check('date').isLength({min: 1}).withMessage('Informe a data de fundação da empresa'),
     check('description').isLength({ min: 5}).withMessage('Escreva a descrição do anúncio'),
     check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
     check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
