@@ -15,6 +15,8 @@ let qtdFuncionarios = form.employees;
 let descricao = form.querySelector('textarea');
 let fileFoto = form.foto;
 let filePdf = form.pdf;
+let url = window.location.origin + '/announcements/create';
+let fields = document.querySelectorAll('[required]');
 
 $(document).ready(function($){
   $(preco).mask('000.000.000.000,00', {reverse: true});
@@ -23,10 +25,6 @@ $(document).ready(function($){
   $(lucroMedio).mask('000.000.000.000.000,00', {reverse: true});
 });
 
-
-const url = window.location.origin + '/announcements/create';
-
-const fields = document.querySelectorAll('[required]');
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -50,7 +48,10 @@ form.addEventListener('submit', async function(e){
                 timer: 3000
             })
 
-            window.location.reload();
+            setTimeout(() => {
+              window.location.reload();
+            }, 3000)
+
             
         }else if(result.msg == 'errors'){
               Swal.fire({
@@ -110,14 +111,7 @@ function validateField(field){
       let foundError = false;
 
       for(let error in field.validity){
-          //se não for custom error
-          //verifica se tem erro
-
-          //usada para alterar a mensagem padrão de erro do input    
-          // if(error !== "customError" && field.validity[error]){
-          //     foundError = error;
-          // }
-
+         
           if(field.validity[error] && !field.validity.valid){
               foundError = error;
           }
@@ -178,7 +172,6 @@ function validateField(field){
           // label.classList.remove('.label-error')
           setCustomMessage();
       }
-
   };
 }
 

@@ -1,3 +1,7 @@
+.title{
+    font-size: 2.8rem !important;
+}
+
 #search{
     background-color: #5A47CC;
     color: #fff;
@@ -151,6 +155,7 @@
 /*Newsletter*/
 section#newsletter{
     background-color: #f7f7f7!important;
+    font-size: 1.6rem;
 }
 
 .form-inline {
