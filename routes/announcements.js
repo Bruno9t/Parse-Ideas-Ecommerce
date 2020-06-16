@@ -13,10 +13,10 @@ router.get('/announcements', AnnouncementsController.index);
 /* Tela para cadastro do anúncio */
 router.get('/announcements/create', auth ,AnnouncementsController.create);
 
-router.get('/announcements/detail/:id', AnnouncementsController.detail)
+router.get('/announcements/detail/:id', auth, AnnouncementsController.detail)
 
 /* Rota para atualizar anúncio */
-router.get('/announcements/update/:anuncio_id', AnnouncementsController.show);
+router.get('/announcements/update/:anuncio_id', auth, AnnouncementsController.show);
 
 /* Search dos anuncios */
 router.post('/announcements/search', AnnouncementsController.search);
@@ -34,6 +34,22 @@ router.post('/announcements/create', upload.any(),[
     check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
     check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
 ] ,AnnouncementsController.store);
+
+
+
+/* Editar anúncio */
+router.put('/announcements/update/:anuncio_id', upload.any(),[
+    check('title').isLength({min:5}).withMessage('Preencha o campo título'),
+    check('type').isIn(['1','2','3']).withMessage('Informe o tipo do negócio'),
+    check('price').isLength({min: 1}).withMessage('Defina o preço de venda'),
+    check('stock').isLength({min: 1}).withMessage('Preencha o campo valor estimado do estoque'),
+    check('revenues').isLength({min: 1}).withMessage('Preencha o campo faturamento médido mensal'),
+    check('profit').isLength({min: 1}).withMessage('Preencha o campo lucro mensal'),
+    check('date').isLength({min: 1}).withMessage('Informe a data de fundação da empresa'),
+    check('description').isLength({ min: 5}).withMessage('Escreva a descrição do anúncio'),
+    check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
+    check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
+] ,AnnouncementsController.update);
 
 
 

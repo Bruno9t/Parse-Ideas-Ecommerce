@@ -4,6 +4,8 @@ const divErros = document.querySelector('#erros');
 
 // Campos do form
 let idAnuncio = form.id;
+let fotoID = form.idFoto;
+let pdfID = form.idPdf;
 let tituloAnuncio = form.title;
 let tipoDoNegocio = form.type;
 let preco = form.price;
@@ -16,6 +18,7 @@ let qtdFuncionarios = form.employees;
 let descricao = form.querySelector('textarea');
 let fileFoto = form.foto;
 let filePdf = form.pdf;
+let fields = document.querySelectorAll('[required]');
 
 $(document).ready(function($){
   $(preco).mask('000.000.000.000.000,00', {reverse: true});
@@ -25,7 +28,7 @@ $(document).ready(function($){
 });
 
 
-const url = window.location.origin + '/announcements/update';
+const url = `${window.location.origin}/announcements/update/${idAnuncio}?_method=PUT`;
 
 form.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -44,7 +47,7 @@ form.addEventListener('submit', async function(e){
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Parabéns, anúncio criado com sucesso!',
+                title: 'Anúncio atualizado!',
                 showConfirmButton: false,
                 timer: 3000
             })
@@ -53,7 +56,7 @@ form.addEventListener('submit', async function(e){
               Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Que pena, não foi possível criar o anúncio!',
+                title: 'Que pena, não foi possível atualizar o anúncio!',
                 showConfirmButton: false,
                 timer: 3000
             })
@@ -72,7 +75,7 @@ form.addEventListener('submit', async function(e){
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: 'Que pena, não foi possível criar o anúncio!',
+                title: 'Que pena, não foi atualizar o anúncio!',
                 showConfirmButton: false,
                 timer: 3000
             })

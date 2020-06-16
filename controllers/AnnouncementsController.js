@@ -33,28 +33,12 @@ const AnnouceController = {
 
         const {errors} = validationResult(req);
 
-        console.log(obj, foto, pdf);
-        // return;
         if(errors.length > 0){
             return res.json({msg: 'errors', erros: errors})
         }
 
         try {
-            // const createdAnnouncements = await Announcement.create({
-            //     'categoria_id': Number(obj.type),
-            //     'usuario_id': id_usuario,
-            //     'preco': obj.price.replace('R$ ', '').replace('.','').replace(',','.'),
-            //     'valor_estimado_estoque': obj.stock.replace('R$ ', '').replace('.','').replace(',','.'),
-            //     'faturamento_mm': obj.revenues.replace('R$ ', '').replace('.','').replace(',','.'),
-            //     'lucro_mensal': obj.profit.replace('R$ ', '').replace('.','').replace(',','.'),
-            //     'data_fundacao': obj.date,
-            //     'descricao': obj.description,
-            //     'motivo_venda': obj.reason,
-            //     'qtd_funcionarios': Number(obj.employees),
-            //     'prioridade': 0,
-            //     'titulo': obj.title
-            // })
-
+            
             const createdAnnouncements = await Announcement.create({
                 'categoria_id': Number(obj.type),
                 'usuario_id': id_usuario,
@@ -250,8 +234,110 @@ const AnnouceController = {
             }
     },
 
-    update: (req, res) => {
+    update: async (req, res) => {
 
+        // const { anuncio_id } = req.params
+        const {id_usuario} = req.session.user || req.user
+        
+        const obj = req.body;      
+        console.log(obj);
+        const [foto,pdf] = req.files;
+
+        const {errors} = validationResult(req);
+
+        if(errors.length > 0){
+            return res.json({msg: 'errors', erros: errors})
+        }
+
+        try {
+            
+            const updatedAnnouncements = await Announcement.update({
+                'categoria_id': Number(obj.type),
+                'preco': obj.price.replace('.','').replace(',','.'),
+                'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
+                'faturamento_mm': obj.revenues.replace('.','').replace(',','.'),
+                'lucro_mensal': obj.profit.replace('.','').replace(',','.'),
+                'data_fundacao': new Date(obj.date),
+                'descricao': obj.description,
+                'motivo_venda': obj.reason,
+                'qtd_funcionarios': Number(obj.employees),
+                'prioridade': 0,
+                'titulo': obj.title
+            },
+            { 
+             where: {
+                'id_anuncio': obj.id
+            }
+        })
+
+
+            if(foto){
+                await File.update(
+                    {
+                    'arquivo': `/uploads/foto/${foto.filename}`
+                },{
+                    where: {
+                        'id_arquivo': obj.idFoto
+                    }
+                })
+            }
+    
+            if(pdf){
+                await File.update({
+                    'arquivo': `/uploads/pdf/${pdf.filename}`
+                },{
+                    where: {
+                        'id_arquivo': obj.idPdf
+                    }
+                })
+            }
+
+            const user = await User.findByPk(id_usuario);
+            const category = await Category.findByPk(Number(obj.type));
+
+            // let emailSend = {
+            //     from: 'site@parseideias.tecnologia.ws',
+            //     to: user.email,
+            //     subject: 'Parse Ideas - Criação de Anúncio',
+            //     text: 'Criação de Anúncio',
+            //     html: `
+            //     <h1>Novo anúncio criado no sistema</h1>
+            //     <p>Olá ${user.nome} ${user.sobrenome}, <br>
+            //     Seguem abaixo, dados do anúncio criado no sistema:
+            //     </p>
+            //     <hr>
+            //     <br>
+            //     <strong>Titulo:</strong> ${obj.title} <br>
+            //     <strong>Tipo:</strong> ${category.nome} <br>
+            //     <strong>Preco:</strong> ${obj.price} <br>
+            //     <strong>Valor do Estoque:</strong> ${obj.stock}<br>
+            //     <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
+            //     <strong>Lucro:</strong> ${obj.profit}<br>
+            //     <strong>Data de Fundação:</strong> ${obj.date} <br>
+            //     <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
+            //     <strong>Motivo:</strong> ${obj.reason} <br>
+            //     <strong>Descrição:</strong> ${obj.description} <br><br>
+
+            //     <p>Cordialmente,<br>
+            //     <strong>Equipe Parse Ideas®</strong>
+            //     </p>
+                
+            //     `,
+            // }
+            // // Send email 
+            //     Email.sendMail(emailSend, (error) => {
+            //         if(error){
+            //             console.log('Deu Ruim')
+            //             console.log(error.message)
+            //         }else{
+            //             console.log('Email disparado com sucesso!');
+            //         }
+            //     })
+                return res.status(200).json({msg: 'success'});
+        } catch (error) {
+            console.log(error);
+            return res.status(400).json({msg: 'error'});
+        }
     }
 }
 
