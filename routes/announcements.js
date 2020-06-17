@@ -13,7 +13,7 @@ router.get('/announcements', AnnouncementsController.index);
 /* Tela para cadastro do anúncio */
 router.get('/announcements/create', auth ,AnnouncementsController.create);
 
-router.get('/announcements/detail/:id', auth, AnnouncementsController.detail)
+router.get('/announcements/detail/:id', AnnouncementsController.detail)
 
 /* Rota para atualizar anúncio */
 router.get('/announcements/update/:anuncio_id', auth, AnnouncementsController.show);
