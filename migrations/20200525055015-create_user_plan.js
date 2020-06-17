@@ -16,14 +16,14 @@ module.exports = {
           allowNull:false,
           references: {model: 'usuario', key: 'id_usuario'},
           onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
+          onDelete: 'CASCADE',
         },
         plano_id: {
           type:Sequelize.INTEGER.UNSIGNED,
           allowNull:false,
           references: {model: 'plano', key: 'id_plano'},
           onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
+          onDelete: 'CASCADE',
         },
         assinatura_id: {
           type:Sequelize.STRING(50),

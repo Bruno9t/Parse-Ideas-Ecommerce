@@ -1,4 +1,16 @@
 
+
+.recurly-element, .recurly-hosted-field{
+    height: 50px;
+  }
+
+  .form-row>.col, .form-row>[class*=col-] {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+
+
 h1{
     font-size: 4rem;
     padding: 20px;
@@ -57,12 +69,42 @@ form input::placeholder{
     font-size: 1.6rem;
 }
 
-section .form-row input, section form select.form-control{
-    height: 5rem;
-    border:none;
-    box-shadow: 5px 5px 10px gray;
-    border-radius: 5px;
+form#my-form .form-row input{
+    height: 50px;
+    width: 100%;
+    border: 1px #d7d7d9 solid;
+    font-size: 16px;
 }
+
+form#my-form .form-row input#nameInput,
+form#my-form .form-row input#surnameInput,
+form#my-form .form-row input#postalInput,
+form#my-form .form-row input#cityInput,
+form#my-form .form-row input#addressInput{
+    padding: 15px;
+    font-weight: bold;
+    visibility: visible;
+    color:rgb(84, 84, 87);
+}
+
+form#my-form .form-row input#surnameInput,
+form#my-form .form-row input#postalInput{
+    margin-left: 5px;
+}
+
+form#my-form select{
+    padding: 15px;
+    font-weight: bold;
+    visibility: visible;
+    color:rgb(84, 84, 87);
+    height: 50px;
+    width: 100%;
+    border: 1px #d7d7d9 solid;
+    font-size: 16px;
+
+}
+
+
 
 section div.row form div,div#pay div{
     margin:15px auto;
@@ -84,8 +126,6 @@ section span{
 
 
 /* value of payment */
-
-
 
 .planvalue{
     display: flex;
@@ -136,11 +176,6 @@ section h5{
 }
 
 
-
-
-
-
-
 @media (max-width:1200px){
     form label {
         font-size: 1rem;
@@ -157,6 +192,13 @@ section h5{
     }
     section #pay{
         padding: 20px;
+    }
+}
+
+@media (max-width:767px){
+    form#my-form .form-row input#surnameInput,
+    form#my-form .form-row input#cityInput{
+        margin-left: 0px;
     }
 }
 

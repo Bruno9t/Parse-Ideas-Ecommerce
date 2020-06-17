@@ -6,6 +6,7 @@
     outline: 0;
 }
 
+
 html, 
 body{
     font-size: 62.5%;
@@ -90,6 +91,8 @@ input[type='radio']{
 }
 
 
+
+
 body{
     background-color: #FFFFFF;
 }
@@ -106,10 +109,7 @@ h2{
     line-height: 3.0;
 }
 
-.form-control{
-    height: calc(3.25rem + 2px);
-    font-size: 1.4rem;
-}
+
 
 #mainMenu{
     font-size: 1.6rem;

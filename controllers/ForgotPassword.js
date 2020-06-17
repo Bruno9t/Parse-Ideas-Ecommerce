@@ -78,7 +78,9 @@ module.exports = {
                         `})
                 }
     
-                res.json({cod:1,msg:'Um e-mail foi enviado para você, verifique seu e-mail!'})
+                res.json({cod:1,
+                    msg:'Um e-mail foi enviado para você, verifique seu e-mail!'
+                })
             })
 
         })
