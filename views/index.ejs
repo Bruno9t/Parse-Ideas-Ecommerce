@@ -5,11 +5,10 @@
         <div class="container">
             <div class="row py-4">
                 <div class="col col-md-5 col-sm-12 p-4">
-                    <h1>E-Commerce à venda, redes sociais e Soluções</h1>
+                    <h1 class="title">E-Commerce, Redes Sociais e Soluções à venda.</h1>
                     <hr>
                     <p><strong>Parse Ideas®</strong> é a melhor plataforma do Brasil especializada em venda de
-                        E-Commerce, redes sociais e soluções corporativas, tendo inumeras oportunidades de negócio para
-                        você. Encontre o negócio perfeito para você:</p>
+                        E-Commerce, redes sociais e soluções corporativas, tendo inumeras oportunidades de negócio. <br /><br /><strong>Encontre seu próximo seu negócio:</strong></p>
                     <div class="formBox p-4">
                         <form action="" method="">
                             <div class="form-group">
@@ -189,22 +188,26 @@
     </section>
 
      <section class="py-5" id="newsletter">
-      <div class="col text-center pb-5">
+      <div class="col text-center pb-1">
         <h2>Assine nossa newsletter</h2>
+        <p>Receba nossas novidades, próximos eventos e muito mais!!!</p>
       </div>
-      <div class="container">
-          <form class="form-inline" method="POST" action="/newsletter">
+      <div class="container pt-3">
+          <form class="form-inline" name="send_news">
             <div class="form-group mx-sm-3 mb-2">
-              <input type="email" name="emailNew" class="form-control" placeholder="E-mail" required>
+              <input type="text" name="name" class="form-control mr-2 mt-1" placeholder="Nome" >
+              <input type="email" name="email" class="form-control mt-1" placeholder="E-mail" >
             </div>
-            <button type="submit" class="btn btn-primary btn-newsletter mb-2">Assinar</button>
+            <button type="submit" class="btn btn-primary btn-newsletter mb-2 ml-2">Assinar</button>
           </form>
       </div>
     </section>
 
     <%- include('partials/footer') %> 
     
-    <script src="/js/viewMore.js"></script>
+
     <%- include('partials/scripts') %> 
+    <script src="/js/viewMore.js"></script>
+    <script src="/js/newsletter.js"></script>
 
    
