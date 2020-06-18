@@ -180,6 +180,10 @@ button#remove-2:hover{
     background-color: rgba(25, 171, 181, 0.8);
 }
 
+#cardList {
+    min-height: 600px;
+}
+
 #announcements .card .btn{
     background-color: white;
     border: 1px solid #5A47CC;

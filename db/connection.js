@@ -16,4 +16,4 @@ connection
     console.error('=( Não foi possível conectar com o banco de dados: ', err);
   });
 
-  module.exports = connection
+  module.exports = {connection, Sequelize}
