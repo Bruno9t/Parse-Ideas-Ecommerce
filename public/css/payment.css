@@ -1,4 +1,10 @@
+body{
+    background: #F2F2F2 !important;
+}
 
+#pay{
+    background: white;
+}
 
 .recurly-element, .recurly-hosted-field{
     height: 50px;
@@ -41,10 +47,27 @@ span.ic img{
     font-size: 1.8rem;
 }
 
-#pay>div div{
-    border-top:1px gray solid;
-    border-bottom:1px gray solid;
-    padding: 20px;
+#pay div.credit-cards{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+#pay div.credit-cards div{
+    border: 2px rgb(172, 165, 165) solid;
+    padding: 3px 10px;
+    border-radius: 3px;
+    justify-self: flex-start;
+    margin: 3px;
+}
+
+#pay div.credit-cards img{
+    height: 30px;
+    width: 32px;
+}
+
+#pay>div.credit-cards div.credit-card{
+    padding: 2px;
 }
 
 #label-1,#label-2{
@@ -76,20 +99,22 @@ form#my-form .form-row input{
     font-size: 16px;
 }
 
-form#my-form .form-row input#nameInput,
-form#my-form .form-row input#surnameInput,
-form#my-form .form-row input#postalInput,
-form#my-form .form-row input#cityInput,
-form#my-form .form-row input#addressInput{
+form#my-form input.dataInput{
     padding: 15px;
     font-weight: bold;
     visibility: visible;
     color:rgb(84, 84, 87);
+    border-radius: 3px;
+
+    transition-duration: 400ms;
 }
 
-form#my-form .form-row input#surnameInput,
-form#my-form .form-row input#postalInput{
-    margin-left: 5px;
+form#my-form input.dataInput:focus{
+    border:1px gray solid;
+}
+
+form#my-form .form-row .col-md-6.col-sm-12:nth-child(1){
+    padding-right: 5px;
 }
 
 form#my-form select{
@@ -101,7 +126,7 @@ form#my-form select{
     width: 100%;
     border: 1px #d7d7d9 solid;
     font-size: 16px;
-
+    border-radius: 3px;
 }
 
 
@@ -139,8 +164,9 @@ section span{
     border-top: 1px gray solid;
 }
 
-#value{
+#value .card{
     font-size: 1.8rem;
+    margin-top: 0;
 }
 
 section .card-body{

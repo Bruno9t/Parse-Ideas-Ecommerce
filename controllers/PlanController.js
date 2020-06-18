@@ -135,9 +135,24 @@ active: (req, res) => {
   })
 },
 
-sign: (_req, res) => {
+sign: async (req, res) => {
 
-  return res.render('pages/payment',{css:'payment.css'})
+  const plans = {
+    'plan-basic':1,
+    'plan-premium':2,
+    'plan-master':3
+  }
+
+  const {plan_code} = req.params
+
+  const plan = await Plan.findOne({
+    where:{
+      id_plano:plans[plan_code]
+    }
+  })
+
+
+  return res.render('pages/payment',{css:'payment.css',plan})
 },
 
 async signPlan(req, res){
