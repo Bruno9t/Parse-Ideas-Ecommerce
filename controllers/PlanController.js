@@ -1,5 +1,6 @@
-const {Category, Plan,User} = require('../models')
-const {APP_URL} = process.env
+const {Category, Plan, User_Plan,User} = require('../models')
+const {Op} = require('sequelize')
+const { APP_URL } = process.env
 const recurly = require('recurly');
 const uuid = require('node-uuid');
 
@@ -63,6 +64,10 @@ const PlanController = {
   // }
 
   try {
+
+    const {id_usuario} = req.session.user || req.user
+
+
     const planCreate = {
       name: 'Super',
       code: 'plan-super',
@@ -84,7 +89,7 @@ const PlanController = {
 
     const plan = await client.createPlan(planCreate)
 
-    
+
 
     return res.json(plan)
 
@@ -92,6 +97,7 @@ const PlanController = {
     if (err instanceof recurly.errors.ValidationError) {
 
       return res.json(err.params)
+
     } else {
 
       return res.json(err)
@@ -106,7 +112,7 @@ list: (req, res) => {
     if(err){
       console.log(err)
     }else{
-      res.json(plans)
+      return res.json(plans)
     }
   })
 },
@@ -135,42 +141,66 @@ sign: (_req, res) => {
 },
 
 async signPlan(req, res){
-  // let isoDate = new Date(Date.now());
-  // isoDate.setSeconds(isoDate.getSeconds() + 4);
-  // isoDate.toISOString().slice(0,19) + 'Z';
 console.log(req.body)
   try { 
-
-    const tokenId = req.body['recurly-token'];
-    const country = req.body['billing_info[country]']
-    const accountCode = req.body['recurly-account-code'] || uuid.v1();
-
-    let subscriptionReq = {
-      planCode: 'plan-basic',
-      currency: 'BRL',
-      account: {
-        code: accountCode,
-        billing_info: { token_id: tokenId }
-      }
+    const plans = {
+      'plan-basic':1,
+      'plan-premium':2,
+      'plan-master':3
     }
 
-    let sub = await client.createSubscription(subscriptionReq)
+    const {plan_code} = req.params
+    console.log(plan_code)
+    const {id_usuario} = req.session.user || req.user
 
+    const subbs = await User_Plan.findAll({
+      where:{
+        [Op.and]:{
+          usuario_id:id_usuario,
+          status:1
+        }
+      }
+    })
 
+    if(subbs.length){
+        return res.json('Você já assinou um plano!')
+      }else{
+        const {id:tokenId} = req.body.token;
+        // const country = req.body['billing_info[country]']
+        const accountCode = req.body['recurly-account-code'] || uuid.v1();
 
-    console.log(sub)
+        let subscriptionReq = {
+          planCode:plan_code,
+          currency: 'BRL',
+          account: {
+            code: accountCode,
+            billing_info: { token_id: tokenId }
+          }
+        }
 
-    return res.json(sub)
+        let sub = await client.createSubscription(subscriptionReq)
+
+        let createSub = await User_Plan.create({
+          usuario_id:id_usuario,
+          plano_id:plans[plan_code],
+          status:1,
+          assinatura_id:sub.id,
+        })
+
+        return res.json({createSub,sub})
+      }
 
   } catch (err) {
     if (err instanceof recurly.errors.ValidationError) {
       // If the request was not valid, you may want to tell your user
       // why. You can find the invalid params and reasons in err.params
-      return res.json(err)
+      console.log(err.params)
+      return res.json(err.params)
     } else {
       // If we don't know what to do with the err, we should
       // probably re-raise and let our web framework and logger handle it
-      res.json(err)
+      console.log(err)
+      return res.json(err)
     }
   }
 

@@ -1,5 +1,8 @@
 recurly.configure('ewr1-zz9sjSgt6sL0e8ZniXA4ye');
 
+
+let urlSplit = window.location.href.split('/')
+let planCodeParam = urlSplit[urlSplit.length-1]
 const elements = recurly.Elements();
 const cardElement = elements.CardElement({
     style: {
@@ -28,10 +31,36 @@ const cardElement = elements.CardElement({
 
     recurly.token(elements, form, function (err, token) {
       if (err) {
+
         console.log('Deu erro:',err.fields)
       } else {
-        
-        form.submit();
+
+        console.log(token)
+    
+        sendData(`/plans/sign/${planCodeParam}`,{
+            token
+        })
       }
     });
   });
+
+
+
+  function sendData(pathURL,dataToSend){
+    let config = {
+        method:'POST',
+        body:JSON.stringify(dataToSend),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }
+
+    fetch(window.location.origin+pathURL,config)
+    .then(response => response.json())
+    .then(dataDecoded => {
+        
+        console.log(dataDecoded)
+    })
+
+  }
+
