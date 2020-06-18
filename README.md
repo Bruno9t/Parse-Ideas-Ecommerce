@@ -24,11 +24,11 @@
 
 Abaixo, listamos os planos disponíveis na plataforma.
 
-| Plano | Valor/Mês|
-| ------ | ------ |
-| Basic | R$19,99 |
-| Premium | R$29,99 |
-| Master | R$39,99 |
+| Plano | Valor/Mês| Anúncios |
+| ------ | ------ | ------ |
+| Basic | R$19,99 | 2 anúncios |
+| Premium | R$29,99 | 5 anúncios |
+| Master | R$39,99 | 100 anúncios |
 
-**Utilizamos a API do Recurly para efetuar pagamentos recorrentes**
+**Utilizamos a API do Recurly para efetuar cobranças recorrentes**
 [https://recurly.com/](https://recurly.com/)
