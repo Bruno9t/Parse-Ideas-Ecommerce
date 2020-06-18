@@ -225,6 +225,10 @@ section#buy .container>p{
     font-size:2.2rem;
 }
 
+.card-title-period{
+    font-size: .5rem !important;
+}
+
 
 @media (max-width:390px){
 

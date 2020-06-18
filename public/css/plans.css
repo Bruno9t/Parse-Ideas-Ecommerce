@@ -174,7 +174,7 @@ div.card-body a.btn:hover{
 
 section#monthly-plan a.btn-success {
   max-width: 180px;
-  paddin: 0;
+  padding: 0;
   margin: auto;
   border-radius: 5px;
 
@@ -198,6 +198,10 @@ div#row::-webkit-scrollbar {
 div#row div.item {
   display: inline-block;
   margin: 20px;
+}
+
+.card-title-period{
+  font-size: .5rem !important;
 }
 
 @media(max-width: 1200px) {

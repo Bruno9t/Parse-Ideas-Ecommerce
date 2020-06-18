@@ -12,7 +12,7 @@
                         <div class="card-body business-card-body">
                             <h5 class="card-title text-center"><%= category.nome %></h5>
                             <p class="card-text text-center"><%= category.descricao %></p>
-                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<%= category.id_categoria %>">
+                             <!-- <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="<%= category.id_categoria %>"> -->
                         </div>
                     </div>
                     <!-- Fim do Card  -->
@@ -36,7 +36,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><%= plan.nome %></h5>
-                            <h4 class='card-title'><%= `R$ ${plan.valor}` %></h4>
+                            <h4 class='card-title'><%= `R$ ${plan.valor}` %><span class="card-title-period">/mês</span></h4>
                             <div class='card-text'>
                                 <ul style='text-align: start;'>
                                     <li><%= `Quantidade de Anúncios: ${plan.numero_de_anuncios}` %></li>
@@ -44,7 +44,7 @@
                                     <li>Prioridade na exibição</li>
                                 </ul>
                             </div>
-                            <button class="btn btn-primary" id="teste" data-key="<%= plan.id_plano %>">Selecionar Plano</button>
+                            <button class="btn btn-primary button-select-plan" id="teste" data-key="<%= plan.id_plano %>">Selecionar Plano</button>
                         </div>
                     <!-- Fim do Card  -->
                     </div>

@@ -76,6 +76,10 @@ div.card-body.business-card-body p.card-text {
   white-space: normal;
 }
 
+div.card-body.business-card-body p.card-text ul{
+  font-size: 1rem;
+}
+
 section#businessType div.card-body input {
   width: 25px;
   height: 25px;
@@ -178,7 +182,7 @@ section#monthly-plan div.card div.card-body button.btn:active {
 
 section#monthly-plan button.btn-success {
   max-width: 180px;
-  paddin: 0;
+  padding: 0;
   margin: auto;
   border-radius: 5px;
 
@@ -221,6 +225,14 @@ div#row div.item {
   .container {
     max-width: 870px;
   }
+}
+
+.button-select-plan{
+    padding: 1.2rem;
+}
+
+.card-title-period{
+  font-size: 1.6rem !important;
 }
 
 @media(max-width: 768px) {
