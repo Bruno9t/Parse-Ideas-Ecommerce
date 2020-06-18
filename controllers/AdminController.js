@@ -1,4 +1,7 @@
-const {User, Announcement,Category} = require('../models')
+const {User, Announcement,Category,User_Plan,Plan} = require('../models')
+const recurly = require('recurly');
+
+const client = new recurly.Client(process.env.RECURLY_KEY)
 
 
 const AdminController = {
@@ -8,10 +11,40 @@ const AdminController = {
 
             const {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
 
-            return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},app:process.env.APP_URL})
+            const subs = await User_Plan.findOne({
+                where:{
+                    usuario_id:id_usuario,
+                    status:1
+                },
+                include:{
+                    model:Plan,
+                    as:'plano',
+                }
+            })
+
+            // const subscription = await client.getSubscription(subs.assinatura_id)
+
+            // console.log(subscription)
+
+            const formatter = new Intl.NumberFormat('pt-BR', {
+                maximumFractionDigits: 2,
+                style: 'currency',
+                currency: 'BRL' 
+              });
+
+            return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},
+            app:process.env.APP_URL,
+            assinatura:subs,formatter
+        })
          
         }catch(err){
-            return new Error(err)
+            if (err instanceof recurly.errors.NotFoundError) {
+
+                console.log('Resource Not Found')
+              } else {
+
+                console.log('Unknown Error: ', err)
+              }
         }
     },
 

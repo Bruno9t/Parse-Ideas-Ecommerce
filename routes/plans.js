@@ -7,8 +7,10 @@ router.get('/plans/admin/create', PlanController.create);
 router.get('/plans/admin/list', PlanController.list);
 router.get('/plans/admin/active/:id', PlanController.active);
 
-router.get('/plans/singForm', PlanController.sign);
-router.post('/plans/signPlan', PlanController.signPlan);
+router.get('/plans/choose',PlanController.choose)
+
+router.get('/plans/sign/:plan_code', PlanController.sign);
+router.post('/plans/sign/:plan_code', PlanController.signPlan);
 router.get('/plans/singReturn', PlanController.signReturn);
 
 router.get('/plans/store', PlanController.store);

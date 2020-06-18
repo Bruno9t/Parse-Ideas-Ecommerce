@@ -1,3 +1,5 @@
+let cardNavigation = document.querySelector('div#cardList-navigation ul')
+
 let cardList = document.querySelector("#cardList")
 let btnApply = document.querySelector("#apply-1")
 let btnRemove = document.querySelector("#remove-1")
@@ -11,7 +13,7 @@ let edtSaleValue2 = document.querySelector("#saleValue-2")
 let edtMonthlyAmount1 = document.querySelector("#monthlyAmount-1")
 let edtMonthlyAmount2 = document.querySelector("#monthlyAmount-2")
 
-let announces
+let count
 
 let id_category = new URLSearchParams(window.location.search)
     .get("id_category");
@@ -20,7 +22,9 @@ btnRemove.addEventListener('click', function(e){
   e.preventDefault()
   clearForm()
 });
-window.addEventListener('load', bringData({id_category}));
+window.addEventListener('load', function(){
+  bringData({id_category});
+});
 edtSaleValue1.addEventListener('keyup', function(){
   numberValidate(this)
 });
@@ -39,15 +43,20 @@ frmSearch.addEventListener('submit', function(e){
 
   id_category = cmbType.selectedIndex
 
-  bringData( {
+  let params = catchForm()
+  bringData(params)
+})
+
+function catchForm(){
+  return {
     id_category: id_category,
     descricao: edtKeyword.value.trim(),
     preco1: edtSaleValue1.value,
     preco2: edtSaleValue2.value,
     faturamento_mm1: edtMonthlyAmount1.value,
     faturamento_mm2: edtMonthlyAmount2.value
-  })
-})
+  }
+}
 
 function clearForm() {
   cmbType.selectedIndex = 0
@@ -104,6 +113,31 @@ function buildCards(data, totalRows) {
   }
 }
 
+function buildLis(count) {
+  console.log(count);
+  cardNavigation.innerHTML = '';
+
+  for(let i = 1; i <= Math.ceil(count/6); i++){
+    cardNavigation.innerHTML += `
+    <li class='page-item page-link'>${i}</li>
+    `;
+  }
+
+  insertLiEvent();
+}
+
+function insertLiEvent() {
+  let liList = document.querySelectorAll('div#cardList-navigation li');
+
+  for(let i = 0; i < liList.length; i++){
+    liList[i].addEventListener('click', function(){
+      let param = catchForm();
+      param.offset = i;
+      bringData(param);
+    });
+  }
+}
+
 function bringData(params) {
   fetch(window.location.origin+'/announcements/search', {
     method:'POST',
@@ -112,7 +146,10 @@ function bringData(params) {
   }).then(resp => {
     return resp.json()
   }).then(data => {
-     buildCards(data, data.length)
-     announces = data
+    let {announces, count_announces} = data
+     buildCards(announces, announces.length)
+     buildLis(count_announces)
+    count = count_announces
+    console.log(announces)
   })
 }

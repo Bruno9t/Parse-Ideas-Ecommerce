@@ -21,7 +21,7 @@ formForgot.addEventListener('submit',function(e){
         animationLoading.classList.add('true')
     }
 
-    sendData('/forgot?_method=PATCH',{
+    sendData('/password/forgot?_method=PATCH',{
         email:email.value.trim(),
     })
 

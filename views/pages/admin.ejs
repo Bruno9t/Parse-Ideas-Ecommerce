@@ -133,16 +133,17 @@
                 <div class="card" id='ann-plan'>
                    
                   <div class="container">
+                    <%if(assinatura){%>
                     <div class='row'>
                       <div class='col-md-6 col-sm-12'>
                         <h2>Plano</h2>
-                        <h5 class="card-title">Basic</h5>
-                        <h4 class='card-title'>R$ 49,00</h4>
+                        <h5 class="card-title"><%= assinatura.plano.nome %></h5>
+                        <h4 class='card-title'><%= formatter.format(assinatura.plano.valor) %></h4>
                         <div class='card-text'>
                           <ul style='text-align: start;'>
-                              <li>Único anúncio</li>
+                              <li>Número de anúncios: <%= assinatura.plano.numero_de_anuncios %></li>
                               <li>3 meses de anúncio</li>
-                              <li>2 fotos</li> 
+                              <li>Número de fotos:<%= assinatura.plano.numero_de_fotos %></li> 
                               <li>Sem prioridade na exibição</li>
                           </ul>
                         </div>
@@ -150,7 +151,7 @@
                       <div class='col-md-6 col-sm-12'>
                         <h2>Detalhes</h2>
                         <h5 class="card-title">Assinatura</h5>
-                        <h4 class='card-title'><span style='color:rgb(116, 221, 116)'> Ativa</span></h4>
+                        <h4 class='card-title'><span style='color:rgb(116, 221, 116)'>Ativa</span></h4>
                         <div class='card-text'>
                           <ul style='text-align: start;'>
                               <li>Único anúncio</li>
@@ -161,6 +162,9 @@
                         </div>
                       </div>
                     </div>
+                    <%}else{%>
+                      <h2>Sem assinatura</h2>
+                      <%}%>
                 </div>
                 </div>
               </div>

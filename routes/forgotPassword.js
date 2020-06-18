@@ -7,8 +7,8 @@ const router = express.Router()
 const ForgotPassword = require('../controllers/ForgotPassword')
 
 
-router.get('/forgot',ForgotPassword.index)
-router.patch('/forgot',[
+router.get('/password/forgot',ForgotPassword.index)
+router.patch('/password/forgot',[
     check('email').isEmail().withMessage('Formato de e-mail inválido!'),
 ],ForgotPassword.send)
 

@@ -22,7 +22,7 @@ newPass.addEventListener('keyup',function(){
 formReset.addEventListener('submit',function(e){
     e.preventDefault()
 
-    sendData('/reset?_method=PATCH',{
+    sendData('/password/reset?_method=PATCH',{
         id_usuario:Number(urlParams[2]),
         newPass:newPass.value,
         confNewPass:confNewPass.value

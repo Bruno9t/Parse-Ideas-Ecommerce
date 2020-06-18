@@ -1,0 +1,105 @@
+<%- include('../partials/header') %> 
+
+    <!-- Inicio Tipo de Negócio -->
+    <section id="businessType">
+        <div class="" id="container">
+            <h2 class="py-5 text-center">Escolha o tipo de negócio você deseja anunciar</h2>
+            <!-- Primeira Linha  -->
+            <div class="text-center" id="row">
+                <div class="item">
+
+                    <!-- Card -->
+                    <div class="card business-card" id="e-commerce">
+                        <div class="card-body business-card-body">
+                            <h5 class="card-title text-center">Vender um E-commerce</h5>
+                            <p class="card-text text-center">Venda da marca, carteira de clientes.</p>
+                            <input type="checkbox" class="checkmark" checked>
+                        </div>
+                    </div>
+                    <!-- Fim do Card  -->
+                </div>
+                <div class="item">
+                    <!-- Card -->
+                    <div class="card business-card" id="site">
+                        <div class="card-body business-card-body">
+                            <h5 class="card-title text-center">Vender um Site</h5>
+                            <p class="card-text text-center">Venda seu site, página web, carteiras de cliente.</p>
+                            <input type="checkbox" class="checkmark">
+                        </div>
+                    </div>
+                    <!-- Fim do Card  -->
+                </div>
+                <div class="item">
+                    <!-- Card -->
+                    <div class="card business-card" id="social-network">
+                        <div class="card-body business-card-body">
+                            <h5 class="card-title text-center">Vender uma Rede Social
+                            </h5>
+                            <p class="card-text text-center">Venda sua rede social com, carteira de clientes.</p>
+                            <input type="checkbox" class="checkmark">
+                        </div>
+                    </div>
+                    <!-- Fim do Card  -->
+                </div>
+                <div class="item">
+                    <!-- Card -->
+                    <div class="card business-card" id="solution">
+                        <div class="card-body business-card-body">
+                            <h5 class="card-title text-center">Vender uma Solução</h5>
+                            <p class="card-text text-center">Encontre clientes para comprar suas soluções.</p>
+                            <input type="checkbox" class="checkmark">
+                        </div>
+                    </div>
+                    <!-- Fim do Card  -->
+                </div>
+            </div>
+            <!-- Fim -->
+        </div>
+    </section>
+    <!-- Fium Tipo de Negócio -->
+
+    <!-- Inicio Plano Mensal -->
+    <section id="monthly-plan" class="py-5">
+        <div class="container pb-4">
+            <h2 class="mb-5 text-center">Agora, escolha um plano</h2>
+            <!-- Primeira Linha  -->
+            <article class='row'>
+
+                    <% plans.forEach(plan => { %>
+                    
+                        <div class="col-md-4 col-sm-12"
+                            style='cursor: pointer;'>
+        
+                            <!-- Card -->
+                            <a href="https://parseideas.recurly.com/subscribe/plan-<%= plan.nome %>" style='text-decoration: none;'><div class="card">
+                                 
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= plan.nome %></h5>
+                                    <h4 class='card-title'><%= `R$ ${plan.valor}` %></h4>
+                                    <div class='card-text'>
+                                    <ul style='text-align: start;'>
+                                        <li><%= `Quantidade de Anúncios: ${plan.numero_de_anuncios}` %></li>
+                                        <li>Fotos: <%= plan.numero_de_fotos %></li> 
+                                        <li>Sem prioridade na exibição</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Fim do Card  -->
+                        </div></a>
+                        </div>
+                        <% }); %>
+
+            </article>
+            <!-- Fim da Primeira Linha -->
+            <div class="text-center">
+                <a href="#" class="btn btn-success btn-lg btn-block">Avançar</a>
+            </div>
+        </div>
+    </section>
+
+<!-- Fim Plano Mensal -->   
+<%- include('../partials/footer') %> 
+<%- include('../partials/scripts') %>   
+
+</body>
+</html>

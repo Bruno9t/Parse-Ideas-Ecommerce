@@ -1,3 +1,7 @@
+
+
+/* base */
+
 nav.navbar {
   background: #FFFFFF;
   border: 1px solid #FFFFFF;
@@ -48,13 +52,6 @@ div.card.business-card {
   min-width: 30em;
   max-width: 40em;
 }
-
-/* div.card-body.business-card-body {
-  display: flex;
-  padding-top: 15px;
-  flex-direction: column;
-  justify-content: flex-end;
-} */
 
 div.card-body.business-card-body {
   text-align: justify;

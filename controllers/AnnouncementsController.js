@@ -1,8 +1,9 @@
-const { Announcement, Category, File, User } = require('../models');
+const { Announcement, Category, File, User} = require('../models');
 const { Op } = require('sequelize');
 const {check, validationResult, body} = require('express-validator');
 const Email = require('../services/email');
 const  path  = require('path');
+const { connection, Sequelize } = require('../db/connection');
 
 
 const AnnouceController = {
@@ -123,10 +124,27 @@ const AnnouceController = {
             preco1,
             preco2,
             faturamento_mm1,
-            faturamento_mm2
+            faturamento_mm2,
+            offset
         } = req.body
 
+        let limit = 6;
         let announces
+        let count_announces
+
+        let pag
+
+        if(!offset){
+            pag = 0;
+        }else{
+            pag = offset;
+        }
+
+        let a = await connection.query("select max(preco) max_prec,min(preco) min_prec, max(faturamento_mm) max_fat, min(faturamento_mm) min_fat from anuncio;",{
+            type: Sequelize.QueryTypes.SELECT
+        })
+
+        let { max_prec, min_prec, max_fat, min_fat} = a[0];
 
         if(id_category == 0){
             announces = await Announcement.findAll({
@@ -135,19 +153,38 @@ const AnnouceController = {
                         [Op.substring]: descricao || ' '
                     },
                     faturamento_mm: {
-                        [Op.between]:[faturamento_mm1 || 0,faturamento_mm2 || 400000]
+                        [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
                     },
                     preco: {
-                        [Op.between]:[preco1 || 0, preco2 || 99999999]
+                        [Op.between]:[preco1 || min_prec, preco2 || max_prec]
                     }
                 },
-                limit: 30,
+                limit: limit,
+                offset: pag*6,
                 order:[
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
                 ],
                 include: [{model: Category, as: 'categoria', require: true}]
             })
+            count_announces = await Announcement.count({
+                where: {
+                    descricao: {
+                        [Op.substring]: descricao || ' '
+                    },
+                    faturamento_mm: {
+                        [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
+                    },
+                    preco: {
+                        [Op.between]:[preco1 || min_prec, preco2 || max_prec]
+                    }
+                },
+                order:[
+                    ['prioridade','DESC'],
+                    ['created_at', 'DESC']
+                ],
+                include: [{model: Category, as: 'categoria', require: true}]
+            });
         } else {
             announces = await Announcement.findAll({
                 where: {
@@ -156,13 +193,33 @@ const AnnouceController = {
                         [Op.substring]: descricao || ' '
                     },
                     faturamento_mm: {
-                        [Op.between]:[faturamento_mm1 || 0,faturamento_mm2 || 400000]
+                        [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
                     },
                     preco: {
-                        [Op.between]:[preco1 || 0, preco2 || 99999999]
+                        [Op.between]:[preco1 || min_prec, preco2 || max_prec]
                     }
                 },
-                limit: 30,
+                limit: limit,
+                offset: pag*6,
+                order:[
+                    ['prioridade','DESC'],
+                    ['created_at', 'DESC']
+                ],
+                include: [{model: Category, as: 'categoria', required: true}]
+            })
+            count_announces = await Announcement.count({
+                where: {
+                    categoria_id: id_category,
+                    descricao: {
+                        [Op.substring]: descricao || ' '
+                    },
+                    faturamento_mm: {
+                        [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
+                    },
+                    preco: {
+                        [Op.between]:[preco1 || min_prec, preco2 || max_prec]
+                    }
+                },
                 order:[
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
@@ -171,7 +228,7 @@ const AnnouceController = {
             })
         }
 
-        return res.json(announces)
+        return res.json( { announces , count_announces } )
     },
     detail: async (req, res) => {
         const {id} = req.params
@@ -179,6 +236,13 @@ const AnnouceController = {
         let announce = await Announcement.findByPk(id,{
             include:[{model: Category, as: 'categoria', required: true}]
         })
+       
+        announce.valor_venda = announce.preco - announce.valor_estimado_estoque
+        announce.preco = announce.preco.toLocaleString('pt-BR', {maximunSignificantDigits: 2, style:'currency', currency:'BRL'})
+        announce.valor_estimado_estoque = (announce.valor_estimado_estoque)
+        announce.faturamento_mm = (announce.faturamento_mm)
+        announce.lucro_mensal = (announce.lucro_mensal)
+        announce.valor_venda = (announce.valor_venda)
 
         return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
     },
