@@ -204,6 +204,10 @@ button.btn-newsletter:hover {
     height: 100px;
 }
 
+.newsletter div.form-group input{
+    font-size: 1.6rem !important;
+}
+
 
 @media (max-width:1200px){
     #recentAnnouncements .card .categorie{
