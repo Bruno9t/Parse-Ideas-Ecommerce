@@ -2,7 +2,7 @@
 
 [![N|ParseIdeas](http://parseideas.herokuapp.com/images/img/ParseIdeias-logo(1).png)](public/images/img/ParseIdeias-logo(1).png)
 
-# Projeto Integrador | Santander Corders | Grupo 04
+# Projeto Integrador | **Santander Corders**
     - Carolina Cabril
     - Guilherme Sprovieri
     - Bruno Lazzaro
