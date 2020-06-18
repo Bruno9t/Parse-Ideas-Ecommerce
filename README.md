@@ -2,7 +2,7 @@
 
 [![N|ParseIdeas](http://parseideas.herokuapp.com/images/img/ParseIdeias-logo(1).png)](public/images/img/ParseIdeias-logo(1).png)
 
-# Projeto Integrador | **Santander Corders**
+# Projeto Integrador | **Santander Coders**
     - Carolina Cabril
     - Guilherme Sprovieri
     - Bruno Lazzaro
