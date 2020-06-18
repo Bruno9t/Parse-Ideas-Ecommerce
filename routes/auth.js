@@ -1,7 +1,6 @@
 const express = require('express');
 const {check,body} = require('express-validator')
 const {User} = require('../models')
-const bcrypt = require('bcrypt')
 const router = express.Router();
 
 const passportGoogle = require('../services/passport-auth/passport-google')
@@ -39,7 +38,7 @@ router.get('/auth/access/google',passportGoogle.authenticate("google",{
   }))
 
 router.get('/auth/access/google/redirect',passportGoogle.authenticate("google",{
-    failureRedirect:'/access',
+    failureRedirect:'/auth/access',
   }),function (req,res){
 
     return res.send(`<html><body><script>window.location = window.location.origin +'/panel'</script></body></html>`)
@@ -50,7 +49,7 @@ router.get('/auth/access/google/redirect',passportGoogle.authenticate("google",{
 router.get('/auth/access/facebook',passportFacebook.authenticate('facebook',{ scope : ['email'] }))
 
 router.get('/auth/access/facebook/redirect',passportFacebook.authenticate("facebook",{
-  failureRedirect:'/access'
+  failureRedirect:'/auth/access'
 }),function(req,res){
   return res.send(`<html><body><script>window.location = window.location.origin +'/panel'</script></body></html>`)
 })
