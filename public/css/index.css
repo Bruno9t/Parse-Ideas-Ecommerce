@@ -95,6 +95,32 @@
     background-color: rgba(25, 171, 181, 0.8);
 }
 
+#aboutUs{
+    /* The image used */
+  background-image: url("/images/img/parse_ideias_parallax.jpg");
+
+  /* Full height */
+  height: 100%;
+  min-height: 500px;
+  max-height: 600px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#aboutUs p{
+    font-size: 3rem;
+}
+
 #recentAnnouncements .card .btn{
     background-color: white;
     border: 1px solid #5A47CC;
@@ -126,7 +152,7 @@
 #howItWorks h4{
     font-size: 2rem;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     background-color: #5A47CC;
     color: #fff;
     padding: 1rem;

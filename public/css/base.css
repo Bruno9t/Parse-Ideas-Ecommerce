@@ -74,6 +74,8 @@ span.ic img{
     margin-right: 5px;
 }
 
+
+
 @media (max-width:991px){
     li#user{
         display: none;
@@ -118,8 +120,15 @@ h2{
 #mainMenu .btn-primary{
     color: white;
     background-color: #5A47CC;
-    border-color:#5A47CC;
+    border: none;
     font-size: 1.5rem;
+    padding: 2rem;
+}
+
+#mainMenu .btn-primary:hover{
+
+    background-color: #33267c;
+    
 }
 
 footer{
