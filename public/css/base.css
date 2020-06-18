@@ -1,15 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
 
-*{
-    box-sizing: border-box !important;
-    font-family: 'Roboto', sans-serif;
-    outline: 0;
+:root{
+    --font: 'Roboto', sans-serif;
+    --primary-color: #5A47CC;
+    --secondary-color: #39CC33;
 }
 
+*{
+    box-sizing: border-box !important;
+    font-family: var(--font);
+    outline: 0;
+}
 
 html, 
 body{
     font-size: 62.5%;
+    /* font-size: 10px; */
 }
 
 header li{
