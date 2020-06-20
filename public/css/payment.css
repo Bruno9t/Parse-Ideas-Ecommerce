@@ -42,6 +42,7 @@ span.ic img{
 #pay{
     padding: 50px;
     min-height: 95vh;
+    margin-bottom: 30px;
 }
 
 #pay>div label{
@@ -102,6 +103,10 @@ form#my-form .form-row input{
     font-size: 16px;
 }
 
+#local-address #addressInput{
+    margin-top: 0;
+}
+
 form#my-form input.dataInput{
     padding: 15px;
     font-weight: bold;
@@ -134,8 +139,8 @@ form#my-form select{
 
 
 
-section div.row #pay-info form div,div#pay #pay-info div{
-    margin:15px auto;
+section div.row #pay-info form div{
+    margin:12px auto;
 }
 section span#security-info{
     display: block;
@@ -146,6 +151,18 @@ section span#security-info{
 .form-check-label{
     margin-left: 10px;
 }
+
+@media (max-width:767px){
+    #sign-button{
+        margin-top: 30px;
+    }
+
+    div#local-address div#addressInput{
+        margin-top: 0 !important;
+    }
+}
+
+
 
 /* hr{
     border-bottom: 1px gray solid;
@@ -294,8 +311,10 @@ div.animation-text div.text-content p{
     }
 }
 
-/* Loading Animation */
+/* End Loading Animation */
 
 
-
+#local-address #addressInput{
+    margin-top: 0;
+}
 

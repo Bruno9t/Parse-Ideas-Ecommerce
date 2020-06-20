@@ -237,7 +237,7 @@ function oppeningAddressDiv(timeStamps){
 
   // height = height + (200/4500)*progress
 
-  divAddress.style.height = Math.min(progress*(200/450), 200) + 'px'
+  divAddress.style.height = Math.min(progress*(195/450), 195) + 'px'
 
   console.log(divAddress.style.height)
 
@@ -259,13 +259,15 @@ function closingAddressDiv(timeStamps){
 
   console.log(progress)
 
-  divAddress.style.height = Math.max((200-(progress*(200/500))), 0) + 'px'
+  divAddress.style.height = Math.max(195-(progress*(195/500)), 0) + 'px'
 
   console.log(divAddress.style.height)
 
   if(progress < 500){
-    window.requestAnimationFrame(closingAddressDiv)
+    return window.requestAnimationFrame(closingAddressDiv)
   }
+
+  divAddress.style.display = 'none'
 
 }
 
@@ -306,6 +308,7 @@ function removingOpacity(timeStamps){
 
 function openAddressDiv(){
   start=null
+  divAddress.style.display = 'block'
   window.requestAnimationFrame(oppeningAddressDiv)  
 }
 

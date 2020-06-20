@@ -170,11 +170,10 @@
                                     <div class="col-12">
                                         <select class="SelectInput-select" data-recurly="country" name="billing_info[country]" id="billing_info_country" tabindex="0">
                                             <option value="">País...</option>
-
                                         </select>
                                     </div>
                                 </div>
-                                <div id='local-address' style='height: 0;opacity: 0;'>
+                                <div id='local-address' style='height: 0;opacity: 0;display: none;'>
                                     <div class='form-row'>
                                         <div class="col-md-6 col-sm-12">
                                             <input type="text" data-recurly="postal_code" id='postalInput' class='dataInput' placeholder="Código Postal">
@@ -196,7 +195,7 @@
                                 <input type="hidden" name="recurly-token" data-recurly="token">
 
 
-                                <button class="btn btn-primary">Assinar</button>
+                                <button id='sign-button' style="width: 100%;" class="btn btn-primary">Assinar</button>
 
                             <span id='security-info'>Informações seguras e criptografadas</span>
                             <hr>
