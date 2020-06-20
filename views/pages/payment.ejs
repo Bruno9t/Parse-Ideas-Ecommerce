@@ -94,97 +94,115 @@
 
                 <div class="row">
                 <div id="pay" class='col-md-7 col-sm-12'>
-                    <div>
-                        <h2 class='text-center'>Assinatura</h2>
-                        <h4>Cartões aceitos</h4>
-                        <div class='credit-cards'>
-                            <div class='credit-card'>
-                                <img src="/images/svg/visa.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/master.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/amex.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/discover.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/jcb.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/d-club.svg" alt="">
-                            </div>
-                            <div class='credit-card'>
-                                <img src="/images/svg/union-pay.svg" alt="">
+                    <div class="animation">
+                    <div class='animation-wrapper'>
+                        <div class="animation-screen">
+                            <div class='animation-image'>
+                                <img src="/images/svg/loading.svg" alt="Imagem de carregamento" srcset="">
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-                        <label id='label-1' class="btn btn-info active">
-                          <input type="radio" name="options" id="option1" autocomplete="off" checked> Cartão de crédito
-                        </label>
-
-                        <label id='label-2' class="btn btn-info">
-                          <input type="radio" name="options" id="option2" autocomplete="off"> Cartão de débito
-                        </label>
-                    
-                      </div> -->
-
-                      
-                        <form id="my-form" action='/plans/signPlan' method='POST'>
-
-                            <div class='form-row'>
-                                <div class="col-md-6 col-sm-12">
-                                    <input type="text" data-recurly="first_name" id='nameInput' class='dataInput' placeholder="Nome">
+                    <div class="animation-text">
+                        <div class='text-content'>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                    <div id='pay-info'>
+                        <div id='pay-images'>
+                            <h2 class='text-center'>Assinatura</h2>
+                            <h4>Cartões aceitos</h4>
+                            <div class='credit-cards'>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/visa.svg" alt="">
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <input type="text" data-recurly="last_name" id='surnameInput' class='dataInput' placeholder="Sobrenome">
+                                <div class='credit-card'>
+                                    <img src="/images/svg/master.svg" alt="">
                                 </div>
-                            </div>
-                          
-                            <div id="recurly-elements">
-                              <!-- Recurly Elements will be attached here -->
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col-12">
-                                    <select class="SelectInput-select" data-recurly="country" name="billing_info[country]" id="billing_info_country" tabindex="0">
-                                        <option value="">Selecionar...</option>
-
-                                       </select>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/amex.svg" alt="">
+                                </div>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/discover.svg" alt="">
+                                </div>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/jcb.svg" alt="">
+                                </div>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/d-club.svg" alt="">
+                                </div>
+                                <div class='credit-card'>
+                                    <img src="/images/svg/union-pay.svg" alt="">
                                 </div>
                             </div>
+                        </div>
 
-                            <div class='form-row'>
-                                <div class="col-md-6 col-sm-12">
-                                    <input type="text" data-recurly="city" id='cityInput' class='dataInput' placeholder="Cidade">
+                        <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                            <label id='label-1' class="btn btn-info active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Cartão de crédito
+                            </label>
+
+                            <label id='label-2' class="btn btn-info">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Cartão de débito
+                            </label>
+                        
+                        </div> -->
+
+                        
+                            <form id="my-form" action='/plans/signPlan' method='POST'>
+                                <span class="flag-icon flag-icon-ar"></span>
+
+                                <div class='form-row'>
+                                    <div class="col-md-6 col-sm-12">
+                                        <input type="text" data-recurly="first_name" id='nameInput' class='dataInput' placeholder="Nome">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <input type="text" data-recurly="last_name" id='surnameInput' class='dataInput' placeholder="Sobrenome">
+                                    </div>
                                 </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <input type="text" data-recurly="postal_code" id='postalInput' class='dataInput' placeholder="CEP">
+                            
+                                <div id="recurly-elements">
+                                <!-- Recurly Elements will be attached here -->
                                 </div>
-                            </div>
 
-                            <div class='form-row'>
-                                <div class="col">
-                                    <input type="text" data-recurly="address1" id='addressInput' class='dataInput' placeholder="Endereço">
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <select class="SelectInput-select" data-recurly="country" name="billing_info[country]" id="billing_info_country" tabindex="0">
+                                            <option value="">País...</option>
+
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                <div id='local-address' style='height: 0;opacity: 0;'>
+                                    <div class='form-row'>
+                                        <div class="col-md-6 col-sm-12">
+                                            <input type="text" data-recurly="postal_code" id='postalInput' class='dataInput' placeholder="Código Postal">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <input type="text" data-recurly="city" id='cityInput' class='dataInput' placeholder="Cidade">
+                                        </div>
+                                    </div>
 
-                          
-                            <!-- Recurly.js will update this field automatically -->
-                            <input type="hidden" name="recurly-token" data-recurly="token">
+                                    <div class='form-row'>
+                                        <div class="col">
+                                            <input type="text" data-recurly="address1" id='addressInput' class='dataInput' placeholder="Endereço">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                                <!-- Recurly.js will update this field automatically -->
+                                <input type="hidden" name="recurly-token" data-recurly="token">
 
 
-                            <button class="btn btn-primary">Efetuar Assinatura</button>
+                                <button class="btn btn-primary">Assinar</button>
 
-                        <span>Informações seguras e criptografadas</span>
-                        <hr>
-                      </form>
+                            <span id='security-info'>Informações seguras e criptografadas</span>
+                            <hr>
+                        </form>
 
+                    </div>
                 </div>
 
                 <div id="value" class='col-md-5 col-sm-12'>
