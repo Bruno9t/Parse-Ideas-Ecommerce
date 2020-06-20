@@ -80,8 +80,10 @@ let count=0
           searchDataByPostalCode(e.target.value)
         }
       }else{
-        console.log('remove')
-        return postalCodeInput.onblur = ''
+        if(postalCodeInput.onblur){
+          console.log('remove')
+          return postalCodeInput.onblur = ''
+        }
       }
       // return divAddress.style.display = 'block'
 
