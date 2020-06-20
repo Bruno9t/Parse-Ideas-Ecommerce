@@ -121,7 +121,7 @@ form#my-form .form-row .col-md-6.col-sm-12:nth-child(1){
 }
 
 form#my-form select{
-    padding: 15px;
+    padding: 12px;
     font-weight: bold;
     visibility: visible;
     color:rgb(84, 84, 87);
