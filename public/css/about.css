@@ -1,0 +1,30 @@
+main section{
+    font-size: 1.6rem;
+}
+
+section h2{
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+section ul{
+    list-style: none;
+}
+
+section#team .card{
+    margin: 0 10px;
+    border: none;
+}
+
+section#team .card img{
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 100px;
+}
+
+section#team .card .card-footer{
+    border: 1px dashed var(--primary-color);
+}
+

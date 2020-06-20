@@ -7,7 +7,8 @@ const auth = require('../middlewares/auth')
 /* Listagem de anúncios */
 router.get('/panel',auth, AdminController.index);
 
-router.post('/panel/user/announcements',AdminController.listAnnouncements)
+router.post('/panel/user/announcements',AdminController.listAnnouncements);
+
 
 module.exports = router;
 
