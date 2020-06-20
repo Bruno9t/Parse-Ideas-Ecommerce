@@ -36,6 +36,7 @@ const cardElement = elements.CardElement({
 
   cardElement.attach('#recurly-elements');
 
+let count=0
 
   document.querySelector('#my-form').addEventListener('submit', function (event) {
     const form = this;
@@ -61,11 +62,16 @@ const cardElement = elements.CardElement({
     if(!e.target.value){
       clearAddress()
       closeAddressDiv()
+      count=0
       // return divAddress.style.display = 'none'
     }else{
       clearAddress()
       countryCode = e.target.value
-      openAddressDiv()
+
+      if(count==0){
+        openAddressDiv()
+        count++
+      }
       // return divAddress.style.display = 'block'
 
 
@@ -231,11 +237,11 @@ function oppeningAddressDiv(timeStamps){
 
   // height = height + (200/4500)*progress
 
-  divAddress.style.height = Math.min(progress*(200/400), 200) + 'px'
+  divAddress.style.height = Math.min(progress*(200/450), 200) + 'px'
 
   console.log(divAddress.style.height)
 
-  if(progress < 400){
+  if(progress < 450){
     return window.requestAnimationFrame(oppeningAddressDiv)
   }
 
@@ -245,8 +251,6 @@ function oppeningAddressDiv(timeStamps){
 
 function closingAddressDiv(timeStamps){
 
-  removeOpacity()
-
   if(!start) start=timeStamps
 
   let progress = timeStamps - start
@@ -255,11 +259,11 @@ function closingAddressDiv(timeStamps){
 
   console.log(progress)
 
-  divAddress.style.height = Math.max((200-progress)*(200/400), 0) + 'px'
+  divAddress.style.height = Math.max((200-(progress*(200/500))), 0) + 'px'
 
   console.log(divAddress.style.height)
 
-  if(progress < 400){
+  if(progress < 500){
     window.requestAnimationFrame(closingAddressDiv)
   }
 
@@ -274,7 +278,7 @@ function addingOpacity(timeStamps){
 
   // height = height + (200/4500)*progress
 
-  divAddress.style.opacity = `${(Math.min(progress*0.25, 100))}%`
+  divAddress.style.opacity = `${(Math.min(progress*(100/400), 100))}%`
 
   console.log(divAddress.style.opacity)
 
@@ -307,6 +311,7 @@ function openAddressDiv(){
 
 function closeAddressDiv(){
   start=null
+  removeOpacity()
   window.requestAnimationFrame(closingAddressDiv)
 }
 
@@ -316,5 +321,6 @@ function addOpacity(){
 }
 
 function removeOpacity(){
+  startParal=null
   window.requestAnimationFrame(removingOpacity)
 }
