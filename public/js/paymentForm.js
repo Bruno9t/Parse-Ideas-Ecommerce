@@ -72,16 +72,23 @@ let count=0
         openAddressDiv()
         count++
       }
+
+      console.log(e.target.value)    
+      if(e.target.value=='BR'){
+        console.log('adiciona')
+        return postalCodeInput.onblur = function(e){
+          searchDataByPostalCode(e.target.value)
+        }
+      }else{
+        console.log('remove')
+        return postalCodeInput.onblur = ''
+      }
       // return divAddress.style.display = 'block'
 
 
     }
     
   })
-
-  // postalCodeInput.addEventListener('blur',function(e){
-  //   searchDataByPostalCode(countryCode,e.target.value)
-  // })
 
 
 
@@ -120,7 +127,6 @@ let count=0
       return {
         name:solveCountryASCII(country.translations.pt),
         alpha2Code:country.alpha2Code,
-        flag:country.flag
       }
     })
 
@@ -140,23 +146,21 @@ let count=0
 
   }
 
-  // function appendAddressInformation(searchedAddress){
+  function appendAddressInformation(searchedAddress){
 
-  //   if(searchedAddress.length){
-  //     console.log(searchedAddress)
-  //     addressInput.value = searchedAddress[0].street
-  //     cityInput.value = searchedAddress[0].posttown+'/'+searchedAddress[0]
-  //     return true
-  //   }else{
-  //     console.log('erro',searchedAddress)
-  //     return false
-  //   }
-
-
-  // }
+    if(searchedAddress){
+      console.log(searchedAddress)
+      addressInput.value = searchedAddress.logradouro+'/'+searchedAddress.bairro
+      cityInput.value = searchedAddress.localidade
+      return true
+    }else{
+      console.log('erro',searchedAddress)
+      return false
+    }
+  }
 
   function searchCountrys(){
-    fetch('https://restcountries.eu/rest/v2/all?fields=translations;alpha2Code;flag')
+    fetch('https://restcountries.eu/rest/v2/all?fields=translations;alpha2Code;')
     .then(response=>response.json())
     .then(data=>{
       console.log(data)
@@ -174,16 +178,21 @@ let count=0
     }else{
       return countryName
     }
-
   }
 
-  // function searchDataByPostalCode(clientCountryCode,clientPostalCode){
-  //   fetch(`https://ws.postcoder.com/pcw/PCW34-636C7-SW7BN-DLTF4/address/${clientCountryCode}/${clientPostalCode}?identifier=Allies%20My%20Account%20-%20Tools&lines=3&exclude=organisation,posttown,county,postcode,country`)
-  //   .then(response=>response.json())
-  //   .then(data=>{
-  //     appendAddressInformation(data)
-  //   })
-  // } 
+  function searchDataByPostalCode(clientPostalCode){
+    fetch(`https://viacep.com.br/ws/${clientPostalCode}/json/`,{
+      headers:{
+        'Access-Control-Request-Headers': 'origin'
+      }
+
+    })
+    .then(response=>response.json())
+    .then(data=>{
+      console.log(data)
+      appendAddressInformation(data)
+    })
+  } 
 
   function clearAddress(){
     addressInput.value = ''
@@ -229,8 +238,6 @@ function removeScreenAnimation(){
 
 function oppeningAddressDiv(timeStamps){
 
-  console.log('oppening')
-
   if(!start) start=timeStamps
 
   let progress = timeStamps - start
@@ -238,8 +245,6 @@ function oppeningAddressDiv(timeStamps){
   // height = height + (200/4500)*progress
 
   divAddress.style.height = Math.min(progress*(195/450), 195) + 'px'
-
-  console.log(divAddress.style.height)
 
   if(progress < 450){
     return window.requestAnimationFrame(oppeningAddressDiv)
@@ -257,11 +262,7 @@ function closingAddressDiv(timeStamps){
 
   // height = height - (200/25)
 
-  console.log(progress)
-
   divAddress.style.height = Math.max(195-(progress*(195/500)), 0) + 'px'
-
-  console.log(divAddress.style.height)
 
   if(progress < 500){
     return window.requestAnimationFrame(closingAddressDiv)
@@ -272,7 +273,6 @@ function closingAddressDiv(timeStamps){
 }
 
 function addingOpacity(timeStamps){
-  console.log('ok')
 
   if(!start) start=timeStamps
 
@@ -281,8 +281,6 @@ function addingOpacity(timeStamps){
   // height = height + (200/4500)*progress
 
   divAddress.style.opacity = `${(Math.min(progress*(100/400), 100))}%`
-
-  console.log(divAddress.style.opacity)
 
   if(progress < 400){
     window.requestAnimationFrame(addingOpacity)
@@ -297,8 +295,6 @@ function removingOpacity(timeStamps){
   // height = height + (200/4500)*progress
 
   divAddress.style.opacity = `${(Math.max(100-progress*0.25, 0))}%`
-
-  console.log(divAddress.style.opacity)
 
   if(progress < 400){
     window.requestAnimationFrame(removingOpacity)
