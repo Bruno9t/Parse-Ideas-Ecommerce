@@ -171,13 +171,14 @@
 }
 
 #howItWorks .box-image{
-    border: 3px dashed #5A47CC;
+    /* border: 2px dotted #5A47CC; */
+    box-shadow: 3px 3px 3px #999;
     padding: 1rem;
 }
 
 #howItWorks .box-image:hover{
-    transition: 300ms ease-in-out;
-    border: 3px solid #16e666;
+    transition: all 100ms ease-in-out;
+    border: 2px solid var(--primary-color);
 }
 
 #howItWorks .box-image:hover img{
@@ -185,24 +186,77 @@
     transition: 500ms ease-in-out;
 }
 
-#blog{
+.form-contact {
+    background-color: white;
+    padding: 32px;
+    position: relative;
+}
+
+.form-contact::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(230, 230, 230);
+    position: absolute;
+    top: -80px;
+    left: 41px;
+    transform: skew(-46deg, 0deg);
+}
+
+.form-contact::after{
+    content: '';
+    width: 80px;
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+    position: absolute;
+    top: -39px;
+    right: -82px;
+    transform: skew(0deg, -44deg);
+}
+
+.form-contact input, .form-contact select, .form-contact textarea{
     font-size: 1.6rem;
 }
 
-#blog h5{
+span.error{
+    display: flex;
+    padding: 0;
+    background-color: rgba(255, 0, 0, 0.2);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    
+}
+
+span.error.active{
+    border: 1px solid red;
+    padding: 0.4em;
+}
+
+#contact{
+    font-size: 1.6rem;
+    background-color: var(--primary-color);
+}
+
+#contact h5{
     font-size: 1.8rem;
     padding: 1.6rem;
 }
 
-#blog .btn{
-    background-color: #5A47CC;
+#contact .btn{
+    background-color: var(--primary-color);
     border: 1px solid white;
     color:#fff;
     font-size: 1.6rem;
 }
 
-#blog .btn:hover{
+#contact .btn:hover{
     font-weight: bold;
+}
+
+.contact-header{
+    margin-bottom: 130px !important;
+    color: white;
 }
 
 
@@ -290,6 +344,10 @@ button.btn-newsletter:hover {
 
     #howItWorks img{
        width: 50%;
+    }
+
+    #howItWorks .box-image{
+        margin-bottom: 16px;
     }
 
     #recentAnnouncements .card .categorie{
