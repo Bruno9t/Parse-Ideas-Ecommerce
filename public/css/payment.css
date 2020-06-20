@@ -41,6 +41,8 @@ span.ic img{
 
 #pay{
     padding: 50px;
+    min-height: 95vh;
+    margin-bottom: 30px;
 }
 
 #pay>div label{
@@ -65,6 +67,8 @@ span.ic img{
     height: 30px;
     width: 32px;
 }
+
+
 
 #pay>div.credit-cards div.credit-card{
     padding: 2px;
@@ -99,6 +103,10 @@ form#my-form .form-row input{
     font-size: 16px;
 }
 
+#local-address #addressInput{
+    margin-top: 0;
+}
+
 form#my-form input.dataInput{
     padding: 15px;
     font-weight: bold;
@@ -118,7 +126,7 @@ form#my-form .form-row .col-md-6.col-sm-12:nth-child(1){
 }
 
 form#my-form select{
-    padding: 15px;
+    padding: 12px;
     font-weight: bold;
     visibility: visible;
     color:rgb(84, 84, 87);
@@ -131,10 +139,10 @@ form#my-form select{
 
 
 
-section div.row form div,div#pay div{
-    margin:15px auto;
+section div.row #pay-info form div{
+    margin:12px auto;
 }
-section span{
+section span#security-info{
     display: block;
     margin-top: 20px;
     font-size: 12px;
@@ -143,6 +151,18 @@ section span{
 .form-check-label{
     margin-left: 10px;
 }
+
+@media (max-width:767px){
+    #sign-button{
+        margin-top: 30px;
+    }
+
+    div#local-address div#addressInput{
+        margin-top: 0 !important;
+    }
+}
+
+
 
 /* hr{
     border-bottom: 1px gray solid;
@@ -228,6 +248,73 @@ section h5{
     }
 }
 
+/* Loading Animation */
+
+.animation{
+    display: none;
+    top:50%;
+    transform: translateY(50%);
+    width: 100%;
+}
+
+.animation-wrapper .animation-screen{
+    margin: 20px auto;
+    text-align: center;
+}
+
+.animation-wrapper .animation-screen img{
+    height: 120px;
+    width: 120px;
+}
 
 
+.animation.show{
+    display: block;
+}
+
+.animation-wrapper .animation-image.start img{
+    animation:frame1 ease-in-out infinite 1.5s;
+}
+
+@keyframes frame1{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+div.animation-text div.text-content{
+    text-align: center;
+    margin-top: 50px;
+}
+
+div.animation-text div.text-content p{
+    font-size: 25px;
+    color: #5A47CC;
+    animation: frame2 ease-out infinite 5s;
+}
+
+@keyframes frame2{
+    0%{
+        opacity: 100%;
+    }
+    25%{
+        opacity: 50%;
+    }
+    50%{
+        opacity: 100%;
+    }
+    75%{
+        opacity: 50%;
+    }
+}
+
+/* End Loading Animation */
+
+
+#local-address #addressInput{
+    margin-top: 0;
+}
 
