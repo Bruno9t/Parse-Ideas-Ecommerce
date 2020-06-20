@@ -8,7 +8,7 @@ passport.use(
 
         clientID: G_CLIENT_ID,
         clientSecret: G_CLIENT_SECRET,
-        callbackURL: APP_URL + 'auth/access/google/redirect',
+        callbackURL: APP_URL + '/auth/access/google/redirect',
 
     }, async (accessToken, refreshToken, profile, done) => {
 
