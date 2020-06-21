@@ -102,7 +102,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error',{msg:`Erro no interno, tente novamente mais tarde!`,image:'/images/svg/erro500.svg'});
+  res.render('error',{msg:`Erro interno, tente novamente mais tarde!`,image:'/images/svg/erro500.svg'});
 });
 
 

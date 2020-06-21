@@ -10,6 +10,7 @@ passport.use(
         clientSecret: F_CLIENT_SECRET,
         callbackURL: APP_URL + '/auth/access/facebook/redirect',
         profileFields:['id','emails','photos','name'],
+        enableProof: true
 
     }, async (accessToken, refreshToken, profile, done) => {
 
