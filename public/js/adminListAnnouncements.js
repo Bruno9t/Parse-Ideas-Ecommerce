@@ -4,13 +4,16 @@ let liSelected;
 let previousClickLI = 1;
 
 
+ 
+
+
 window.addEventListener('load',function(){
 
     getDataFromServer('/user/announcements',{
         previousClickLI,
     },buildAnnouncemntsCardsOnAdmin)
-
 })
+
 
 listIndexPages.addEventListener('click',function(e){
 
@@ -32,9 +35,7 @@ function alterLastClickedElement(element){
 
 function buildAnnouncemntsCardsOnAdmin(dataReceived,columns){
     let{announcements,total,limit} = dataReceived
-
-    buildAll(announcements,total,limit,columns)
-
+    buildAll(announcements,total,limit,columns);
 }
 
 
@@ -77,7 +78,6 @@ function formatPrice(price){
 function buildAll(announcements,total,limit,columns){
     let row;
 
-
     listAnnouncements.innerHTML = ''
     listIndexPages.innerHTML=''
 
@@ -110,16 +110,15 @@ function buildAll(announcements,total,limit,columns){
                             <a href="/announcements/update/${announcements[j].id_anuncio}">Editar</a>
                         </div>
                         <div class='link-2'>    
-                            <a href="/announcements/delete/${announcements[j].id_anuncio}" >Deletar</a>
+                            <a href="/announcements/delete/${announcements[j].id_anuncio}" onclick="deleteAds(event)">Deletar</a>
                         </div>
                     </div>
                     </div>
-
-
                 </div>
             </div>
             ` 
-            listAnnouncements.appendChild(row)
+           
+            listAnnouncements.appendChild(row);
         }
     }
 
@@ -129,7 +128,51 @@ function buildAll(announcements,total,limit,columns){
         ` 
     }
 
-    liSelected = document.querySelectorAll('div#contain div.announcements-navigation ul li')
-
-    liSelected[previousClickLI-1].classList.add('active')
+    liSelected = document.querySelectorAll('div#contain div.announcements-navigation ul li');
+    liSelected[previousClickLI-1].classList.add('active');
 }
+
+async function deleteAds(e){
+    e.preventDefault();
+
+    let url = e.target
+
+    let result = await fetch(`${url}`)
+
+        result = await result.json();
+
+        if(result.msg == 'success'){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Anúncio deletado com sucesso',
+                showConfirmButton: false,
+                timer: 3000
+            })
+
+         setTimeout(() => {
+             window.location.reload()
+         },3000)   
+
+        }else if(result.msg == 'error'){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Que pena, não foi possível deletar o anúncio!',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            }
+}
+
+
+
+
+
+
+
+
+
+   
+
+

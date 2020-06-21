@@ -43,8 +43,12 @@ formContact.addEventListener('submit', async function(e){
                     icon: 'success',
                     title: 'Contato enviado com sucesso!!',
                     showConfirmButton: false,
-                    timer: 300000
+                    timer: 3000
                 })
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000)
             }else if(result.msg == 'error'){
                     Swal.fire({
                         position: 'center',

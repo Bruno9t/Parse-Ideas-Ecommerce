@@ -402,6 +402,40 @@ const AnnouceController = {
             console.log(error);
             return res.status(400).json({msg: 'error'});
         }
+    },
+    delete: async (req, res) => {
+        const { anuncio_id } = req.params
+        const {id_usuario} = req.session.user || req.user
+
+        const ads = await Announcement.findOne({
+            where: {
+               'id_anuncio': anuncio_id,
+                'usuario_id': id_usuario
+            }
+        })
+
+        if(!ads){
+            return res.status(400).json({msg: 'error'})
+        }
+        
+        try{
+            const fileRemoved = await File.destroy({
+                where: {
+                    'anuncio_id': anuncio_id
+                }
+            })
+            const adsRemoved = await Announcement.destroy({
+                where: {
+                    'id_anuncio': anuncio_id,
+                    'usuario_id': id_usuario
+                }
+            })
+
+            return res.status(200).json({msg: 'success'})
+
+        }catch{
+            return res.status(400).json({msg: 'error'})
+        }
     }
 }
 

@@ -315,6 +315,22 @@ div#contain div.announcements .card-body-container{
     height: 100px;
 }
 
+.swal2-popup{
+    font-size: 2rem !important;
+}
+
+.swal2-success-line-tip{
+    left: 0.29em !important;
+}
+
+.swal2-x-mark-line-left{
+    left:.8em !important;
+}
+
+.swal2-x-mark-line-right{
+    right:.8em !important;
+}
+
 @media (max-width:1200px){
     div#contain div.announcements .card .categorie{
         top: calc(17.0rem - 1px);
