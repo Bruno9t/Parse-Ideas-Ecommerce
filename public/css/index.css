@@ -187,9 +187,11 @@
 }
 
 .form-contact {
+    width: 75%;
     background-color: white;
     padding: 32px;
     position: relative;
+    margin: 0 auto;
 }
 
 .form-contact::before{
@@ -352,6 +354,20 @@ button.btn-newsletter:hover {
 
     #recentAnnouncements .card .categorie{
         top: calc(32.0rem - 1px);
+    }
+
+    .form-contact {
+        width: 100%;
+    }
+
+    .form-contact::after {
+        content: '';
+        display: none;
+    }
+
+    .form-contact::before {
+        content: '';
+        display: none;
     }
 
 }

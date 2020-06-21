@@ -14,7 +14,7 @@ form.addEventListener('submit', (event) => {
       confirmButtonText: 'OK'
     })
   }else{
-    let pathURL = 'http://' + window.location.host + '/'
+    let pathURL = 'http://' + window.location.host + '/newsletter'
     let config = {
       method:'POST',
       body:JSON.stringify(data),
