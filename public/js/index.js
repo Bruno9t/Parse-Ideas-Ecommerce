@@ -1,55 +1,63 @@
-const buttonNext = document.querySelector('.next');
-const formContact  = document.querySelector('.form-contact');
+const formContact  = document.formContact;
 
 
 // Campos do formContact
-let name = formContact.name;
-let email = formContact.email;
-let subject = formContact.subject;
-let message = formContact.message;
+let name = formContact.contactName;
+let email = formContact.contactEmail;
+let subject = formContact.contactSubject;
+let message = formContact.contactMessage;
 
 let url = window.location.origin + '/contact';
 let fields = document.querySelectorAll('[required]');
 
 formContact.addEventListener('submit', async function(e){
     e.preventDefault();
-    const formData = new FormData(this);
 
-    // console.log(formData.get('description'));
-        let result = await fetch(`${url}`,{
-            method: 'POST',
-            body: formData
-        })
+    const form = new FormData();
+    form.append('name', name.value);
+    form.append('email', email.value);
+    form.append('subject', subject.value);
+    form.append('message', message.value);
+
+    const data = {
+        name: form.get('name'),
+        email: form.get('email'),
+        subject: subject[form.get('subject')].textContent,
+        message: form.get('message'),
+    }
+
     
-        result = await result.json();
+        let result = await fetch(`${url}`,{ 
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
 
-        if(result.msg == 'success'){
-          divErros.style.display = 'none';
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Parabéns, anúncio criado com sucesso!',
-                showConfirmButton: false,
-                timer: 3000
-            })
+            result = await result.json();
 
-            setTimeout(() => {
-              window.location.reload();
-            }, 3000)
+            if(result.msg == 'success'){
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Contato enviado com sucesso!!',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
 
-            
-        }
-        else{
-            divErros.style.display = 'none';
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Que pena, não foi possível criar o anúncio!',
-                showConfirmButton: false,
-                timer: 3000
-            })
-        }
-
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000)
+            }else if(result.msg == 'error'){
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Que pena, não foi possível enviar o contato!',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                }
 })
 
 

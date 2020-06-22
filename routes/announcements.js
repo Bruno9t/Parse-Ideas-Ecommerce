@@ -18,6 +18,9 @@ router.get('/announcements/detail/:id', AnnouncementsController.detail)
 /* Rota para atualizar anúncio */
 router.get('/announcements/update/:anuncio_id', auth, AnnouncementsController.show);
 
+/* Rota para deletar anúncio */
+router.get('/announcements/delete/:anuncio_id', auth, AnnouncementsController.delete);
+
 /* Search dos anuncios */
 router.post('/announcements/search', AnnouncementsController.search);
 
@@ -50,6 +53,8 @@ router.put('/announcements/update/:anuncio_id', upload.any(),[
     check('reason').isLength({ min: 5}).withMessage('Informe o motivo da venda'),
     check('employees').isLength({min: 1}).withMessage('Informe a quantidade de funcionário')
 ] ,AnnouncementsController.update);
+
+
 
 
 

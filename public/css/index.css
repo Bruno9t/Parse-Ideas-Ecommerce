@@ -187,9 +187,11 @@
 }
 
 .form-contact {
+    width: 75%;
     background-color: white;
     padding: 32px;
     position: relative;
+    margin: 0 auto;
 }
 
 .form-contact::before{
@@ -314,9 +316,20 @@ button.btn-newsletter:hover {
 }
 
 
-
 .swal2-popup{
-    font-size: 1.6rem !important;
+    font-size: 2rem !important;
+}
+
+.swal2-success-line-tip{
+    left: 0.29em !important;
+}
+
+.swal2-x-mark-line-left{
+    left:.8em !important;
+}
+
+.swal2-x-mark-line-right{
+    right:.8em !important;
 }
 
 
@@ -352,6 +365,20 @@ button.btn-newsletter:hover {
 
     #recentAnnouncements .card .categorie{
         top: calc(32.0rem - 1px);
+    }
+
+    .form-contact {
+        width: 100%;
+    }
+
+    .form-contact::after {
+        content: '';
+        display: none;
+    }
+
+    .form-contact::before {
+        content: '';
+        display: none;
     }
 
 }

@@ -8,6 +8,7 @@ const session = require('express-session')
 const methodOverride = require('method-override')
 const passport= require('passport')
 
+
 const routesPath = resolve('routes')
 let useFiles = {}
 
@@ -20,6 +21,8 @@ let useFiles = {}
 // const messageRouter = require('./routes/message');
 // const forgotPassword = require('./routes/forgotPassword')
 // const resetPassword = require('./routes/resetPassword')
+
+
 
 readdirSync(routesPath)
     .forEach(file=>{

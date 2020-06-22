@@ -156,22 +156,22 @@
                 <p>Entre em contato conosco, estamos pronto para te atender ;)</p>
             </div>
            
-            <div class="form-container w-75 container mb-5">
+            <div class="form-container container mb-5">
                 
-                    <form action="" class="form form-contact">
+                    <form action="/contact" method="POST" class="form form-contact" name="formContact">
                         <div class="form-group">
-                            <label for="name">Nome:</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
+                            <label for="contactName">Nome:</label>
+                            <input type="text" id="contactName" name="contactName" class="form-control" required>
                             <span class="error"></span>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <label for="contactEmail">Email:</label>
+                            <input type="email" id="contactEmail" name="contactEmail" class="form-control" required>
                             <span class="error"></span>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Assunto:</label>
-                            <select name="subject" id="subject" class="form-control">
+                            <label for="contactSubject">Assunto:</label>
+                            <select name="contactSubject" id="contactSubject" class="form-control">
                                 <option value="0">Dúvidas</option>
                                 <option value="1">Críticas e Sugestões</option>
                                 <option value="2">SAC</option>
@@ -179,8 +179,8 @@
                             <span class="error"></span>
                         </div>
                         <div class="form-group">
-                            <label for="message">Mensagem:</label>
-                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" required></textarea>
+                            <label for="contactMessage">Mensagem:</label>
+                            <textarea name="contactMessage" id="contactMessage" cols="30" rows="10" class="form-control" required></textarea>
                             <span class="error"></span>
                         </div>
 

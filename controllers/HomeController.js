@@ -1,5 +1,6 @@
-const {Announcement,Category,} = require('../models')
-const nodemailer = require('nodemailer')
+const {Announcement,Category,} = require('../models');
+const nodemailer = require('nodemailer');
+const Email = require('../services/email');
 require('dotenv').config()
 
 
@@ -8,7 +9,7 @@ const HomeController = {
         return res.render('index', {css: 'index.css'})
     },
 
-    newslatter(req, res) {
+    newsletter(req, res) {
         let {name, email} = req.body
         let transporter = nodemailer.createTransport({
             host: process.env.EM_HOST,
@@ -54,9 +55,44 @@ const HomeController = {
             }
         })
         return res.json({anuncios,total,limit})
+    },
+    async contact (req, res){
+
+        const obj = req.body;
+       
+        // return res.status(200).json({body: obj});
+        // return res.status(200).json({msg: 'success'});
+        
+        let emailSend = {
+            from: 'site@parseideias.tecnologia.ws',
+            to: 'bruno.rafael10@globomail.com',
+            subject: 'Parse Ideas - Contato',
+            text: 'Parse Ideas - Contato',
+            html: `
+            <h1>Novo contato realizado pelo site</h1>
+            <p>Nome: ${obj.name}</p>
+            <p>Email: ${obj.email}</p>
+            <p>Assunto: ${obj.subject}</p>
+            <p>Mensagem: ${obj.message}</p>
+           
+            <p>Cordialmente,<br>
+            <strong>Equipe Parse Ideas®</strong>
+            </p>
+            
+            `,
+        }
+        
+            Email.sendMail(emailSend, (error) => {
+                if(error){
+                    console.log('Deu Ruim')
+                    console.log(error.message)
+                    return res.status(500).json({msg: 'error'});
+                }else{
+                    console.log('Email disparado com sucesso!');
+                    return res.status(200).json({msg: 'success'});
+                }
+            })
     }
-
-
 }
 
 module.exports = HomeController
