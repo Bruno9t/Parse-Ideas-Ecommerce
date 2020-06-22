@@ -50,7 +50,7 @@ module.exports = {
         return res.json(errorList)
     }
     }catch(err){
-        res.json({cod:2,msg:'Algo deu errado!'})
+        return res.json({cod:2,msg:'Algo deu errado!'})
 
     }
 

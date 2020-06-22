@@ -44,19 +44,19 @@
                                     <li>Prioridade na exibição</li>
                                 </ul>
                             </div>
-                            <button class="btn btn-primary button-select-plan" id="teste" data-key="<%= plan.id_plano %>">Selecionar Plano</button>
+                            <a href="/plans/sign/plan-<%= plan.nome %>"><button class="btn btn-primary button-select-plan" id="teste" data-key="<%= plan.id_plano %>">Selecionar Plano</button></a>
                         </div>
-                    <!-- Fim do Card  -->
+                    <!-- Fim do Card  --> 
                     </div>
                 </div>
                 <% }) %>
             </article>
             <!-- Fim da Primeira Linha -->
-            <div class="text-center">
+            <!-- <div class="text-center">
             <div id="message-error" class="text-danger mb-2"></div>
                 <a href="" class="btn btn-success btn-lg btn-block" id="btn-submit">Avançar</a>
             </div>
-        </div>
+        </div> -->
     </section>
     <!-- Fim Plano Mensal -->
 

@@ -119,9 +119,30 @@
                     <div class="animation-text">
                         <div class='text-content'>
                             <p></p>
+                            
                         </div>
                     </div>
                 </div>
+
+                <div class='result-success' style="display: none;">
+                    <div class='title-container'>
+                        <div class='title-content'>
+                            <h2></h2>
+                        </div>
+                    </div>
+                    <div class='image-result-container'>
+                        <div class='image-result-content'>
+                            <img src="" alt="images do resultado">
+                        </div>
+                    </div>
+                    <div class='message-result-container'>
+                        <div class='message-result-content'>
+                            <p></p>
+                            <p id='sent-email' style='color:green' ></p>
+                        </div>
+                    </div>
+                </div>
+                
                     <div id='pay-info'>
                         <div id='pay-images'>
                             <h2 class='text-center'>Assinatura</h2>
@@ -165,20 +186,22 @@
 
                         
                             <form id="my-form" action='/plans/signPlan' method='POST'>
-                                <span class="flag-icon flag-icon-ar"></span>
 
-                                <div class='form-row'>
+                                 <div class='form-row'>
                                     <div class="col-md-6 col-sm-12">
                                         <input type="text" data-recurly="first_name" id='nameInput' class='dataInput' placeholder="Nome">
+                                        <ul id='first-name-error'></ul>
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <input type="text" data-recurly="last_name" id='surnameInput' class='dataInput' placeholder="Sobrenome">
+                                        <ul id='last-name-error' ></ul>
                                     </div>
                                 </div>
                             
                                 <div id="recurly-elements">
                                 <!-- Recurly Elements will be attached here -->
                                 </div>
+                                <ul id='card-error' ></ul>
 
                                 <div class="form-row">
                                     <div class="col-12">
@@ -191,15 +214,18 @@
                                     <div class='form-row'>
                                         <div class="col-md-6 col-sm-12">
                                             <input type="text" data-recurly="postal_code" id='postalInput' class='dataInput' placeholder="Código Postal">
+                                            <ul id='cep-error' ></ul>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <input type="text" data-recurly="city" id='cityInput' class='dataInput' placeholder="Cidade">
+                                            <ul id='city-error' ></ul>
                                         </div>
                                     </div>
 
                                     <div class='form-row'>
                                         <div class="col">
                                             <input type="text" data-recurly="address1" id='addressInput' class='dataInput' placeholder="Endereço">
+                                            <ul id='address-error'></ul>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +248,7 @@
 
                     <div class="card" >
                           <div class="card-body">
-                            <h5 class="card-title">Seu plano</h5>
+                            <h5 class="card-title">Plano</h5>
                             <div>
                                 <div class='planvalue'>
                                     <p>Plano <%= plan.nome %></p>

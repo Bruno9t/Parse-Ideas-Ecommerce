@@ -137,8 +137,6 @@ form#my-form select{
     border-radius: 3px;
 }
 
-
-
 section div.row #pay-info form div{
     margin:12px auto;
 }
@@ -318,3 +316,22 @@ div.animation-text div.text-content p{
     margin-top: 0;
 }
 
+
+
+/* result screen */
+
+div.result-success h2,
+div.result-success div.image-result-content,
+div.result-success div.message-result-content{
+    text-align: center;
+}
+
+div.result-success div.image-result-content img{
+    height: 200px;
+    width: 200px;
+    margin: 30px auto;
+}
+
+div.result-success div.message-result-content p{
+    font-size: 20px;
+}

@@ -10,9 +10,21 @@ let addressInput = document.getElementById('addressInput')
 let cityInput = document.getElementById('cityInput')
 let paymentDiv = document.getElementById('pay-info')
 let animation = document.querySelector('div.animation')
+let cardNumber = document.querySelector('div#recurly-elements div.recurly-element.recurly-element-card')
+let firstName = document.getElementById('nameInput')
+let lastName = document.getElementById('surnameInput')
 let animationWrapper = document.querySelector('div.animation-wrapper div.animation-image') 
 let animationMessage = document.querySelector('div.text-content p')
 let countryCode;
+
+let cepError = document.getElementById('cep-error')
+let cardError = document.getElementById('card-error')
+let firstNameError = document.getElementById('first-name-error')
+let lastNameError = document.getElementById('last-name-error')
+let cityError = document.getElementById('city-error')
+let addressError = document.getElementById('address-error')
+
+let li;
 
 
 const elements = recurly.Elements();
@@ -45,8 +57,57 @@ let count=0
     recurly.token(elements, form, function (err, token) {
       if (err) {
 
-        console.log('Deu erro:',err.fields)
+        console.log(err.fields)
+
+        err.fields.forEach(field=>{
+          if(field =='number' || field=='month' || field=='year' ){
+            return criarErro(cardError,{
+              msg:'Cartão inválido!'
+            })
+          }else if(field=='first_name'){
+            firstName.style.border = '1px #E05D54 solid'
+            return criarErro(firstNameError,{
+              msg:'Digite seu nome!'
+            })
+          }else if(field=='last_name'){
+            lastName.style.border = '1px #E05D54 solid'
+            return criarErro(lastNameError,{
+              msg:'Digite seu sobrenome!'
+            })
+          }else if(field == 'city'){
+            cityInput.style.border = '1px #E05D54 solid'
+            return criarErro(cityError,{
+              msg:'Digite o nome da sua cidade!'
+            })
+          }else if(field=='address1'){
+            return criarErro(addressError,{
+              msg:'Digite o seu endereço!'
+            })
+          }
+        })
+
+
+        
       } else {
+
+        if(postalCodeInput.value.length==''){
+          postalCodeInput.style.border = '1px #E05D54 solid'
+          return criarErro(cepError,{
+            msg:'Digite algum valor!'
+          })
+        }
+
+        if(postalCodeInput.value.length<8){
+          postalCodeInput.style.border = '1px #E05D54 solid'
+          return criarErro(cepError,{
+            msg:'Precisa ter pelo menos 8 dígitos!'
+          })
+        }
+
+        postalCodeInput.style.border = '1px #f2f2f2 solid'
+        limparErro(cepError)
+
+
 
         startAnimation('Processando sua assinatura...')
 
@@ -72,17 +133,41 @@ let count=0
         openAddressDiv()
         count++
       }
-
-      console.log(e.target.value)    
+  
       if(e.target.value=='BR'){
         console.log('adiciona')
-        return postalCodeInput.onblur = function(e){
+        postalCodeInput.onblur = function(e){
+
+          if(postalCodeInput.value.length==''){
+            postalCodeInput.style.border = '1px #E05D54 solid'
+            return criarErro(cepError,{
+              msg:'Digite algum valor!'
+            })
+          }
+  
+          if(postalCodeInput.value.length<8){
+            postalCodeInput.style.border = '1px #E05D54 solid'
+            return criarErro(cepError,{
+              msg:'Precisa ter pelo menos 8 dígitos!'
+            })
+          }
+
+          postalCodeInput.style.border = '1px #f2f2f2 solid'
+          limparErro(cepError)
+
+
+
           searchDataByPostalCode(e.target.value)
+        }
+
+        return postalCodeInput.onkeypress = function (e){
+          return isNum(e)
         }
       }else{
         if(postalCodeInput.onblur){
           console.log('remove')
-          return postalCodeInput.onblur = ''
+          postalCodeInput.onblur = ''
+          postalCodeInput.onkeypress = ''
         }
       }
       // return divAddress.style.display = 'block'
@@ -114,10 +199,9 @@ let count=0
     .then(dataDecoded => {
 
         setTimeout(function(){
-          return stopAnimation()
+          stopAnimation()
+          showResultScreen(dataDecoded)
         },3000)
-        
-        console.log(dataDecoded)
     })
 
   }
@@ -182,6 +266,7 @@ let count=0
     }
   }
 
+
   function searchDataByPostalCode(clientPostalCode){
     fetch(`https://viacep.com.br/ws/${clientPostalCode}/json/`,{
       headers:{
@@ -191,10 +276,44 @@ let count=0
     })
     .then(response=>response.json())
     .then(data=>{
-      console.log(data)
+
+      if(data.erro){
+        return criarErro(postalCodeInput,cepError,{
+            msg:'Valor inválido!'
+          })
+      }
+      
       appendAddressInformation(data)
+
     })
-  } 
+    .catch((err)=>{
+      return criarErro(postalCodeInput,cepError,{
+        msg:'Valor inválido!'
+      })
+    })
+  }
+  
+  function criarErro(errorList,error){
+
+    li = document.createElement('p')
+    li.setAttribute('style',
+    'font-size:13px')
+    limparErro(errorList)
+
+    li.innerHTML = `
+    <b style='color:red'>${error.msg}</b>
+    `
+    errorList.appendChild(li)
+
+}
+
+  function limparErro(listaDeErros){
+    if(listaDeErros!=undefined){
+        return listaDeErros.innerHTML=''
+    }
+
+    return true;
+}
 
   function clearAddress(){
     addressInput.value = ''
@@ -222,7 +341,6 @@ function startAnimation(messageForUser){
 function stopAnimation(){
   removeScreenAnimation()
   animationWrapper.classList.remove('start')
-  addPay()
   return true;
 }
 
@@ -324,4 +442,78 @@ function addOpacity(){
 function removeOpacity(){
   startParal=null
   window.requestAnimationFrame(removingOpacity)
+}
+
+
+function OnlyNum(e)
+{
+	var tecla=new Number();
+	if(window.event) {
+		tecla = e.keyCode;
+	}
+	else if(e.which) {
+		tecla = e.which;
+	}
+	else {
+		return true;
+	}
+	if((tecla >= "97") && (tecla <= "122") || tecla==32){
+		return false;
+	}
+}
+
+function cepValidation(event,cepFormat){
+
+  
+
+}
+
+function isNum(e)
+{
+
+  console.log(e.keyCode)
+	var tecla=new Number();
+	if(window.event) {
+		tecla = e.keyCode;
+	}
+	else if(e.which) {
+		tecla = e.which;
+	}
+	else {
+		return true;
+	}
+  if((tecla >= 97) && (tecla <= 122) ||
+  (tecla >= 65 && tecla <= 90)
+    || tecla==32){
+		return false;
+	}
+}
+
+let resultScreen = document.querySelector('div.result-success')
+let titleResult = document.querySelector('div.result-success div.title-content h2')
+let messageResult = document.querySelector('div.result-success div.message-result-content>p')
+let sentEmail = document.getElementById('sent-email')
+let imageResult = document.querySelector('div.result-success div.image-result-content img')
+
+function showResultScreen(data){
+
+  console.log(data)
+
+  if(data.error == 1){
+    titleResult.innerText=`Não é possível realizar a assinatura!`
+    imageResult.src = '/images/svg/error.svg'
+    messageResult.innerText=data.msg
+  }else if(data.sub){
+    titleResult.innerText=`Assinatura completa`
+    imageResult.src = '/images/svg/tick.svg'
+    sentEmail.innerText='Você receberá um email com os detalhes da assinatura.'
+    messageResult.innerText=`Parabéns, você assinou o Plano ${data.sub.plan.name}.`
+  }else{
+    titleResult.innerText=`Houve um problema ao processar sua assinatura!`
+    imageResult.src = '/images/svg/error.svg'
+    messageResult.innerText=`Tente novamente mais tarde.`
+  }
+
+  return resultScreen.style.display = 'block'
+
 }

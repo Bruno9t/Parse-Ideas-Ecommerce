@@ -47,7 +47,8 @@ const AccessLoginController = {
 
             req.session.user = {
                 id_usuario:user.id_usuario,
-                thumbnail:user.thumbnail
+                thumbnail:user.thumbnail,
+                email:user.email
             }
 
             res.json(listaDeErros)

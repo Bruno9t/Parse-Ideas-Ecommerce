@@ -171,8 +171,17 @@ span#alter-photo img{
 div#contain div.announcements-navigation ul li{
     cursor: pointer;
     transition: 400ms;
+    font-size: 16px;
+    height: 45px;
+    width: 45px;
+    color: blue;
+    text-align: center;
+    padding: 10px;
 }
 
+div#contain div.announcements-navigation ul{
+    margin: 20px auto;
+} 
 
 
 div#contain div.announcements-navigation ul li:hover{

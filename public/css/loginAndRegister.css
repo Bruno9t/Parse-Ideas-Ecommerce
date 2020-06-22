@@ -42,6 +42,7 @@ div.modal-body form input:focus{
 /* botões google e facebook */
   .content-reg{
     text-align: center;
+    padding-left: 30px;
   }
   #image-reg{
     position: absolute;

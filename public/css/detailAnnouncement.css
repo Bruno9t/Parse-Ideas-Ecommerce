@@ -151,6 +151,7 @@ div#message form input {
   color: #A8A8A8;
   border: 0px;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 div#message form textarea {
@@ -159,6 +160,7 @@ div#message form textarea {
   color: #A8A8A8;
   border: 0px;
   resize: none;
+  font-size: 16px;
 }
 
 div#message form button {

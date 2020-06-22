@@ -145,14 +145,22 @@ sign: async (req, res) => {
 
   const {plan_code} = req.params
 
+  const {id_usuario} = req.session.user || req.user
+
   const plan = await Plan.findOne({
     where:{
       id_plano:plans[plan_code]
     }
   })
 
+  const {email} = await User.findOne({
+    where:{
+      id_usuario,
+    }
+  })
 
-  return res.render('pages/payment',{css:'payment.css',plan})
+
+  return res.render('pages/payment',{css:'payment.css',plan,email})
 },
 
 async signPlan(req, res){
@@ -166,7 +174,7 @@ console.log(req.body)
 
     const {plan_code} = req.params
     console.log(plan_code)
-    const {id_usuario} = req.session.user || req.user
+    const {id_usuario,email} = req.session.user || req.user
 
     const subbs = await User_Plan.findAll({
       where:{
@@ -178,7 +186,7 @@ console.log(req.body)
     })
 
     if(subbs.length){
-        return res.json('Você já assinou um plano!')
+        return res.json({error:1,msg:'Você já possui um plano ativo!'})
       }else{
         const {id:tokenId} = req.body.token;
         // const country = req.body['billing_info[country]']
@@ -189,6 +197,7 @@ console.log(req.body)
           currency: 'BRL',
           account: {
             code: accountCode,
+            email,
             billing_info: { token_id: tokenId }
           }
         }

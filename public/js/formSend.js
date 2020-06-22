@@ -152,11 +152,13 @@ function validarNome(inputNome,errorList){
 
 function validarIgualdadeDeSenhas(inputConfSenha,inputSenha,errorList){
     if(inputConfSenha.value!==inputSenha.value){
+        inputConfSenha.style.border= '1px #E05D54 solid'
         inputConfSenha.style.backgroundColor = '#f2f2f2'
         return false
     }else{
         limparErro(errorList)
         inputConfSenha.style.backgroundColor = '#6DE677'
+        inputConfSenha.style.border= '1px #6DE677 solid'
         return true
     }
 }
@@ -256,7 +258,7 @@ function criarErro(input,errorList,error){
 
     input.style.backgroundColor = '#E05D54'
 
-    li = document.createElement('p')
+    li = document.createElement('li')
     li.setAttribute('style',
     'font-size:13px')
     limparErro(errorList)

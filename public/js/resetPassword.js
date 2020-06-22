@@ -23,7 +23,7 @@ formReset.addEventListener('submit',function(e){
     e.preventDefault()
 
     sendData('/password/reset?_method=PATCH',{
-        id_usuario:Number(urlParams[2]),
+        id_usuario:Number(urlParams[3]),
         newPass:newPass.value,
         confNewPass:confNewPass.value
     })
