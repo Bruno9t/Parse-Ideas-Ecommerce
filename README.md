@@ -32,3 +32,7 @@ Abaixo, listamos os planos disponíveis na plataforma.
 
 **Utilizamos a API do Recurly para efetuar cobranças recorrentes**
 [https://recurly.com/](https://recurly.com/)
+
+## Fluxo do Projeto
+[![N|ParseIdeas](https://github.com/Bruno9t/Parse-Ideas-Ecommerce/issues/1#issue-644022530)](https://github.com/Bruno9t/Parse-Ideas-Ecommerce/issues/1#issue-644022530)
+
