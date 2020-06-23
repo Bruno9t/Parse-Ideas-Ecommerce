@@ -634,7 +634,7 @@ div.card#ann-plan{
         transition: all 400ms;
 }
 
-#button-view-plans{
+#button-view-plans button{
     margin-top: 30px;
     text-decoration: none;
     height: 50px;
@@ -642,6 +642,13 @@ div.card#ann-plan{
     color: #5A47CC;
     background-color: white;
     border-radius: 3px;
+    border:none;
+}
+
+#button-view-plans button a{
+    display: block !important;
+    width: 100%;
+    
 }
 
 div.card#ann-plan h5.card-title.plan,
