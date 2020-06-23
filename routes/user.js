@@ -57,7 +57,7 @@ router.get('/logout',(req,res)=>{
     }else{
         req.session.user = ''
     }
-    res.redirect('/')
+    res.redirect('/auth/access')
 })
 
 

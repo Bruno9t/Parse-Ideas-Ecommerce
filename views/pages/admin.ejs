@@ -137,27 +137,40 @@
                     <div class='row'>
                       <div class='col-md-6 col-sm-12'>
                         <h2>Plano</h2>
-                        <h5 class="card-title"><%= assinatura.plano.nome %></h5>
-                        <h4 class='card-title'><%= formatter.format(assinatura.plano.valor) %></h4>
+                        <h5 class="card-title plan"><%= assinatura.nome %></h5>
+                        <%if(assinatura.trialTime){%>
+                          <div class='trialTime'>
+                          <h5 class='card-title' style='text-decoration: line-through;' id=''><%= formatter.format(assinatura.valor) %></h5>
+                          <p class='card-text' style='color:rgb(116, 221, 116)'>Período gratuito</p>
+                        </div>
+                        <%}else{%>
+                        <h4 class='card-title' style="color:white"><%= formatter.format(assinatura.valor) %></h4>
+                        <%}%>
                         <div class='card-text'>
                           <ul style='text-align: start;'>
-                              <li>Número de anúncios: <%= assinatura.plano.numero_de_anuncios %></li>
-                              <li>3 meses de anúncio</li>
-                              <li>Número de fotos:<%= assinatura.plano.numero_de_fotos %></li> 
+                              <li>Número de anúncios: <%= assinatura.anuncios %></li>
+                              <li>7 dias grátis</li>
+                              <li>Número de fotos:<%= assinatura.fotos %></li> 
                               <li>Sem prioridade na exibição</li>
                           </ul>
                         </div>
                       </div>
                       <div class='col-md-6 col-sm-12'>
                         <h2>Detalhes</h2>
-                        <h5 class="card-title">Assinatura</h5>
-                        <h4 class='card-title'><span style='color:rgb(116, 221, 116)'>Ativa</span></h4>
+                        <h5 class="card-title sign">Assinatura</h5>
+                        <div id='signed-plan'>
+                        <%if(assinatura.status=='active'){%>
+                          <h4 class='card-title'><span style='color:rgb(116, 221, 116)'>Ativa</span></h4>
+                        <%}else if(assinatura.status=='canceled'){%>
+                          <h4 class='card-title'><span style='color:red'>Cancelada</span></h4>
+                        <%}else{%>
+                          <h4 class='card-title'><span style='color:red'>Expirada</span></h4>
+                        <%}%>
+                      </div>
                         <div class='card-text'>
                           <ul style='text-align: start;'>
-                              <li>Único anúncio</li>
-                              <li>3 meses de anúncio</li>
-                              <li>2 fotos</li> 
-                              <li>Sem prioridade na exibição</li>
+                              <li>Teste grátis por 7 dias</li>
+                              <li>Auto-renovação da assinatura</li>
                           </ul>
                         </div>
                       </div>
@@ -166,7 +179,7 @@
                       <div>
                         <h2 class='text-center' style='color:white;' >Você ainda não possui assinatura!</h2>
                         <div id='button-view-plans'>
-                          <a href='/plans/list' style='text-decoration: none;color:white;margin-top:30px;'>Ver Planos</button>
+                          <a href='/plans/list' id='view-plans'>Ver Planos</button>
                         </div>
                       </div>
                       <%}%>

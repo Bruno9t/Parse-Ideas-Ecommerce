@@ -3,13 +3,15 @@ const {check,body} = require('express-validator')
 const {User} = require('../models')
 const router = express.Router();
 
+const logged = require('../middlewares/logged')
+
 const passportGoogle = require('../services/passport-auth/passport-google')
 const passportFacebook = require('../services/passport-auth/passport-facebook')
 
 const AccessLoginController = require('../controllers/AccessLoginController')
 
 /* local access */
-router.get('/auth/access', AccessLoginController.index);
+router.get('/auth/access',logged,AccessLoginController.index);
 
 router.post('/auth/access/register',[
   check('nome').isAlpha().withMessage('Seu nome só pode conter letras!'),

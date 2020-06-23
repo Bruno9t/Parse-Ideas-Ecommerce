@@ -8,6 +8,7 @@ const AdminController = {
     async index(req, res){
         try{
             const {id_usuario} = req.session.user || req.user
+            let dateNow = new Date()
 
             const {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
 
@@ -22,9 +23,14 @@ const AdminController = {
                 }
             })
 
-            // const subscription = await client.getSubscription(subs.assinatura_id)
+            function isInTrial(trialStarted){
 
-            // console.log(subscription)
+                if(dateNow<=trialStarted){
+                    return true
+                }else{
+                    return true
+                }
+            }
 
             const formatter = new Intl.NumberFormat('pt-BR', {
                 maximumFractionDigits: 2,
@@ -32,10 +38,28 @@ const AdminController = {
                 currency: 'BRL' 
               });
 
+            if(subs){
+                const {state,trialEndsAt,unitAmount,plan} = await client.getSubscription(subs.assinatura_id)
+
+                console.log(state)
+
+                return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},
+                app:process.env.APP_URL,
+                assinatura:{
+                    nome:plan.name,
+                    valor:unitAmount,
+                    status:state,
+                    anuncios:subs.plano.numero_de_anuncios,
+                    fotos:subs.plano.numero_de_fotos,
+                    trialTime:isInTrial(trialEndsAt)
+                },formatter,
+            })
+        }else{
             return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},
             app:process.env.APP_URL,
-            assinatura:subs,formatter
+            assinatura:false,
         })
+        }
          
         }catch(err){
             if (err instanceof recurly.errors.NotFoundError) {

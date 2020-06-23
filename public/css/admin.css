@@ -634,14 +634,44 @@ div.card#ann-plan{
         transition: all 400ms;
 }
 
+#button-view-plans{
+    margin-top: 30px;
+    text-decoration: none;
+    height: 50px;
+    padding: 15px;
+    color: #5A47CC;
+    background-color: white;
+    border-radius: 3px;
+}
+
+div.card#ann-plan h5.card-title.plan,
+div.card#ann-plan h5.card-title.sign{
+    margin-top: 30px;
+}
+
+div.trialTime,#signed-plan{
+    border-top:1px rgb(165, 162, 162) solid ;
+    border-bottom:1px rgb(165, 162, 162) solid ;
+}
+
+div.trialTime{
+    padding: 10px;
+    height: 75px;
+}
+
+#signed-plan{
+    padding: 15px;
+    height: 75px;
+}
+
 /* div#user-data,div.card#ann-plan{
     margin-top: 20px;
 } */
 
-div.card#ann-plan h5, h4{
+/* div.card#ann-plan h5, h4{
     border-bottom:1px rgb(218, 212, 212) solid;
     padding: 15px;
-}
+} */
 
 div.card#ann-plan div.col-md-6:nth-child(1){
 
