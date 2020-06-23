@@ -34,5 +34,5 @@ Abaixo, listamos os planos disponíveis na plataforma.
 [https://recurly.com/](https://recurly.com/)
 
 ## Fluxo do Projeto
-[![N|ParseIdeas](https://github.com/Bruno9t/Parse-Ideas-Ecommerce/issues/1#issue-644022530)](https://github.com/Bruno9t/Parse-Ideas-Ecommerce/issues/1#issue-644022530)
+[![N|ParseIdeas](https://github.com/Bruno9t/Parse-Ideas-Ecommerce/issues/1#issue-644022530)](https://user-images.githubusercontent.com/36520333/85435987-ac455680-b55e-11ea-88e9-b80f4be16a65.png)
 
