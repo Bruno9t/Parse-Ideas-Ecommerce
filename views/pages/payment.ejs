@@ -253,13 +253,16 @@
                             <div>
                                 <div class='planvalue'>
                                     <p>Plano <%= plan.nome %></p>
-                                    <p>R$ <%= plan.valor %></p>
+                                    <p>R$ <%= plan.valor %>/mês</p>
+
+                                    <p>7 dias grátis</p>
 
                                 </div>
                                 <div class='planvalue' id='total'>
 
                                     <p>Total</p>
-                                    <p>R$ <%= plan.valor %></p>
+                                    <p style='text-decoration: line-through;'>R$ <%= plan.valor %> </p>
+                                    <p>R$ 00,00 por 7 dias</p>
 
                                 </div>
                             </div>

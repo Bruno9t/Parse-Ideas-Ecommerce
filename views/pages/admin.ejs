@@ -103,7 +103,7 @@
               <div class="card" id='user-data'>
                 <figure>
                   <% if (user.thumbnail == undefined){ %>
-                  <img class='card-img-top' style="padding: 10px;" src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
+                  <img class='card-img-top' style="padding: 10px;object-fit: contain;" src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
                   <%}else{%>
                     <img class="card-img-top" src="<%= user.thumbnail %>" alt="imagem de perfil do usuário">
                   <%}%>

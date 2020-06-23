@@ -199,7 +199,7 @@ function validarLogin(data){
 function validarRegistro(data){
     if(!data.errors.length){
 
-        window.location = window.location.origin+'/announcements/create'
+        window.location = window.location.origin+'/plans/list'
 
     }else{
     data.errors.forEach(function(error){
