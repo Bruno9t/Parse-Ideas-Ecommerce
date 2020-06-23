@@ -76,8 +76,24 @@ function numberValidate(num) {
   }
 }
 
+function formatarPreco(price){
+  const formatter = new Intl.NumberFormat('pt-BR', {
+      maximumFractionDigits: 2,
+      style: 'currency',
+      currency: 'BRL' 
+    });
+    
+  const formatted = formatter.format(price);
+    
+  return formatted;
+}
+
 function buildCards(data, totalRows) {
   let announces = data;
+
+  announces.map(announce => {
+    announce.preco = formatarPreco(announce.preco)
+  });  
 
   lblPageTitle.innerHTML = `<strong>${cmbType.item(id_category).innerText}  à Venda</strong>`
 
@@ -102,7 +118,7 @@ function buildCards(data, totalRows) {
               <span class="categorie tag-${announces[i+(j*2)].categoria_id} p-2">${announces[i+(j*2)].categoria.nome}</span>
               <div class="card-body">
                   <h5 class="card-title">${announces[i+(j*2)].descricao}</h5>
-                  <p class="card-text">R$ ${announces[i+(j*2)].preco}</p>
+                  <p class="card-text">${announces[i+(j*2)].preco}</p>
                   <a href="/announcements/detail/${announces[i+(j*2)].id_anuncio}" class="btn btn-primary">+ Detalhes</a>
               </div>
           </div>
@@ -114,7 +130,6 @@ function buildCards(data, totalRows) {
 }
 
 function buildLis(count) {
-  console.log(count);
   cardNavigation.innerHTML = '';
 
   for(let i = 1; i <= Math.ceil(count/6); i++){
@@ -150,6 +165,5 @@ function bringData(params) {
      buildCards(announces, announces.length)
      buildLis(count_announces)
     count = count_announces
-    console.log(announces)
   })
 }

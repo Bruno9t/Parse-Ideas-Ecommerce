@@ -150,7 +150,7 @@ const AnnouceController = {
             announces = await Announcement.findAll({
                 where: {
                     descricao: {
-                        [Op.substring]: descricao || ' '
+                        [Op.substring]: descricao || ''
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
@@ -170,7 +170,7 @@ const AnnouceController = {
             count_announces = await Announcement.count({
                 where: {
                     descricao: {
-                        [Op.substring]: descricao || ' '
+                        [Op.substring]: descricao || ''
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
@@ -190,7 +190,7 @@ const AnnouceController = {
                 where: {
                     categoria_id: id_category,
                     descricao: {
-                        [Op.substring]: descricao || ' '
+                        [Op.substring]: descricao || ''
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
@@ -211,7 +211,7 @@ const AnnouceController = {
                 where: {
                     categoria_id: id_category,
                     descricao: {
-                        [Op.substring]: descricao || ' '
+                        [Op.substring]: descricao || ''
                     },
                     faturamento_mm: {
                         [Op.between]:[faturamento_mm1 || min_fat, faturamento_mm2 || max_fat]
@@ -234,15 +234,14 @@ const AnnouceController = {
         const {id} = req.params
 
         let announce = await Announcement.findByPk(id,{
-            include:[{model: Category, as: 'categoria', required: true}]
+            include:[{
+                model: Category, as: 'categoria', required: true
+            },]
         })
-       
-        announce.valor_venda = announce.preco - announce.valor_estimado_estoque
-        announce.preco = announce.preco.toLocaleString('pt-BR', {maximunSignificantDigits: 2, style:'currency', currency:'BRL'})
-        announce.valor_estimado_estoque = (announce.valor_estimado_estoque)
-        announce.faturamento_mm = (announce.faturamento_mm)
-        announce.lucro_mensal = (announce.lucro_mensal)
-        announce.valor_venda = (announce.valor_venda)
+
+        if(!announce.titulo) {
+            announce.titulo = announce.categoria.nome + " a venda!"
+        }
 
         return res.render('pages/detailAnnouncement',{css:'detailAnnouncement.css', announce})
     },
