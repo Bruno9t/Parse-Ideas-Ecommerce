@@ -88,8 +88,10 @@ function formatarPreco(price){
   return formatted;
 }
 
-function buildCards(data, totalRows) {
+function buildCards(data, totalRows, count) {
   let announces = data;
+
+  buildLis(count)
 
   announces.map(announce => {
     announce.preco = formatarPreco(announce.preco)
@@ -132,10 +134,12 @@ function buildCards(data, totalRows) {
 function buildLis(count) {
   cardNavigation.innerHTML = '';
 
-  for(let i = 1; i <= Math.ceil(count/6); i++){
-    cardNavigation.innerHTML += `
-    <li class='page-item page-link'>${i}</li>
-    `;
+  if (count > 6){
+    for(let i = 1; i <= Math.ceil(count/6); i++){
+      cardNavigation.innerHTML += `
+      <li class='page-item page-link'>${i}</li>
+      `;
+    }
   }
 
   insertLiEvent();
@@ -162,8 +166,7 @@ function bringData(params) {
     return resp.json()
   }).then(data => {
     let {announces, count_announces} = data
-     buildCards(announces, announces.length)
-     buildLis(count_announces)
+     buildCards(announces, announces.length, count_announces)
     count = count_announces
   })
 }
