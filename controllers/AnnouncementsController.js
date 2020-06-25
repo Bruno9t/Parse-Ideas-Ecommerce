@@ -165,7 +165,10 @@ const AnnouceController = {
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
                 ],
-                include: [{model: Category, as: 'categoria', require: true}]
+                include: [
+                    {model: Category, as: 'categoria', require: true},
+                    {model: File, as:'arquivos', required: false}
+                ]
             })
             count_announces = await Announcement.count({
                 where: {
@@ -183,7 +186,9 @@ const AnnouceController = {
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
                 ],
-                include: [{model: Category, as: 'categoria', require: true}]
+                include: [
+                    {model: Category, as: 'categoria', require: true}
+                ]
             });
         } else {
             announces = await Announcement.findAll({
@@ -205,7 +210,10 @@ const AnnouceController = {
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
                 ],
-                include: [{model: Category, as: 'categoria', required: true}]
+                include: [
+                    {model: Category, as: 'categoria', require: true},
+                    {model: File, as:'arquivos', required: false}
+                ]
             })
             count_announces = await Announcement.count({
                 where: {
@@ -224,7 +232,9 @@ const AnnouceController = {
                     ['prioridade','DESC'],
                     ['created_at', 'DESC']
                 ],
-                include: [{model: Category, as: 'categoria', required: true}]
+                include: [
+                    {model: Category, as: 'categoria', require: true}
+                ]
             })
         }
 
@@ -234,11 +244,16 @@ const AnnouceController = {
         const {id} = req.params
 
         let announce = await Announcement.findByPk(id,{
-            include:[{
-                model: Category, as: 'categoria', required: true
-            },]
+            include:[
+                {model: Category, as: 'categoria', required: true},
+                {model: File, as:'arquivos', required: false}
+            ]
         })
 
+        if(!announce.arquivos[0]){
+            announce.arquivos = [{arquivo: '/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg'}]
+        }
+        
         if(!announce.titulo) {
             announce.titulo = announce.categoria.nome + " a venda!"
         }

@@ -15,6 +15,8 @@ let edtMonthlyAmount2 = document.querySelector("#monthlyAmount-2")
 
 let count
 
+let lastLi 
+
 let id_category = new URLSearchParams(window.location.search)
     .get("id_category");
 
@@ -115,7 +117,7 @@ function buildCards(data, totalRows, count) {
         rows[j].innerHTML += `
         <div class="col-md-6 col-sm-12 my-4">
           <div class="card">
-              <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
+              <img src="${!announces[i+(j*2)].arquivos[0] ? "/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" : announces[i+(j*2)].arquivos[0].arquivo}" height="250px" style="object-fit:cover" class="card-img-top" alt="...">
               ${announces[i+(j*2)].prioridade ? `<span class="spotlight p-2">Destaque</span>` : ''}
               <span class="categorie tag-${announces[i+(j*2)].categoria_id} p-2">${announces[i+(j*2)].categoria.nome}</span>
               <div class="card-body">
@@ -140,6 +142,12 @@ function buildLis(count) {
       <li class='page-item page-link'>${i}</li>
       `;
     }
+    if(!lastLi){
+      let liList = document.querySelectorAll('div#cardList-navigation li');
+      liList[0].classList.add('active');
+    }else {
+      addActive(lastLi)
+    }
   }
 
   insertLiEvent();
@@ -152,9 +160,21 @@ function insertLiEvent() {
     liList[i].addEventListener('click', function(){
       let param = catchForm();
       param.offset = i;
+      addActive(i)
+      lastLi = i
       bringData(param);
     });
   }
+}
+
+function addActive(id){
+  let liList = document.querySelectorAll('div#cardList-navigation li');
+
+  for(let i = 0; i< liList.length; i++){
+    liList[i].classList.remove('active');
+  }
+
+  liList[id].classList.add('active');
 }
 
 function bringData(params) {
