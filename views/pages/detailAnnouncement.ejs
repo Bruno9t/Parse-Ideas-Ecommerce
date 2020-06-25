@@ -7,8 +7,8 @@
             <div class="" id="fotoAnuncio" background="">
               <div id="bg-anuncio">
                 <div class="btn btn-md btn-primary my-5 px-4 category-<%=announce.categoria_id%>">
-                  <a href="/announcements?id_category=<%= announce.categoria_id%>">
-                    <%=announce.categoria.nome%>
+                  <a href="/announcements?id_category=<%= announce.categoria_id%>" >
+                    <%= announce.categoria.nome %>
                   </a>
                 </div>
                 <h3><%= announce.titulo %></h3>

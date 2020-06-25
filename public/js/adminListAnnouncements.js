@@ -122,7 +122,10 @@ function buildAll(announcements,total,limit,columns){
         }
     }
 
-    for(let v=1;v < Math.ceil(total/limit);v++){
+    for(let v=1;v < Math.ceil(total/limit)+1;v++){
+        if(total<=limit){
+            break
+        }
         listIndexPages.innerHTML +=`
         <li class='page-item page-link'>${v}</li>
         ` 

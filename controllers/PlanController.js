@@ -65,7 +65,7 @@ const PlanController = {
 
   try {
 
-    const {id_usuario} = req.session.user || req.user
+    // const {id_usuario} = req.session.user || req.user
 
 
     const planCreate = {
@@ -173,7 +173,7 @@ console.log(req.body)
     }
 
     const {plan_code} = req.params
-    console.log(plan_code)
+
     const {id_usuario,email} = req.session.user || req.user
 
     const subbs = await User_Plan.findAll({
@@ -230,6 +230,132 @@ console.log(req.body)
 
 
 },
+async cancelPlan(req,res){
+  try {
+    const {assinatura_id} = req.params
+
+    // const userSubs = await User_Plan.findOne({
+    //   where:{
+    //     assinatura_id,
+    //   }
+    // })
+
+      let expiredSub = await client.cancelSubscription(assinatura_id)
+
+      console.log(expiredSub)
+      
+      return res.redirect('/panel')
+
+  } catch (err) {
+    if (err instanceof recurly.errors.ValidationError) {
+     
+      console.log('Failed validation', err.params)
+    } else {
+     
+      console.log('Unknown Error: ', err)
+    }
+  }
+},
+
+async reactivePlan(req,res){
+  try {
+
+    const {assinatura_id} = req.params
+
+
+    const subscription = await client.reactivateSubscription(assinatura_id)
+
+    console.log('Reactivated subscription: ', subscription.uuid)
+
+    return res.redirect('/panel')
+  } catch(err) {
+  
+    if (err instanceof recurly.errors.ValidationError) {
+      // If the request was not valid, you may want to tell your user
+      // why. You can find the invalid params and reasons in err.params
+      console.log('Failed validation', err.params)
+    } else {
+      // If we don't know what to do with the err, we should
+      // probably re-raise and let our web framework and logger handle it
+      console.log('Unknown Error: ', err)
+    }
+  }
+},
+async alterPlan(req,res){
+  try {
+    const {plan_code} = req.params
+    const {alterSub} = req.session
+
+    const subscriptionChangeCreate = {
+      planCode: plan_code,
+      timeframe: 'now'
+    }
+  
+    const change = await client.createSubscriptionChange(alterSub.sub_id, subscriptionChangeCreate)
+    console.log('Created subscription change: ', change)
+    return res.json({sub:change})
+
+  } catch (err) {
+    if (err instanceof recurly.errors.ValidationError) {
+
+      return res.json({error:1})
+    } else {
+
+      return res.json({error:1})
+    }
+  }
+},
+
+async toAlterPlan(req,res){
+  const {id_usuario} = req.session.user || req.user
+
+  const userSubs = await User_Plan.findOne({
+    where:{
+      usuario_id:id_usuario,
+      status:1,
+    }
+  })
+
+  req.session.alterSub = {
+    sub_id:userSubs.assinatura_id,
+  }
+
+  return res.redirect('/plans/alter')
+},
+
+async listAlterPlanPayment(req,res){
+  const plans = {
+    'plan-basic':1,
+    'plan-premium':2,
+    'plan-master':3
+  }
+
+  const {plan_code} = req.params
+
+  const {id_usuario} = req.session.user || req.user
+
+  const plan = await Plan.findOne({
+    where:{
+      id_plano:plans[plan_code]
+    }
+  })
+
+  const {email} = await User.findOne({
+    where:{
+      id_usuario,
+    }
+  })
+
+  return res.render('pages/paymentOtherPlan',{css:'payment.css',plan,email})
+},
+
+async listAlterPlans(req,res){
+  let categories = await Category.findAll()
+  let plans = await Plan.findAll()
+
+  return res.render('pages/chooseAnotherPlan',{css: 'announce.css',plans,categories})
+},
+
 signReturn: (req, res) => {
   let email = req.query.email;
   res.send(email)

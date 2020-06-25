@@ -134,47 +134,123 @@
                    
                   <div class="container">
                     <%if(assinatura){%>
-                    <div class='row'>
-                      <div class='col-md-6 col-sm-12'>
-                        <h2>Plano</h2>
-                        <h5 class="card-title plan"><%= assinatura.nome %></h5>
-                        <%if(assinatura.trialTime){%>
-                          <div class='trialTime'>
-                          <h5 class='card-title' style='text-decoration: line-through;' id=''><%= formatter.format(assinatura.valor) %></h5>
-                          <p class='card-text' style='color:rgb(116, 221, 116)'>Período gratuito</p>
+                      <%if(assinatura.status =='active'){%>
+                        <div class='row'>
+                          <div class='col-md-6 col-sm-12'>
+                            <h2>Plano</h2>
+                            <h5 class="card-title plan"><%= assinatura.nome %></h5>
+                            <%if(assinatura.trialTime){%>
+                              <div class='trialTime'>
+                              <h5 class='card-title' style='text-decoration: line-through;' id=''><%= formatter.format(assinatura.valor) %></h5>
+                              <p class='card-text' style='color:rgb(116, 221, 116)'>Período gratuito</p>
+                            </div>
+                            <%}else{%>
+                            <h4 class='card-title' style="color:white"><%= formatter.format(assinatura.valor) %></h4>
+                            <%}%>
+                            <div class='card-text'>
+                              <ul style='text-align: start;'>
+                                  <li>Número de anúncios: <%= assinatura.anuncios %></li>
+                                  <li>7 dias grátis</li>
+                                  <li>Número de fotos:<%= assinatura.fotos %></li> 
+                                  <li>Sem prioridade na exibição</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div class='col-md-6 col-sm-12'>
+                            <h2>Detalhes</h2>
+                            <h5 class="card-title sign">Assinatura</h5>
+                            <div id='signed-plan'>
+                              <h4 class='card-title'><span style='color:rgb(116, 221, 116)'>Ativa</span></h4>
+                          </div>
+                            <div class='card-text'>
+                              <ul style='text-align: start;'>
+                                  <li>Teste grátis por 7 dias</li>
+                                  <li>Auto-renovação da assinatura</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
-                        <%}else{%>
-                        <h4 class='card-title' style="color:white"><%= formatter.format(assinatura.valor) %></h4>
-                        <%}%>
-                        <div class='card-text'>
-                          <ul style='text-align: start;'>
-                              <li>Número de anúncios: <%= assinatura.anuncios %></li>
-                              <li>7 dias grátis</li>
-                              <li>Número de fotos:<%= assinatura.fotos %></li> 
-                              <li>Sem prioridade na exibição</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class='col-md-6 col-sm-12'>
-                        <h2>Detalhes</h2>
-                        <h5 class="card-title sign">Assinatura</h5>
-                        <div id='signed-plan'>
-                        <%if(assinatura.status=='active'){%>
-                          <h4 class='card-title'><span style='color:rgb(116, 221, 116)'>Ativa</span></h4>
-                        <%}else if(assinatura.status=='canceled'){%>
-                          <h4 class='card-title'><span style='color:red'>Cancelada</span></h4>
-                        <%}else{%>
-                          <h4 class='card-title'><span style='color:red'>Expirada</span></h4>
-                        <%}%>
-                      </div>
-                        <div class='card-text'>
-                          <ul style='text-align: start;'>
-                              <li>Teste grátis por 7 dias</li>
-                              <li>Auto-renovação da assinatura</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                        <div>
+                          <div id="separate"></div>
+                            <div class='container' id='button-modify-plans'>
+                              <div class="row">
+                                <div class="col-6">
+                                  <form action="/plans/alter/sub" method="post">
+                                    <button id='alter-user-plan'>Alterar Plano</button>
+                                  </form>
+                                </div>
+                                  <div class="col-6">
+                                      <button id='cancel-user-plan'
+                                      data-toggle="modal" 
+                                      data-target="#exampleModalCenter">
+                                      Cancelar Assinatura
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          <%}else if(assinatura.status=='canceled'){%>
+                            <div class='row'>
+                              <div class='col-md-6 col-sm-12'>
+                                <h2>Plano</h2>
+                                <h5 class="card-title plan"><%= assinatura.nome %></h5>
+                                <%if(assinatura.trialTime){%>
+                                  <div class='trialTime'>
+                                  <h5 class='card-title' style='text-decoration: line-through;' id=''><%= formatter.format(assinatura.valor) %></h5>
+                                  <p class='card-text' style='color:rgb(116, 221, 116)'>Período gratuito</p>
+                                </div>
+                                <%}else{%>
+                                <h4 class='card-title' style="color:white"><%= formatter.format(assinatura.valor) %></h4>
+                                <%}%>
+                                <div class='card-text'>
+                                  <ul style='text-align: start;'>
+                                      <li>Número de anúncios: <%= assinatura.anuncios %></li>
+                                      <li>7 dias grátis</li>
+                                      <li>Número de fotos:<%= assinatura.fotos %></li> 
+                                      <li>Sem prioridade na exibição</li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div class='col-md-6 col-sm-12'>
+                                <h2>Detalhes</h2>
+                                <h5 class="card-title sign">Assinatura</h5>
+                                <div id='signed-plan'>
+                                  <h4 class='card-title'><span style='color:red'>Cancelada</span></h4>
+                              </div>
+                                <div class='card-text'>
+                                  <ul style='text-align: start;'>
+                                      <li>Teste grátis por 7 dias</li>
+                                      <li>Auto-renovação da assinatura</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div id="separate"></div>
+                                <div class='container' id='button-modify-plans'>
+                                  <div class="row">
+                                    <div class="col-6">
+                                      <form action="/plans/alter/sub" method="post">
+                                        <button id='alter-user-plan'>Alterar Plano</button>
+                                      </form>
+                                    </div>
+                                    <div class="col">
+                                      <form action="/plans/reactive/<%= assinatura.assinatura_id %>" method="post">
+                                        <button id='reactive-user-plan'>Reativar Assinatura</button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                  </div>
+                                </div>
+
+                        <%} else if(assinatura.status=='expired'){%>
+                          <div>
+                            <h2 class='text-center' style='color:white;' >Você ainda não possui assinatura!</h2>
+                            <div id='button-view-plans'>
+                              <button><a href='/plans/list' id='view-plans'>Ver Planos</a></button>
+                            </div>
+                          </div>
+                          <%}%>
                     <%}else{%>
                       <div>
                         <h2 class='text-center' style='color:white;' >Você ainda não possui assinatura!</h2>
@@ -183,6 +259,7 @@
                         </div>
                       </div>
                       <%}%>
+
                 </div>
                 </div>
               </div>
@@ -380,6 +457,30 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" id='fechar-messages'>Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- modal para cancelar plano -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    </div>
+                    <div class="modal-body">
+                      Deseja realmente cancelar?
+                    </div>
+                    <div class="modal-footer">
+
+                          <div>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal" id='modal-not-cancel'>Fechar</button>
+                          </div>
+                          <div>
+                            <form action="/plans/cancel/<%= assinatura.assinatura_id %>" method="post">
+                              <button id='modal-cancel-plan'>Cancelar Assinatura</button>
+                            </form>
+                          </div>
                     </div>
                   </div>
                 </div>

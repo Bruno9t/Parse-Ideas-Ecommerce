@@ -1,4 +1,68 @@
 
+
+/* button for cancel */
+/* #button-modify-plans{
+    margin-top:10px;
+    border-top: 1px white solid;
+    padding: 10px;
+} */
+
+div#separate{
+    height: 1px;
+    margin: 20px auto;
+    background: linear-gradient(to left,rgb(98, 98, 230),white);
+}
+
+#button-modify-plans #alter-user-plan,
+#button-modify-plans #cancel-user-plan,
+#reactive-user-plan{
+    border:none;
+    border:none;
+    min-height: 45px;
+    height: auto;
+    padding:6px;
+    font-weight: bold;
+    border-radius: 3px;
+    width: 100%;
+}
+
+#reactive-user-plan{
+    color:white;
+    background-color: rgb(43, 221, 43);
+    transition-duration: 400ms;
+}
+
+#button-modify-plans #cancel-user-plan{
+    color:white;
+    background-color: red;
+    transition-duration: 400ms;
+}
+
+#button-modify-plans #alter-user-plan{
+    color:white;
+    background-color: rgb(76, 201, 201);
+    transition-duration: 400ms;
+
+}
+
+#reactive-user-plan:hover{
+    background-color: rgb(14, 245, 14);
+    box-shadow: 2px 2px 5px rgb(63, 60, 60);
+}
+
+#button-modify-plans #cancel-user-plan:hover{
+    background-color: rgb(250, 27, 27);
+    box-shadow: 2px 2px 5px rgb(63, 60, 60);
+}
+
+#button-modify-plans #alter-user-plan:hover{
+    background-color: rgb(61, 226, 226);
+    box-shadow: 2px 2px 5px rgb(63, 60, 60);
+}
+
+/* button for cancel */
+
+
 main>h2{
     margin:30px;
 }
@@ -515,8 +579,8 @@ div#exampleModal3 figure{
 }
 
 div#exampleModal3 figure img.card-img-top{
-    height: 250px;
-    width: 250px;
+    height: 300px;
+    width: 300px;
     margin:auto;
     border-radius: 50%;
     object-fit: cover;
@@ -525,6 +589,11 @@ div#exampleModal3 figure img.card-img-top{
 div#exampleModalLong .modal-body{
     padding: 0;
     min-height: 500px;
+}
+
+div#exampleModalCenter .modal-body{
+    font-size: 16px;
+    padding: 30px;
 }
 
 div#exampleModalLong .messageDiv .cont{
@@ -586,26 +655,39 @@ div.messageDiv div.messageDescription p{
     text-justify: distribute;
 }
 
-#alter,#alter-pass,#alter-user-photo{
+#alter,#alter-pass,#alter-user-photo,#modal-not-cancel{
     border:1px  rgb(61, 211, 61) solid;
     background-color:transparent;
+    height: 45px;
+    font-size: 16px;
+    border-radius: 3px;
     color: rgb(61, 211, 61);
     width:100%;
+    transition: 400ms;
 }
 #fechar,
 #fechar-pass,
 #fechar-photo,
-#fechar-messages{
+#fechar-messages,
+#modal-cancel-plan{
     border:1px red solid;
     background: transparent;
-
+    height: 45px;
+    font-size: 16px;
+    border-radius: 3px;
     color: red;
     width: 100%;
+    transition: 400ms;
+}
+
+.modal-footer form{
+    height: auto;
 }
 
 #alter:hover,
 #alter-pass:hover,
-#alter-user-photo:hover{
+#alter-user-photo:hover,
+#modal-not-cancel:hover{
     background-color: rgb(61, 211, 61);
     color: white;
 }
@@ -613,7 +695,8 @@ div.messageDiv div.messageDescription p{
 #fechar:hover,
 #fechar-pass:hover,
 #fechar-photo:hover,
-#fechar-messages:hover{
+#fechar-messages:hover,
+#modal-cancel-plan:hover{
     background-color: red;
     color: white;
 }

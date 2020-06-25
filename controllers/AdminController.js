@@ -47,6 +47,7 @@ const AdminController = {
                 app:process.env.APP_URL,
                 assinatura:{
                     nome:plan.name,
+                    assinatura_id:subs.assinatura_id,
                     valor:unitAmount,
                     status:state,
                     anuncios:subs.plano.numero_de_anuncios,
@@ -76,7 +77,7 @@ const AdminController = {
     try{
         const {previousClickLI} = req.body
         const {id_usuario:usuario_id} = req.session.user || req.user
-        const limit = 6
+        const limit = 9
 
         console.log(previousClickLI)
 
