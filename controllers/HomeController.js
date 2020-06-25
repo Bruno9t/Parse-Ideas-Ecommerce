@@ -1,4 +1,4 @@
-const {Announcement,Category,} = require('../models');
+const {Announcement,Category, Newsletter} = require('../models');
 const nodemailer = require('nodemailer');
 const Email = require('../services/email');
 require('dotenv').config()
@@ -9,33 +9,25 @@ const HomeController = {
         return res.render('index', {css: 'index.css'})
     },
 
-    newsletter(req, res) {
-        let {name, email} = req.body
-        let transporter = nodemailer.createTransport({
-            host: process.env.EM_HOST,
-            port: process.env.EM_PORT,
-            secure: true,
-            auth: {
-                user: process.env.EM_USER, 
-                pass: process.env.EM_PASS, 
-            },
-            tls: {
-                rejectUnauthorized: false
-            },
-        });
+    async newsletter(req, res) {
+        let {name, email} = req.body;
 
-        transporter.sendMail({
-            from: '"Parse Ideias 👻" <site@parseideias.tecnologia.ws>',
-            to: email,
-            subject: "Newsletter ✔",
-            text: `Olá ${name}, obrigada por se cadastrar na nossa newsletter, agora você tem acesso nosso conteúdo exclusivo.`,
-        }).then(message => {
-            console.log(message)
-            res.json({"nome": name, "email": email})
-        }).catch(err => {
-            console.log(err)
-        })
-  
+        if(name && email){
+            try{
+                const news = await Newsletter.create({
+                    nome: `${name}`,
+                    email: `${email}`
+              })
+
+              if(news){
+                return res.status(200).json({msg: "success"})
+                }else{
+                    return res.status(400).json({msg: "error"})
+                }
+            }catch{
+                return res.status(400).json({msg: "error"})
+            }
+        }
     },
     async list(req,res){
         let {count} = req.body
@@ -65,7 +57,7 @@ const HomeController = {
         
         let emailSend = {
             from: 'site@parseideias.tecnologia.ws',
-            to: 'bruno.rafael10@globomail.com',
+            to: 'brudev01@gmail.com',
             subject: 'Parse Ideas - Contato',
             text: 'Parse Ideas - Contato',
             html: `
@@ -74,14 +66,12 @@ const HomeController = {
             <p>Email: ${obj.email}</p>
             <p>Assunto: ${obj.subject}</p>
             <p>Mensagem: ${obj.message}</p>
-           
+    
             <p>Cordialmente,<br>
             <strong>Equipe Parse Ideas®</strong>
             </p>
-            
             `,
         }
-        
             Email.sendMail(emailSend, (error) => {
                 if(error){
                     console.log('Deu Ruim')
@@ -90,8 +80,8 @@ const HomeController = {
                 }else{
                     console.log('Email disparado com sucesso!');
                     return res.status(200).json({msg: 'success'});
-                }
-            })
+            }
+        })
     }
 }
 

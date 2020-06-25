@@ -1,6 +1,6 @@
 let form = document.querySelector('[name = send_news]')
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async function(event){
   event.preventDefault()
   let data = {
     name: document.forms["send_news"]["name"].value,
@@ -22,19 +22,46 @@ form.addEventListener('submit', (event) => {
         'Content-Type': 'application/json',
       }
     }
-    fetch(pathURL, config).then(response => {
-      return response.json()
-    }).then(datas => {
-      console.log(datas)
+
+
+    let result = await fetch(pathURL, config)
+
+    result = await result.json();
+
+    if(result.msg == 'success'){
       Swal.fire({
-        icon: 'success',
-        title:'Cadastro Efetuado',
-        text:`${datas.nome}, te enviamos um e-mail de boas-vindas! :)`,
-        confirmButtonText: 'OK'
+          position: 'center',
+          icon: 'success',
+          title: 'Obrigado por se cadastrar',
+          showConfirmButton: false,
+          timer: 3000
       })
-    }).catch(err => {
-      console.log(err)
-    })
+
+      setTimeout(() => {
+          window.location.reload();
+      }, 3000)
+  }else if(result.msg == 'error'){
+          Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Que pena, não foi possível cadastrar seu email. Por favor, tente novamente!',
+              showConfirmButton: false,
+              timer: 3000
+          })
+      }
+    // fetch(pathURL, config).then(response => {
+    //   return response.json()
+    // }).then(datas => {
+    //   console.log(datas)
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title:'Cadastro Efetuado',
+    //     text:`${datas.nome}, te enviamos um e-mail de boas-vindas! :)`,
+    //     confirmButtonText: 'OK'
+    //   })
+    // }).catch(err => {
+    //   console.log(err)
+    // })
 
   }
 })
