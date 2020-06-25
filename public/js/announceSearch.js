@@ -45,6 +45,8 @@ frmSearch.addEventListener('submit', function(e){
 
   id_category = cmbType.selectedIndex
 
+  lastLi = undefined
+
   let params = catchForm()
   bringData(params)
 })
