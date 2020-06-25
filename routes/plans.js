@@ -7,13 +7,11 @@ router.get('/plans/admin/create', PlanController.create);
 router.get('/plans/admin/list', PlanController.list);
 router.get('/plans/admin/active/:id', PlanController.active);
 
-router.get('/plans/choose',PlanController.choose)
-
 router.get('/plans/sign/:plan_code', PlanController.sign);
 router.post('/plans/sign/:plan_code', PlanController.signPlan);
 router.post('/plans/cancel/:assinatura_id',PlanController.cancelPlan)
 router.post('/plans/reactive/:assinatura_id',PlanController.reactivePlan)
-router.post('/plans/alter/sign/:plan_code',PlanController.alterPlan)
+router.post('/plans/alter/sign',PlanController.alterPlan)
 router.get('/plans/alter/sign/:plan_code',PlanController.listAlterPlanPayment)
 router.post('/plans/alter/sub',PlanController.toAlterPlan)
 router.get('/plans/alter',PlanController.listAlterPlans)

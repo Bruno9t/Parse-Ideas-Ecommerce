@@ -145,33 +145,8 @@
                 </div>
                 
                     <div id='pay-info'>
-                        <div id='pay-images'>
-                            <h2 class='text-center'>Assinatura</h2>
-                            <h4>Cartões aceitos</h4>
-                            <div class='credit-cards'>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/visa.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/master.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/amex.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/discover.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/jcb.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/d-club.svg" alt="">
-                                </div>
-                                <div class='credit-card'>
-                                    <img src="/images/svg/union-pay.svg" alt="">
-                                </div>
-                            </div>
-                        </div>
+                        <h2 class='text-center'>Ao clicar no botão sua assinatura será alterada!</h2>
+                    
 
                         <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
@@ -186,8 +161,8 @@
                         </div> -->
 
                         
-                            <form id="my-form" action='/plans/signPlan' method='POST'>
-
+                            <form id="my-form" action='' method='POST'>
+<!-- 
                                  <div class='form-row'>
                                     <div class="col-md-6 col-sm-12">
                                         <input type="text" data-recurly="first_name" id='nameInput' class='dataInput' placeholder="Nome">
@@ -200,7 +175,7 @@
                                 </div>
                             
                                 <div id="recurly-elements">
-                                <!-- Recurly Elements will be attached here -->
+
                                 </div>
                                 <ul id='card-error' ></ul>
 
@@ -232,11 +207,11 @@
                                 </div>
 
                             
-                                <!-- Recurly.js will update this field automatically -->
-                                <input type="hidden" name="recurly-token" data-recurly="token">
+                
+                                <input type="hidden" name="recurly-token" data-recurly="token"> -->
 
 
-                                <button id='sign-button' style="width: 100%;" class="btn btn-primary">Assinar</button>
+                                <button id='sign-button' style="width: 100%;margin-top: 50px;" class="btn btn-primary">Alterar para o plano <%= plan.nome.toUpperCase() %> </button>
 
                             <span id='security-info'>Informações seguras e criptografadas</span>
                             <hr>

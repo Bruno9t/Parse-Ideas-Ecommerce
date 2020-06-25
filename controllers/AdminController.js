@@ -23,12 +23,12 @@ const AdminController = {
                 }
             })
 
-            function isInTrial(trialStarted){
+            function isInTrial(trialEnds){
 
-                if(dateNow<=trialStarted){
+                if(dateNow<=trialEnds){
                     return true
                 }else{
-                    return true
+                    return false
                 }
             }
 
@@ -39,7 +39,14 @@ const AdminController = {
               });
 
             if(subs){
+                console.log(subs.assinatura_id)
                 const {state,trialEndsAt,unitAmount,plan} = await client.getSubscription(subs.assinatura_id)
+
+                if(state=='expired'){
+                    subs.status = 0
+
+                    await subs.save()
+                }
 
                 console.log(state)
 

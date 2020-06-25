@@ -1,187 +1,187 @@
-recurly.configure('ewr1-zz9sjSgt6sL0e8ZniXA4ye');
+// recurly.configure('ewr1-zz9sjSgt6sL0e8ZniXA4ye');
 
 
 let urlSplit = window.location.href.split('/')
 let planCodeParam = urlSplit[urlSplit.length-1]
-let countrysSelect = document.getElementById('billing_info_country')
-let divAddress = document.getElementById('local-address')
-let postalCodeInput = document.getElementById('postalInput')
-let addressInput = document.getElementById('addressInput')
-let cityInput = document.getElementById('cityInput')
+// let countrysSelect = document.getElementById('billing_info_country')
+// let divAddress = document.getElementById('local-address')
+// let postalCodeInput = document.getElementById('postalInput')
+// let addressInput = document.getElementById('addressInput')
+// let cityInput = document.getElementById('cityInput')
 let paymentDiv = document.getElementById('pay-info')
 let animation = document.querySelector('div.animation')
-let cardNumber = document.querySelector('div#recurly-elements div.recurly-element.recurly-element-card')
-let firstName = document.getElementById('nameInput')
-let lastName = document.getElementById('surnameInput')
+// let cardNumber = document.querySelector('div#recurly-elements div.recurly-element.recurly-element-card')
+// let firstName = document.getElementById('nameInput')
+// let lastName = document.getElementById('surnameInput')
 let animationWrapper = document.querySelector('div.animation-wrapper div.animation-image') 
 let animationMessage = document.querySelector('div.text-content p')
-let countryCode;
+// let countryCode;
 
-let cepError = document.getElementById('cep-error')
-let cardError = document.getElementById('card-error')
-let firstNameError = document.getElementById('first-name-error')
-let lastNameError = document.getElementById('last-name-error')
-let cityError = document.getElementById('city-error')
-let addressError = document.getElementById('address-error')
+// let cepError = document.getElementById('cep-error')
+// let cardError = document.getElementById('card-error')
+// let firstNameError = document.getElementById('first-name-error')
+// let lastNameError = document.getElementById('last-name-error')
+// let cityError = document.getElementById('city-error')
+// let addressError = document.getElementById('address-error')
 
-let li;
+// let li;
 
 
-const elements = recurly.Elements();
-const cardElement = elements.CardElement({
-    style: {
-    inputType: 'mobileSelect',
-      placeholder: {
-        color: 'gray !important',
-        fontWeight: 'bold',
-        content: {
-          number: 'Número do cartão',
-          cvv: 'CVV',
-          expiry:'Mês/Ano '
-        }
-      },
-      invalid: {
-        fontColor: 'red'
-      }
-    }
-  });
+// const elements = recurly.Elements();
+// const cardElement = elements.CardElement({
+//     style: {
+//     inputType: 'mobileSelect',
+//       placeholder: {
+//         color: 'gray !important',
+//         fontWeight: 'bold',
+//         content: {
+//           number: 'Número do cartão',
+//           cvv: 'CVV',
+//           expiry:'Mês/Ano '
+//         }
+//       },
+//       invalid: {
+//         fontColor: 'red'
+//       }
+//     }
+//   });
 
-  cardElement.attach('#recurly-elements');
+//   cardElement.attach('#recurly-elements');
 
-let count=0
+// let count=0
 
   document.querySelector('#my-form').addEventListener('submit', function (event) {
-    const form = this;
+    // const form = this;
     event.preventDefault();
 
-    recurly.token(elements, form, function (err, token) {
-      if (err) {
+    // recurly.token(elements, form, function (err, token) {
+    //   if (err) {
 
-        console.log(err.fields)
+    //     console.log(err.fields)
 
-        err.fields.forEach(field=>{
-          if(field =='number' || field=='month' || field=='year' ){
-            return criarErro(cardError,{
-              msg:'Cartão inválido!'
-            })
-          }else if(field=='first_name'){
-            firstName.style.border = '1px #E05D54 solid'
-            return criarErro(firstNameError,{
-              msg:'Digite seu nome!'
-            })
-          }else if(field=='last_name'){
-            lastName.style.border = '1px #E05D54 solid'
-            return criarErro(lastNameError,{
-              msg:'Digite seu sobrenome!'
-            })
-          }else if(field == 'city'){
-            cityInput.style.border = '1px #E05D54 solid'
-            return criarErro(cityError,{
-              msg:'Digite o nome da sua cidade!'
-            })
-          }else if(field=='address1'){
-            return criarErro(addressError,{
-              msg:'Digite o seu endereço!'
-            })
-          }
-        })
+    //     err.fields.forEach(field=>{
+    //       if(field =='number' || field=='month' || field=='year' ){
+    //         return criarErro(cardError,{
+    //           msg:'Cartão inválido!'
+    //         })
+    //       }else if(field=='first_name'){
+    //         firstName.style.border = '1px #E05D54 solid'
+    //         return criarErro(firstNameError,{
+    //           msg:'Digite seu nome!'
+    //         })
+    //       }else if(field=='last_name'){
+    //         lastName.style.border = '1px #E05D54 solid'
+    //         return criarErro(lastNameError,{
+    //           msg:'Digite seu sobrenome!'
+    //         })
+    //       }else if(field == 'city'){
+    //         cityInput.style.border = '1px #E05D54 solid'
+    //         return criarErro(cityError,{
+    //           msg:'Digite o nome da sua cidade!'
+    //         })
+    //       }else if(field=='address1'){
+    //         return criarErro(addressError,{
+    //           msg:'Digite o seu endereço!'
+    //         })
+    //       }
+    //     })
 
 
         
-      } else {
+    //   } else {
 
-        if(postalCodeInput.value.length==''){
-          postalCodeInput.style.border = '1px #E05D54 solid'
-          return criarErro(cepError,{
-            msg:'Digite algum valor!'
-          })
-        }
+        // if(postalCodeInput.value.length==''){
+        //   postalCodeInput.style.border = '1px #E05D54 solid'
+        //   return criarErro(cepError,{
+        //     msg:'Digite algum valor!'
+        //   })
+        // }
 
-        if(postalCodeInput.value.length<8){
-          postalCodeInput.style.border = '1px #E05D54 solid'
-          return criarErro(cepError,{
-            msg:'Precisa ter pelo menos 8 dígitos!'
-          })
-        }
+        // if(postalCodeInput.value.length<8){
+        //   postalCodeInput.style.border = '1px #E05D54 solid'
+        //   return criarErro(cepError,{
+        //     msg:'Precisa ter pelo menos 8 dígitos!'
+        //   })
+        // }
 
-        postalCodeInput.style.border = '1px #f2f2f2 solid'
-        limparErro(cepError)
+        // postalCodeInput.style.border = '1px #f2f2f2 solid'
+        // limparErro(cepError)
 
 
 
-        startAnimation('Processando sua assinatura...')
+        startAnimation('Alterando sua assinatura...')
 
-        sendData(`/plans/alter/sign/${planCodeParam}`,{
-            token
+        sendData(`/plans/alter/sign`,{
+            plan_code:planCodeParam
         })
-      }
-    });
+    //   }
+    // });
   });
 
-  countrysSelect.addEventListener('change',function(e){
+//   countrysSelect.addEventListener('change',function(e){
 
-    if(!e.target.value){
-      clearAddress()
-      closeAddressDiv()
-      count=0
-      // return divAddress.style.display = 'none'
-    }else{
-      clearAddress()
-      countryCode = e.target.value
+//     if(!e.target.value){
+//       clearAddress()
+//       closeAddressDiv()
+//       count=0
+//       // return divAddress.style.display = 'none'
+//     }else{
+//       clearAddress()
+//       countryCode = e.target.value
 
-      if(count==0){
-        openAddressDiv()
-        count++
-      }
+//       if(count==0){
+//         openAddressDiv()
+//         count++
+//       }
   
-      if(e.target.value=='BR'){
-        console.log('adiciona')
-        postalCodeInput.onblur = function(e){
+//       if(e.target.value=='BR'){
+//         console.log('adiciona')
+//         postalCodeInput.onblur = function(e){
 
-          if(postalCodeInput.value.length==''){
-            postalCodeInput.style.border = '1px #E05D54 solid'
-            return criarErro(cepError,{
-              msg:'Digite algum valor!'
-            })
-          }
+//           if(postalCodeInput.value.length==''){
+//             postalCodeInput.style.border = '1px #E05D54 solid'
+//             return criarErro(cepError,{
+//               msg:'Digite algum valor!'
+//             })
+//           }
   
-          if(postalCodeInput.value.length<8){
-            postalCodeInput.style.border = '1px #E05D54 solid'
-            return criarErro(cepError,{
-              msg:'Precisa ter pelo menos 8 dígitos!'
-            })
-          }
+//           if(postalCodeInput.value.length<8){
+//             postalCodeInput.style.border = '1px #E05D54 solid'
+//             return criarErro(cepError,{
+//               msg:'Precisa ter pelo menos 8 dígitos!'
+//             })
+//           }
 
-          postalCodeInput.style.border = '1px #f2f2f2 solid'
-          limparErro(cepError)
-
-
-
-          searchDataByPostalCode(e.target.value)
-        }
-
-        return postalCodeInput.onkeypress = function (e){
-          return isNum(e)
-        }
-      }else{
-        if(postalCodeInput.onblur){
-          console.log('remove')
-          postalCodeInput.onblur = ''
-          postalCodeInput.onkeypress = ''
-        }
-      }
-      // return divAddress.style.display = 'block'
+//           postalCodeInput.style.border = '1px #f2f2f2 solid'
+//           limparErro(cepError)
 
 
-    }
+
+//           searchDataByPostalCode(e.target.value)
+//         }
+
+//         return postalCodeInput.onkeypress = function (e){
+//           return isNum(e)
+//         }
+//       }else{
+//         if(postalCodeInput.onblur){
+//           console.log('remove')
+//           postalCodeInput.onblur = ''
+//           postalCodeInput.onkeypress = ''
+//         }
+//       }
+//       // return divAddress.style.display = 'block'
+
+
+//     }
     
-  })
+//   })
 
 
 
-  window.addEventListener('load',function(){
-    searchCountrys()
-  })
+//   window.addEventListener('load',function(){
+//     searchCountrys()
+//   })
 
 
 
@@ -207,120 +207,120 @@ let count=0
   }
 
 
-  function appendCountrys(countrys){
+//   function appendCountrys(countrys){
 
-    let countryList = countrys.map(country=>{
-      return {
-        name:solveCountryASCII(country.translations.pt),
-        alpha2Code:country.alpha2Code,
-      }
-    })
+//     let countryList = countrys.map(country=>{
+//       return {
+//         name:solveCountryASCII(country.translations.pt),
+//         alpha2Code:country.alpha2Code,
+//       }
+//     })
 
 
    
-    let countryListSorted = countryList.sort(function(a, b){
-      if(a.name < b.name) { return -1; }
-      if(a.name > b.name) { return 1; }
-      return 0
-    })
+//     let countryListSorted = countryList.sort(function(a, b){
+//       if(a.name < b.name) { return -1; }
+//       if(a.name > b.name) { return 1; }
+//       return 0
+//     })
 
-    countryListSorted.forEach(countryInList=>{
-      countrysSelect.innerHTML +=`
-        <option value=${countryInList.alpha2Code} ><span class="flag-icon flag-icon-ar"></span> ${countryInList.name}</option>
-      `
-    })
+//     countryListSorted.forEach(countryInList=>{
+//       countrysSelect.innerHTML +=`
+//         <option value=${countryInList.alpha2Code} ><span class="flag-icon flag-icon-ar"></span> ${countryInList.name}</option>
+//       `
+//     })
 
-  }
+//   }
 
-  function appendAddressInformation(searchedAddress){
+//   function appendAddressInformation(searchedAddress){
 
-    if(searchedAddress){
-      console.log(searchedAddress)
-      addressInput.value = searchedAddress.logradouro+'/'+searchedAddress.bairro
-      cityInput.value = searchedAddress.localidade
-      return true
-    }else{
-      console.log('erro',searchedAddress)
-      return false
-    }
-  }
+//     if(searchedAddress){
+//       console.log(searchedAddress)
+//       addressInput.value = searchedAddress.logradouro+'/'+searchedAddress.bairro
+//       cityInput.value = searchedAddress.localidade
+//       return true
+//     }else{
+//       console.log('erro',searchedAddress)
+//       return false
+//     }
+//   }
 
-  function searchCountrys(){
-    fetch('https://restcountries.eu/rest/v2/all?fields=translations;alpha2Code;')
-    .then(response=>response.json())
-    .then(data=>{
-      console.log(data)
-      appendCountrys(data)
+//   function searchCountrys(){
+//     fetch('https://restcountries.eu/rest/v2/all?fields=translations;alpha2Code;')
+//     .then(response=>response.json())
+//     .then(data=>{
+//       console.log(data)
+//       appendCountrys(data)
 
-    })
-  }
+//     })
+//   }
 
-  function solveCountryASCII(countryName){
+//   function solveCountryASCII(countryName){
 
-    if(countryName=='áustria'){
-      return 'Austria'
-    }else if(countryName=='Índia'){
-      return 'India'
-    }else{
-      return countryName
-    }
-  }
+//     if(countryName=='áustria'){
+//       return 'Austria'
+//     }else if(countryName=='Índia'){
+//       return 'India'
+//     }else{
+//       return countryName
+//     }
+//   }
 
 
-  function searchDataByPostalCode(clientPostalCode){
-    fetch(`https://viacep.com.br/ws/${clientPostalCode}/json/`,{
-      headers:{
-        'Access-Control-Request-Headers': 'origin'
-      }
+//   function searchDataByPostalCode(clientPostalCode){
+//     fetch(`https://viacep.com.br/ws/${clientPostalCode}/json/`,{
+//       headers:{
+//         'Access-Control-Request-Headers': 'origin'
+//       }
 
-    })
-    .then(response=>response.json())
-    .then(data=>{
+//     })
+//     .then(response=>response.json())
+//     .then(data=>{
 
-      if(data.erro){
-        return criarErro(postalCodeInput,cepError,{
-            msg:'Valor inválido!'
-          })
-      }
+//       if(data.erro){
+//         return criarErro(postalCodeInput,cepError,{
+//             msg:'Valor inválido!'
+//           })
+//       }
       
-      appendAddressInformation(data)
+//       appendAddressInformation(data)
 
-    })
-    .catch((err)=>{
-      return criarErro(postalCodeInput,cepError,{
-        msg:'Valor inválido!'
-      })
-    })
-  }
+//     })
+//     .catch((err)=>{
+//       return criarErro(postalCodeInput,cepError,{
+//         msg:'Valor inválido!'
+//       })
+//     })
+//   }
   
-  function criarErro(errorList,error){
+//   function criarErro(errorList,error){
 
-    li = document.createElement('p')
-    li.setAttribute('style',
-    'font-size:13px')
-    limparErro(errorList)
+//     li = document.createElement('p')
+//     li.setAttribute('style',
+//     'font-size:13px')
+//     limparErro(errorList)
 
-    li.innerHTML = `
-    <b style='color:red'>${error.msg}</b>
-    `
-    errorList.appendChild(li)
+//     li.innerHTML = `
+//     <b style='color:red'>${error.msg}</b>
+//     `
+//     errorList.appendChild(li)
 
-}
+// }
 
-  function limparErro(listaDeErros){
-    if(listaDeErros!=undefined){
-        return listaDeErros.innerHTML=''
-    }
+//   function limparErro(listaDeErros){
+//     if(listaDeErros!=undefined){
+//         return listaDeErros.innerHTML=''
+//     }
 
-    return true;
-}
+//     return true;
+// }
 
-  function clearAddress(){
-    addressInput.value = ''
-    cityInput.value = ''
-    postalCodeInput.value = ''
-    return true
-  }
+//   function clearAddress(){
+//     addressInput.value = ''
+//     cityInput.value = ''
+//     postalCodeInput.value = ''
+//     return true
+//   }
 
   function removePay(){
     return paymentDiv.style.display='none'
@@ -356,138 +356,138 @@ function removeScreenAnimation(){
   return animation.classList.remove('show')
 }
 
-function oppeningAddressDiv(timeStamps){
+// function oppeningAddressDiv(timeStamps){
 
-  if(!start) start=timeStamps
+//   if(!start) start=timeStamps
 
-  let progress = timeStamps - start
+//   let progress = timeStamps - start
 
-  // height = height + (200/4500)*progress
+//   // height = height + (200/4500)*progress
 
-  divAddress.style.height = Math.min(progress*(195/450), 195) + 'px'
+//   divAddress.style.height = Math.min(progress*(195/450), 195) + 'px'
 
-  if(progress < 450){
-    return window.requestAnimationFrame(oppeningAddressDiv)
-  }
+//   if(progress < 450){
+//     return window.requestAnimationFrame(oppeningAddressDiv)
+//   }
 
-  addOpacity()
+//   addOpacity()
 
-}
+// }
 
-function closingAddressDiv(timeStamps){
+// function closingAddressDiv(timeStamps){
 
-  if(!start) start=timeStamps
+//   if(!start) start=timeStamps
 
-  let progress = timeStamps - start
+//   let progress = timeStamps - start
 
-  // height = height - (200/25)
+//   // height = height - (200/25)
 
-  divAddress.style.height = Math.max(195-(progress*(195/500)), 0) + 'px'
+//   divAddress.style.height = Math.max(195-(progress*(195/500)), 0) + 'px'
 
-  if(progress < 500){
-    return window.requestAnimationFrame(closingAddressDiv)
-  }
+//   if(progress < 500){
+//     return window.requestAnimationFrame(closingAddressDiv)
+//   }
 
-  divAddress.style.display = 'none'
+//   divAddress.style.display = 'none'
 
-}
+// }
 
-function addingOpacity(timeStamps){
+// function addingOpacity(timeStamps){
 
-  if(!start) start=timeStamps
+//   if(!start) start=timeStamps
 
-  let progress = timeStamps - start
+//   let progress = timeStamps - start
 
-  // height = height + (200/4500)*progress
+//   // height = height + (200/4500)*progress
 
-  divAddress.style.opacity = `${(Math.min(progress*(100/400), 100))}%`
+//   divAddress.style.opacity = `${(Math.min(progress*(100/400), 100))}%`
 
-  if(progress < 400){
-    window.requestAnimationFrame(addingOpacity)
-  }
-}
+//   if(progress < 400){
+//     window.requestAnimationFrame(addingOpacity)
+//   }
+// }
 
-function removingOpacity(timeStamps){
-  if(!startParal) startParal=timeStamps
+// function removingOpacity(timeStamps){
+//   if(!startParal) startParal=timeStamps
 
-  let progress = timeStamps - startParal
+//   let progress = timeStamps - startParal
 
-  // height = height + (200/4500)*progress
+//   // height = height + (200/4500)*progress
 
-  divAddress.style.opacity = `${(Math.max(100-progress*0.25, 0))}%`
+//   divAddress.style.opacity = `${(Math.max(100-progress*0.25, 0))}%`
 
-  if(progress < 400){
-    window.requestAnimationFrame(removingOpacity)
-  }
-}
-
-
-function openAddressDiv(){
-  start=null
-  divAddress.style.display = 'block'
-  window.requestAnimationFrame(oppeningAddressDiv)  
-}
-
-function closeAddressDiv(){
-  start=null
-  removeOpacity()
-  window.requestAnimationFrame(closingAddressDiv)
-}
-
-function addOpacity(){
-  start = null
-  window.requestAnimationFrame(addingOpacity)
-}
-
-function removeOpacity(){
-  startParal=null
-  window.requestAnimationFrame(removingOpacity)
-}
+//   if(progress < 400){
+//     window.requestAnimationFrame(removingOpacity)
+//   }
+// }
 
 
-function OnlyNum(e)
-{
-	var tecla=new Number();
-	if(window.event) {
-		tecla = e.keyCode;
-	}
-	else if(e.which) {
-		tecla = e.which;
-	}
-	else {
-		return true;
-	}
-	if((tecla >= "97") && (tecla <= "122") || tecla==32){
-		return false;
-	}
-}
+// function openAddressDiv(){
+//   start=null
+//   divAddress.style.display = 'block'
+//   window.requestAnimationFrame(oppeningAddressDiv)  
+// }
 
-function cepValidation(event,cepFormat){
+// function closeAddressDiv(){
+//   start=null
+//   removeOpacity()
+//   window.requestAnimationFrame(closingAddressDiv)
+// }
+
+// function addOpacity(){
+//   start = null
+//   window.requestAnimationFrame(addingOpacity)
+// }
+
+// function removeOpacity(){
+//   startParal=null
+//   window.requestAnimationFrame(removingOpacity)
+// }
+
+
+// function OnlyNum(e)
+// {
+// 	var tecla=new Number();
+// 	if(window.event) {
+// 		tecla = e.keyCode;
+// 	}
+// 	else if(e.which) {
+// 		tecla = e.which;
+// 	}
+// 	else {
+// 		return true;
+// 	}
+// 	if((tecla >= "97") && (tecla <= "122") || tecla==32){
+// 		return false;
+// 	}
+// }
+
+// function cepValidation(event,cepFormat){
 
   
 
-}
+// }
 
-function isNum(e)
-{
+// function isNum(e)
+// {
 
-  console.log(e.keyCode)
-	var tecla=new Number();
-	if(window.event) {
-		tecla = e.keyCode;
-	}
-	else if(e.which) {
-		tecla = e.which;
-	}
-	else {
-		return true;
-	}
-  if((tecla >= 97) && (tecla <= 122) ||
-  (tecla >= 65 && tecla <= 90)
-    || tecla==32){
-		return false;
-	}
-}
+//   console.log(e.keyCode)
+// 	var tecla=new Number();
+// 	if(window.event) {
+// 		tecla = e.keyCode;
+// 	}
+// 	else if(e.which) {
+// 		tecla = e.which;
+// 	}
+// 	else {
+// 		return true;
+// 	}
+//   if((tecla >= 97) && (tecla <= 122) ||
+//   (tecla >= 65 && tecla <= 90)
+//     || tecla==32){
+// 		return false;
+// 	}
+// }
 
 let resultScreen = document.querySelector('div.result-success')
 let titleResult = document.querySelector('div.result-success div.title-content h2')
@@ -500,7 +500,7 @@ function showResultScreen(data){
   console.log(data)
 
   if(data.error == 1){
-    titleResult.innerText=`Não é possível realizar a assinatura!`
+    titleResult.innerText=`Não foi possível realizar a assinatura!`
     imageResult.src = '/images/svg/error.svg'
     messageResult.innerText=data.msg
   }else if(data.sub){

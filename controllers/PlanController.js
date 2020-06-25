@@ -14,12 +14,6 @@ const PlanController = {
     return res.render('pages/viewAdPlans', {css: 'viewAdPlans.css', plans});
     
   },
-
-  async choose(req,res){
-    let plans = await Plan.findAll()
-
-    return res.render('pages/choosePlan',{css:'plans.css',plans})
-  },
   
   create:async (req, res) => {
   //   let plan = {
@@ -185,7 +179,16 @@ console.log(req.body)
       }
     })
 
+    console.log(subbs)
+
+
+
     if(subbs.length){
+
+        if(subbs.plano_id == plans[plan_code]){
+          return res.json({error:1,msg:'Você já assinou esse plano!'})  
+        }
+
         return res.json({error:1,msg:'Você já possui um plano ativo!'})
       }else{
         const {id:tokenId} = req.body.token;
@@ -283,8 +286,22 @@ async reactivePlan(req,res){
 },
 async alterPlan(req,res){
   try {
-    const {plan_code} = req.params
+    const {plan_code} = req.body
     const {alterSub} = req.session
+    const {id_usuario} = req.session.user || req.user
+
+    const plans = {
+      'plan-basic':1,
+      'plan-premium':2,
+      'plan-master':3
+    }
+
+
+    const userSubs = await client.getSubscription(alterSub.sub_id)
+
+    if(userSubs.plan.code == plan_code){
+      return res.json({error:1,msg:'Você já está com esse plano ativo!'})
+    }
 
     const subscriptionChangeCreate = {
       planCode: plan_code,
@@ -292,16 +309,37 @@ async alterPlan(req,res){
     }
   
     const change = await client.createSubscriptionChange(alterSub.sub_id, subscriptionChangeCreate)
+
+    console.log('change',change.id)
+
+    await User_Plan.update({status:0},{
+      where:{
+        assinatura_id:alterSub.sub_id
+      }
+    })
+
+    await User_Plan.create({
+      usuario_id:id_usuario,
+      plano_id:plans[plan_code],
+      assinatura_id:change.subscriptionId,
+      status:1,
+    })
+
+    req.session.alterSub = {
+      sub_id:change.id
+    }
+
+
     console.log('Created subscription change: ', change)
     return res.json({sub:change})
 
   } catch (err) {
     if (err instanceof recurly.errors.ValidationError) {
 
-      return res.json({error:1})
+      return res.json({error:1,msg:'Houve algum erro ao processar a sua assinatura!'})
     } else {
 
-      return res.json({error:1})
+      return res.json({error:1,msg:'Algo deu errado!'})
     }
   }
 },
