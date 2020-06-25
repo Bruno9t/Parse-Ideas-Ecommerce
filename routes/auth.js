@@ -42,6 +42,7 @@ router.get('/auth/access/google',passportGoogle.authenticate("google",{
 router.get('/auth/access/google/redirect',passportGoogle.authenticate("google",{
     failureRedirect:'/auth/access',
   }),function (req,res){
+
     return res.send(`<html><body><script>window.location = window.location.origin +'/panel'</script></body></html>`)
   })
   

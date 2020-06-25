@@ -1,7 +1,7 @@
 const {User, Announcement,Category,User_Plan,Plan} = require('../models')
 const path = require('path')
-const pathThumb = path.resolve('public','images','uploads')
-const fs = require('fs')
+// const pathThumb = path.resolve('public','images','uploads')
+// const fs = require('fs')
 const recurly = require('recurly');
 
 const client = new recurly.Client(process.env.RECURLY_KEY)
@@ -10,35 +10,22 @@ const client = new recurly.Client(process.env.RECURLY_KEY)
 const AdminController = {
     async index(req, res){
         try{
-            const {id_usuario} = req.session.user || req.user
+            let user = req.session.user || req.user
             let dateNow = new Date()
 
-            let {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
+            let {nome,sobrenome,email,thumbnail} = await User.findByPk(user.id_usuario)
 
             const subs = await User_Plan.findOne({
                 where:{
-                    usuario_id:id_usuario,
+                    usuario_id:user.id_usuario,
                     status:1
                 },
                 include:{
                     model:Plan,
                     as:'plano',
                 }
-            })
-
-            console.log(thumbnail)
-            // console.log(!fs.existsSync(thumbnail))
-            console.log(fs.readdirSync(pathThumb))
-            let base = path.basename(thumbnail)
-            let listPath = fs.readdirSync(pathThumb)
-            
-            if(!listPath.includes(base)){
-                thumbnail='/images/svg/profile-user.svg'
             }
-
-            console.log(thumbnail)
-
-
+            )
 
             function isInTrial(trialEnds){
 
@@ -47,12 +34,13 @@ const AdminController = {
                 }else{
                     return false
                 }
+
             }
 
             const formatter = new Intl.NumberFormat('pt-BR', {
                 maximumFractionDigits: 2,
                 style: 'currency',
-                currency: 'BRL' 
+                currency: 'BRL', 
               });
 
             if(subs){
