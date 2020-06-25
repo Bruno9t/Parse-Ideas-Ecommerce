@@ -1,7 +1,5 @@
 const {User, Announcement,Category,User_Plan,Plan} = require('../models')
-const path = require('path')
-// const pathThumb = path.resolve('public','images','uploads')
-// const fs = require('fs')
+
 const recurly = require('recurly');
 
 const client = new recurly.Client(process.env.RECURLY_KEY)
