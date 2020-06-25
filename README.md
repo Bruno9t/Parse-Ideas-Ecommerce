@@ -32,3 +32,7 @@ Abaixo, listamos os planos disponíveis na plataforma.
 
 **Utilizamos a API do Recurly para efetuar cobranças recorrentes**
 [https://recurly.com/](https://recurly.com/)
+
+## Fluxo do Projeto
+[![N|ParseIdeas](https://user-images.githubusercontent.com/36520333/85435987-ac455680-b55e-11ea-88e9-b80f4be16a65.png)](https://user-images.githubusercontent.com/36520333/85435987-ac455680-b55e-11ea-88e9-b80f4be16a65.png)
+

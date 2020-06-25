@@ -184,6 +184,11 @@ button#remove-2:hover{
     min-height: 600px;
 }
 
+div#cardList-navigation li.active {
+    background-color: blue;
+    color: white;
+}
+
 #announcements .card .btn{
     background-color: white;
     border: 1px solid #5A47CC;

@@ -15,6 +15,8 @@ let edtMonthlyAmount2 = document.querySelector("#monthlyAmount-2")
 
 let count
 
+let lastLi 
+
 let id_category = new URLSearchParams(window.location.search)
     .get("id_category");
 
@@ -42,6 +44,8 @@ frmSearch.addEventListener('submit', function(e){
   e.preventDefault()
 
   id_category = cmbType.selectedIndex
+
+  lastLi = undefined
 
   let params = catchForm()
   bringData(params)
@@ -88,8 +92,10 @@ function formatarPreco(price){
   return formatted;
 }
 
-function buildCards(data, totalRows) {
+function buildCards(data, totalRows, count) {
   let announces = data;
+
+  buildLis(count)
 
   announces.map(announce => {
     announce.preco = formatarPreco(announce.preco)
@@ -113,7 +119,7 @@ function buildCards(data, totalRows) {
         rows[j].innerHTML += `
         <div class="col-md-6 col-sm-12 my-4">
           <div class="card">
-              <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" class="card-img-top" alt="...">
+              <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" height="250px" style="object-fit:cover" class="card-img-top" alt="...">
               ${announces[i+(j*2)].prioridade ? `<span class="spotlight p-2">Destaque</span>` : ''}
               <span class="categorie tag-${announces[i+(j*2)].categoria_id} p-2">${announces[i+(j*2)].categoria.nome}</span>
               <div class="card-body">
@@ -132,10 +138,18 @@ function buildCards(data, totalRows) {
 function buildLis(count) {
   cardNavigation.innerHTML = '';
 
-  for(let i = 1; i <= Math.ceil(count/6); i++){
-    cardNavigation.innerHTML += `
-    <li class='page-item page-link'>${i}</li>
-    `;
+  if (count > 6){
+    for(let i = 1; i <= Math.ceil(count/6); i++){
+      cardNavigation.innerHTML += `
+      <li class='page-item page-link'>${i}</li>
+      `;
+    }
+    if(!lastLi){
+      let liList = document.querySelectorAll('div#cardList-navigation li');
+      liList[0].classList.add('active');
+    }else {
+      addActive(lastLi)
+    }
   }
 
   insertLiEvent();
@@ -148,9 +162,21 @@ function insertLiEvent() {
     liList[i].addEventListener('click', function(){
       let param = catchForm();
       param.offset = i;
+      addActive(i)
+      lastLi = i
       bringData(param);
     });
   }
+}
+
+function addActive(id){
+  let liList = document.querySelectorAll('div#cardList-navigation li');
+
+  for(let i = 0; i< liList.length; i++){
+    liList[i].classList.remove('active');
+  }
+
+  liList[id].classList.add('active');
 }
 
 function bringData(params) {
@@ -162,8 +188,7 @@ function bringData(params) {
     return resp.json()
   }).then(data => {
     let {announces, count_announces} = data
-     buildCards(announces, announces.length)
-     buildLis(count_announces)
+     buildCards(announces, announces.length, count_announces)
     count = count_announces
   })
 }
