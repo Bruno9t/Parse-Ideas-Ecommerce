@@ -1,4 +1,7 @@
 const {User, Announcement,Category,User_Plan,Plan} = require('../models')
+const path = require('path')
+const pathThumb = path.resolve('public','images','uploads')
+const fs = require('fs')
 const recurly = require('recurly');
 
 const client = new recurly.Client(process.env.RECURLY_KEY)
@@ -10,7 +13,7 @@ const AdminController = {
             const {id_usuario} = req.session.user || req.user
             let dateNow = new Date()
 
-            const {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
+            let {nome,sobrenome,email,thumbnail} = await User.findByPk(id_usuario)
 
             const subs = await User_Plan.findOne({
                 where:{
@@ -22,6 +25,20 @@ const AdminController = {
                     as:'plano',
                 }
             })
+
+            console.log(thumbnail)
+            // console.log(!fs.existsSync(thumbnail))
+            console.log(fs.readdirSync(pathThumb))
+            let base = path.basename(thumbnail)
+            let listPath = fs.readdirSync(pathThumb)
+            
+            if(!listPath.includes(base)){
+                thumbnail='/images/svg/profile-user.svg'
+            }
+
+            console.log(thumbnail)
+
+
 
             function isInTrial(trialEnds){
 
