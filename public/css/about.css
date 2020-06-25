@@ -21,7 +21,7 @@ section#team .card{
 section#team .card img{
     width: 60%;
     margin: 0 auto;
-    border-radius: 100px;
+    border-radius: 100%;
 }
 
 section#team .card .card-footer{
@@ -37,5 +37,11 @@ section#team .card .card-footer a{
 
 section#team .card .card-footer a:hover{
     color: blueviolet;
+}
+
+@media (max-width:768px){
+    section#team .card{
+        margin: 50px 10px;
+    }
 }
 
