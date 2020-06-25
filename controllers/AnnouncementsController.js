@@ -1,4 +1,4 @@
-const { Announcement, Category, File, User} = require('../models');
+const { Announcement, Category, File, User,User_Plan,Plan} = require('../models');
 const { Op } = require('sequelize');
 const {check, validationResult, body} = require('express-validator');
 const Email = require('../services/email');
@@ -37,81 +37,112 @@ const AnnouceController = {
         if(errors.length > 0){
             return res.json({msg: 'errors', erros: errors})
         }
-
         try {
-            
-            const createdAnnouncements = await Announcement.create({
-                'categoria_id': Number(obj.type),
-                'usuario_id': id_usuario,
-                'preco': obj.price.replace('.','').replace(',','.'),
-                'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
-                'faturamento_mm': obj.revenues.replace('.','').replace(',','.'),
-                'lucro_mensal': obj.profit.replace('.','').replace(',','.'),
-                'data_fundacao': new Date(obj.date),
-                'descricao': obj.description,
-                'motivo_venda': obj.reason,
-                'qtd_funcionarios': Number(obj.employees),
-                'prioridade': 0,
-                'titulo': obj.title
+
+            const announcements = await Announcement.count('usuario_id')
+
+            const userPlan = await User_Plan.findOne({
+                where:{
+                    usuario_id:id_usuario,
+                    status:1,
+                },
+                include:{
+                    model:Plan,
+                    as:'plano',
+                    required:false,
+                }
             })
 
+            console.log(userPlan)
+            
 
-            if(foto){
-                await File.create({
-                    'anuncio_id': createdAnnouncements.id_anuncio,
-                    'arquivo': `/uploads/foto/${foto.filename}`
-                })
-            }
-    
-            if(pdf){
-                await File.create({
-                    'anuncio_id': createdAnnouncements.id_anuncio,
-                    'arquivo': `/uploads/pdf/${pdf.filename}`
-                })
-            }
+            const {numero_de_anuncios} = userPlan.dataValues.plano
 
-            const user = await User.findByPk(id_usuario);
-            const category = await Category.findByPk(Number(obj.type));
 
-            let emailSend = {
-                from: 'site@parseideias.tecnologia.ws',
-                to: user.email,
-                subject: 'Parse Ideas - Criação de Anúncio',
-                text: 'Criação de Anúncio',
-                html: `
-                <h1>Novo anúncio criado no sistema</h1>
-                <p>Olá ${user.nome} ${user.sobrenome}, <br>
-                Seguem abaixo, dados do anúncio criado no sistema:
-                </p>
-                <hr>
-                <br>
-                <strong>Titulo:</strong> ${obj.title} <br>
-                <strong>Tipo:</strong> ${category.nome} <br>
-                <strong>Preco:</strong> ${obj.price} <br>
-                <strong>Valor do Estoque:</strong> ${obj.stock}<br>
-                <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
-                <strong>Lucro:</strong> ${obj.profit}<br>
-                <strong>Data de Fundação:</strong> ${obj.date} <br>
-                <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
-                <strong>Motivo:</strong> ${obj.reason} <br>
-                <strong>Descrição:</strong> ${obj.description} <br><br>
+            if(!userPlan){
+                return res.redirect('/plans/list')
+            }else{
 
-                <p>Cordialmente,<br>
-                <strong>Equipe Parse Ideas®</strong>
-                </p>
-                
-                `,
-            }
-            // Send email 
-                Email.sendMail(emailSend, (error) => {
-                    if(error){
-                        console.log('Deu Ruim')
-                        console.log(error.message)
-                    }else{
-                        console.log('Email disparado com sucesso!');
+                if(announcements + 1 < numero_de_anuncios){
+                    console.log('Numero de anuncios',announcements)
+
+                    const createdAnnouncements = await Announcement.create({
+                        'categoria_id': Number(obj.type),
+                        'usuario_id': id_usuario,
+                        'preco': obj.price.replace('.','').replace(',','.'),
+                        'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
+                        'faturamento_mm': obj.revenues.replace('.','').replace(',','.'),
+                        'lucro_mensal': obj.profit.replace('.','').replace(',','.'),
+                        'data_fundacao': new Date(obj.date),
+                        'descricao': obj.description,
+                        'motivo_venda': obj.reason,
+                        'qtd_funcionarios': Number(obj.employees),
+                        'prioridade': 0,
+                        'titulo': obj.title
+                    })
+        
+        
+                    if(foto){
+                        await File.create({
+                            'anuncio_id': createdAnnouncements.id_anuncio,
+                            'arquivo': `/uploads/foto/${foto.filename}`,
+                        })
                     }
-                })
-                return res.status(200).json({msg: 'success'});
+            
+                    if(pdf){
+                        await File.create({
+                            'anuncio_id': createdAnnouncements.id_anuncio,
+                            'arquivo': `/uploads/pdf/${pdf.filename}`,
+                        })
+                    }
+        
+                    const user = await User.findByPk(id_usuario);
+                    const category = await Category.findByPk(Number(obj.type));
+        
+                    let emailSend = {
+                        from: 'site@parseideias.tecnologia.ws',
+                        to: user.email,
+                        subject: 'Parse Ideas - Criação de Anúncio',
+                        text: 'Criação de Anúncio',
+                        html: `
+                        <h1>Novo anúncio criado no sistema</h1>
+                        <p>Olá ${user.nome} ${user.sobrenome}, <br>
+                        Seguem abaixo, dados do anúncio criado no sistema:
+                        </p>
+                        <hr>
+                        <br>
+                        <strong>Titulo:</strong> ${obj.title} <br>
+                        <strong>Tipo:</strong> ${category.nome} <br>
+                        <strong>Preco:</strong> ${obj.price} <br>
+                        <strong>Valor do Estoque:</strong> ${obj.stock}<br>
+                        <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
+                        <strong>Lucro:</strong> ${obj.profit}<br>
+                        <strong>Data de Fundação:</strong> ${obj.date} <br>
+                        <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
+                        <strong>Motivo:</strong> ${obj.reason} <br>
+                        <strong>Descrição:</strong> ${obj.description} <br><br>
+        
+                        <p>Cordialmente,<br>
+                        <strong>Equipe Parse Ideas®</strong>
+                        </p>
+                        `,
+                    }
+                    // Send email 
+                        Email.sendMail(emailSend, (error) => {
+                            if(error){
+                                console.log('Deu Ruim')
+                                console.log(error.message)
+                            }else{
+                                console.log('Email disparado com sucesso!');
+                            }
+                        })
+
+                        return res.status(200).json({msg: 'success'});
+                }else{
+                    return res.redirect('/plans/list')
+                }
+            }
+            
         } catch (error) {
             console.log(error);
             return res.status(400).json({msg: 'error'});
