@@ -119,7 +119,7 @@ function buildCards(data, totalRows, count) {
         rows[j].innerHTML += `
         <div class="col-md-6 col-sm-12 my-4">
           <div class="card">
-              <img src="${!announces[i+(j*2)].arquivos[0] ? "/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" : announces[i+(j*2)].arquivos[0].arquivo}" height="250px" style="object-fit:cover" class="card-img-top" alt="...">
+              <img src="/images/img/carlos-muza-hpjSkU2UYSU-unsplash.jpg" height="250px" style="object-fit:cover" class="card-img-top" alt="...">
               ${announces[i+(j*2)].prioridade ? `<span class="spotlight p-2">Destaque</span>` : ''}
               <span class="categorie tag-${announces[i+(j*2)].categoria_id} p-2">${announces[i+(j*2)].categoria.nome}</span>
               <div class="card-body">
