@@ -3,17 +3,12 @@ let listIndexPages = document.querySelector('div#contain div.announcements-navig
 let liSelected;
 let previousClickLI = 1;
 
-
- 
-
-
 window.addEventListener('load',function(){
 
     getDataFromServer('/user/announcements',{
         previousClickLI,
     },buildAnnouncemntsCardsOnAdmin)
 })
-
 
 listIndexPages.addEventListener('click',function(e){
 
@@ -35,7 +30,22 @@ function alterLastClickedElement(element){
 
 function buildAnnouncemntsCardsOnAdmin(dataReceived,columns){
     let{announcements,total,limit} = dataReceived
+    console.log('total',total)
     buildAll(announcements,total,limit,columns);
+}
+
+function noAnnouncement(){
+    let div = document.createElement('div')
+
+    div.innerHTML = `
+    <h2 class='text-center' >Você ainda não possui anúncios</h2>
+    <div>
+        <div style='margin:20px auto;text-align:center'>
+            <img src='/images/svg/erro.svg' style='heigth:500px;width:500px;margin:20px auto;text-align:center'  alt='sem anuncios' >
+        <div>
+    </div>
+    `
+    listAnnouncements.appendChild(div)
 }
 
 
@@ -131,8 +141,14 @@ function buildAll(announcements,total,limit,columns){
         ` 
     }
 
-    liSelected = document.querySelectorAll('div#contain div.announcements-navigation ul li');
-    liSelected[previousClickLI-1].classList.add('active');
+    if(total==0){
+        return noAnnouncement()
+    }
+    if(total > limit){
+        liSelected = document.querySelectorAll('div#contain div.announcements-navigation ul li');
+        liSelected[previousClickLI-1].classList.add('active');
+    }
+
 }
 
 async function deleteAds(e){

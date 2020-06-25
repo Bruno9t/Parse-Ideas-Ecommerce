@@ -39,32 +39,32 @@ const AnnouceController = {
         }
         try {
 
-            const announcements = await Announcement.count('usuario_id')
+            // const announcements = await Announcement.count('usuario_id')
 
-            const userPlan = await User_Plan.findOne({
-                where:{
-                    usuario_id:id_usuario,
-                    status:1,
-                },
-                include:{
-                    model:Plan,
-                    as:'plano',
-                    required:false,
-                }
-            })
+            // const userPlan = await User_Plan.findOne({
+            //     where:{
+            //         usuario_id:id_usuario,
+            //         status:1,
+            //     },
+            //     include:{
+            //         model:Plan,
+            //         as:'plano',
+            //     }
+            // })
 
-            console.log(userPlan)
+            // console.log(userPlan)
             
 
-            const {numero_de_anuncios} = userPlan.dataValues.plano
+            // const {numero_de_anuncios} = userPlan.plano
 
+            // console.log('numero de anuncios',announcements)
 
-            if(!userPlan){
-                return res.redirect('/plans/list')
-            }else{
+            // if(!userPlan){
+            //     return res.redirect('/plans/list')
+            // }else{
 
-                if(announcements + 1 < numero_de_anuncios){
-                    console.log('Numero de anuncios',announcements)
+            //     if(announcements + 1 <= numero_de_anuncios){
+            //         console.log('Numero de anuncios',announcements)
 
                     const createdAnnouncements = await Announcement.create({
                         'categoria_id': Number(obj.type),
@@ -138,10 +138,10 @@ const AnnouceController = {
                         })
 
                         return res.status(200).json({msg: 'success'});
-                }else{
-                    return res.redirect('/plans/list')
-                }
-            }
+            //     }else{
+            //         return res.redirect('/plans/list')
+            //     }
+            // }
             
         } catch (error) {
             console.log(error);
