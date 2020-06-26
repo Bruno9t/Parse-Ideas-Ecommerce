@@ -40,8 +40,8 @@ function noAnnouncement(){
     div.innerHTML = `
     <h2 class='text-center' >Você ainda não possui anúncios</h2>
     <div>
-        <div style='margin:20px auto;text-align:center'>
-            <img src='/images/svg/erro.svg' style='heigth:500px;width:500px;margin:20px auto;text-align:center'  alt='sem anuncios' >
+        <div style='margin:20px auto;text-align:center;max-width:500px;width:auto;'>
+            <img src='/images/svg/erro.svg' style='heigth:250px;width:100%;margin:20px auto;text-align:center'  alt='sem anuncios' >
         <div>
     </div>
     `
