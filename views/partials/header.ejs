@@ -72,14 +72,14 @@
                     </li>
                     
 
-                    <% if ( locals.user !== undefined){%>
+                    <% if ( locals.user !== undefined ){%>
 
                         <li class="nav-item" id='admin-panel' id='6'>
                             <a class="nav-link" href="/panel"><i class="fas fa-tachometer-alt"></i> Painel</a>
                         </li>
                         <li id='user' class="dropdown nav-item" id='6'>
                             <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <% if (locals.user.thumbnail == undefined){ %>
+                                <% if (locals.user.thumbnail == undefined || locals.user.thumbnail=='/images/svg/profile-user.svg'){ %>
                                     <img class ='us' src="/images/svg/profile-user.svg" alt="imagem de perfil do usuário">
                                 <%}else{%>
                                     <img class ='us' src="<%= locals.user.thumbnail %>" alt="imagem de perfil do usuário">

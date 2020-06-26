@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
-const {resolve} = require('path')
+const {resolve,basename} = require('path')
+const thumbPath = resolve('public','images','uploads')
 const {readdirSync} = require('fs')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -53,11 +54,20 @@ app.use(passport.session())
 
 app.use('/',function(req,res,next){
 
-  const user = req.user || req.session.user
+  let user = req.user || req.session.user
+
 
   if(user){
 
-    const {id_usuario,thumbnail} = user
+    let {id_usuario,thumbnail} = user
+
+    let base = basename(thumbnail)
+    let listPath = readdirSync(thumbPath)
+
+    if(!listPath.includes(base)){
+
+      thumbnail = '/images/svg/profile-user.svg'
+    }
 
     res.locals.user = {
       id_usuario,

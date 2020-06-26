@@ -1,5 +1,10 @@
 const {User, Announcement,Category,User_Plan,Plan} = require('../models')
 
+const path = require('path')
+const thumbPath = path.resolve('public','images','uploads')
+
+const fs = require('fs')
+
 const recurly = require('recurly');
 
 const client = new recurly.Client(process.env.RECURLY_KEY)
@@ -25,6 +30,13 @@ const AdminController = {
             }
             )
 
+            let base = path.basename(thumbnail)
+            let listPath = fs.readdirSync(thumbPath)
+
+            if(!listPath.includes(base)){
+                thumbnail = '/images/svg/profile-user.svg'
+            } 
+
             function isInTrial(trialEnds){
 
                 if(dateNow<=trialEnds){
@@ -42,7 +54,6 @@ const AdminController = {
               });
 
             if(subs){
-                console.log(subs.assinatura_id)
                 const {state,trialEndsAt,unitAmount,plan} = await client.getSubscription(subs.assinatura_id)
 
                 if(state=='expired'){
@@ -50,8 +61,6 @@ const AdminController = {
 
                     await subs.save()
                 }
-
-                console.log(state)
 
                 return res.render('pages/admin', {css: 'admin.css',user:{nome,sobrenome,email,thumbnail},
                 app:process.env.APP_URL,
