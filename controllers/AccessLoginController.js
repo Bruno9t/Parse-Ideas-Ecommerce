@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const AccessLoginController = {
     index: (req, res) => {
 
-        res.render('pages/loginAndRegister', {css: 'loginAndRegister.css'})
+        return res.render('pages/loginAndRegister', {css: 'loginAndRegister.css'})
     },
 
     async store(req,res){
@@ -18,16 +18,17 @@ const AccessLoginController = {
 
             senha = await bcrypt.hash(senha,10)
 
-            let {id_usuario} = await User.create({nome,sobrenome,email,senha})
+            let {id_usuario,thumbnail} = await User.create({nome,sobrenome,thumbnail:'/images/svg/profile-user.svg',email,senha})
 
             req.session.user = {
                 id_usuario,
+                thumbnail,
             }
             
-            res.json(listaDeErros)
+            return res.json(listaDeErros)
         }else{
 
-            res.json(listaDeErros)
+            return res.json(listaDeErros)
 
         }
 
