@@ -85,7 +85,7 @@ function modelarDados(dados,columns){
      <div class="card-header" id="heading-${i+((count-1)*limit)}" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">
      <div class='col-12 messageDiv'>
        <div class='cont'>
-         <div><h3><b>${messages[i].nome}</b></h3></div>
+         <div><h3><b>${messages[i].nome.trim() || 'Anônimo'}</b></h3></div>
          <div class='messageDate'><span>${decideDate(messages[i].createdAt)}</span></div>
          </div>
          <div class='messageDescription'>
@@ -102,15 +102,34 @@ function modelarDados(dados,columns){
 
     messageContent.innerHTML += `
     <div id="collapse-${i+((count-1)*limit)}" class="collapse" aria-labelledby="heading-${i+((count-1)*limit)}" data-parent="#accordion2">
-          <div class="card-body">
-          <h3>${messages[i].nome}</h3>
-          <h4>${messages[i].telefone}</h4>
-          <h4>${messages[i].celular}</h4>
-          <h4>${messages[i].email}</h4>
-              <p>${i+((count-1)*limit)}-${messages[i].mensagem}</p>
-              <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">Fechar</button>
+          <div class="card-body container">
+          <div class='row'>
+            <div class='col-6'>
+              <h3>${messages[i].nome.trim() || 'Anônimo'}</h3>
             </div>
-                    
+            <div class='col-6'>
+              <h4 style='color:yellow;'>${messages[i].email}</h4>
+            </div>
+          </div>
+          <hr>
+          <div class='row' >
+            <div class='col-6'>
+              <h4>Celular:${messages[i].celular.trim() || 'Não informado'}</h4>
+            </div>
+            <div class='col-6'>
+              <h4>Telefone:${messages[i].telefone.trim() || 'Não informado'}</h4>
+            </div>
+          </div>
+          <div class='row' style='margin-top:20px;'>
+            <div class='col-12'>
+              <h4 style='color:yellow;'>${decideDate(messages[i].createdAt)}</h4>
+            </div>
+          </div>
+          <div class='user-message-content' style='margin:30px 18px;'> 
+              <p>${messages[i].mensagem}</p>
+          </div>
+              <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">Fechar</button>
+            </div> 
     </div>
     `
     
