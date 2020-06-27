@@ -30,12 +30,12 @@ const AdminController = {
             }
             )
 
-            let base = path.basename(thumbnail)
-            let listPath = fs.readdirSync(thumbPath)
+            // let base = path.basename(thumbnail)
+            // let listPath = fs.readdirSync(thumbPath)
 
-            if(!listPath.includes(base)){
-                thumbnail = '/images/svg/profile-user.svg'
-            } 
+            // if(!listPath.includes(base)){
+            //     thumbnail = '/images/svg/profile-user.svg'
+            // } 
 
             function isInTrial(trialEnds){
 

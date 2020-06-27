@@ -61,13 +61,13 @@ app.use('/',function(req,res,next){
 
     let {id_usuario,thumbnail} = user
 
-    let base = basename(thumbnail)
-    let listPath = readdirSync(thumbPath)
+    // let base = basename(thumbnail)
+    // let listPath = readdirSync(thumbPath)
 
-    if(!listPath.includes(base)){
+    // if(!listPath.includes(base)){
 
-      thumbnail = '/images/svg/profile-user.svg'
-    }
+    //   thumbnail = '/images/svg/profile-user.svg'
+    // }
 
     res.locals.user = {
       id_usuario,
