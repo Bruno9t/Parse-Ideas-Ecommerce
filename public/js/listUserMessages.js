@@ -114,15 +114,18 @@ function modelarDados(dados,columns){
           <hr>
           <div class='row' >
             <div class='col-6'>
-              <h4>Celular:${messages[i].celular.trim() || 'Não informado'}</h4>
+              <h4>Celular: ${messages[i].celular.trim() || 'Não informado'}</h4>
             </div>
             <div class='col-6'>
-              <h4>Telefone:${messages[i].telefone.trim() || 'Não informado'}</h4>
+              <h4>Telefone: ${messages[i].telefone.trim() || 'Não informado'}</h4>
             </div>
           </div>
           <div class='row' style='margin-top:20px;'>
-            <div class='col-12'>
+            <div class='col-6'>
               <h4 style='color:yellow;'>${decideDate(messages[i].createdAt)}</h4>
+            </div>
+            <div class='col-6'>
+              <h4 style='color:yellow;'><a href='/announcements/detail/${messages[i].anuncio_id}'>Anuncio de interesse</a></h4>
             </div>
           </div>
           <div class='user-message-content' style='margin:30px 18px;'> 
