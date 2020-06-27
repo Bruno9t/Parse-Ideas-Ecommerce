@@ -74,7 +74,7 @@ function modelarDados(dados,columns){
   let finish = Math.ceil(total/limit)
 
 
-  if(count == finish || total == 0){
+  if(count == finish || total < limit){
        viewMoreButton.remove()
   }
 
