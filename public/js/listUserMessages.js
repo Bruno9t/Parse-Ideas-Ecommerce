@@ -128,7 +128,7 @@ function modelarDados(dados,columns){
               <h4 style='color:yellow;'><a href='/announcements/detail/${messages[i].anuncio_id}'>Anuncio de interesse</a></h4>
             </div>
           </div>
-          <div class='user-message-content' style='margin:30px 18px;'> 
+          <div class='user-message-content' style='margin:30px 18px;text-align:justify;'> 
               <p>${messages[i].mensagem}</p>
           </div>
               <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse-${i+((count-1)*limit)}" aria-expanded="false" aria-controls="collapse-${i+((count-1)*limit)}">Fechar</button>
