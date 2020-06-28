@@ -57,7 +57,8 @@ module.exports = {
             app:APP_URL,
             expires:timeMinutes
 
-        }).then(data => {
+        })
+        .then(data => {
 
             let configMail = {
                 from:EM_USER,

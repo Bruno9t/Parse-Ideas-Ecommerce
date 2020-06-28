@@ -45,6 +45,7 @@ div.modal-body form input:focus{
     padding-left: 30px;
   }
   #image-reg{
+
     position: absolute;
     background: white;
     top: 50%;
@@ -85,7 +86,23 @@ div.modal-body form input:focus{
   .modal-body{
     margin:20px;
   }
+
+  div.improve{
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    color:white;
+    top:0;
+    height:40px;
+    width: 100%;
+    background-color: rgb(0, 0, 255,0.5);
+    border-radius: 2px;
+    padding: 10px;
+  }
   #image-box-f{
+        /* improvement */
+        /* background: rgb(59, 89, 152,0.5); */
+    /*  */
     background: #3B5998;
     border-left:1px white solid;
 

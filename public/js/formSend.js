@@ -1,3 +1,5 @@
+
+
 let formRegister = document.getElementById('form-register'),
 formLogin = document.getElementById('form-login')
 
@@ -198,6 +200,7 @@ function validarLogin(data){
 
 function validarRegistro(data){
     if(!data.errors.length){
+        localStorage.setItem('fired',0)
 
         window.location = window.location.origin+'/plans/list'
 

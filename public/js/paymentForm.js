@@ -504,6 +504,7 @@ function showResultScreen(data){
     imageResult.src = '/images/svg/error.svg'
     messageResult.innerText=data.msg
   }else if(data.sub){
+    localStorage.setItem('fired',1)
     titleResult.innerText=`Assinatura completa`
     imageResult.src = '/images/svg/tick.svg'
     sentEmail.innerText='Você receberá um email com os detalhes da assinatura.'

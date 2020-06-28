@@ -36,6 +36,22 @@ div.category-3 {
   border-radius: 5px;
 }
 
+.swal2-popup{
+  font-size: 2rem !important;
+}
+
+.swal2-success-line-tip{
+  left: 0.29em !important;
+}
+
+.swal2-x-mark-line-left{
+  left:.8em !important;
+}
+
+.swal2-x-mark-line-right{
+  right:.8em !important;
+}
+
 
 div.card.business-card {
   min-height: 25em;

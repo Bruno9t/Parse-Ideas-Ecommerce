@@ -28,43 +28,117 @@ const AnnouceController = {
         return res.render('pages/createAnnouncement', {css: 'createAnnouncement.css', categories})
     },
     store: async (req, res) => {
-        const {id_usuario} = req.session.user || req.user
-        const obj = req.body;      
-        const [foto,pdf] = req.files;
-
-        const {errors} = validationResult(req);
-
-        if(errors.length > 0){
-            return res.json({msg: 'errors', erros: errors})
-        }
         try {
+            const {id_usuario} = req.session.user || req.user
+            const obj = req.body;      
+            const [foto,pdf] = req.files;
 
-            // const announcements = await Announcement.count('usuario_id')
+            const {errors} = validationResult(req);
 
-            // const userPlan = await User_Plan.findOne({
-            //     where:{
-            //         usuario_id:id_usuario,
-            //         status:1,
-            //     },
-            //     include:{
-            //         model:Plan,
-            //         as:'plano',
-            //     }
-            // })
+            if(errors.length > 0){
+                return res.json({msg: 'errors', erros: errors})
+            }
 
-            // console.log(userPlan)
+            const announcements = await Announcement.findAll({
+                where:{
+                    usuario_id:id_usuario,
+                }
+            })
+
+            const userPlan = await User_Plan.findOne({
+                where:{
+                    usuario_id:id_usuario,
+                    status:1,
+                },
+                include:{
+                    model:Plan,
+                    as:'plano',
+                }
+            })
+
+
+            if(!userPlan){
+                if(announcements.length+1 > 1 ){
+                    return res.json({code:4,msg:'Você não possui um plano assinado,por isso não poderá criar mais de 1 anúncio!'})
+                }else{
+                    const createdAnnouncements = await Announcement.create({
+                        'categoria_id': Number(obj.type),
+                        'usuario_id': id_usuario,
+                        'preco': obj.price.replace('.','').replace(',','.'),
+                        'valor_estimado_estoque': obj.stock.replace('.','').replace(',','.'),
+                        'faturamento_mm': obj.revenues.replace('.','').replace(',','.'),
+                        'lucro_mensal': obj.profit.replace('.','').replace(',','.'),
+                        'data_fundacao': new Date(obj.date),
+                        'descricao': obj.description,
+                        'motivo_venda': obj.reason,
+                        'qtd_funcionarios': Number(obj.employees),
+                        'prioridade': 0,
+                        'titulo': obj.title
+                    })
+        
+        
+                    if(foto){
+                        await File.create({
+                            'anuncio_id': createdAnnouncements.id_anuncio,
+                            'arquivo': `/uploads/foto/${foto.filename}`,
+                        })
+                    }
             
+                    if(pdf){
+                        await File.create({
+                            'anuncio_id': createdAnnouncements.id_anuncio,
+                            'arquivo': `/uploads/pdf/${pdf.filename}`,
+                        })
+                    }
+        
+                    const user = await User.findByPk(id_usuario);
+                    const category = await Category.findByPk(Number(obj.type));
+        
+                    let emailSend = {
+                        from: 'site@parseideias.tecnologia.ws',
+                        to: user.email,
+                        subject: 'Parse Ideas - Criação de Anúncio',
+                        text: 'Criação de Anúncio',
+                        html: `
+                        <h1>Novo anúncio criado no sistema</h1>
+                        <p>Olá ${user.nome} ${user.sobrenome}, <br>
+                        Seguem abaixo, dados do anúncio criado no sistema:
+                        </p>
+                        <hr>
+                        <br>
+                        <strong>Titulo:</strong> ${obj.title} <br>
+                        <strong>Tipo:</strong> ${category.nome} <br>
+                        <strong>Preco:</strong> ${obj.price} <br>
+                        <strong>Valor do Estoque:</strong> ${obj.stock}<br>
+                        <strong>Faturamento Médio Mensal:</strong> ${obj.revenues} <br>
+                        <strong>Lucro:</strong> ${obj.profit}<br>
+                        <strong>Data de Fundação:</strong> ${obj.date} <br>
+                        <strong>Quantidade de Funcionários:</strong> ${obj.employees} <br>
+                        <strong>Motivo:</strong> ${obj.reason} <br>
+                        <strong>Descrição:</strong> ${obj.description} <br><br>
+        
+                        <p>Cordialmente,<br>
+                        <strong>Equipe Parse Ideas®</strong>
+                        </p>
+                        `,
+                    }
+                    // Send email 
+                        Email.sendMail(emailSend, (error) => {
+                            if(error){
+                                console.log('Deu Ruim')
+                                console.log(error.message)
+                            }else{
+                                console.log('Email disparado com sucesso!');
+                            }
+                        })
+                        
+                    return res.status(200).json({msg: 'success'});
+                }
+            }else{
+                const {numero_de_anuncios} = userPlan.plano
 
-            // const {numero_de_anuncios} = userPlan.plano
-
-            // console.log('numero de anuncios',announcements)
-
-            // if(!userPlan){
-            //     return res.redirect('/plans/list')
-            // }else{
-
-            //     if(announcements + 1 <= numero_de_anuncios){
-            //         console.log('Numero de anuncios',announcements)
+                if(announcements.length + 1 <= numero_de_anuncios){
+                    console.log('Numero de anuncios',announcements)
 
                     const createdAnnouncements = await Announcement.create({
                         'categoria_id': Number(obj.type),
@@ -138,10 +212,10 @@ const AnnouceController = {
                         })
 
                         return res.status(200).json({msg: 'success'});
-            //     }else{
-            //         return res.redirect('/plans/list')
-            //     }
-            // }
+                }else{
+                    return res.json({code:3,msg:'Assine um plano mais elevado para criar mais anúncios.'})
+                }
+            }
             
         } catch (error) {
             console.log(error);

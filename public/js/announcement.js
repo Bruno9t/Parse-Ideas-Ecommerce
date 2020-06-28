@@ -70,6 +70,23 @@ form.addEventListener('submit', async function(e){
               divErros.innerHTML += `<p><strong>${erro.msg}</strong></p>`
                 
             })
+        }else if(result.code==3){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: result.msg,
+            showConfirmButton: false,
+            timer:7000
+        }).then(()=>{
+          window.location = window.location.origin+'/plans/alter'
+        })
+        }else if(result.code==4){
+          Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: result.msg,
+            showConfirmButton: true,
+        })
         }
         else{
             divErros.style.display = 'none';
