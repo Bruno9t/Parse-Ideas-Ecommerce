@@ -415,7 +415,7 @@ listPlan: async (req, res) => {
 },
 postPlan: (req, res) => {
   let {id_categoria, id_plano} = req.body
-  console.log(` Deu certo  id_categaria: ${id_categoria}, id_plano: ${id_plano}`)
+  console.log(` Deu certo  id_categoria: ${id_categoria}, id_plano: ${id_plano}`)
 },
 
 

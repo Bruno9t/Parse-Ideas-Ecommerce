@@ -61,7 +61,7 @@ module.exports = {
         .then(data => {
 
             let configMail = {
-                from:EM_USER,
+                from:`"Parse Ideas  💡" <${EM_USER}>`,
                 to:email,
                 subject:`Alteração de senha`,
                 html:data

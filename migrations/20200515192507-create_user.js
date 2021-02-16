@@ -34,11 +34,11 @@ module.exports = {
      thumbnail:{
        type:Sequelize.STRING(2000),
      },
-     create_at:{
+     created_at:{
        type:Sequelize.DATE,
        allowNull:false
       },
-     update_at:{
+     updated_at:{
        type:Sequelize.DATE,
        allowNull:false,
      }
